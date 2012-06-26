@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Mule Clarizen Cloud Connector
+
+    Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+
+    The software in this package is published under the terms of the CPAL v1.0
+    license, a copy of which has been included with this distribution in the
+    LICENSE.txt file.
+
+-->
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:debugger="http://www.mulesoft.org/schema/mule/debugger" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="EE-3.3.0" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/clarizen http://www.mulesoft.org/schema/mule/clarizen/1.0/mule-clarizen.xsd 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd ">
+    <clarizen:config name="Clarizen" connectionUser="user" connectionPassword="password" partnerId="partnerid" applicationId="appid" doc:name="Clarizen"/>
+    <flow name="Clarizen_Example_UpdateTask" doc:name="Clarizen_Example_UpdateTask">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="update-task" doc:name="HTTP"/>
+        <clarizen:get-my-work-items config-ref="Clarizen" workItemFilter="ALL" workItemState="ALL" workItemType="TASK" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Name</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:get-my-work-items>
+        <clarizen:update-task config-ref="Clarizen" task-ref="#[payload]" doc:name="Clarizen">
+            <clarizen:fields-to-update>
+                <clarizen:fields-to-update key="percentCompleted">80</clarizen:fields-to-update>
+                <clarizen:fields-to-update key="Description">TEST TASK mod</clarizen:fields-to-update>
+            </clarizen:fields-to-update>
+        </clarizen:update-task>
+    </flow>
+</mule>
+

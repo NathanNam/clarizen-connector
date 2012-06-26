@@ -1,0 +1,139 @@
+<!-- BEGIN_INCLUDE(clarizen:login) -->
+    <clarizen:login connectionUser="user"
+                   connectionPassword="pass"
+                   applicationId="applicationId"
+                   partnerId="partnerId" />
+<!-- END_INCLUDE(clarizen:login) -->
+
+<!-- BEGIN_INCLUDE(clarizen:logout) -->
+    <clarizen:logout />
+<!-- END_INCLUDE(clarizen:logout) -->
+
+<!-- BEGIN_INCLUDE(clarizen:get-work-item-by-id) -->
+    <clarizen:get-workitem-by-id workItemType=TASK
+                                workItemId="workitemId"
+                                fieldsToRetrieve="Name" />
+<!-- END_INCLUDE(clarizen:get-work-item-by-id) -->
+
+<!-- BEGIN_INCLUDE(clarizen:create-work-item) -->
+    <clarizen:create-work-item  workItemType=TASK
+                                workItemId="workitemId"
+                                workItemName="workitemName"
+                                startDate="01-31-2011T13:00:00" />
+<!-- END_INCLUDE(clarizen:create-work-item) -->
+
+<!-- BEGIN_INCLUDE(clarizen:create-work-item-single-values) -->
+    <clarizen:create-work-item-single-values  workItemType=TASK
+                                workItemId="workitemId"
+                                workItemName="workitemName"
+                                startDate="01-31-2011T13:00:00" />
+<!-- END_INCLUDE(clarizen:create-work-item-single-values) -->
+
+<!-- BEGIN_INCLUDE(clarizen:update-work-item) -->
+    <clarizen:update-work-item  workItemType=TASK
+                                workItemId="workitemId"
+                                <clarizen:fieldsToUpdate>
+                                    <clarizen:field key="name" value-ref="New-workitem" />                    
+                                </clarizen:fieldsToUpdate>                         
+    /clarizen:update-work-item>
+<!-- END_INCLUDE(clarizen:update-work-item) -->
+
+<!-- BEGIN_INCLUDE(clarizen:create-issue) -->
+    <clarizen:create-issue   issueType=ISSUE
+                             issueId="issueId"
+                             issueTitle="issueTitle" />
+<!-- END_INCLUDE(clarizen:create-issue) -->
+
+<!-- BEGIN_INCLUDE(clarizen:update-issue) -->
+    <clarizen:update-issue  issueType=ISSUE
+                            issueId="issueId"
+                            <clarizen:fieldsToUpdate>
+                                <clarizen:field key="name" value-ref="NewWorkitem" />                    
+                            </clarizen:fieldsToUpdate> 
+     <clarizen:update-issue/>
+<!-- END_INCLUDE(clarizen:update-issue) -->
+
+<!-- BEGIN_INCLUDE(clarizen:attach-document-link-to-work-item) -->
+    <clarizen:attach-document-link-to-work-item entityId="workitemId"
+                                                filename="http://www.mulesoft.org/schema/mule/clarizen/1.0-SNAPSHOT/mule-clarizen.xsd" />
+<!-- END_INCLUDE(clarizen:attach-document-link-to-work-item) -->
+
+<!-- BEGIN_INCLUDE(clarizen:work-items-query) -->
+    <clarizen:work-items-query  fieldsToRetrieve="Name"
+                                workItemState=ALL
+                                workItemType=ALL
+                                workItemFilter=ALL />
+<!-- END_INCLUDE(clarizen:work-items-query) -->
+
+<!-- BEGIN_INCLUDE(clarizen:get-issues-by-customer) -->
+    <clarizen:get-issues-by-customer  issueType=ISSUE
+                                fieldsToRetrieve="Name"
+                                customerId="customerId" />
+<!-- END_INCLUDE(clarizen:get-issues-by-customer) -->
+
+<!-- BEGIN_INCLUDE(clarizen:get-work-items-by-user) -->
+    <clarizen:get-work-items-by-user  fieldsToRetrieve="Name"
+                                workItemState=ALL
+                                workItemType=ALL
+                                workItemFilter=ALL 
+                                expression="SubmittedBy" 
+                                userId="customerId" />
+<!-- END_INCLUDE(clarizen:get-work-items-by-user) -->
+
+<!-- BEGIN_INCLUDE(clarizen:create-task) -->
+    <clarizen:create-task       parentEntity="OBJECT"
+                                taskName="taskName"
+                                taskDescription="taskDescription"
+                                taskStartDate="2001-01-01T00:00:00"
+                                 />
+<!-- END_INCLUDE(clarizen:create-task) -->
+
+<!-- BEGIN_INCLUDE(clarizen:create-work-item-by-parent-id) -->
+    <clarizen:create-work-item-by-parent-id       parentType="ParentType"
+                                parentId="parentId"
+                                workItemType=TASK
+                                workItemId="workitemId"
+                                workItemName="workitemName"
+                                startDate="01-31-2011T13:00:00"
+                                 />
+<!-- END_INCLUDE(clarizen:create-work-item-by-parent-id) -->
+
+<!-- BEGIN_INCLUDE(clarizen:update-task) -->
+    <clarizen:update-task       task="OBJECT"
+                                <clarizen:fieldsToUpdate>
+                                    <clarizen:field key="name" value-ref="NewWorkitem" />                    
+                                </clarizen:fieldsToUpdate> 
+                                 />
+<!-- END_INCLUDE(clarizen:update-task) -->
+
+<!-- BEGIN_INCLUDE(clarizen:update-task-with-single-values) -->
+    <clarizen:update-task-with-single-values       task="OBJECT"
+                                                   description="taskDescription"
+                                                   percentCompleted=10.00 
+                                 />
+<!-- END_INCLUDE(clarizen:update-work-item-progress) -->
+
+<!-- BEGIN_INCLUDE(clarizen:update-work-item-progress) -->
+    <clarizen:update-work-item-progress       workItem="OBJECT"
+                                              percentCompleted=10.00
+                                 />
+<!-- END_INCLUDE(clarizen:update-work-item-progress) -->
+
+<!-- BEGIN_INCLUDE(clarizen:get-my-work-items) -->
+    <clarizen:get-my-work-items  fieldsToRetrieve="Name"
+                                workItemState=ALL
+                                workItemType=ALL
+                                workItemFilter=ALL />
+<!-- END_INCLUDE(clarizen:get-my-work-items) -->
+
+<!-- BEGIN_INCLUDE(clarizen:create-entity) -->
+    <clarizen:create-entity  entityType="Type"
+                                entityId=""
+                                entityFields="" />
+<!-- END_INCLUDE(clarizen:create-entity) -->
+
+<!-- BEGIN_INCLUDE(clarizen:add-work-item-resources) -->
+    <clarizen:add-work-item-resources       workItem="OBJECT"
+                                              percentCompleted=10.00
+                                 />
+<!-- END_INCLUDE(clarizen:add-work-item-resources) -->

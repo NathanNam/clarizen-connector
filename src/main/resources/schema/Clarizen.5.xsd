@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Mule Clarizen Cloud Connector
+
+    Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+
+    The software in this package is published under the terms of the CPAL v1.0
+    license, a copy of which has been included with this distribution in the
+    LICENSE.txt file.
+
+-->
+
+<xs:schema elementFormDefault="qualified" targetNamespace="http://clarizen.com/api/faults"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://clarizen.com/api/faults">
+	<xs:complexType name="LoginFailure">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:GeneralFault">
+				<xs:sequence />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="LoginFailure" nillable="true" type="tns:LoginFailure" />
+	<xs:complexType name="GeneralFault">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Message" nillable="true"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GeneralFault" nillable="true" type="tns:GeneralFault" />
+	<xs:complexType name="SessionTimeoutFailure">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:GeneralFault">
+				<xs:sequence />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SessionTimeoutFailure" nillable="true"
+		type="tns:SessionTimeoutFailure" />
+</xs:schema>
