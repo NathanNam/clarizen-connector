@@ -12,21 +12,12 @@ package org.mule.modules.clarizen.api;
 
 import java.util.List;
 
-import javax.xml.bind.JAXBElement;
-
-import com.clarizen.api.ArrayOfBaseEntity;
 import com.clarizen.api.ArrayOfBaseMessage;
 import com.clarizen.api.ArrayOfFieldValue;
-import com.clarizen.api.BaseEntity;
 import com.clarizen.api.BaseMessage;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.FieldValue;
-import com.clarizen.api.GenericEntity;
 import com.clarizen.api.SessionHeader;
-import com.clarizen.api.StringList;
-import com.clarizen.api.files.FileInformation;
-import com.clarizen.api.queries.Compare;
-import com.clarizen.api.queries.Condition;
 import com.clarizen.api.queries.ConstantExpression;
 import com.clarizen.api.queries.Expression;
 import com.clarizen.api.queries.FieldExpression;
@@ -49,31 +40,24 @@ public class ClarizenClientHelper {
         objectFactoryProject = new com.clarizen.api.projectmanagement.ObjectFactory();
     }
     
-    public JAXBElement<EntityId> createBaseEntityId(String typeName, String value) {
+    public EntityId createBaseEntityId(String typeName, String value) {
         EntityId entityId = objectFactoryApi.createEntityId();
-        entityId.setTypeName(objectFactoryApi.createEntityIdTypeName(typeName));
-        entityId.setValue(objectFactoryApi.createEntityIdValue(value));
-        return objectFactoryApi.createBaseEntityId(entityId);
+        entityId.setTypeName(typeName);
+        entityId.setValue(value);
+        return entityId;
     }
     
     public FieldValue createFieldValue(String fieldName, Object value) {
         FieldValue fieldValue = objectFactoryApi.createFieldValue();
-        fieldValue.setFieldName(objectFactoryApi.createFieldValueFieldName(fieldName));
-        fieldValue.setValue(objectFactoryApi.createFieldValueValue(value));
+        fieldValue.setFieldName(fieldName);
+        fieldValue.setValue(value);
         return fieldValue;
     }
     
-    public JAXBElement<FieldValue> createJAXBFieldValue(String fieldName, Object value) {
-        FieldValue fieldValue = objectFactoryApi.createFieldValue();
-        fieldValue.setFieldName(objectFactoryApi.createFieldValueFieldName(fieldName));
-        fieldValue.setValue(objectFactoryApi.createFieldValueValue(value));
-        return objectFactoryApi.createFieldValue(fieldValue);
-    }
-    
-    public JAXBElement<ArrayOfFieldValue> createGenericEntityArrayOfFieldValue(List<FieldValue> fieldValueList) {
+    public ArrayOfFieldValue createGenericEntityArrayOfFieldValue(List<FieldValue> fieldValueList) {
         ArrayOfFieldValue array = objectFactoryApi.createArrayOfFieldValue();
         array.getFieldValue().addAll(fieldValueList);
-        return objectFactoryApi.createGenericEntityValues(array);
+        return array;
     }
     
     public ArrayOfBaseMessage createMessage(BaseMessage message) {
@@ -82,80 +66,30 @@ public class ClarizenClientHelper {
         return arrayOfBaseMessage;
     }
     
-    public JAXBElement<BaseEntity> createMessageBaseEntity(GenericEntity entity) {
-        return objectFactoryApi.createCreateMessageEntity(entity);
-    }
-    
-    public JAXBElement<StringList> createStringList(StringList list) {
-        return objectFactoryApi.createStringList(list);
-    }
-    
-    public JAXBElement<StringList> createEntityQueryStringList(StringList list) {
-        return objectFactoryQueries.createEntityQueryFields(list);
-    }
-
-    public JAXBElement<String> createLoginOptionsApplicationId(String value) {
-        return objectFactoryApi.createLoginOptionsApplicationId(value);
-    }
-
-    public JAXBElement<String> createLoginOptionsPartnerId(String value) {
-        return objectFactoryApi.createLoginOptionsPartnerId(value);
-    }
-
-    public JAXBElement<FileInformation> createFileInformation(FileInformation fileInformation) {
-        return objectFactoryFiles.createFileInformation(fileInformation);
-    }
-    
-    public JAXBElement<String> createFileInformationFilename(String filename) {
-        return objectFactoryFiles.createFileInformationFileName(filename);
-    }
-    
-    public JAXBElement<Expression> createCompareExpression(Expression expression) {
-        return objectFactoryQueries.createCompareRightExpression(expression);
-    }
-    
-    public JAXBElement<Expression> createFieldExpression(String fieldExpression) {
+    public Expression createFieldExpression(String fieldExpression) {
         FieldExpression field = new FieldExpression();
-        field.setFieldName(objectFactoryQueries.createFieldExpressionFieldName(fieldExpression));
-        return objectFactoryQueries.createCompareLeftExpression(field);
+        field.setFieldName(fieldExpression);
+        return field;
     }
     
-    public JAXBElement<Expression> createConstantExpression(String constantExpression) {
+    public Expression createConstantExpression(String constantExpression) {
         ConstantExpression constant = new ConstantExpression();
-        constant.setValue(objectFactoryQueries.createConstantExpressionValue(constantExpression));
-        return objectFactoryQueries.createCompareRightExpression(constant);
+        constant.setValue(constantExpression);
+        return constant;
     }
     
-    public JAXBElement<Expression> createConstantExpressionUser(String userId) {
+    public Expression createConstantExpressionUser(String userId) {
         ConstantExpression constant = new ConstantExpression();
         EntityId user = new EntityId();
-        user.setTypeName(objectFactoryApi.createEntityIdTypeName("User"));
-        user.setValue(objectFactoryApi.createEntityIdValue(userId));
-        constant.setValue(objectFactoryQueries.createConstantExpressionValue(user));
-        return objectFactoryQueries.createExpression(constant);
-    }
-    
-    public JAXBElement<Expression> createExpression(Expression expression) {
-        return objectFactoryQueries.createExpression(expression);
-    }
-    
-    public JAXBElement<Condition> createEntityQueryCondition(Compare condition) {
-        return objectFactoryQueries.createEntityQueryWhere(condition);
-    }
-    
-    public JAXBElement<String> createQueryTypeName(String typeName) {
-        return objectFactoryQueries.createEntityQueryTypeName(typeName);
-    }
-    
-    public JAXBElement<SessionHeader> createSessionHeader(JAXBElement<String> sessionId) {
-        SessionHeader sh = new SessionHeader();
-        sh.setID(sessionId);
-        return objectFactoryApi.createSessionHeader(sh);
+        user.setTypeName("User");
+        user.setValue(userId);
+        constant.setValue(user);
+        return constant;
     }
     
     public SessionHeader createSessionHeader(String sessionId) {
         SessionHeader sh = new SessionHeader();
-        sh.setID(objectFactoryApi.createSessionHeaderID(sessionId));
+        sh.setID(sessionId);
         return sh;
     }
 
@@ -192,12 +126,6 @@ public class ClarizenClientHelper {
     public void setObjectFactoryProject(
             com.clarizen.api.projectmanagement.ObjectFactory objectFactoryProject) {
         this.objectFactoryProject = objectFactoryProject;
-    }
-
-    public JAXBElement<ArrayOfBaseEntity> createResourcesArray(GenericEntity resources) {
-        ArrayOfBaseEntity entityArray = new ArrayOfBaseEntity();
-        entityArray.getBaseEntity().add(resources);
-        return objectFactoryApi.createArrayOfBaseEntity(entityArray);
     }
     
     public WorkItemFilter createWorkItemFilter(String filter) {

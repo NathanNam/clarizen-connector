@@ -93,7 +93,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         humanResource.setValues(helper.createGenericEntityArrayOfFieldValue(fields));
         
         CreateMessage workItemResourceMessage = new CreateMessage();
-        workItemResourceMessage.setEntity(helper.createMessageBaseEntity(humanResource));
+        workItemResourceMessage.setEntity(humanResource);
 
         ArrayOfBaseMessage messages = helper.createMessage(workItemResourceMessage);
 
@@ -101,8 +101,8 @@ public class DefaultClarizenClient implements ClarizenClient {
             Result result = getService().execute(messages).getResult().get(0);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
@@ -126,14 +126,14 @@ public class DefaultClarizenClient implements ClarizenClient {
         allIssue.setValues(helper.createGenericEntityArrayOfFieldValue(fields));
         
         CreateMessage allIssueMessage = new CreateMessage();
-        allIssueMessage.setEntity(helper.createMessageBaseEntity(allIssue));
+        allIssueMessage.setEntity(allIssue);
         
         try {
             Result result = getService().execute(helper.createMessage(allIssueMessage)).getResult().get(0);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
@@ -156,10 +156,11 @@ public class DefaultClarizenClient implements ClarizenClient {
             for (Map.Entry<String, Object> fieldValue : entityFields.entrySet()) {
                 fields.add(helper.createFieldValue(fieldValue.getKey(), fieldValue.getValue()));
             }
-        }
+            genericEntity.setValues(helper.createGenericEntityArrayOfFieldValue(fields));
+        }        
         
         CreateMessage entityMessage = new CreateMessage();
-        entityMessage.setEntity(helper.createMessageBaseEntity(genericEntity));
+        entityMessage.setEntity(genericEntity);
         
         ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
         messages.getBaseMessage().add(entityMessage);
@@ -169,8 +170,8 @@ public class DefaultClarizenClient implements ClarizenClient {
             
             for (Result result: results) {
                 if (!result.isSuccess()) {
-                    throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                            result.getError().getValue().getMessage().getValue());
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
                 }
             }
             
@@ -189,7 +190,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             String conditionValue) {
         
         EntityQuery query = new EntityQuery();
-        query.setTypeName(helper.createQueryTypeName(queryTypeName));
+        query.setTypeName(queryTypeName);
         
         // Fields to be retrieved
         StringList fields = new StringList();
@@ -198,29 +199,29 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         if (fields != null) {
-            query.setFields(helper.createEntityQueryStringList(fields));
+            query.setFields(fields);
         }
 
         Compare condition = new Compare();
         condition.setLeftExpression(helper.createFieldExpression(expression));
         condition.setRightExpression(helper.createConstantExpression(conditionValue));
         condition.setOperator(helper.createOperator(operator.value()));
-        query.setWhere(helper.createEntityQueryCondition(condition));
+        query.setWhere(condition);
         
         QueryResult result;
         try {
             result = getService().query(query);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getValue().getBaseEntity());        
+        return new ArrayOfEntity(result.getEntities().getBaseEntity());        
     }
     
     @Override
@@ -231,7 +232,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             String conditionValue) {
         
         EntityQuery query = new EntityQuery();
-        query.setTypeName(helper.createQueryTypeName(issueType.value()));
+        query.setTypeName(issueType.value());
         
         // Fields to be retrieved
         StringList fields = new StringList();
@@ -240,29 +241,29 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         if (fields != null) {
-            query.setFields(helper.createEntityQueryStringList(fields));
+            query.setFields(fields);
         }
 
         Compare condition = new Compare();
         condition.setLeftExpression(helper.createFieldExpression(expression));
         condition.setRightExpression(helper.createConstantExpression(conditionValue));
         condition.setOperator(helper.createOperator(operator.value()));
-        query.setWhere(helper.createEntityQueryCondition(condition));
+        query.setWhere(condition);
         
         QueryResult result;
         try {
             result = getService().query(query);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getValue().getBaseEntity());        
+        return new ArrayOfEntity(result.getEntities().getBaseEntity());        
     }
 
     @Override
@@ -296,9 +297,9 @@ public class DefaultClarizenClient implements ClarizenClient {
         GenericEntity linkEntity = new GenericEntity();
         linkEntity.setId(helper.createBaseEntityId("WorkItemHierarchyLink", UUID.getUUID()));
         
-        FieldValue fieldParent = helper.createFieldValue("Parent", parentEntity.getGenericEntity().getId().getValue());
+        FieldValue fieldParent = helper.createFieldValue("Parent", parentEntity.getGenericEntity().getId());
         FieldValue fieldChild = helper.createFieldValue("Child", 
-                helper.createBaseEntityId(workItemType.value(), workItemId).getValue());
+                helper.createBaseEntityId(workItemType.value(), workItemId));
         
         List<FieldValue> fieldLink = new ArrayList<FieldValue>();
         fieldLink.add(fieldChild);
@@ -307,10 +308,10 @@ public class DefaultClarizenClient implements ClarizenClient {
         linkEntity.setValues(helper.createGenericEntityArrayOfFieldValue(fieldLink));
         
         CreateMessage workItemMessage = new CreateMessage();
-        workItemMessage.setEntity(helper.createMessageBaseEntity(workItem));
+        workItemMessage.setEntity(workItem);
         
         CreateMessage workItemLinkMessage = new CreateMessage();
-        workItemLinkMessage.setEntity(helper.createMessageBaseEntity(linkEntity));
+        workItemLinkMessage.setEntity(linkEntity);
         
         ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
         messages.getBaseMessage().add(workItemMessage);
@@ -321,8 +322,8 @@ public class DefaultClarizenClient implements ClarizenClient {
             
             for (Result result: results) {
                 if (!result.isSuccess()) {
-                    throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                            result.getError().getValue().getMessage().getValue());
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
                 }
             }
             
@@ -370,9 +371,9 @@ public class DefaultClarizenClient implements ClarizenClient {
         GenericEntity linkEntity = new GenericEntity();
         linkEntity.setId(helper.createBaseEntityId("WorkItemHierarchyLink", UUID.getUUID()));
         
-        FieldValue fieldParent = helper.createFieldValue("Parent", parentEntity.getGenericEntity().getId().getValue());
+        FieldValue fieldParent = helper.createFieldValue("Parent", parentEntity.getGenericEntity().getId());
         FieldValue fieldChild = helper.createFieldValue("Child", 
-                helper.createBaseEntityId(workItemType.value(), workItemId).getValue());
+                helper.createBaseEntityId(workItemType.value(), workItemId));
         
         List<FieldValue> fieldLink = new ArrayList<FieldValue>();
         fieldLink.add(fieldChild);
@@ -381,10 +382,10 @@ public class DefaultClarizenClient implements ClarizenClient {
         linkEntity.setValues(helper.createGenericEntityArrayOfFieldValue(fieldLink));
         
         CreateMessage workItemMessage = new CreateMessage();
-        workItemMessage.setEntity(helper.createMessageBaseEntity(workItem));
+        workItemMessage.setEntity(workItem);
         
         CreateMessage workItemLinkMessage = new CreateMessage();
-        workItemLinkMessage.setEntity(helper.createMessageBaseEntity(linkEntity));
+        workItemLinkMessage.setEntity(linkEntity);
         
         ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
         messages.getBaseMessage().add(workItemMessage);
@@ -395,8 +396,8 @@ public class DefaultClarizenClient implements ClarizenClient {
             
             for (Result result: results) {
                 if (!result.isSuccess()) {
-                    throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                            result.getError().getValue().getMessage().getValue());
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
                 }
             }
             
@@ -428,7 +429,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         if (fields != null) {
-            query.setFields(helper.createStringList(fields));
+            query.setFields(fields);
         }
         
         QueryResult result;
@@ -436,15 +437,15 @@ public class DefaultClarizenClient implements ClarizenClient {
             result = getService().query(query);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getValue().getBaseEntity());    
+        return new ArrayOfEntity(result.getEntities().getBaseEntity());    
     }
 
     protected IClarizen getService() {
@@ -475,7 +476,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         if (fields != null) {
-            retrieveMsg.setFields(helper.createStringList(fields));
+            retrieveMsg.setFields(fields);
         }
 
         ArrayOfBaseMessage messages = helper.createMessage(retrieveMsg);
@@ -484,22 +485,22 @@ public class DefaultClarizenClient implements ClarizenClient {
         try {
             result = (RetrieveResult) getService().execute(messages).getResult().get(0);
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e.getMessage());
         }
         
-        return new Entity((GenericEntity) result.getEntity().getValue());
+        return new Entity((GenericEntity) result.getEntity());
     }
 
     @Override
     public Login login(String username, String password, String applicationId, String partnerId) {
         
         LoginOptions opts = new LoginOptions();
-        opts.setApplicationId(helper.createLoginOptionsApplicationId(applicationId));
-        opts.setPartnerId(helper.createLoginOptionsPartnerId(partnerId));
+        opts.setApplicationId(applicationId);
+        opts.setPartnerId(partnerId);
         
         LoginResult login;
         try {
@@ -511,7 +512,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         SessionHeader sessionHeader = new SessionHeader();
         sessionHeader.setID(login.getSessionId());
         
-        setSessionId(login.getSessionId().getValue());
+        setSessionId(login.getSessionId());
                 
         try {
             ((BindingProvider) getService()).getRequestContext().put(
@@ -564,7 +565,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         UpdateMessage updateMsg = new UpdateMessage();
-        updateMsg.setEntity(helper.createMessageBaseEntity(allIssue.getGenericEntity()));
+        updateMsg.setEntity(allIssue.getGenericEntity());
 
         ArrayOfBaseMessage messages = helper.createMessage(updateMsg);
 
@@ -572,8 +573,8 @@ public class DefaultClarizenClient implements ClarizenClient {
             Result result = getService().execute(messages).getResult().get(0);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
@@ -609,14 +610,14 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         UpdateMessage updateMsg = new UpdateMessage();
-        updateMsg.setEntity(helper.createMessageBaseEntity(workItem.getGenericEntity()));
+        updateMsg.setEntity(workItem.getGenericEntity());
         
         try {
             Result result = getService().execute(helper.createMessage(updateMsg)).getResult().get(0);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
@@ -649,7 +650,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         if (fields != null) {
-            query.setFields(helper.createStringList(fields));
+            query.setFields(fields);
         }
         
         QueryResult result;
@@ -657,14 +658,14 @@ public class DefaultClarizenClient implements ClarizenClient {
             result = getService().query(query);
             
             if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getValue().getErrorCode(), 
-                        result.getError().getValue().getMessage().getValue());
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getValue().getBaseEntity());
+        return new ArrayOfEntity(result.getEntities().getBaseEntity());
     }
 }

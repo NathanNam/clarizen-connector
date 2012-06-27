@@ -40,11 +40,15 @@
                             <goal>wsdl2java</goal>
                         </goals>
                         <configuration>
+                        <extension>true</extension>
                         <sourceRoot>target/generated-sources/schema</sourceRoot>
                         <wsdlOptions>
                           <wsdlOption>
                             <wsdl>src/main/resources/schema/Clarizen.wsdl</wsdl>
                             <wsdlLocation>https://api.clarizen.com/v1.0/Clarizen.svc</wsdlLocation>
+                            <bindingFiles>
+                                <bindingFile>src/main/resources/schema/bindings.xml</bindingFile>
+                            </bindingFiles>
                         </wsdlOption>
                         </wsdlOptions>
                       </configuration>

@@ -103,7 +103,7 @@ public class ClarizenConnector
     public void initialise() {
         if (clarizenClient == null) {
             setClarizenClient(ClarizenClientFactory.getClient());
-            setSessionId(login(connectionUser, connectionPassword, applicationId, partnerId).getLoginResult().getSessionId().getValue());
+            setSessionId(login(connectionUser, connectionPassword, applicationId, partnerId).getLoginResult().getSessionId());
         }
     }
     
