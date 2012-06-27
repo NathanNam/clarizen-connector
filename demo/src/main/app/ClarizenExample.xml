@@ -109,10 +109,37 @@ return new Entity((GenericEntity) payload.entityList.get(0))]]></scripting:text>
                 <scripting:text><![CDATA[import com.clarizen.api.GenericEntity
 import org.mule.modules.clarizen.api.model.Entity;
 
-return new Entity((GenericEntity) payload.entityList.get(0))
-]]></scripting:text>
+return new Entity((GenericEntity) payload.entityList.get(0))]]></scripting:text>
             </scripting:script>
         </scripting:transformer>
         <logger message="#[payload.genericEntity.id.value]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="Clarizen_ExampleFlow_GetEntityFields" doc:name="Clarizen_ExampleFlow_GetEntityFields">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="get-entity-fields" doc:name="HTTP"/>
+        <clarizen:create-entity-query config-ref="Clarizen" conditionValue="NEW" expression="Name" queryTypeName="Task" operator="CONTAINS" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Name</clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Description</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:create-entity-query>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import com.clarizen.api.GenericEntity
+import org.mule.modules.clarizen.api.model.Entity;
+
+return payload.entityList]]></scripting:text>
+            </scripting:script>
+        </scripting:transformer>
+        <collection-splitter doc:name="Collection Splitter"/>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import com.clarizen.api.GenericEntity
+import org.mule.modules.clarizen.api.model.Entity;
+
+return payload.values.fieldValue]]></scripting:text>
+            </scripting:script>
+        </scripting:transformer>
+        <collection-splitter doc:name="Collection Splitter"/>
+        <logger message="The field name is #[groovy:payload.fieldName], the field value is #[groovy:payload.value]" level="INFO" doc:name="Logger"/>
     </flow>
 </mule>
