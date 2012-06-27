@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="josesahad" created="Tue Jun 26 17:27:55 GMT-03:00 2012" guiVersion="3.3.0.M2" id="1340743329853" licenseCode="Unlicensed" licenseType="Unknown" modified="Tue Jun 26 17:27:55 GMT-03:00 2012" modifiedBy="josesahad" name="Entity" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{}/object/entityList" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Input" id="Metadata0">
+<Record fieldDelimiter="|" name="BaseEntity" recordDelimiter="&#10;" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/entityList/id/typeName" label="typeName" name="typeName" type="string"/>
+<Field __sourcePath="{}/object/entityList/id/value" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="Metadata1">
+<Record fieldDelimiter="|" name="Entity" recordDelimiter="&#10;" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/genericEntity/id/typeName" label="typeName" name="typeName" type="string"/>
+<Field __sourcePath="{}/object/genericEntity/id/value" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="JAVA Reader" guiWidth="0" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath="./entityList">
+  <Mapping cloverField="typeName" trim="true" xpath="id/typeName"/>
+  <Mapping cloverField="value" trim="true" xpath="id/value"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema-object>
+  <typed-object-ref type-ref="org.mule.modules.clarizen.api.model.ArrayOfEntity"/>
+  <typed-object type="org.mule.modules.clarizen.api.model.ArrayOfEntity">
+    <schema-collection name="entityList" type="java.util.List">
+      <typed-object-ref type-ref="com.clarizen.api.BaseEntity"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.clarizen.api.EntityId">
+    <typed-object-ref name="typeName" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="com.clarizen.api.BaseEntity">
+    <typed-object-ref name="id" type-ref="com.clarizen.api.EntityId"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="JAVA Writer" guiWidth="0" guiX="460" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <genericEntity>
+    <id>
+      <typeName>$0.typeName</typeName>
+      <value>$0.value</value>
+    </id>
+  </genericEntity>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema-object>
+  <typed-object-ref type-ref="org.mule.modules.clarizen.api.model.Entity"/>
+  <typed-object type="com.clarizen.api.ArrayOfFieldPermission"/>
+  <typed-object type="com.clarizen.api.EntityId">
+    <typed-object-ref name="typeName" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.clarizen.api.ArrayOfFieldValue"/>
+  <typed-object type="com.clarizen.api.ArrayOfObjectPermissions"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="org.mule.modules.clarizen.api.model.Entity">
+    <typed-object-ref name="genericEntity" type-ref="com.clarizen.api.GenericEntity"/>
+  </typed-object>
+  <typed-object type="com.clarizen.api.Permissions">
+    <typed-object-ref name="fieldPermissions" type-ref="com.clarizen.api.ArrayOfFieldPermission"/>
+    <typed-object-ref name="objectPermissions" type-ref="com.clarizen.api.ArrayOfObjectPermissions"/>
+  </typed-object>
+  <typed-object type="com.clarizen.api.GenericEntity">
+    <typed-object-ref name="id" type-ref="com.clarizen.api.EntityId"/>
+    <typed-object-ref name="permissions" type-ref="com.clarizen.api.Permissions"/>
+    <typed-object-ref name="values" type-ref="com.clarizen.api.ArrayOfFieldValue"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="entityList_to_object" guiWidth="0" guiX="240" guiY="20" id="REFORMAT0" type="REFORMAT">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+$out.0.__id=$in.0.__id;
+	$out.0.typeName=$in.0.typeName;
+	$out.0.value=$in.0.value;
+		return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Edge fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="Metadata0" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="Metadata1" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+</Phase>
+</Graph>
