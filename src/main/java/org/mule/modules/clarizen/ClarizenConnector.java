@@ -260,7 +260,7 @@ public class ClarizenConnector
      * Create a new issue
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-issue}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-all-issue}
      *
      * @param issueType the issue type. the work item type. For more information about the specific values check {@link AllIssueType}
      * @param title     the issue title
@@ -276,7 +276,7 @@ public class ClarizenConnector
      * Update an issue
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-issue}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-all-issue}
      *
      * @param issue             the issue to be updated
      * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
@@ -312,7 +312,7 @@ public class ClarizenConnector
      * Create an entity query
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-entity-query}
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param queryTypeName         the entity type
@@ -332,7 +332,7 @@ public class ClarizenConnector
      * Create an issues query
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-issues-query}
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param issueType             the issue type to be retrieved
