@@ -240,6 +240,8 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorCapabilitiesAdapter.html">ClarizenConnectorCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionManager.html">ClarizenConnectorConnectionManager</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionManager.ConnectionKey.html">ClarizenConnectorConnectionManager.ConnectionKey</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLifecycleAdapter.html">ClarizenConnectorLifecycleAdapter</a></li>
       </ul>
     </li>
@@ -726,25 +728,13 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#clarizenBaseUrl">clarizenBaseUrl</a></td>
-          <td class="jd-descrcol" width="100%">Clarizen WS Url
-</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
           <a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a></nobr></td>
           <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#clarizenClient">clarizenClient</a></td>
           <td class="jd-descrcol" width="100%">ClarizenClient client.</td>
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -756,7 +746,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -768,7 +758,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -780,7 +770,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -1021,6 +1011,24 @@ From class
             
             
             
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#connect(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">connect</a></span>(String connectionUser, String connectionPassword, String applicationId, String partnerId)</nobr>
+        
+        <div class="jd-descrdiv">Performs a connection to Clarizen by making a login call with the given credentials.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
             <a href="../../../../../../java/org/mule/modules/clarizen/api/model/Entity.html">Entity</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1035,7 +1043,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1056,7 +1064,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1077,7 +1085,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1098,7 +1106,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1119,7 +1127,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1140,7 +1148,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1161,7 +1169,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1177,6 +1185,24 @@ From class
  
  <p/>
  </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#disconnect()">disconnect</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Performs a logout call.</div>
   
   </td></tr>
 
@@ -1205,22 +1231,6 @@ From class
             
             
             
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getClarizenBaseUrl()">getClarizenBaseUrl</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
             <a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1230,7 +1240,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1246,7 +1256,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1262,7 +1272,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1283,7 +1293,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1299,7 +1309,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1315,7 +1325,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1333,22 +1343,6 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#initialise()">initialise</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
     <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
@@ -1361,9 +1355,7 @@ From class
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#login(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">login</a></span>(String username, String password, String applicationId, String partnerId)</nobr>
         
-        <div class="jd-descrdiv">Login to Clarizen
- <p/>
- </div>
+        <div class="jd-descrdiv">Login to Clarizen</div>
   
   </td></tr>
 
@@ -1382,8 +1374,6 @@ From class
         <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#logout()">logout</a></span>()</nobr>
         
         <div class="jd-descrdiv">Cleans up an authentication token that was previously created with a call to login
- <p/>
- 
 
 </div>
   
@@ -1417,29 +1407,13 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setClarizenBaseUrl(java.lang.String)">setClarizenBaseUrl</a></span>(String clarizenBaseUrl)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setClarizenClient(org.mule.modules.clarizen.api.ClarizenClient)">setClarizenClient</a></span>(<a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a> clarizenClient)</nobr>
         
   </td></tr>
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1455,7 +1429,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1471,7 +1445,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1487,7 +1461,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1499,6 +1473,24 @@ From class
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setSessionId(java.lang.String)">setSessionId</a></span>(String sessionId)</nobr>
         
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a connection identifier.</div>
+  
   </td></tr>
 
 
@@ -1609,6 +1601,24 @@ From class
 
 	 
     <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/ClarizenConnector.html#validateConnection()">validateConnection</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns whether the current user is authenticated.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
