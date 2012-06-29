@@ -106,7 +106,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new Entity(humanResource);
@@ -137,7 +137,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new Entity(allIssue);
@@ -176,7 +176,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new Entity(genericEntity);
@@ -218,7 +218,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new ArrayOfEntity(result.getEntities().getBaseEntity());        
@@ -260,7 +260,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new ArrayOfEntity(result.getEntities().getBaseEntity());        
@@ -328,7 +328,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new Entity(workItem);
@@ -402,7 +402,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new Entity(workItem);
@@ -442,7 +442,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new ArrayOfEntity(result.getEntities().getBaseEntity());    
@@ -489,7 +489,7 @@ public class DefaultClarizenClient implements ClarizenClient {
                         result.getError().getMessage());
             }
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new Entity((GenericEntity) result.getEntity());
@@ -578,7 +578,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return allIssue;
@@ -621,7 +621,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return workItem;
@@ -663,7 +663,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
             
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e.getMessage());
+            throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
         return new ArrayOfEntity(result.getEntities().getBaseEntity());

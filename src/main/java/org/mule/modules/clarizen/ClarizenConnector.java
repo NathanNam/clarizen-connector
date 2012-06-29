@@ -16,12 +16,17 @@ package org.mule.modules.clarizen;
 import java.util.List;
 import java.util.Map;
 
-import org.mule.api.annotations.Configurable;
-import org.mule.api.annotations.Module;
+import org.mule.api.ConnectionException;
+import org.mule.api.annotations.Connect;
+import org.mule.api.annotations.ConnectionIdentifier;
+import org.mule.api.annotations.Connector;
+import org.mule.api.annotations.Disconnect;
+import org.mule.api.annotations.InvalidateConnectionOn;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.ValidateConnection;
 import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.display.Placement;
-import org.mule.api.annotations.lifecycle.Start;
+import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.api.annotations.param.Payload;
@@ -48,48 +53,28 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
  *
  * @author MuleSoft, Inc.
  */
-@Module(name="clarizen")
+@Connector(name="clarizen")
 public class ClarizenConnector
 {
 
     /**
      * Username
      */
-    @Configurable
-    @Placement(group = "Authentication")
     private String connectionUser;
 
     /**
      * Password
      */
-    @Configurable
-    @Placement(group = "Authentication")
-    @Password
     private String connectionPassword;
-    
-    /**
-     * Clarizen WS Url
-     */
-    @Configurable
-    @Optional
-    @Placement(group = "Connection")
-    @Default("http://clarizen.com/api")
-    private String clarizenBaseUrl;
     
     /**
      * Clarizen Partner ID
      */
-    @Configurable
-    @Optional
-    @Placement(group = "Connection")
     private String partnerId;
     
     /**
      * Clarizen Application ID
      */
-    @Configurable
-    @Optional
-    @Placement(group = "Connection")
     private String applicationId;
     
     private String sessionId;
@@ -99,18 +84,8 @@ public class ClarizenConnector
      */
     private ClarizenClient clarizenClient;
     
-    @Start
-    public void initialise() {
-        if (clarizenClient == null) {
-            setClarizenClient(ClarizenClientFactory.getClient());
-            setSessionId(login(connectionUser, connectionPassword, applicationId, partnerId).getLoginResult().getSessionId());
-        }
-    }
-    
     /**
      * Login to Clarizen
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:login}
      *
      * @param username           the login user
      * @param password           the login pass
@@ -119,7 +94,6 @@ public class ClarizenConnector
      * 
      * @return {@link Login} Login result with the created user session id
      */
-    @Processor
     public Login login(String username, String password, 
                              @Optional String applicationId, @Optional String partnerId) {
         return clarizenClient.login(username, password, applicationId, partnerId);
@@ -127,11 +101,8 @@ public class ClarizenConnector
     
     /**
      * Cleans up an authentication token that was previously created with a call to login
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:logout}
      *
      */
-    @Processor
     public void logout() {
         clarizenClient.logout();
     }
@@ -149,6 +120,7 @@ public class ClarizenConnector
      * @return {@link Entity} Work item with fields indicated through fieldToRetrieve
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity getWorkItemById(WorkItemType workItemType, String workItemId, 
                                          @Placement(group = "Fields") List<String> fieldsToRetrieve) {
         return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve);
@@ -168,6 +140,7 @@ public class ClarizenConnector
      * @return {@link Entity} Created work item
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity createWorkItem(Entity parentEntity,
             WorkItemType workItemType, String workItemName,
             @Optional @Placement(group = "Fields") Map<String, Object> workItemFields) {
@@ -191,6 +164,7 @@ public class ClarizenConnector
      * @return {@link Entity} Created work item
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity createWorkItemByParentId(WorkItemType parentType,
             String parentId, WorkItemType workItemType, String workItemName,
             @Optional String workItemDescription, @Optional String startDate) {
@@ -213,6 +187,7 @@ public class ClarizenConnector
      * @return {@link Entity} Created work item
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity createWorkItemSingleValues(Entity parentEntity,
             WorkItemType workItemType, String workItemName,
             @Optional String workItemDescription, @Optional String startDate) {
@@ -234,6 +209,7 @@ public class ClarizenConnector
      * @return {@link Entity} Created entity
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity createEntity(String entityType, String entityId,
             @Placement(group = "Fields") Map<String, Object> entityFields) {
         return clarizenClient.createEntity(entityType, entityId, entityFields);
@@ -251,6 +227,7 @@ public class ClarizenConnector
      * @return {@link Entity} Updated work item
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity updateWorkItem(Entity workItem,
             @Placement(group = "Fields") Map<String, Object> fieldsToUpdate) {
         return clarizenClient.updateWorkItem(workItem, fieldsToUpdate);
@@ -268,6 +245,7 @@ public class ClarizenConnector
      * @return {@link Entity} Created issue
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity createAllIssue(AllIssueType issueType, String title) {
         return clarizenClient.createAllIssue(issueType, title);
     }
@@ -284,6 +262,7 @@ public class ClarizenConnector
      * @return {@link Entity} Updated issue
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity updateAllIssue(Entity issue,
             @Placement(group = "Fields") Map<String, Object> fieldsToUpdate) {
         return clarizenClient.updateAllIssue(issue, fieldsToUpdate);
@@ -303,6 +282,7 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState, 
                                       WorkItemType workItemType, WorkItemFilter workItemFilter) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, workItemFilter);
@@ -323,6 +303,7 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, String expression, 
             Operator operator, String conditionValue) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, expression, operator, conditionValue);
@@ -343,6 +324,7 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of issues results
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
             String expression, Operator operator, String conditionValue) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, expression, operator, conditionValue);
@@ -363,6 +345,7 @@ public class ClarizenConnector
      * @return {@link Entity} Created work item
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity createTask(@Payload Entity parentEntity,
             String taskName, @Optional String taskDescription, @Optional String taskStartDate) {
         return clarizenClient.createTask(parentEntity, taskName, taskDescription, taskStartDate);
@@ -380,6 +363,7 @@ public class ClarizenConnector
      * @return {@link Entity} Updated task
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity updateTask(Entity task,
             @Placement(group = "Fields") Map<String, Object> fieldsToUpdate) {
         return clarizenClient.updateTask(task, fieldsToUpdate);
@@ -398,6 +382,7 @@ public class ClarizenConnector
      * @return {@link Entity} Updated task
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity updateTaskWithSingleValues(Entity task,
             String description, @Optional String percentCompleted) {
         return clarizenClient.updateTaskWithSingleValues(task, description, percentCompleted);
@@ -416,6 +401,7 @@ public class ClarizenConnector
      * @return {@link Entity} Updated work item
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity updateWorkItemProgress(Entity workItem,
             Double percentCompleted) {
         return clarizenClient.updateWorkItemProgress(workItem, percentCompleted);
@@ -434,6 +420,7 @@ public class ClarizenConnector
      * @return {@link Entity} Updated work item
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity addWorkItemResources(Entity workItem,
             String resourceId, @Optional @Default("100") String units) {
         return clarizenClient.addWorkItemResources(workItem, resourceId, units);
@@ -453,6 +440,7 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of work items
      */
     @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity getMyWorkItems(List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter) {
@@ -474,14 +462,6 @@ public class ClarizenConnector
 
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
-    }
-
-    public String getClarizenBaseUrl() {
-        return clarizenBaseUrl;
-    }
-
-    public void setClarizenBaseUrl(String clarizenBaseUrl) {
-        this.clarizenBaseUrl = clarizenBaseUrl;
     }
 
     public String getConnectionUser() {
@@ -514,5 +494,60 @@ public class ClarizenConnector
 
     public void setApplicationId(String applicationId) {
         this.applicationId = applicationId;
+    }
+    
+    /**
+     * Performs a connection to Clarizen by making a login call with the given credentials.
+     * 
+     * @param connectionUser     the user login user
+     * @param connectionPassword the user login pass
+     * @param applicationId      the id of a specific partner application that can be used for licensing purposed
+     * @param partnerId          the id of a Clarizen partner
+     * 
+     */
+    @Connect
+    public void connect(@ConnectionKey String connectionUser, 
+                        @Password String connectionPassword, 
+                        @Optional String applicationId, 
+                        @Optional String partnerId) throws ConnectionException {
+        this.connectionUser = connectionUser;
+        this.connectionPassword = connectionPassword;
+        
+        if (clarizenClient == null) {
+            setClarizenClient(ClarizenClientFactory.getClient());
+        }
+        
+        setSessionId(login(connectionUser, connectionPassword, applicationId, partnerId).getLoginResult().getSessionId());
+    }
+
+    /**
+     * Performs a logout call.
+     */
+    @Disconnect
+    public void disconnect() {
+        if (sessionId != null) {
+            clarizenClient = null;
+            sessionId = null;
+            logout();
+        }
+    }
+
+    /**
+     * Returns whether the current user is authenticated.
+     * It does not mean tell anything whether the current session has expired
+     */
+    @ValidateConnection
+    public boolean validateConnection() {
+        return sessionId != null;
+    }
+
+    /**
+     * Returns a connection identifier.
+     */
+    @Override
+    @ConnectionIdentifier
+    public String toString() {
+        return "username='" + connectionUser + '\'' +
+                '}';
     }
 }
