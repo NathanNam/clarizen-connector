@@ -71,7 +71,7 @@
 <!-- BEGIN_INCLUDE(clarizen:update-task-with-single-values) -->
 <clarizen:update-task-with-single-values task-ref="#[payload]" description="MOD-DESCRIPTION" 
         percentCompleted="30" doc:name="Clarizen" />
-<!-- END_INCLUDE(clarizen:update-work-item-progress) -->
+<!-- END_INCLUDE(clarizen:update-task-with-single-values) -->
 
 <!-- BEGIN_INCLUDE(clarizen:update-work-item-progress) -->
 <clarizen:update-work-item-progress workItem-ref="#[payload]" percentCompleted="50" />

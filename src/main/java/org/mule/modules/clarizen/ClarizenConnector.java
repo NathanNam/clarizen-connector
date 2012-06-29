@@ -117,7 +117,7 @@ public class ClarizenConnector
      * @param applicationId      the id of a specific partner application that can be used for licensing purposed
      * @param partnerId          the id of a Clarizen partner
      * 
-     * @return the login result with the created user session id
+     * @return {@link Login} Login result with the created user session id
      */
     @Processor
     public Login login(String username, String password, 
@@ -142,11 +142,11 @@ public class ClarizenConnector
      * <p/>
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:get-work-item-by-id}
      *
-     * @param workItemType      the work item type. For more information about the specific values check {@link WorkItemType}
+     * @param workItemType      the work item type. For further information about the specific values check {@link WorkItemType}
      * @param workItemId        the work item id
      * @param fieldsToRetrieve  the list of the work item fields to be retrieved. The fields names are the keys of the map
      * 
-     * @return The workitem with the fields indicated through fieldToRetrieve
+     * @return {@link Entity} Work item with fields indicated through fieldToRetrieve
      */
     @Processor
     public Entity getWorkItemById(WorkItemType workItemType, String workItemId, 
@@ -161,11 +161,11 @@ public class ClarizenConnector
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item}
      *
      * @param parentEntity      represents parent entity to which work item belongs
-     * @param workItemType      the work item type. For more information about the specific values check {@link WorkItemType}
+     * @param workItemType      the work item type. For further information about the specific values check {@link WorkItemType}
      * @param workItemName      the work item name
      * @param workItemFields    the fields to be created. The fields names are the keys of the map.
      * 
-     * @return The created work item
+     * @return {@link Entity} Created work item
      */
     @Processor
     public Entity createWorkItem(Entity parentEntity,
@@ -181,14 +181,14 @@ public class ClarizenConnector
      * <p/>
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item-by-parent-id}
      *
-     * @param parentType        represents parent entity type. For more information about the specific values check {@link WorkItemType}
+     * @param parentType        represents parent entity type. For further information about the specific values check {@link WorkItemType}
      * @param parentId          represents the parent id
-     * @param workItemType      the work item type. For more information about the specific values check {@link WorkItemType}
+     * @param workItemType      the work item type. For further information about the specific values check {@link WorkItemType}
      * @param workItemName      the work item name
      * @param workItemDescription the work item description
      * @param startDate         the start date of the work item using the format MM-dd-yyy'T'HH:mm:ss
      * 
-     * @return The created work item
+     * @return {@link Entity} Created work item
      */
     @Processor
     public Entity createWorkItemByParentId(WorkItemType parentType,
@@ -205,12 +205,12 @@ public class ClarizenConnector
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item-single-values}
      *
      * @param parentEntity      represents parent entity to which work item belongs
-     * @param workItemType      the work item type. For more information about the specific values check {@link WorkItemType}
+     * @param workItemType      the work item type. For further information about the specific values check {@link WorkItemType}
      * @param workItemName      the work item name
      * @param workItemDescription the work item description
      * @param startDate         the start date of the work item using the format MM-dd-yyy'T'HH:mm:ss
      * 
-     * @return The created work item
+     * @return {@link Entity} Created work item
      */
     @Processor
     public Entity createWorkItemSingleValues(Entity parentEntity,
@@ -231,7 +231,7 @@ public class ClarizenConnector
      * @param entityId          entity id
      * @param entityFields      the fields to be created. The fields names are the keys of the map.
      * 
-     * @return The created entity
+     * @return {@link Entity} Created entity
      */
     @Processor
     public Entity createEntity(String entityType, String entityId,
@@ -245,10 +245,10 @@ public class ClarizenConnector
      * <p/>
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-work-item}
      *
-     * @param workItem          the work item type. For more information about the specific values check {@link WorkItemType}
+     * @param workItem          the work item type. For further information about the specific values check {@link WorkItemType}
      * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
      * 
-     * @return The updated work item
+     * @return {@link Entity} Updated work item
      */
     @Processor
     public Entity updateWorkItem(Entity workItem,
@@ -262,10 +262,10 @@ public class ClarizenConnector
      * <p/>
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-all-issue}
      *
-     * @param issueType the issue type. the work item type. For more information about the specific values check {@link AllIssueType}
+     * @param issueType the issue type. the work item type. For further information about the specific values check {@link AllIssueType}
      * @param title     the issue title
      * 
-     * @return The created issue
+     * @return {@link Entity} Created issue
      */
     @Processor
     public Entity createAllIssue(AllIssueType issueType, String title) {
@@ -281,7 +281,7 @@ public class ClarizenConnector
      * @param issue             the issue to be updated
      * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
      * 
-     * @return The updated issue
+     * @return {@link Entity} Updated issue
      */
     @Processor
     public Entity updateAllIssue(Entity issue,
@@ -296,11 +296,11 @@ public class ClarizenConnector
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:work-items-query}
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
-     * @param workItemState         the work items state. For more information about the specific values check {@link WorkItemState}
-     * @param workItemType          the work item type. For more information about the specific values check {@link WorkItemType}
-     * @param workItemFilter        the work items filter. For more information about the specific values check {@link WorkItemFilter} 
+     * @param workItemState         the work items state. For further information about the specific values check {@link WorkItemState}
+     * @param workItemType          the work item type. For further information about the specific values check {@link WorkItemType}
+     * @param workItemFilter        the work items filter. For further information about the specific values check {@link WorkItemFilter} 
      * 
-     * @return List of results
+     * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
     public ArrayOfEntity workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState, 
@@ -317,10 +317,10 @@ public class ClarizenConnector
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param queryTypeName         the entity type
      * @param expression            represents the left side of the query (e.g. "SubmittedBy")
-     * @param operator              represents the operator to be used as comparator. For more information about the specific values check {@link Operator}
+     * @param operator              represents the operator to be used as comparator. For further information about the specific values check {@link Operator}
      * @param conditionValue        the value to be evaluated against the expression
      * 
-     * @return List of results
+     * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
     public ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, String expression, 
@@ -337,10 +337,10 @@ public class ClarizenConnector
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param issueType             the issue type to be retrieved
      * @param expression            represents the left side of the query (e.g. "SubmittedBy")
-     * @param operator              represents the operator to be used as comparator. For more information about the specific values check {@link Operator}
+     * @param operator              represents the operator to be used as comparator. For further information about the specific values check {@link Operator}
      * @param conditionValue        the value to be evaluated against the expression
      * 
-     * @return List of results
+     * @return {@link ArrayOfEntity} List of issues results
      */
     @Processor
     public ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
@@ -360,7 +360,7 @@ public class ClarizenConnector
      * @param taskDescription       the task description
      * @param taskStartDate         the start date of the task item using the format MM-dd-yyy'T'HH:mm:ss
      * 
-     * @return The created work item
+     * @return {@link Entity} Created work item
      */
     @Processor
     public Entity createTask(@Payload Entity parentEntity,
@@ -377,7 +377,7 @@ public class ClarizenConnector
      * @param task              the task to be updated.
      * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
      * 
-     * @return The updated task
+     * @return {@link Entity} Updated task
      */
     @Processor
     public Entity updateTask(Entity task,
@@ -395,7 +395,7 @@ public class ClarizenConnector
      * @param description       the task description
      * @param percentCompleted  percent of progress completeness correct for current date
      * 
-     * @return The updated task
+     * @return {@link Entity} Updated task
      */
     @Processor
     public Entity updateTaskWithSingleValues(Entity task,
@@ -413,7 +413,7 @@ public class ClarizenConnector
      * @param description       the task description
      * @param percentCompleted  percent of progress completeness correct for current date
      * 
-     * @return The updated task
+     * @return {@link Entity} Updated work item
      */
     @Processor
     public Entity updateWorkItemProgress(Entity workItem,
@@ -431,11 +431,11 @@ public class ClarizenConnector
      * @param resourceId        the resource id to be added
      * @param units             invested percent of work of specific user. Default value is 100
      * 
-     * @return The updated task
+     * @return {@link Entity} Updated work item
      */
     @Processor
     public Entity addWorkItemResources(Entity workItem,
-            String resourceId, @Optional String units) {
+            String resourceId, @Optional @Default("100") String units) {
         return clarizenClient.addWorkItemResources(workItem, resourceId, units);
     }
 
@@ -446,11 +446,11 @@ public class ClarizenConnector
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:get-my-work-items}
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
-     * @param workItemState         the work items state. For more information about the specific values check {@link WorkItemState}
-     * @param workItemType          the work item type. For more information about the specific values check {@link WorkItemType}
-     * @param workItemFilter        the work items filter. For more information about the specific values check {@link WorkItemFilter} 
+     * @param workItemState         the work items state. For further information about the specific values check {@link WorkItemState}
+     * @param workItemType          the work item type. For further information about the specific values check {@link WorkItemType}
+     * @param workItemFilter        the work items filter. For further information about the specific values check {@link WorkItemFilter} 
      * 
-     * @return List of results
+     * @return {@link ArrayOfEntity} List of work items
      */
     @Processor
     public ArrayOfEntity getMyWorkItems(List<String> fieldsToRetrieve,

@@ -15,7 +15,7 @@ import java.util.List;
 import com.clarizen.api.BaseEntity;
 
 /**
- * Wrapper class for Clarizen API List<BaseEntity>
+ * Wrapper class for Clarizen API. 
  * Commonly used by getting query results.
  * 
  * @author MuleSoft, Inc.
