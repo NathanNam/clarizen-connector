@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:context="http://www.springframework.org/schema/context" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:debugger="http://www.mulesoft.org/schema/mule/debugger" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="EE-3.3.0" xsi:schemaLocation="
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:context="http://www.springframework.org/schema/context" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:debugger="http://www.mulesoft.org/schema/mule/debugger" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="EE-3.3.0" xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd 
 http://www.mulesoft.org/schema/mule/clarizen http://www.mulesoft.org/schema/mule/clarizen/1.0/mule-clarizen.xsd 
 http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd 
 http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd 
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd 
 http://www.mulesoft.org/schema/mule/debugger http://www.mulesoft.org/schema/mule/debugger/current/mule-debugger.xsd 
 http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/current/mule-https.xsd ">
-    <clarizen:config name="Clarizen" connectionUser="${clarizen.user}" connectionPassword="${clarizen.password}" partnerId="${clarizen.partnerId}" applicationId="${clarizen.appId}" doc:name="Clarizen"/>
+    <clarizen:config name="Clarizen" connectionUser="${clarizen.user}" connectionPassword="${clarizen.password}" applicationId="${clarizen.appId}" partnerId="${clarizen.partnerId}" doc:name="Clarizen"/>
     <data-mapper:config name="Entity" transformationGraphPath="entity_1.grf" doc:name="Entity"/>
     <context:property-placeholder location="mule.properties"/>
     <flow name="Clarizen_Example_UpdateTask" doc:name="Clarizen_Example_UpdateTask">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="update-task" doc:name="HTTP"/>
         <clarizen:get-my-work-items config-ref="Clarizen" workItemFilter="ALL" workItemState="ALL" workItemType="TASK" doc:name="Clarizen">
             <clarizen:fields-to-retrieve>
-                <clarizen:fields-to-retrieve>Name</clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Description</clarizen:fields-to-retrieve>
             </clarizen:fields-to-retrieve>
         </clarizen:get-my-work-items>
         <data-mapper:transform config-ref="Entity" doc:name="Data-mapper"/>
         <clarizen:update-task config-ref="Clarizen" task-ref="#[payload]" doc:name="Clarizen">
             <clarizen:fields-to-update>
-                <clarizen:fields-to-update key="percentCompleted">93</clarizen:fields-to-update>
-                <clarizen:fields-to-update key="Description">TASK DES MOD3</clarizen:fields-to-update>
+                <clarizen:fields-to-update key="percentCompleted">96</clarizen:fields-to-update>
+                <clarizen:fields-to-update key="Description">TASK DES MOD6</clarizen:fields-to-update>
             </clarizen:fields-to-update>
         </clarizen:update-task>
     </flow>
@@ -43,7 +43,7 @@ import org.mule.modules.clarizen.api.model.Entity;
 return new Entity((GenericEntity) payload.entityList.get(0))]]></scripting:text>
             </scripting:script>
         </scripting:transformer>
-        <clarizen:create-work-item config-ref="Clarizen" parentEntity-ref="#[payload]" workItemName="TASK TEST_TEST2" workItemType="TASK" doc:name="Clarizen">
+        <clarizen:create-work-item config-ref="Clarizen" parentEntity-ref="#[payload]" workItemName="TASK TEST_RENEW" workItemType="TASK" doc:name="Clarizen">
             <clarizen:work-item-fields>
                 <clarizen:work-item-field key="Description">DescrTASK</clarizen:work-item-field>
             </clarizen:work-item-fields>
@@ -58,7 +58,7 @@ return new Entity((GenericEntity) payload.entityList.get(0))]]></scripting:text>
         </clarizen:get-work-item-by-id>
         <clarizen:update-work-item config-ref="Clarizen" workItem-ref="#[payload]" doc:name="Clarizen">
             <clarizen:fields-to-update>
-                <clarizen:fields-to-update key="Description">Project Descrip</clarizen:fields-to-update>
+                <clarizen:fields-to-update key="Description">Project Descrip2</clarizen:fields-to-update>
             </clarizen:fields-to-update>
         </clarizen:update-work-item>
     </flow>
@@ -67,18 +67,18 @@ return new Entity((GenericEntity) payload.entityList.get(0))]]></scripting:text>
         <clarizen:create-all-issue config-ref="Clarizen" title="New issue - test099" issueType="ISSUE" doc:name="Clarizen"/>
         <clarizen:update-all-issue config-ref="Clarizen" issue-ref="#[payload]" doc:name="Clarizen">
             <clarizen:fields-to-update>
-                <clarizen:fields-to-update key="Description">New test issue010</clarizen:fields-to-update>
+                <clarizen:fields-to-update key="Description">New test issue_ISSUE2</clarizen:fields-to-update>
             </clarizen:fields-to-update>
         </clarizen:update-all-issue>
     </flow>
     <flow name="Clarizen_ExampleFlow_AddResource" doc:name="Clarizen_ExampleFlow_AddResource">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="add-resource" doc:name="HTTP"/>
-        <clarizen:create-entity config-ref="Clarizen" entityId="11111111" entityType="User" doc:name="Clarizen">
+        <clarizen:create-entity config-ref="Clarizen" entityId="22222255555" entityType="User" doc:name="Clarizen">
             <clarizen:entity-fields>
-                <clarizen:entity-field key="DisplayName">newuser@user2.com</clarizen:entity-field>
-                <clarizen:entity-field key="Email">newuser@user2.com</clarizen:entity-field>
-                <clarizen:entity-field key="FirstName">newuser@user2.com</clarizen:entity-field>
-                <clarizen:entity-field key="LastName">newuser@user2.com</clarizen:entity-field>
+                <clarizen:entity-field key="FirstName">newuser2@user2.com</clarizen:entity-field>
+                <clarizen:entity-field key="LastName">newuser2@user2.com</clarizen:entity-field>
+                <clarizen:entity-field key="DisplayName">newuser2@user2.com</clarizen:entity-field>
+                <clarizen:entity-field key="Email">newuser2@user2.com</clarizen:entity-field>
             </clarizen:entity-fields>
         </clarizen:create-entity>
         <set-variable variableName="userId" value="#[payload.genericEntity.id.value]" doc:name="UserId"/>

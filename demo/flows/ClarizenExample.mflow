@@ -5,9 +5,8 @@
             <property value="Clarizen" name="name"/>
             <property value="${clarizen.user}" name="connectionUser"/>
             <property value="${clarizen.password}" name="connectionPassword"/>
-            <property name="clarizenBaseUrl"/>
-            <property value="${clarizen.partnerId}" name="partnerId"/>
             <property value="${clarizen.appId}" name="applicationId"/>
+            <property value="${clarizen.partnerId}" name="partnerId"/>
         </properties>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="Entity" entity-id="DataMapper#1">
@@ -65,9 +64,14 @@
                     <property value="ALL" name="workItemFilter"/>
                     <property value="ALL" name="workItemState"/>
                     <property value="TASK" name="workItemType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve-each;1">
-                            <property value="Name" name="get-my-work-items-fields-to-retrieve"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;1">
+                            <property value="Description" name="value"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -86,13 +90,18 @@
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/update-task" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="#[payload]" name="task-ref"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-update;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-update-each;1">
-                            <property value="93" name="value"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-updates;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-update;1">
+                            <property value="96" name="value"/>
                             <property value="percentCompleted" name="key"/>
                         </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-update-each;2">
-                            <property value="TASK DES MOD3" name="value"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-update;2">
+                            <property value="TASK DES MOD6" name="value"/>
                             <property value="Description" name="key"/>
                         </property-collection>
                     </property-collection>
@@ -144,9 +153,14 @@
                     <property value="ALL" name="workItemFilter"/>
                     <property value="ALL" name="workItemState"/>
                     <property value="PROJECT" name="workItemType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve-each;1">
-                            <property value="Name" name="get-my-work-items-fields-to-retrieve"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;1">
+                            <property value="Name" name="value"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -169,10 +183,15 @@
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/create-work-item" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="#[payload]" name="parentEntity-ref"/>
-                    <property value="TASK TEST_TEST2" name="workItemName"/>
+                    <property value="TASK TEST_RENEW" name="workItemName"/>
                     <property value="TASK" name="workItemType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-work-item-work-item-fields;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-work-item-work-item-field;1">
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-work-item-work-item-fieldss;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-work-item-work-item-fields;1">
                             <property value="DescrTASK" name="value"/>
                             <property value="Description" name="key"/>
                         </property-collection>
@@ -224,9 +243,14 @@
                     <property value="Clarizen" name="config-ref"/>
                     <property value="fc62077d-c69b-46eb-91b6-e65de64c1440" name="workItemId"/>
                     <property value="PROJECT" name="workItemType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieve;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieve-each;1">
-                            <property value="Name" name="get-work-item-by-id-fields-to-retrieve"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieve;1">
+                            <property value="Name" name="value"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -237,9 +261,14 @@
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/update-work-item" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="#[payload]" name="workItem-ref"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-work-item-fields-to-update;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-work-item-fields-to-update-each;1">
-                            <property value="Project Descrip" name="value"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-work-item-fields-to-updates;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-work-item-fields-to-update;1">
+                            <property value="Project Descrip2" name="value"/>
                             <property value="Description" name="key"/>
                         </property-collection>
                     </property-collection>
@@ -290,6 +319,11 @@
                     <property value="Clarizen" name="config-ref"/>
                     <property value="New issue - test099" name="title"/>
                     <property value="ISSUE" name="issueType"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#9">
@@ -298,9 +332,14 @@
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/update-all-issue" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="#[payload]" name="issue-ref"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-all-issue-fields-to-update;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-all-issue-fields-to-update-each;1">
-                            <property value="New test issue010" name="value"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-all-issue-fields-to-updates;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-all-issue-fields-to-update;1">
+                            <property value="New test issue_ISSUE2" name="value"/>
                             <property value="Description" name="key"/>
                         </property-collection>
                     </property-collection>
@@ -349,24 +388,29 @@
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="11111111" name="entityId"/>
+                    <property value="22222255555" name="entityId"/>
                     <property value="User" name="entityType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-field;1">
-                            <property value="newuser@user2.com" name="value"/>
-                            <property value="DisplayName" name="key"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fieldss;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;2">
+                            <property value="newuser2@user2.com" name="value"/>
+                            <property value="LastName" name="key"/>
                         </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-field;2">
-                            <property value="newuser@user2.com" name="value"/>
-                            <property value="Email" name="key"/>
-                        </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-field;3">
-                            <property value="newuser@user2.com" name="value"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;1">
+                            <property value="newuser2@user2.com" name="value"/>
                             <property value="FirstName" name="key"/>
                         </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-field;4">
-                            <property value="newuser@user2.com" name="value"/>
-                            <property value="LastName" name="key"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;4">
+                            <property value="newuser2@user2.com" name="value"/>
+                            <property value="Email" name="key"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;3">
+                            <property value="newuser2@user2.com" name="value"/>
+                            <property value="DisplayName" name="key"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -386,9 +430,14 @@
                     <property value="ALL" name="workItemFilter"/>
                     <property value="ALL" name="workItemState"/>
                     <property value="ALL" name="workItemType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve-each;1">
-                            <property value="Name" name="get-my-work-items-fields-to-retrieve"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;1">
+                            <property value="Name" name="value"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -413,6 +462,11 @@
                     <property value="#[payload]" name="workItem-ref"/>
                     <property value="#[flowVars['userId']]" name="resourceId"/>
                     <property value="50" name="units"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
                 </properties>
             </pattern>
         </lane>
@@ -462,9 +516,14 @@
                     <property value="Email" name="expression"/>
                     <property value="User" name="queryTypeName"/>
                     <property value="CONTAINS" name="operator"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve-each;1">
-                            <property value="DisplayName" name="create-entity-query-fields-to-retrieve"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;1">
+                            <property value="DisplayName" name="value"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -492,99 +551,108 @@
     </flow>
     <flow SubFlow="false" name="Clarizen_ExampleFlow_GetEntityFields" entity-id="flow#7">
         <properties>
-            <property value="" name="processingStrategy2"/>
-            <property value="" name="bussinessEventsLabel"/>
-            <property value="false" name="tracking:enable-default-events"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1374883513"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
         <lane hadOnlyOneElement="false" entity-id="compartment-lane#7">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#7">
                 <properties>
-                    <property value="8090" name="port"/>
-                    <property value="localhost" name="host"/>
-                    <property value="" name="businessEventsLabel"/>
-                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="false" name="keep-alive"/>
-                    <property value="" name="contentType"/>
-                    <property value="false" name="disableTransportTransformer"/>
-                    <property value="" name="password"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="false" name="tracking:enable-default-events"/>
-                    <property value="" name="ref"/>
-                    <property value="" name="transformer-refs"/>
-                    <property value="" name="httpLabel"/>
-                    <property value="" name="address"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8090" name="port"/>
                     <property value="get-entity-fields" name="path"/>
-                    <property value="" name="encoding"/>
-                    <property value="" name="user"/>
-                    <property value="10000" name="responseTimeout"/>
-                    <property value="" name="mimeType"/>
-                    <property value="" name="connector-ref"/>
+                    <property name="method"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                 </properties>
-                <description></description>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#14">
                 <properties>
-                    <property value="Name" name="expression"/>
-                    <property value="NEW" name="conditionValue"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="Task" name="queryTypeName"/>
                     <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="NEW" name="conditionValue"/>
+                    <property value="Name" name="expression"/>
+                    <property value="Task" name="queryTypeName"/>
                     <property value="CONTAINS" name="operator"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;1">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve-each;2">
-                            <property value="Name" name="create-entity-query-fields-to-retrieve"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;2">
+                            <property value="Description" name="value"/>
                         </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve-each;2120220210">
-                            <property value="Description" name="create-entity-query-fields-to-retrieve"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;1">
+                            <property value="Name" name="value"/>
                         </property-collection>
                     </property-collection>
                 </properties>
-                <description></description>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="Groovy#4">
                 <properties>
-                    <property value="" name="returnClass"/>
-                    <property value="false" name="ignoreBadInput"/>
-                    <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return payload.entityList" name="text"/>
-                    <property value="" name="encoding"/>
-                    <property value="" name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;995970455">
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property name="mimeType"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return payload.entityList" name="text"/>
+                        <property value="Groovy" name="engine"/>
                     </property-collection>
                 </properties>
-                <description></description>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter" entity-id="Collection Splitter#1">
                 <properties>
-                    <property value="" name="businessEventsLabel"/>
-                    <property value="IF_NOT_SET" name="enableCorrelation"/>
-                    <property value="false" name="tracking:enable-default-events"/>
+                    <property name="enableCorrelation"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
                 </properties>
-                <description></description>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="Groovy#5">
                 <properties>
-                    <property value="" name="returnClass"/>
-                    <property value="false" name="ignoreBadInput"/>
-                    <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return payload.values.fieldValue" name="text"/>
-                    <property value="" name="encoding"/>
-                    <property value="" name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;1897598340">
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property name="mimeType"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return payload.values.fieldValue" name="text"/>
+                        <property value="Groovy" name="engine"/>
                     </property-collection>
                 </properties>
-                <description></description>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter"/>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter" entity-id="Collection Splitter#2">
+                <properties>
+                    <property name="enableCorrelation"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                </properties>
+            </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
                 <properties>
                     <property value="The field name is #[groovy:payload.fieldName], the field value is #[groovy:payload.value]" name="message"/>
-                    <property value="" name="category"/>
                     <property value="INFO" name="level"/>
+                    <property name="category"/>
                 </properties>
-                <description></description>
             </pattern>
         </lane>
     </flow>
