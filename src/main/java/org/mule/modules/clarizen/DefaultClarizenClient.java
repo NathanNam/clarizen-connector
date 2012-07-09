@@ -267,12 +267,6 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     @Override
-    public Entity createTask(Entity parentEntity, String taskName, String description, 
-                                    String startDate) {
-        return createWorkItemSingleValues(parentEntity, WorkItemType.TASK, taskName, description, startDate);
-    }
-
-    @Override
     public Entity createWorkItem(Entity parentEntity, WorkItemType workItemType, 
                                         String workItemName, Map<String, Object> workItemFields) {
         
@@ -582,20 +576,6 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return allIssue;
-    }
-
-    @Override
-    public Entity updateTask(Entity task, Map<String, Object> fieldsToUpdate) {
-        return updateWorkItem(task, fieldsToUpdate);        
-    }
-
-    @Override
-    public Entity updateTaskWithSingleValues(Entity task, String description, 
-                                                    String percentCompleted) {
-        Map<String, Object> fieldsToUpdate = new HashMap<String, Object>();
-        fieldsToUpdate.put("PercentCompleted", Double.valueOf(percentCompleted));
-        fieldsToUpdate.put("Description", description);
-        return updateWorkItem(task, fieldsToUpdate);        
     }
 
     @Override

@@ -38,8 +38,6 @@ public interface ClarizenClient {
     ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
             String expression, Operator operator, String conditionValue);
 
-    Entity createTask(Entity parentEntity, String taskName, String description, String startDate);
-
     Entity createWorkItem(Entity parentEntity, WorkItemType workItemType, 
                                  String workItemName, Map<String, Object> workItemFields);
     
@@ -62,11 +60,6 @@ public interface ClarizenClient {
     void logout();
     
     Entity updateAllIssue(Entity issue, Map<String, Object> fieldsToUpdate);
-    
-    Entity updateTask(Entity task, Map<String, Object> fieldsToUpdate);
-
-    Entity updateTaskWithSingleValues(Entity task, String description, 
-                                             String percentCompleted);
     
     Entity updateWorkItem(Entity workItem, Map<String, Object> fieldsToUpdate);
     

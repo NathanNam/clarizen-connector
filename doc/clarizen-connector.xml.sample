@@ -50,28 +50,10 @@
 </clarizen:update-all-issue>
 <!-- END_INCLUDE(clarizen:update-all-issue) -->
 
-<!-- BEGIN_INCLUDE(clarizen:create-task) -->
-<clarizen:create-task taskDescription="NEW TASK" taskName="NEW TASK" />
-<!-- END_INCLUDE(clarizen:create-task) -->
-
 <!-- BEGIN_INCLUDE(clarizen:create-work-item-by-parent-id) -->
 <clarizen:create-work-item-by-parent-id parentId="#[payload]" workItemName="NEW-WORK-ITEM" 
         parentType="PROJECT" workItemType="TASK" />
 <!-- END_INCLUDE(clarizen:create-work-item-by-parent-id) -->
-
-<!-- BEGIN_INCLUDE(clarizen:update-task) -->
-<clarizen:update-task task-ref="#[payload]">
-    <clarizen:fields-to-update>
-        <clarizen:fields-to-update key="percentCompleted">10</clarizen:fields-to-update>
-        <clarizen:fields-to-update key="Description">DESCRIPTION</clarizen:fields-to-update>
-    </clarizen:fields-to-update>
-</clarizen:update-task>
-<!-- END_INCLUDE(clarizen:update-task) -->
-
-<!-- BEGIN_INCLUDE(clarizen:update-task-with-single-values) -->
-<clarizen:update-task-with-single-values task-ref="#[payload]" description="MOD-DESCRIPTION" 
-        percentCompleted="30" doc:name="Clarizen" />
-<!-- END_INCLUDE(clarizen:update-task-with-single-values) -->
 
 <!-- BEGIN_INCLUDE(clarizen:update-work-item-progress) -->
 <clarizen:update-work-item-progress workItem-ref="#[payload]" percentCompleted="50" />

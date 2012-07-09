@@ -104,12 +104,6 @@ public class ClarizenClientTest {
     }
 
     @Test
-    public void testCreateTask() {
-        when(clarizenClient.createTask(parentEntity, SOME_VALUE, SOME_VALUE, SOME_VALUE)).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.createTask(parentEntity, SOME_VALUE, SOME_VALUE, SOME_VALUE));
-    }
-
-    @Test
     public void testCreateWorkItem() {
         when(clarizenClient.createWorkItem(parentEntity, SOME_WORK_ITEM_TYPE, 
                 SOME_VALUE, createMap())).thenReturn(entity);
@@ -157,18 +151,6 @@ public class ClarizenClientTest {
     public void testUpdateAllIssue() {
         when(clarizenClient.updateAllIssue(entity, createMap())).thenReturn(entity);
         assertEquals(entity, clarizenConnector.updateAllIssue(entity, createMap()));
-    }
-
-    @Test
-    public void testUpdateTask() {
-        when(clarizenClient.updateTask(entity, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.updateTask(entity, createMap()));
-    }
-
-    @Test
-    public void testUpdateTaskWithSingleValues() {
-        when(clarizenClient.updateTaskWithSingleValues(entity, SOME_VALUE, SOME_VALUE)).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.updateTaskWithSingleValues(entity, SOME_VALUE, SOME_VALUE));
     }
 
     @Test

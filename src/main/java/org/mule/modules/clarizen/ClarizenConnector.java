@@ -328,64 +328,6 @@ public class ClarizenConnector
     public ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
             String expression, Operator operator, String conditionValue) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, expression, operator, conditionValue);
-    }    
-    
-
-    /**
-     * Create a new task
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-task}
-     *
-     * @param parentEntity          Represents entity to which work item belongs
-     * @param taskName              the task name
-     * @param taskDescription       the task description
-     * @param taskStartDate         the start date of the task item using the format MM-dd-yyy'T'HH:mm:ss
-     * 
-     * @return {@link Entity} Created work item
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createTask(@Payload Entity parentEntity,
-            String taskName, @Optional String taskDescription, @Optional String taskStartDate) {
-        return clarizenClient.createTask(parentEntity, taskName, taskDescription, taskStartDate);
-    }
-
-    /**
-     * Update a task
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-task}
-     *
-     * @param task              the task to be updated.
-     * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
-     * 
-     * @return {@link Entity} Updated task
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity updateTask(Entity task,
-            @Placement(group = "Fields") Map<String, Object> fieldsToUpdate) {
-        return clarizenClient.updateTask(task, fieldsToUpdate);
-    }
-
-    /**
-     * Update a task including only a set of defined values
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-task-with-single-values}
-     *
-     * @param task              the task to be updated.
-     * @param description       the task description
-     * @param percentCompleted  percent of progress completeness correct for current date
-     * 
-     * @return {@link Entity} Updated task
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity updateTaskWithSingleValues(Entity task,
-            String description, @Optional String percentCompleted) {
-        return clarizenClient.updateTaskWithSingleValues(task, description, percentCompleted);
     }
 
     /**
