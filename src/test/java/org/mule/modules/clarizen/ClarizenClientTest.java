@@ -91,7 +91,7 @@ public class ClarizenClientTest {
     public void testCreateEntityQuery() {
         when(clarizenClient.createEntityQuery(createList(), SOME_QUERY_TYPE, 
                 SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION)).thenReturn(arrayOfEntity);
-        assertEquals(arrayOfEntity, clarizenConnector.createEntityQuery(createList(), SOME_QUERY_TYPE, 
+        assertEquals(arrayOfEntity, clarizenConnector.entityQuery(createList(), SOME_QUERY_TYPE, 
                 SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION));
     }
 
@@ -99,7 +99,7 @@ public class ClarizenClientTest {
     public void testCreateIssuesQuery() {
         when(clarizenClient.createIssuesQuery(createList(), SOME_ISSUE_TYPE, 
                 SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION)).thenReturn(arrayOfEntity);
-        assertEquals(arrayOfEntity, clarizenConnector.createIssuesQuery(createList(), SOME_ISSUE_TYPE, 
+        assertEquals(arrayOfEntity, clarizenConnector.issueQuery(createList(), SOME_ISSUE_TYPE, 
                 SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION));
     }
 

@@ -82,21 +82,21 @@
 <clarizen:add-work-item-resources workItem-ref="#[payload]" resourceId="resourceId" units="40" />
 <!-- END_INCLUDE(clarizen:add-work-item-resources) -->
 
-<!-- BEGIN_INCLUDE(clarizen:create-entity-query) -->
-<clarizen:create-entity-query conditionValue="mail" expression="Email" queryTypeName="User" operator="CONTAINS">
+<!-- BEGIN_INCLUDE(clarizen:entity-query) -->
+<clarizen:entity-query conditionValue="mail" expression="Email" queryTypeName="User" operator="CONTAINS">
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>DisplayName</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>
-</clarizen:create-entity-query>
-<!-- END_INCLUDE(clarizen:create-entity-query) -->
+</clarizen:entity-query>
+<!-- END_INCLUDE(clarizen:entity-query) -->
 
-<!-- BEGIN_INCLUDE(clarizen:create-issues-query) -->
-<clarizen:create-issues-query conditionValue="newIssue" expression="Title" issueType="TASK" operator="CONTAINS">
+<!-- BEGIN_INCLUDE(clarizen:issue-query) -->
+<clarizen:issue-query conditionValue="newIssue" expression="Title" issueType="TASK" operator="CONTAINS">
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>Title</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>
-</clarizen:create-issues-query>
-<!-- END_INCLUDE(clarizen:create-issues-query) -->
+</clarizen:issue-query>
+<!-- END_INCLUDE(clarizen:issue-query) -->
 
 <!-- BEGIN_INCLUDE(clarizen:work-items-query) -->
 <clarizen:work-items-query workItemFilter="ALL" workItemState="ALL" workItemType="ALL">

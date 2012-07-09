@@ -292,7 +292,7 @@ public class ClarizenConnector
      * Create an entity query
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-entity-query}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:entity-query}
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param queryTypeName         the entity type
@@ -304,7 +304,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, String expression, 
+    public ArrayOfEntity entityQuery(List<String> fieldsToRetrieve, String queryTypeName, String expression, 
             Operator operator, String conditionValue) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, expression, operator, conditionValue);
     }
@@ -313,7 +313,7 @@ public class ClarizenConnector
      * Create an issues query
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-issues-query}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:issue-query}
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param issueType             the issue type to be retrieved
@@ -325,7 +325,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
+    public ArrayOfEntity issueQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
             String expression, Operator operator, String conditionValue) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, expression, operator, conditionValue);
     }
