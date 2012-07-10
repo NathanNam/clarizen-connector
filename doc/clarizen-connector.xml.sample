@@ -64,7 +64,7 @@
 <!-- END_INCLUDE(clarizen:update-work-item-progress) -->
 
 <!-- BEGIN_INCLUDE(clarizen:get-my-work-items) -->
-<clarizen:get-my-work-items workItemFilter="ALL" workItemState="ALL" workItemType="TASK">
+<clarizen:get-my-work-items workItemFilter="ALL" workItemState="ALL" workItemType="TASK" pageSize=1000>
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>Name</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>
@@ -87,7 +87,7 @@
 <!-- END_INCLUDE(clarizen:add-work-item-resources) -->
 
 <!-- BEGIN_INCLUDE(clarizen:entity-query) -->
-<clarizen:entity-query conditionValue="mail" expression="Email" queryTypeName="User" operator="CONTAINS">
+<clarizen:entity-query conditionValue="mail" expression="Email" queryTypeName="User" operator="CONTAINS" pageSize=1000>
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>DisplayName</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>
@@ -95,7 +95,7 @@
 <!-- END_INCLUDE(clarizen:entity-query) -->
 
 <!-- BEGIN_INCLUDE(clarizen:issue-query) -->
-<clarizen:issue-query conditionValue="newIssue" expression="Title" issueType="TASK" operator="CONTAINS">
+<clarizen:issue-query conditionValue="newIssue" expression="Title" issueType="TASK" operator="CONTAINS" pageSize=1000>
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>Title</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>
@@ -103,7 +103,7 @@
 <!-- END_INCLUDE(clarizen:issue-query) -->
 
 <!-- BEGIN_INCLUDE(clarizen:work-items-query) -->
-<clarizen:work-items-query workItemFilter="ALL" workItemState="ALL" workItemType="ALL">
+<clarizen:work-items-query workItemFilter="ALL" workItemState="ALL" workItemType="ALL" pageSize=1000>
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>Description</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>

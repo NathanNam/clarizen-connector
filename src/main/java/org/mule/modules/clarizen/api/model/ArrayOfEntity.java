@@ -12,7 +12,7 @@ package org.mule.modules.clarizen.api.model;
 
 import java.util.List;
 
-import com.clarizen.api.BaseEntity;
+import com.clarizen.api.GenericEntity;
 
 /**
  * Wrapper class for Clarizen API. 
@@ -23,21 +23,21 @@ import com.clarizen.api.BaseEntity;
  */
 public class ArrayOfEntity {
 
-    private List<BaseEntity> entityList;
+    private List<GenericEntity> entityList;
 
     public ArrayOfEntity() {
         
     }
     
-    public ArrayOfEntity(List<BaseEntity> entities) {
+    public ArrayOfEntity(List<GenericEntity> entities) {
         setEntityList(entities);
     }
     
-    public List<BaseEntity> getEntityList() {
+    public List<GenericEntity> getEntityList() {
         return entityList;
     }
 
-    public void setEntityList(List<BaseEntity> entityList) {
+    public void setEntityList(List<GenericEntity> entityList) {
         this.entityList = entityList;
     }
 }

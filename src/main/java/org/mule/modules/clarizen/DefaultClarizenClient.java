@@ -58,6 +58,7 @@ import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
 import com.clarizen.api.projectmanagement.WorkItemsQuery;
 import com.clarizen.api.queries.Compare;
 import com.clarizen.api.queries.EntityQuery;
+import com.clarizen.api.queries.Paging;
 import com.clarizen.api.queries.QueryResult;
 
 public class DefaultClarizenClient implements ClarizenClient {
@@ -188,13 +189,16 @@ public class DefaultClarizenClient implements ClarizenClient {
         return new Entity(genericEntity);
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve,
             String queryTypeName,
             String expression,
             Operator operator,
-            String conditionValue) {
+            String conditionValue, Integer pageSize) {
         
+        int pageNumber = 0;
+        List<GenericEntity> listResults = new ArrayList<GenericEntity>();
         EntityQuery query = new EntityQuery();
         query.setTypeName(queryTypeName);
         
@@ -214,29 +218,41 @@ public class DefaultClarizenClient implements ClarizenClient {
         condition.setOperator(helper.createOperator(operator.value()));
         query.setWhere(condition);
         
-        QueryResult result;
+        QueryResult queryResult;
+        query.setPaging(new Paging());
         try {
-            result = getService().query(query);
+            do {
+                query.getPaging().setPageNumber(pageNumber);
+                query.getPaging().setPageSize(pageSize);
+                queryResult = getService().query(query);
             
-            if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
-                        result.getError().getMessage());
-            }
-            
+                if (!queryResult.isSuccess()) {
+                    throw new ClarizenRuntimeException(queryResult.getError().getErrorCode(), 
+                            queryResult.getError().getMessage());
+                }
+                
+                pageNumber++;
+                listResults.addAll((List) queryResult.getEntities().getBaseEntity());
+                
+            } while (queryResult.getPaging().isHasMore());
+
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getBaseEntity());        
+        return new ArrayOfEntity(listResults);       
     }
     
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve,
             AllIssueType issueType,
             String expression,
             Operator operator,
-            String conditionValue) {
-        
+            String conditionValue, Integer pageSize) {
+
+        int pageNumber = 0;
+        List<GenericEntity> listResults = new ArrayList<GenericEntity>();
         EntityQuery query = new EntityQuery();
         query.setTypeName(issueType.value());
         
@@ -256,20 +272,29 @@ public class DefaultClarizenClient implements ClarizenClient {
         condition.setOperator(helper.createOperator(operator.value()));
         query.setWhere(condition);
         
-        QueryResult result;
+        QueryResult queryResult;
+        query.setPaging(new Paging());
         try {
-            result = getService().query(query);
-            
-            if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
-                        result.getError().getMessage());
-            }
-            
+            do {
+                query.getPaging().setPageNumber(pageNumber);
+                query.getPaging().setPageSize(pageSize);
+                queryResult = getService().query(query);
+                
+                if (!queryResult.isSuccess()) {
+                    throw new ClarizenRuntimeException(queryResult.getError().getErrorCode(), 
+                            queryResult.getError().getMessage());
+                }
+                
+                pageNumber++;
+                listResults.addAll((List) queryResult.getEntities().getBaseEntity());
+                
+            } while (queryResult.getPaging().isHasMore());
+
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getBaseEntity());        
+        return new ArrayOfEntity(listResults);        
     }
 
     @Override
@@ -412,11 +437,14 @@ public class DefaultClarizenClient implements ClarizenClient {
         return helper;
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public ArrayOfEntity getMyWorkItems(List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter) {
+            WorkItemFilter workItemFilter, Integer pageSize) {
         
+        int pageNumber = 0;
+        List<GenericEntity> listResults = new ArrayList<GenericEntity>();
         MyWorkItemsQuery query = new MyWorkItemsQuery();
         query.setItemsState(helper.createWorkItemState(workItemState.value()));
         query.setItemsFilter(helper.createWorkItemFilter(workItemFilter.value()));
@@ -431,21 +459,29 @@ public class DefaultClarizenClient implements ClarizenClient {
         if (fields != null) {
             query.setFields(fields);
         }
-        
-        QueryResult result;
+
+        QueryResult queryResult;
+        query.setPaging(new Paging());
         try {
-            result = getService().query(query);
-            
-            if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
-                        result.getError().getMessage());
-            }
-            
+            do {
+                query.getPaging().setPageNumber(pageNumber);
+                query.getPaging().setPageSize(pageSize);
+                queryResult = getService().query(query);
+                
+                if (!queryResult.isSuccess()) {
+                    throw new ClarizenRuntimeException(queryResult.getError().getErrorCode(), 
+                            queryResult.getError().getMessage());
+                }
+                
+                pageNumber++;
+                listResults.addAll((List) queryResult.getEntities().getBaseEntity());
+            } while (queryResult.getPaging().isHasMore());
+
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getBaseEntity());    
+        return new ArrayOfEntity(listResults);
     }
 
     protected IClarizen getService() {
@@ -620,10 +656,14 @@ public class DefaultClarizenClient implements ClarizenClient {
         return updateWorkItem(workItem, fieldsToUpdate);
     }
     
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public ArrayOfEntity workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
-                                            WorkItemType workItemType, WorkItemFilter workItemFilter) {
+                                        WorkItemType workItemType, WorkItemFilter workItemFilter,
+                                        Integer pageSize) {
 
+        int pageNumber = 0;
+        List<GenericEntity> listResults = new ArrayList<GenericEntity>();
         WorkItemsQuery query = new WorkItemsQuery();
         query.setItemsState(helper.createWorkItemState(workItemState.value()));
         query.setItemsFilter(helper.createWorkItemFilter(workItemFilter.value()));
@@ -639,19 +679,28 @@ public class DefaultClarizenClient implements ClarizenClient {
             query.setFields(fields);
         }
         
-        QueryResult result;
+        QueryResult queryResult;
+        query.setPaging(new Paging());
         try {
-            result = getService().query(query);
-            
-            if (!result.isSuccess()) {
-                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
-                        result.getError().getMessage());
-            }
-            
+            do {
+                query.getPaging().setPageNumber(pageNumber);
+                query.getPaging().setPageSize(pageSize);
+                queryResult = getService().query(query);
+                
+                if (!queryResult.isSuccess()) {
+                    throw new ClarizenRuntimeException(queryResult.getError().getErrorCode(), 
+                            queryResult.getError().getMessage());
+                }
+                
+                pageNumber++;
+                listResults.addAll((List) queryResult.getEntities().getBaseEntity());
+                
+            } while (queryResult.getPaging().isHasMore());
+
         } catch (IClarizenQuerySessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return new ArrayOfEntity(result.getEntities().getBaseEntity());
+        return new ArrayOfEntity(listResults);
     }
 }

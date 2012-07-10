@@ -278,15 +278,16 @@ public class ClarizenConnector
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param workItemState         the work items state. For further information about the specific values check {@link WorkItemState}
      * @param workItemType          the work item type. For further information about the specific values check {@link WorkItemType}
-     * @param workItemFilter        the work items filter. For further information about the specific values check {@link WorkItemFilter} 
+     * @param workItemFilter        the work items filter. For further information about the specific values check {@link WorkItemFilter}
+     * @param pageSize              the number of results to be retrieved per page
      * 
      * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity workItemsQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter) {
-        return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, workItemFilter);
+            WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, @Optional @Default("1000") Integer pageSize) {
+        return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, workItemFilter, pageSize);
     }
     
     /**
@@ -300,6 +301,7 @@ public class ClarizenConnector
      * @param expression            represents the left side of the query (e.g. "SubmittedBy")
      * @param operator              represents the operator to be used as comparator. For further information about the specific values check {@link Operator}
      * @param conditionValue        the value to be evaluated against the expression
+     * @param pageSize              the number of results to be retrieved per page
      * 
      * @return {@link ArrayOfEntity} List of work item results
      */
@@ -307,8 +309,8 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
             String queryTypeName, String expression, 
-            Operator operator, String conditionValue) {
-        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, expression, operator, conditionValue);
+            Operator operator, String conditionValue, @Optional @Default("1000") Integer pageSize) {
+        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, expression, operator, conditionValue, pageSize);
     }
     
     /**
@@ -322,14 +324,14 @@ public class ClarizenConnector
      * @param expression            represents the left side of the query (e.g. "SubmittedBy")
      * @param operator              represents the operator to be used as comparator. For further information about the specific values check {@link Operator}
      * @param conditionValue        the value to be evaluated against the expression
-     * 
+     * @param pageSize              the number of results to be retrieved per page.
      * @return {@link ArrayOfEntity} List of issues results
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
-            String expression, Operator operator, String conditionValue) {
-        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, expression, operator, conditionValue);
+            String expression, Operator operator, String conditionValue, @Optional @Default("1000") Integer pageSize) {
+        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, expression, operator, conditionValue, pageSize);
     }
 
     /**
@@ -380,16 +382,16 @@ public class ClarizenConnector
      * @param workItemState         the work items state. For further information about the specific values check {@link WorkItemState}
      * @param workItemType          the work item type. For further information about the specific values check {@link WorkItemType}
      * @param workItemFilter        the work items filter. For further information about the specific values check {@link WorkItemFilter} 
-     * 
+     * @param pageSize              the number of results to be retrieved per page
      * @return {@link ArrayOfEntity} List of work items
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity getMyWorkItems(@Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter) {
+            WorkItemFilter workItemFilter, @Optional @Default("1000") Integer pageSize) {
         return clarizenClient.getMyWorkItems(fieldsToRetrieve, workItemState, workItemType, 
-                workItemFilter);
+                workItemFilter, pageSize);
     }
 
     public ClarizenClient getClarizenClient() {
