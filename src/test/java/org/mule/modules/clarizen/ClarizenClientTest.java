@@ -24,6 +24,7 @@ import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
 import org.mule.modules.clarizen.api.model.Login;
 import org.mule.modules.clarizen.api.model.Operator;
+import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
@@ -40,11 +41,9 @@ public class ClarizenClientTest {
     private static final String SOME_ID = "someId";
     private static final String SOME_TYPE = "someType";
     private static final String SOME_QUERY_TYPE = "someQueryType";
-    private static final String SOME_EXPRESSION = "someExpression";
     private static final Double SOME_DOUBLE_VALUE = 30.0;
     private static final Integer SOME_PAGE_SIZE = 1000;
     
-    private static final Operator SOME_OPERATOR = Operator.EQUAL;
     private static final AllIssueType SOME_ISSUE_TYPE = AllIssueType.ISSUE;
     private static final WorkItemFilter SOME_WORK_ITEM_FILTER = WorkItemFilter.ALL;
     private static final WorkItemState SOME_WORK_ITEM_STATE = WorkItemState.ALL;
@@ -61,6 +60,8 @@ public class ClarizenClientTest {
     private ArrayOfEntity arrayOfEntity;
     @Mock
     private Login login;
+    @Mock
+    private QueryCondition queryCondition;
     
     @Before
     public void setUp() {
@@ -91,17 +92,17 @@ public class ClarizenClientTest {
     @Test
     public void testCreateEntityQuery() {
         when(clarizenClient.createEntityQuery(createList(), SOME_QUERY_TYPE, 
-                SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
+                queryCondition, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
         assertEquals(arrayOfEntity, clarizenConnector.entityQuery(createList(), SOME_QUERY_TYPE, 
-                SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION, SOME_PAGE_SIZE));
+                queryCondition, SOME_PAGE_SIZE));
     }
 
     @Test
     public void testCreateIssuesQuery() {
         when(clarizenClient.createIssuesQuery(createList(), SOME_ISSUE_TYPE, 
-                SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
+                queryCondition, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
         assertEquals(arrayOfEntity, clarizenConnector.issueQuery(createList(), SOME_ISSUE_TYPE, 
-                SOME_EXPRESSION, SOME_OPERATOR, SOME_EXPRESSION, SOME_PAGE_SIZE));
+                queryCondition, SOME_PAGE_SIZE));
     }
 
     @Test

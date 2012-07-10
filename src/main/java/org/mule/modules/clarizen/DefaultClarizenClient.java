@@ -30,7 +30,7 @@ import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.Operator;
+import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
@@ -56,7 +56,6 @@ import com.clarizen.api.StringList;
 import com.clarizen.api.UpdateMessage;
 import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
 import com.clarizen.api.projectmanagement.WorkItemsQuery;
-import com.clarizen.api.queries.Compare;
 import com.clarizen.api.queries.EntityQuery;
 import com.clarizen.api.queries.Paging;
 import com.clarizen.api.queries.QueryResult;
@@ -193,9 +192,7 @@ public class DefaultClarizenClient implements ClarizenClient {
     @Override
     public ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve,
             String queryTypeName,
-            String expression,
-            Operator operator,
-            String conditionValue, Integer pageSize) {
+            QueryCondition condition, Integer pageSize) {
         
         int pageNumber = 0;
         List<GenericEntity> listResults = new ArrayList<GenericEntity>();
@@ -212,11 +209,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             query.setFields(fields);
         }
 
-        Compare condition = new Compare();
-        condition.setLeftExpression(helper.createFieldExpression(expression));
-        condition.setRightExpression(helper.createConstantExpression(conditionValue));
-        condition.setOperator(helper.createOperator(operator.value()));
-        query.setWhere(condition);
+        query.setWhere(condition.getCondition());
         
         QueryResult queryResult;
         query.setPaging(new Paging());
@@ -247,9 +240,7 @@ public class DefaultClarizenClient implements ClarizenClient {
     @Override
     public ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve,
             AllIssueType issueType,
-            String expression,
-            Operator operator,
-            String conditionValue, Integer pageSize) {
+            QueryCondition condition, Integer pageSize) {
 
         int pageNumber = 0;
         List<GenericEntity> listResults = new ArrayList<GenericEntity>();
@@ -266,11 +257,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             query.setFields(fields);
         }
 
-        Compare condition = new Compare();
-        condition.setLeftExpression(helper.createFieldExpression(expression));
-        condition.setRightExpression(helper.createConstantExpression(conditionValue));
-        condition.setOperator(helper.createOperator(operator.value()));
-        query.setWhere(condition);
+        query.setWhere(condition.getCondition());
         
         QueryResult queryResult;
         query.setPaging(new Paging());

@@ -87,7 +87,7 @@
 <!-- END_INCLUDE(clarizen:add-work-item-resources) -->
 
 <!-- BEGIN_INCLUDE(clarizen:entity-query) -->
-<clarizen:entity-query conditionValue="mail" expression="Email" queryTypeName="User" operator="CONTAINS" pageSize=1000>
+<clarizen:entity-query queryTypeName="User" condition-ref="#[payload]" pageSize=1000>
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>DisplayName</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>
@@ -95,7 +95,7 @@
 <!-- END_INCLUDE(clarizen:entity-query) -->
 
 <!-- BEGIN_INCLUDE(clarizen:issue-query) -->
-<clarizen:issue-query conditionValue="newIssue" expression="Title" issueType="TASK" operator="CONTAINS" pageSize=1000>
+<clarizen:issue-query issueType="TASK" condition-ref="#[payload]" pageSize=1000>
     <clarizen:fields-to-retrieve>
         <clarizen:fields-to-retrieve>Title</clarizen:fields-to-retrieve>
     </clarizen:fields-to-retrieve>

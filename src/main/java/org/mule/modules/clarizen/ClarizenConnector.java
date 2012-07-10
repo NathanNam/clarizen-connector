@@ -36,7 +36,7 @@ import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.Operator;
+import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
@@ -298,9 +298,7 @@ public class ClarizenConnector
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param queryTypeName         the entity type
-     * @param expression            represents the left side of the query (e.g. "SubmittedBy")
-     * @param operator              represents the operator to be used as comparator. For further information about the specific values check {@link Operator}
-     * @param conditionValue        the value to be evaluated against the expression
+     * @param condition             the query condition. For further information about the condition object check {@link QueryCondition}
      * @param pageSize              the number of results to be retrieved per page
      * 
      * @return {@link ArrayOfEntity} List of work item results
@@ -308,9 +306,8 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            String queryTypeName, String expression, 
-            Operator operator, String conditionValue, @Optional @Default("1000") Integer pageSize) {
-        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, expression, operator, conditionValue, pageSize);
+            String queryTypeName, @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
+        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize);
     }
     
     /**
@@ -321,17 +318,15 @@ public class ClarizenConnector
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param issueType             the issue type to be retrieved
-     * @param expression            represents the left side of the query (e.g. "SubmittedBy")
-     * @param operator              represents the operator to be used as comparator. For further information about the specific values check {@link Operator}
-     * @param conditionValue        the value to be evaluated against the expression
+     * @param condition             the query condition. For further information about the condition object check {@link QueryCondition}
      * @param pageSize              the number of results to be retrieved per page.
      * @return {@link ArrayOfEntity} List of issues results
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
-            String expression, Operator operator, String conditionValue, @Optional @Default("1000") Integer pageSize) {
-        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, expression, operator, conditionValue, pageSize);
+            @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
+        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize);
     }
 
     /**

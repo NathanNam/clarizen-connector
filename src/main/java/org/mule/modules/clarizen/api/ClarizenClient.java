@@ -17,7 +17,7 @@ import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.Operator;
+import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
@@ -34,10 +34,10 @@ public interface ClarizenClient {
             Map<String, Object> entityFields);
 
     ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, 
-            String expression, Operator operator, String conditionValue, Integer pageSize);
+            QueryCondition condition, Integer pageSize);
     
     ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
-            String expression, Operator operator, String conditionValue, Integer pageSize);
+            QueryCondition condition, Integer pageSize);
 
     Entity createWorkItem(Entity parentEntity, WorkItemType workItemType, 
                                  String workItemName, Map<String, Object> workItemFields);
