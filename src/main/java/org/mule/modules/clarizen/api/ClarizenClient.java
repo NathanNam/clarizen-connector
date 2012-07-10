@@ -27,7 +27,8 @@ public interface ClarizenClient {
     Entity addWorkItemResources(Entity workItem, String resourceId,
                                            String units);
     
-    Entity createAllIssue(AllIssueType issueType, String title);
+    Entity createCase(AllIssueType issueType, String title, 
+            Map<String, Object> entityFields);
 
     Entity createEntity(String entityType, String entityId, 
             Map<String, Object> entityFields);
@@ -59,7 +60,7 @@ public interface ClarizenClient {
     
     void logout();
     
-    Entity updateAllIssue(Entity issue, Map<String, Object> fieldsToUpdate);
+    Entity updateCase(Entity caseEntity, Map<String, Object> fieldsToUpdate);
     
     Entity updateWorkItem(Entity workItem, Map<String, Object> fieldsToUpdate);
     

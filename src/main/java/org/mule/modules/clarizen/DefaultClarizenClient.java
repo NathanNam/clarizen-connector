@@ -113,23 +113,29 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     @Override
-    public Entity createAllIssue(AllIssueType issueType, String title) {
+    public Entity createCase(AllIssueType issueType, String title, Map<String, Object> caseFields) {
         
-        GenericEntity allIssue = new GenericEntity();
-        allIssue.setId(helper.createBaseEntityId(issueType.value(), UUID.getUUID()));
+        GenericEntity caseEntity = new GenericEntity();
+        caseEntity.setId(helper.createBaseEntityId(issueType.value(), UUID.getUUID()));
         
         FieldValue titleField = helper.createFieldValue("Title", title);
         
         List<FieldValue> fields = new ArrayList<FieldValue>();
         fields.add(titleField);
-
-        allIssue.setValues(helper.createGenericEntityArrayOfFieldValue(fields));
         
-        CreateMessage allIssueMessage = new CreateMessage();
-        allIssueMessage.setEntity(allIssue);
+        if (caseFields != null) {
+            for (Map.Entry<String, Object> fieldValue : caseFields.entrySet()) {
+                fields.add(helper.createFieldValue(fieldValue.getKey(), fieldValue.getValue()));
+            }
+        }
+
+        caseEntity.setValues(helper.createGenericEntityArrayOfFieldValue(fields));
+        
+        CreateMessage caseMessage = new CreateMessage();
+        caseMessage.setEntity(caseEntity);
         
         try {
-            Result result = getService().execute(helper.createMessage(allIssueMessage)).getResult().get(0);
+            Result result = getService().execute(helper.createMessage(caseMessage)).getResult().get(0);
             
             if (!result.isSuccess()) {
                 throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
@@ -140,7 +146,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return new Entity(allIssue);
+        return new Entity(caseEntity);
     }
 
     @Override
@@ -544,7 +550,7 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     @Override
-    public Entity updateAllIssue(Entity allIssue, Map<String, Object> fieldsToUpdate) {
+    public Entity updateCase(Entity caseEntity, Map<String, Object> fieldsToUpdate) {
 
         List<FieldValue> fields = new ArrayList<FieldValue>();
 
@@ -555,11 +561,11 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         if (fields != null) {
-            allIssue.getGenericEntity().setValues(helper.createGenericEntityArrayOfFieldValue(fields));
+            caseEntity.getGenericEntity().setValues(helper.createGenericEntityArrayOfFieldValue(fields));
         }
 
         UpdateMessage updateMsg = new UpdateMessage();
-        updateMsg.setEntity(allIssue.getGenericEntity());
+        updateMsg.setEntity(caseEntity.getGenericEntity());
 
         ArrayOfBaseMessage messages = helper.createMessage(updateMsg);
 
@@ -575,7 +581,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return allIssue;
+        return caseEntity;
     }
 
     @Override

@@ -75,10 +75,10 @@ public class ClarizenClientTest {
     }
 
     @Test
-    public void testCreateAllIssue() {
+    public void testCreateCase() {
         AllIssueType type = AllIssueType.ISSUE;;
-        when(clarizenClient.createAllIssue(type, SOME_VALUE)).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.createAllIssue(type, SOME_VALUE));
+        when(clarizenClient.createCase(type, SOME_VALUE, createMap())).thenReturn(entity);
+        assertEquals(entity, clarizenConnector.createCase(type, SOME_VALUE, createMap()));
     }
 
     @Test
@@ -148,9 +148,9 @@ public class ClarizenClientTest {
     }
     
     @Test
-    public void testUpdateAllIssue() {
-        when(clarizenClient.updateAllIssue(entity, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.updateAllIssue(entity, createMap()));
+    public void testUpdateCase() {
+        when(clarizenClient.updateCase(entity, createMap())).thenReturn(entity);
+        assertEquals(entity, clarizenConnector.updateCase(entity, createMap()));
     }
 
     @Test

@@ -38,17 +38,21 @@
 </clarizen:update-work-item>
 <!-- END_INCLUDE(clarizen:update-work-item) -->
 
-<!-- BEGIN_INCLUDE(clarizen:create-all-issue) -->
-<clarizen:create-all-issue title="New issue" issueType="ISSUE"/>
-<!-- END_INCLUDE(clarizen:create-all-issue) -->
+<!-- BEGIN_INCLUDE(clarizen:create-case) -->
+<clarizen:create-case title="New issue" issueType="ISSUE"
+    <clarizen:case-fields>
+        <clarizen:case-fields key="Description">New test issue_NEW</clarizen:case-fields>
+    </clarizen:case-fields>
+</clarizen:create-case>
+<!-- END_INCLUDE(clarizen:create-case) -->
 
-<!-- BEGIN_INCLUDE(clarizen:update-all-issue) -->
-<clarizen:update-all-issue issue-ref="#[payload]">
+<!-- BEGIN_INCLUDE(clarizen:update-case) -->
+<clarizen:update-case case-entity-ref="#[payload]">
     <clarizen:fields-to-update>
         <clarizen:fields-to-update key="Description">New test issue010</clarizen:fields-to-update>
     </clarizen:fields-to-update>
-</clarizen:update-all-issue>
-<!-- END_INCLUDE(clarizen:update-all-issue) -->
+</clarizen:update-case>
+<!-- END_INCLUDE(clarizen:update-case) -->
 
 <!-- BEGIN_INCLUDE(clarizen:create-work-item-by-parent-id) -->
 <clarizen:create-work-item-by-parent-id parentId="#[payload]" workItemName="NEW-WORK-ITEM" 

@@ -29,7 +29,6 @@ import org.mule.api.annotations.display.Placement;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
-import org.mule.api.annotations.param.Payload;
 
 import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientFactory;
@@ -237,35 +236,37 @@ public class ClarizenConnector
      * Create a new issue
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-all-issue}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-case}
      *
-     * @param issueType the issue type. the work item type. For further information about the specific values check {@link AllIssueType}
-     * @param title     the issue title
+     * @param caseType  the case type. For further information about the specific values check {@link AllIssueType}
+     * @param title     the case title
+     * @param caseFields the fields to be created. The fields names are the keys of the map.
      * 
-     * @return {@link Entity} Created issue
+     * @return {@link Entity} Created case
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createAllIssue(AllIssueType issueType, String title) {
-        return clarizenClient.createAllIssue(issueType, title);
+    public Entity createCase(AllIssueType caseType, String title,
+            @Placement(group = "Fields") Map<String, Object> caseFields) {
+        return clarizenClient.createCase(caseType, title, caseFields);
     }
     
     /**
      * Update an issue
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-all-issue}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-case}
      *
-     * @param issue             the issue to be updated
+     * @param caseEntity        the case to be updated
      * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
      * 
-     * @return {@link Entity} Updated issue
+     * @return {@link Entity} Updated case
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity updateAllIssue(Entity issue,
+    public Entity updateCase(Entity caseEntity,
             @Placement(group = "Fields") Map<String, Object> fieldsToUpdate) {
-        return clarizenClient.updateAllIssue(issue, fieldsToUpdate);
+        return clarizenClient.updateCase(caseEntity, fieldsToUpdate);
     }
     
     /**
