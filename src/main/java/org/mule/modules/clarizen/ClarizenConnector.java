@@ -120,8 +120,8 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity getWorkItemById(WorkItemType workItemType, String workItemId, 
-                                         @Placement(group = "Fields") List<String> fieldsToRetrieve) {
+    public Entity getWorkItemById(WorkItemType workItemType, String workItemId,  
+            @Placement(group = "Fields") List<String> fieldsToRetrieve) {
         return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve);
     }
     
@@ -209,7 +209,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createEntity(String entityType, String entityId,
+    public Entity createEntity(String entityType, @Optional String entityId,
             @Placement(group = "Fields") Map<String, Object> entityFields) {
         return clarizenClient.createEntity(entityType, entityId, entityFields);
     }
@@ -284,8 +284,8 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState, 
-                                      WorkItemType workItemType, WorkItemFilter workItemFilter) {
+    public ArrayOfEntity workItemsQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
+            WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, workItemFilter);
     }
     
@@ -305,7 +305,8 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity entityQuery(List<String> fieldsToRetrieve, String queryTypeName, String expression, 
+    public ArrayOfEntity entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
+            String queryTypeName, String expression, 
             Operator operator, String conditionValue) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, expression, operator, conditionValue);
     }
@@ -326,7 +327,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity issueQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
+    public ArrayOfEntity issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
             String expression, Operator operator, String conditionValue) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, expression, operator, conditionValue);
     }
@@ -384,7 +385,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity getMyWorkItems(List<String> fieldsToRetrieve,
+    public ArrayOfEntity getMyWorkItems(@Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter) {
         return clarizenClient.getMyWorkItems(fieldsToRetrieve, workItemState, workItemType, 
