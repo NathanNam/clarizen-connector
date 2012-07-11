@@ -35,6 +35,7 @@ import org.mule.modules.clarizen.api.ClarizenClientFactory;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
+import org.mule.modules.clarizen.api.model.EntityMetadataDescription;
 import org.mule.modules.clarizen.api.model.Login;
 import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
@@ -247,7 +248,7 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity createCase(AllIssueType caseType, String title,
-            @Placement(group = "Fields") Map<String, Object> caseFields) {
+            @Optional @Placement(group = "Fields") Map<String, Object> caseFields) {
         return clarizenClient.createCase(caseType, title, caseFields);
     }
     
@@ -306,7 +307,7 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            String queryTypeName, @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
+            String queryTypeName, @Optional @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize);
     }
     
@@ -325,7 +326,7 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
-            @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
+            @Optional @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize);
     }
 
@@ -389,6 +390,35 @@ public class ClarizenConnector
                 workItemFilter, pageSize);
     }
 
+    /**
+     * Returns the description of an entity
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:describe-entity}
+     *
+     * @param typeName          entity type to be described
+     * @return {@link EntityMetadataDescription} Entity description
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public EntityMetadataDescription describeEntity(String typeName) {
+        return clarizenClient.describeEntity(typeName);
+    }
+    
+    /**
+     * Returns the list of entities
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:list-entities}
+     *
+     * @return List of entities
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public List<String> listEntities() {
+        return clarizenClient.listEntities();
+    }
+    
     public ClarizenClient getClarizenClient() {
         return clarizenClient;
     }

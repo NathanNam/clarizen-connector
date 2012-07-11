@@ -16,11 +16,14 @@ import java.util.Map;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
+import org.mule.modules.clarizen.api.model.EntityMetadataDescription;
 import org.mule.modules.clarizen.api.model.Login;
 import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
+
+import com.clarizen.api.metadata.ListEntitiesResult;
 
 public interface ClarizenClient {
 
@@ -54,7 +57,11 @@ public interface ClarizenClient {
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter, Integer pageSize);
 
+    EntityMetadataDescription describeEntity(String typeName);
+    
     Entity getWorkItemById(WorkItemType workItemType, String workItemId, List<String> fieldsToRetrieve);
+    
+    List<String> listEntities();
     
     Login login(String username, String password, String applicationId, String partnerId);
     

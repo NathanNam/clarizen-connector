@@ -109,3 +109,11 @@
     </clarizen:fields-to-retrieve>
 </clarizen:work-items-query>
 <!-- END_INCLUDE(clarizen:work-items-query) -->
+
+<!-- BEGIN_INCLUDE(clarizen:describe-entity) -->
+<clarizen:describe-entity typeName="TASK" />
+<!-- END_INCLUDE(clarizen:describe-entity) -->
+
+<!-- BEGIN_INCLUDE(clarizen:list-entities) -->
+<clarizen:list-entities />
+<!-- END_INCLUDE(clarizen:list-entities) -->

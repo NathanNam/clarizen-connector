@@ -29,6 +29,7 @@ import org.mule.modules.clarizen.api.ClarizenServiceProvider;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
+import org.mule.modules.clarizen.api.model.EntityMetadataDescription;
 import org.mule.modules.clarizen.api.model.Login;
 import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
@@ -45,6 +46,7 @@ import com.clarizen.api.GenericEntity;
 import com.clarizen.api.IClarizen;
 import com.clarizen.api.IClarizenExecuteSessionTimeoutFailureFaultFaultMessage;
 import com.clarizen.api.IClarizenLoginLoginFailureFaultFaultMessage;
+import com.clarizen.api.IClarizenMetadataSessionTimeoutFailureFaultFaultMessage;
 import com.clarizen.api.IClarizenQuerySessionTimeoutFailureFaultFaultMessage;
 import com.clarizen.api.LoginOptions;
 import com.clarizen.api.LoginResult;
@@ -54,6 +56,10 @@ import com.clarizen.api.RetrieveResult;
 import com.clarizen.api.SessionHeader;
 import com.clarizen.api.StringList;
 import com.clarizen.api.UpdateMessage;
+import com.clarizen.api.metadata.DescribeEntitiesMessage;
+import com.clarizen.api.metadata.DescribeEntitiesResult;
+import com.clarizen.api.metadata.ListEntitiesMessage;
+import com.clarizen.api.metadata.ListEntitiesResult;
 import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
 import com.clarizen.api.projectmanagement.WorkItemsQuery;
 import com.clarizen.api.queries.EntityQuery;
@@ -420,6 +426,30 @@ public class DefaultClarizenClient implements ClarizenClient {
         return new Entity(workItem);
     }
     
+    @Override
+    public EntityMetadataDescription describeEntity(String typeName) {
+
+        DescribeEntitiesMessage describeEntityMsg = new DescribeEntitiesMessage();
+        StringList types = new StringList();
+        types.getString().add(typeName);
+        describeEntityMsg.setTypeNames(types);
+        
+        DescribeEntitiesResult result;
+        try {
+            result = ((DescribeEntitiesResult) getService().metadata(describeEntityMsg));
+            
+            if (!result.isSuccess()) {
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
+            }
+            
+        } catch (IClarizenMetadataSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return new EntityMetadataDescription(result.getEntityDescriptions().getEntityDescription().get(0));
+    }
+    
     public ClarizenClientHelper getHelper() {
         return helper;
     }
@@ -518,6 +548,27 @@ public class DefaultClarizenClient implements ClarizenClient {
         return new Entity((GenericEntity) result.getEntity());
     }
 
+    @Override
+    public List<String> listEntities() {
+
+        ListEntitiesMessage listEntityMsg = new ListEntitiesMessage();
+        
+        ListEntitiesResult result;
+        try {
+            result = ((ListEntitiesResult) getService().metadata(listEntityMsg));
+            
+            if (!result.isSuccess()) {
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
+            }
+            
+        } catch (IClarizenMetadataSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return result.getTypeNames().getString();
+    }
+    
     @Override
     public Login login(String username, String password, String applicationId, String partnerId) {
         
