@@ -639,7 +639,7 @@ Summary:
             <a href="../../../../../java/org/mule/modules/clarizen/api/model/Entity.html">Entity</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#addWorkItemResources(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String)">addWorkItemResources</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/model/Entity.html">Entity</a> workItem, String resourceId, String units)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#addWorkItemResources(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">addWorkItemResources</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/model/Entity.html">Entity</a> workItem, String resourceId, Map&lt;String,&nbsp;Object&gt; fields)</nobr>
         
         <div class="jd-descrdiv">Update a resource to a work item
  
@@ -1751,7 +1751,7 @@ From class
 
 
 
-<A NAME="addWorkItemResources(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String)"></A>
+<A NAME="addWorkItemResources(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1764,7 +1764,7 @@ From class
         <a href="../../../../../java/org/mule/modules/clarizen/api/model/Entity.html">Entity</a>
       </span>
       <span class="sympad">addWorkItemResources</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/model/Entity.html">Entity</a> workItem, String resourceId, String units)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/model/Entity.html">Entity</a> workItem, String resourceId, Map&lt;String,&nbsp;Object&gt; fields)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1792,8 +1792,8 @@ From class
           <td>The resource id to be added</td>
         </tr>
         <tr>
-          <th>units</td>
-          <td>Invested percent of work of specific user. Default value is 100</td>
+          <th>fields</td>
+          <td>The fields to be created. The fields names are the keys of the map.</td>
         </tr>
       </table>
   </div>
