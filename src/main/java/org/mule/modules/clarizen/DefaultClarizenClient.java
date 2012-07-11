@@ -41,6 +41,7 @@ import org.mule.util.UUID;
 import com.clarizen.api.ArrayOfBaseMessage;
 import com.clarizen.api.Clarizen;
 import com.clarizen.api.CreateMessage;
+import com.clarizen.api.CreateResult;
 import com.clarizen.api.FieldValue;
 import com.clarizen.api.GenericEntity;
 import com.clarizen.api.IClarizen;
@@ -80,23 +81,27 @@ public class DefaultClarizenClient implements ClarizenClient {
     
     @Override
     public Entity addWorkItemResources(Entity workItem,
-            String resourceId, String units) {
+            String resourceId, Map<String, Object> fields) {
         
         GenericEntity humanResource = new GenericEntity();
         humanResource.setId(helper.createBaseEntityId("ResourceLink", null));
         GenericEntity user = new GenericEntity();
         user.setId(helper.createBaseEntityId("User", resourceId));        
         
-        List<FieldValue> fields = new ArrayList<FieldValue>();
+        List<FieldValue> fieldList = new ArrayList<FieldValue>();
         FieldValue fieldWorkItem = helper.createFieldValue("WorkItem", workItem.getGenericEntity());
         FieldValue fieldResource = helper.createFieldValue("Resource", user);
-        FieldValue fieldUnits = helper.createFieldValue("Units", units);
         
-        fields.add(fieldWorkItem);
-        fields.add(fieldResource);
-        fields.add(fieldUnits);
+        if (fields != null) {
+            for (Map.Entry<String, Object> fieldValue : fields.entrySet()) {
+                fieldList.add(helper.createFieldValue(fieldValue.getKey(), fieldValue.getValue()));
+            }
+        }
         
-        humanResource.setValues(helper.createGenericEntityArrayOfFieldValue(fields));
+        fieldList.add(fieldWorkItem);
+        fieldList.add(fieldResource);
+        
+        humanResource.setValues(helper.createGenericEntityArrayOfFieldValue(fieldList));
         
         CreateMessage workItemResourceMessage = new CreateMessage();
         workItemResourceMessage.setEntity(humanResource);
@@ -140,8 +145,9 @@ public class DefaultClarizenClient implements ClarizenClient {
         CreateMessage caseMessage = new CreateMessage();
         caseMessage.setEntity(caseEntity);
         
+        CreateResult result;
         try {
-            Result result = getService().execute(helper.createMessage(caseMessage)).getResult().get(0);
+            result = (CreateResult) getService().execute(helper.createMessage(caseMessage)).getResult().get(0);
             
             if (!result.isSuccess()) {
                 throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
@@ -152,9 +158,14 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
+        if (result.getId() != null) {
+            caseEntity.setId(result.getId());            
+        }
+        
         return new Entity(caseEntity);
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public Entity createEntity(String entityType, String entityId,
             Map<String, Object> entityFields) {
@@ -177,8 +188,9 @@ public class DefaultClarizenClient implements ClarizenClient {
         ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
         messages.getBaseMessage().add(entityMessage);
         
+        List<CreateResult> results;
         try {
-            List<Result> results = getService().execute(messages).getResult();
+            results = (List) getService().execute(messages).getResult();
             
             for (Result result: results) {
                 if (!result.isSuccess()) {
@@ -189,6 +201,10 @@ public class DefaultClarizenClient implements ClarizenClient {
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        if(results.get(0).getId() != null) {
+            genericEntity.setId(results.get(0).getId());
         }
         
         return new Entity(genericEntity);
@@ -215,7 +231,9 @@ public class DefaultClarizenClient implements ClarizenClient {
             query.setFields(fields);
         }
 
-        query.setWhere(condition.getCondition());
+        if (condition != null) {
+            query.setWhere(condition.getCondition());
+        }
         
         QueryResult queryResult;
         query.setPaging(new Paging());
@@ -263,7 +281,9 @@ public class DefaultClarizenClient implements ClarizenClient {
             query.setFields(fields);
         }
 
-        query.setWhere(condition.getCondition());
+        if (condition != null) {
+            query.setWhere(condition.getCondition());
+        }
         
         QueryResult queryResult;
         query.setPaging(new Paging());
@@ -290,6 +310,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         return new ArrayOfEntity(listResults);        
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public Entity createWorkItem(Entity parentEntity, WorkItemType workItemType, 
                                         String workItemName, Map<String, Object> workItemFields) {
@@ -335,8 +356,9 @@ public class DefaultClarizenClient implements ClarizenClient {
         messages.getBaseMessage().add(workItemMessage);
         messages.getBaseMessage().add(workItemLinkMessage);
         
+        List<CreateResult> results;
         try {
-            List<Result> results = getService().execute(messages).getResult();
+            results = (List) getService().execute(messages).getResult();
             
             for (Result result: results) {
                 if (!result.isSuccess()) {
@@ -349,6 +371,10 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
+        if (results.get(0).getId() != null) {
+            workItem.setId(results.get(0).getId());
+        }
+
         return new Entity(workItem);
     }
 
@@ -361,6 +387,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         return createWorkItemSingleValues(new Entity(parentEntity), workItemType, workItemName, workItemDescription, startDate);
     }
     
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public Entity createWorkItemSingleValues(Entity parentEntity, WorkItemType workItemType, 
                                         String workItemName, String workItemDescription, String startDate) {
@@ -409,8 +436,9 @@ public class DefaultClarizenClient implements ClarizenClient {
         messages.getBaseMessage().add(workItemMessage);
         messages.getBaseMessage().add(workItemLinkMessage);
         
+        List<CreateResult> results;
         try {
-            List<Result> results = getService().execute(messages).getResult();
+            results = (List) getService().execute(messages).getResult();
             
             for (Result result: results) {
                 if (!result.isSuccess()) {
@@ -423,6 +451,9 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
+        if (results.get(0).getId() != null) {
+            workItem.setId(results.get(0).getId());
+        }
         return new Entity(workItem);
     }
     
