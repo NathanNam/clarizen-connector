@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="Clarizen Example">
-    <global-element type="http://www.mulesoft.org/schema/mule/clarizen/config" name="Clarizen" entity-id="Clarizen#1">
+    <global-element type="http://www.mulesoft.org/schema/mule/clarizen/config" name="Clarizen" entity-id="0cc19ea4-4458-48cf-97f2-2c79e84d4f2d">
         <properties>
             <property value="Clarizen" name="name"/>
             <property value="${clarizen.user}" name="connectionUser"/>
@@ -9,26 +9,26 @@
             <property value="${clarizen.partnerId}" name="partnerId"/>
         </properties>
     </global-element>
-    <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="Entity" entity-id="DataMapper#1">
+    <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="Entity" entity-id="1d4126ba-2f79-4bb3-aac9-94c582e9901b">
         <properties>
             <property value="Entity" name="name"/>
             <property value="entity_1.grf" name="transformationGraphPath"/>
         </properties>
     </global-element>
-    <global-element type="http://www.springframework.org/schema/context/property-placeholder" name="Property Placeholder" entity-id="Property Placeholder#1">
+    <global-element type="http://www.springframework.org/schema/context/property-placeholder" name="Property Placeholder" entity-id="b7867769-d5e1-44d3-a044-9e67d5ff8905">
         <properties>
             <property value="mule.properties" name="location"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="Clarizen_Example_UpdateTask" entity-id="flow#1">
+    <flow SubFlow="false" name="Clarizen_Example_UpdateTask">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
         </properties>
-        <lane hadOnlyOneElement="false" entity-id="compartment-lane#1">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
+        <lane hadOnlyOneElement="false" entity-id="1cb13de1-c53b-4059-9bd2-0b7340f67a85">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="028ce112-986a-4fe3-a5f9-7dcd56e857ce">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
@@ -56,11 +56,12 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="d31a3bb8-4478-405d-a8fb-55ab3bbed5d2">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
+                    <property name="pageSize"/>
                     <property value="ALL" name="workItemFilter"/>
                     <property value="ALL" name="workItemState"/>
                     <property value="TASK" name="workItemType"/>
@@ -76,7 +77,7 @@
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" name="Data-mapper" entity-id="DataMapper#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" name="Data-mapper" entity-id="de8c2b87-17e8-48f7-a7a5-ca203fa98b8a">
                 <properties>
                     <property value="Entity" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
@@ -84,40 +85,43 @@
                     <property name="input-ref"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#3">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="5188a106-059d-4ce3-ba81-e5dc41ad5d4d">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/update-task" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/update-work-item" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="#[payload]" name="task-ref"/>
+                    <property value="#[payload]" name="workItem-ref"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-updates;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-update;1">
-                            <property value="96" name="value"/>
-                            <property value="percentCompleted" name="key"/>
-                        </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-task-fields-to-update;2">
-                            <property value="TASK DES MOD6" name="value"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-work-item-fields-to-updates;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-work-item-fields-to-update;1">
+                            <property value="NEW TASK_MOD_DESC" name="value"/>
                             <property value="Description" name="key"/>
                         </property-collection>
                     </property-collection>
                 </properties>
             </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="87252a76-62e8-45a7-9c22-69ae3266b01a">
+                <properties>
+                    <property value="Task updated! #[payload.genericEntity.id]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                </properties>
+            </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Clarizen_ExampleFlow_Create_WorkItem" entity-id="flow#2">
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_Create_WorkItem">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
         </properties>
-        <lane hadOnlyOneElement="false" entity-id="compartment-lane#2">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#2">
+        <lane hadOnlyOneElement="false" entity-id="ff4e6254-2b30-4c3d-a6d7-970dd48ad787">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="d4d80714-e901-42b8-b844-66bf4a3b99d0">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
@@ -145,11 +149,12 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#4">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="3cd74435-45e4-4294-b920-838772ab3664">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
+                    <property name="pageSize"/>
                     <property value="ALL" name="workItemFilter"/>
                     <property value="ALL" name="workItemState"/>
                     <property value="PROJECT" name="workItemType"/>
@@ -165,7 +170,7 @@
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Get Entity" entity-id="Groovy#1">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Get Entity" entity-id="46f0b117-385b-4d68-85a9-87a09828e789">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
@@ -177,38 +182,45 @@
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#5">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="c849cecf-f8a4-4c07-9ed6-623230305841">
                 <properties>
-                    <property value="Clarizen" name="config-ref"/>
+                    <property value="" name="connectionUser"/>
+                    <property value="" name=""/>
+                    <property value="" name="connectionPassword"/>
+                    <property value="TASK TEST_for_testing" name="workItemName"/>
+                    <property value="" name="partnerId"/>
+                    <property value="" name="applicationId"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/create-work-item" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="#[payload]" name="parentEntity-ref"/>
-                    <property value="TASK TEST_RENEW" name="workItemName"/>
                     <property value="TASK" name="workItemType"/>
-                    <property name=""/>
-                    <property name="connectionUser"/>
-                    <property name="connectionPassword"/>
-                    <property name="applicationId"/>
-                    <property name="partnerId"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-work-item-work-item-fieldss;0">
+                    <property value="#[payload]" name="parentEntity-ref"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-work-item-work-item-fieldss;1">
                         <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-work-item-work-item-fields;1">
                             <property value="DescrTASK" name="value"/>
                             <property value="Description" name="key"/>
                         </property-collection>
                     </property-collection>
                 </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="4167c7c2-eea2-4a4f-9d8b-b1bc8c977a6b">
+                <properties>
+                    <property value="Workitem created! #[payload.genericEntity.id]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Clarizen_ExampleFlow_UpdateWorkItem" entity-id="flow#3">
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_UpdateWorkItem">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
         </properties>
-        <lane hadOnlyOneElement="false" entity-id="compartment-lane#3">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#3">
+        <lane hadOnlyOneElement="false" entity-id="f20b04e1-e213-4025-8383-ca318a2090bf">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="018c1f37-fc4a-48fd-9797-5736f69ddca7">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
@@ -236,7 +248,7 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#6">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="0c9e37ef-2f8f-4393-9723-bb64c970ed01">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
@@ -255,7 +267,7 @@
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#7">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="0a8b4668-fea6-4d69-aedf-1843a91b03fa">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/update-work-item" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
@@ -274,17 +286,24 @@
                     </property-collection>
                 </properties>
             </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="100cc45c-4c4e-40c7-bbdd-a1e2109ddf1c">
+                <properties>
+                    <property value="WorkItem updated! #[payload.genericEntity.id]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                </properties>
+            </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Clarizen_ExampleFlow_UpdateIssue" entity-id="flow#4">
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_UpdateIssue">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
         </properties>
-        <lane hadOnlyOneElement="false" entity-id="compartment-lane#4">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#4">
+        <lane hadOnlyOneElement="false" entity-id="bcec001a-6257-4945-9592-b11004f225f0">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="69644d84-5207-44a9-99a9-fc3302481b94">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
@@ -312,50 +331,63 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#8">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="5ec340d7-c737-4124-8899-a055bc2ec88f">
                 <properties>
+                    <property value="" name="connectionUser"/>
+                    <property value="" name=""/>
+                    <property value="" name="connectionPassword"/>
+                    <property value="ISSUE" name="caseType"/>
+                    <property value="New issue - for testing - 3" name="title"/>
+                    <property value="" name="partnerId"/>
+                    <property value="" name="applicationId"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-case" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-all-issue" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="New issue - test099" name="title"/>
-                    <property value="ISSUE" name="issueType"/>
-                    <property name=""/>
-                    <property name="connectionUser"/>
-                    <property name="connectionPassword"/>
-                    <property name="applicationId"/>
-                    <property name="partnerId"/>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#9">
-                <properties>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/update-all-issue" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="#[payload]" name="issue-ref"/>
-                    <property name=""/>
-                    <property name="connectionUser"/>
-                    <property name="connectionPassword"/>
-                    <property name="applicationId"/>
-                    <property name="partnerId"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-all-issue-fields-to-updates;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-all-issue-fields-to-update;1">
-                            <property value="New test issue_ISSUE2" name="value"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-case-case-fieldss;1">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-case-case-fields;1">
+                            <property value="Description" name="value"/>
                             <property value="Description" name="key"/>
                         </property-collection>
                     </property-collection>
                 </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="ad2d5bcd-ef6c-4549-9768-b691c392f721">
+                <properties>
+                    <property value="" name="connectionUser"/>
+                    <property value="" name=""/>
+                    <property value="" name="connectionPassword"/>
+                    <property value="" name="partnerId"/>
+                    <property value="" name="applicationId"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/update-case" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="#[payload]" name="caseEntity-ref"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-case-fields-to-updates;1">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/update-case-fields-to-update;517124342">
+                            <property value="New test issue - for testing -- 33" name="value"/>
+                            <property value="Description" name="key"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="20e70ee5-0495-4a28-b74b-6d7d6d410d3b">
+                <properties>
+                    <property value="Issue updated!" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Clarizen_ExampleFlow_AddResource" entity-id="flow#5">
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_AddResource">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
         </properties>
-        <lane hadOnlyOneElement="false" entity-id="compartment-lane#5">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#5">
+        <lane hadOnlyOneElement="false" entity-id="c0365e87-eaed-498e-8c30-5bb2c1bba804">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="872c8ac9-a9f1-4b7b-afa1-e4b9c90d4f34">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
@@ -383,12 +415,12 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#10">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="ea85757d-7a6f-40cc-904f-036257cc3218">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="22222255555" name="entityId"/>
+                    <property name="entityId"/>
                     <property value="User" name="entityType"/>
                     <property name=""/>
                     <property name="connectionUser"/>
@@ -396,37 +428,46 @@
                     <property name="applicationId"/>
                     <property name="partnerId"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fieldss;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;2">
-                            <property value="newuser2@user2.com" name="value"/>
-                            <property value="LastName" name="key"/>
-                        </property-collection>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;1">
-                            <property value="newuser2@user2.com" name="value"/>
+                            <property value="test-user-20@user3.com" name="value"/>
                             <property value="FirstName" name="key"/>
                         </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;4">
-                            <property value="newuser2@user2.com" name="value"/>
-                            <property value="Email" name="key"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;2">
+                            <property value="test-user-20@user3.com" name="value"/>
+                            <property value="LastName" name="key"/>
                         </property-collection>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;3">
-                            <property value="newuser2@user2.com" name="value"/>
+                            <property value="test-user-20@user3.com" name="value"/>
                             <property value="DisplayName" name="key"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-entity-fields;4">
+                            <property value="test-user-20@user3.com" name="value"/>
+                            <property value="Email" name="key"/>
                         </property-collection>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="UserId" entity-id="Variable#1">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="788c6c4a-e6cb-4e82-b0c0-6ecbb520883d">
+                <properties>
+                    <property value="Created user #[payload.genericEntity.id.value]" name="message"/>
+                    <property value="" name="category"/>
+                    <property value="INFO" name="level"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="UserId" entity-id="c510b06b-2f94-42e8-88cc-e1482934ea10">
                 <properties>
                     <property value="http://www.mulesoft.org/schema/mule/core/set-variable" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="userId" name="variableName"/>
                     <property value="#[payload.genericEntity.id.value]" name="value"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#11">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="635f22fb-a842-45af-9e8b-bd97c7005b89">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
+                    <property name="pageSize"/>
                     <property value="ALL" name="workItemFilter"/>
                     <property value="ALL" name="workItemState"/>
                     <property value="ALL" name="workItemType"/>
@@ -442,44 +483,60 @@
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Get Entity" entity-id="Groovy#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Get Entity" entity-id="3e9574c1-7fc7-4b46-a2f9-006751cb9c1c">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mimeType"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return new Entity((GenericEntity) payload.entityList.get(0))" name="text"/>
+                        <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return new Entity(payload.entityList.get(0))" name="text"/>
                         <property value="Groovy" name="engine"/>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#12">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="2662e7a9-b6ba-471b-855d-acfb5f5c971d">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/add-work-item-resources" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="#[payload]" name="workItem-ref"/>
                     <property value="#[flowVars['userId']]" name="resourceId"/>
-                    <property value="50" name="units"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/add-work-item-resources-fieldss;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/add-work-item-resources-fields;1">
+                            <property value="35" name="value"/>
+                            <property value="Units" name="key"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/add-work-item-resources-fields;2">
+                            <property value="#[groovy: new com.clarizen.api.Duration( unit:&quot;MINUTES&quot;, value: 10) ]" name="value"/>
+                            <property value="Work" name="key"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="b58c11d2-7935-48a3-8996-5f08d38b016f">
+                <properties>
+                    <property value="Resource added!" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Clarizen_ExampleFlow_EntityQuery" entity-id="flow#6">
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_EntityQuery">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
         </properties>
-        <lane hadOnlyOneElement="false" entity-id="compartment-lane#6">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#6">
+        <lane hadOnlyOneElement="false" entity-id="39d245a1-1da0-49f2-8df8-6bafde256e1e">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="da1a3dc7-9dec-4261-bdc9-d0226a04eedb">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
@@ -487,7 +544,7 @@
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
-                    <property value="create-query" name="path"/>
+                    <property value="create-entity-query" name="path"/>
                     <property name="method"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
@@ -507,57 +564,68 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#13">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" name="Create condition" entity-id="450ae534-e4d4-4350-851f-16e7d090aa31">
+                <properties>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="import org.mule.modules.clarizen.api.model.QueryCondition&#xA;import com.clarizen.api.queries.*&#xA;import com.clarizen.api.ConditionList&#xA;&#xA;return new QueryCondition(&#xA;new Or(&#xA;&#x9;conditions: &#xA;&#x9;&#x9;new ConditionList( condition: [ new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--107&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--108&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ])&#xA;&#x9;)&#xA;)" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="import org.mule.modules.clarizen.api.model.QueryCondition&#xA;import com.clarizen.api.queries.*&#xA;import com.clarizen.api.ConditionList&#xA;&#xA;return new QueryCondition(&#xA;new Or(&#xA;&#x9;conditions: &#xA;&#x9;&#x9;new ConditionList( condition: [ new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--107&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--108&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ])&#xA;&#x9;)&#xA;)" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="b36bc127-13db-4411-83d0-89d1b6d4ea20">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="mail" name="conditionValue"/>
-                    <property value="Email" name="expression"/>
-                    <property value="User" name="queryTypeName"/>
-                    <property value="CONTAINS" name="operator"/>
+                    <property value="TASK" name="queryTypeName"/>
+                    <property name="condition-ref"/>
+                    <property name="pageSize"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieves;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;1">
-                            <property value="DisplayName" name="value"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
+                            <property value="Description" name="value"/>
                         </property-collection>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="Groovy#3">
+            <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="Foreach" entity-id="4adf1411-149d-473b-b7c0-bd01a2d51835">
                 <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
-                    <property name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return new Entity((GenericEntity) payload.entityList.get(0))" name="text"/>
-                        <property value="Groovy" name="engine"/>
-                    </property-collection>
+                    <property value="#[payload.entityList]" name="collection"/>
+                    <property name="counterVariableName"/>
+                    <property name="batchSize"/>
+                    <property name="rootMessageVariableName"/>
                 </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#1">
-                <properties>
-                    <property value="#[payload.genericEntity.id.value]" name="message"/>
-                    <property value="INFO" name="level"/>
-                    <property name="category"/>
-                </properties>
-            </pattern>
+                <compartment entity-id="3c4d26b7-04de-4f6a-bee1-332f5cce3449">
+                    <lane hadOnlyOneElement="false" entity-id="bf2aa219-b60b-4ab3-ad31-1a422f02c3c3">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="94d6a3b8-e35f-4b11-b15b-742084fce2a3">
+                            <properties>
+<property value="Entity: #[payload.id]" name="message"/>
+<property value="INFO" name="level"/>
+<property name="category"/>
+                            </properties>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </scope>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Clarizen_ExampleFlow_GetEntityFields" entity-id="flow#7">
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_GetEntityFields">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
         </properties>
-        <lane hadOnlyOneElement="false" entity-id="compartment-lane#7">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#7">
+        <lane hadOnlyOneElement="false" entity-id="de8428a6-d2dd-41ca-a132-39cf645677ce">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="459260b4-e974-49ee-a80c-55b4191d82a8">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
@@ -585,71 +653,190 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#14">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" name="Create condition" entity-id="f8252dd5-f5d8-4667-9346-d1bbfe2bdf63">
+                <properties>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="import org.mule.modules.clarizen.api.model.QueryCondition&#xA;import com.clarizen.api.queries.*&#xA;import com.clarizen.api.ConditionList&#xA;&#xA;return new QueryCondition(&#xA;new Or(&#xA;&#x9;conditions: &#xA;&#x9;&#x9;new ConditionList( condition: [ new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--107&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--108&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ])&#xA;&#x9;)&#xA;)" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="import org.mule.modules.clarizen.api.model.QueryCondition&#xA;import com.clarizen.api.queries.*&#xA;import com.clarizen.api.ConditionList&#xA;&#xA;return new QueryCondition(&#xA;new Or(&#xA;&#x9;conditions: &#xA;&#x9;&#x9;new ConditionList( condition: [ new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--107&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;new Compare(leftExpression: new FieldExpression( fieldName: &quot;Name&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;rightExpression: new ConstantExpression ( value: &quot;New Task testing--108&quot; ),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;operator: &quot;CONTAINS&quot; )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ])&#xA;&#x9;)&#xA;)" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="49e72fd1-da70-4dd0-898d-4d9007fb7ae4">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="NEW" name="conditionValue"/>
-                    <property value="Name" name="expression"/>
-                    <property value="Task" name="queryTypeName"/>
-                    <property value="CONTAINS" name="operator"/>
+                    <property value="TASK" name="queryTypeName"/>
+                    <property value="#[payload]" name="condition-ref"/>
+                    <property name="pageSize"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieves;0">
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;2">
-                            <property value="Description" name="value"/>
-                        </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/create-entity-query-fields-to-retrieve;1">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
                             <property value="Name" name="value"/>
                         </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;2">
+                            <property value="Description" name="value"/>
+                        </property-collection>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="Groovy#4">
+            <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="Foreach" entity-id="b44d424e-7355-4480-ab0d-b1ed6b2515f9">
                 <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
+                    <property value="#[payload.entityList]" name="collection"/>
+                    <property name="counterVariableName"/>
+                    <property name="batchSize"/>
+                    <property name="rootMessageVariableName"/>
+                </properties>
+                <compartment entity-id="23a11f89-1936-4f4e-8de4-ebcd0433ba2d">
+                    <lane hadOnlyOneElement="false" entity-id="407d2640-a7ac-413c-9e43-fa8d50b1fc8e">
+                        <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="Foreach" entity-id="61820044-fa66-4b45-9475-db443e28c05a">
+                            <properties>
+<property value="payload.values.fieldValue" name="collection"/>
+<property name="counterVariableName"/>
+<property name="batchSize"/>
+<property name="rootMessageVariableName"/>
+                            </properties>
+                            <compartment entity-id="f96595ec-6ae2-48d5-9641-45026e5976a2">
+<lane hadOnlyOneElement="false" entity-id="ebebf584-e066-4b29-ab61-8345a1ca8b36">
+    <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="7db520e1-6e35-4569-8f9d-a6fd6553f94e">
+        <properties>
+            <property value="The field name is #[groovy:payload.fieldName], the field value is #[groovy:payload.value]" name="message"/>
+            <property value="INFO" name="level"/>
+            <property name="category"/>
+        </properties>
+    </pattern>
+</lane>
+                            </compartment>
+                        </scope>
+                    </lane>
+                </compartment>
+            </scope>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_ListEntities">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane hadOnlyOneElement="false" entity-id="39bcc46f-f848-4604-93b6-3f67de251ded">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="99ef2123-10d2-42de-8613-be778a2e425d">
+                <properties>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8090" name="port"/>
+                    <property value="list-entities" name="path"/>
+                    <property name="method"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return payload.entityList" name="text"/>
-                        <property value="Groovy" name="engine"/>
-                    </property-collection>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="b123ab9d-8c4b-4cad-9c0c-d1ac2c92f34c">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/list-entities" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter" entity-id="Collection Splitter#1">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter" entity-id="1db8a85e-e871-4702-b0c6-50cd14b24252">
                 <properties>
                     <property name="enableCorrelation"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="Groovy#5">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="cc3b864b-3ecc-41d4-ae52-bd0da512fb6c">
                 <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
-                    <property name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="import com.clarizen.api.GenericEntity&#xA;import org.mule.modules.clarizen.api.model.Entity;&#xA;&#xA;return payload.values.fieldValue" name="text"/>
-                        <property value="Groovy" name="engine"/>
-                    </property-collection>
+                    <property value="#[payload]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter" entity-id="Collection Splitter#2">
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="Clarizen_ExampleFlow_DescribeEntity">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane hadOnlyOneElement="false" entity-id="16941e0c-70df-4709-a49c-8239e40e9900">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="83695cb4-b9d3-4fcc-984b-345e20ba864c">
                 <properties>
-                    <property name="enableCorrelation"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8090" name="port"/>
+                    <property value="describe-entities" name="path"/>
+                    <property name="method"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="edb16f80-393a-42fa-9974-c76ae080464d">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/describe-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="TASK" name="typeName"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="77f0861b-db5f-4e30-aae6-809ef6c13e10">
                 <properties>
-                    <property value="The field name is #[groovy:payload.fieldName], the field value is #[groovy:payload.value]" name="message"/>
+                    <property value="The entity typeName is #[payload.entityDescription.typeName]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
                 </properties>
