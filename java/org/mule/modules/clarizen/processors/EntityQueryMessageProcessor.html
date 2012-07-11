@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  WorkItemsQueryMessageProcessor
+  EntityQueryMessageProcessor
 
 
 | Clarizen Cloud Connector
@@ -250,7 +250,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemMessageProcessor.html">CreateWorkItemMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemSingleValuesMessageProcessor.html">CreateWorkItemSingleValuesMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DescribeEntityMessageProcessor.html">DescribeEntityMessageProcessor</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetMyWorkItemsMessageProcessor.html">GetMyWorkItemsMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetWorkItemByIdMessageProcessor.html">GetWorkItemByIdMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/IssueQueryMessageProcessor.html">IssueQueryMessageProcessor</a></li>
@@ -263,7 +263,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateTaskWithSingleValuesMessageProcessor.html">UpdateTaskWithSingleValuesMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateWorkItemMessageProcessor.html">UpdateWorkItemMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateWorkItemProgressMessageProcessor.html">UpdateWorkItemProgressMessageProcessor</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html">WorkItemsQueryMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html">WorkItemsQueryMessageProcessor</a></li>
       </ul>
     </li>
               
@@ -425,7 +425,7 @@ Summary:
      
     
     class
-<h1>WorkItemsQueryMessageProcessor</h1>
+<h1>EntityQueryMessageProcessor</h1>
 
 
 
@@ -475,7 +475,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.clarizen.processors.WorkItemsQueryMessageProcessor</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.clarizen.processors.EntityQueryMessageProcessor</td>
     </tr>
     
 
@@ -491,7 +491,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>WorkItemsQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#workItemsQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer)">workItemsQuery(java.util.List, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>EntityQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#entityQuery(java.util.List<java.lang.String>, java.lang.String, org.mule.modules.clarizen.api.model.QueryCondition, java.lang.Integer)">entityQuery(java.util.List, java.lang.String, org.mule.modules.clarizen.api.model.QueryCondition, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  
 </p>
 
@@ -689,7 +689,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_applicationIdType">_applicationIdType</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_applicationIdType">_applicationIdType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -699,8 +699,8 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_connectionPasswordType">_connectionPasswordType</a></td>
+          <a href="../../../../../../java/org/mule/modules/clarizen/api/model/QueryCondition.html">QueryCondition</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_conditionType">_conditionType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -711,18 +711,40 @@ org.mule.api.lifecycle.Stoppable
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_connectionUserType">_connectionUserType</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_connectionPasswordType">_connectionPasswordType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
       <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_connectionUserType">_connectionUserType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
           
           List&lt;String&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_fieldsToRetrieveType">_fieldsToRetrieveType</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_fieldsToRetrieveType">_fieldsToRetrieveType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Integer</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_pageSizeType">_pageSizeType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -732,8 +754,8 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          Integer</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_pageSizeType">_pageSizeType</a></td>
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_partnerIdType">_partnerIdType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -744,51 +766,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_partnerIdType">_partnerIdType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          <a href="../../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_workItemFilterType">_workItemFilterType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          <a href="../../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_workItemStateType">_workItemStateType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          <a href="../../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#_workItemTypeType">_workItemTypeType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#applicationId">applicationId</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#_queryTypeNameType">_queryTypeNameType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -799,7 +777,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#connectionPassword">connectionPassword</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#applicationId">applicationId</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -810,7 +788,29 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#connectionUser">connectionUser</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#condition">condition</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#connectionPassword">connectionPassword</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#connectionUser">connectionUser</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -821,7 +821,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           ExpressionManager</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#expressionManager">expressionManager</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#expressionManager">expressionManager</a></td>
           <td class="jd-descrcol" width="100%">Mule Expression Manager
  
 </td>
@@ -834,7 +834,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#fieldsToRetrieve">fieldsToRetrieve</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#fieldsToRetrieve">fieldsToRetrieve</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -845,7 +845,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           FlowConstruct</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#flowConstruct">flowConstruct</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#flowConstruct">flowConstruct</a></td>
           <td class="jd-descrcol" width="100%">Flow construct
  
 </td>
@@ -858,7 +858,7 @@ org.mule.api.lifecycle.Stoppable
           static
           
           Logger</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#logger">logger</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#logger">logger</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -869,7 +869,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#moduleObject">moduleObject</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#moduleObject">moduleObject</a></td>
           <td class="jd-descrcol" width="100%">Module object
  
 </td>
@@ -882,7 +882,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           MuleContext</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#muleContext">muleContext</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#muleContext">muleContext</a></td>
           <td class="jd-descrcol" width="100%">Mule Context
  
 </td>
@@ -895,7 +895,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#pageSize">pageSize</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#pageSize">pageSize</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -906,7 +906,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#partnerId">partnerId</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#partnerId">partnerId</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -917,7 +917,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           TemplateParser.PatternInfo</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#patternInfo">patternInfo</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#patternInfo">patternInfo</a></td>
           <td class="jd-descrcol" width="100%">Mule Pattern Info
  
 </td>
@@ -929,55 +929,33 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#queryTypeName">queryTypeName</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
           AtomicInteger</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#retryCount">retryCount</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#retryCount">retryCount</a></td>
           <td class="jd-descrcol" width="100%">Variable used to track how many retries we have attempted on this message processor
  
 </td>
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
           
           int</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#retryMax">retryMax</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#retryMax">retryMax</a></td>
           <td class="jd-descrcol" width="100%">Maximum number of retries that can be attempted.</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#workItemFilter">workItemFilter</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#workItemState">workItemState</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#workItemType">workItemType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
@@ -1006,7 +984,7 @@ org.mule.api.lifecycle.Stoppable
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#WorkItemsQueryMessageProcessor()">WorkItemsQueryMessageProcessor</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#EntityQueryMessageProcessor()">EntityQueryMessageProcessor</a></span>()</nobr>
         
   </td></tr>
 
@@ -1035,7 +1013,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
         
   </td></tr>
 
@@ -1051,7 +1029,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
         
         <div class="jd-descrdiv">Obtains the expression manager from the Mule context and initialises the connector.</div>
   
@@ -1069,7 +1047,7 @@ org.mule.api.lifecycle.Stoppable
             MuleEvent</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
         
         <div class="jd-descrdiv">Invokes the MessageProcessor.</div>
   
@@ -1087,7 +1065,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setApplicationId(java.lang.Object)">setApplicationId</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setApplicationId(java.lang.Object)">setApplicationId</a></span>(Object value)</nobr>
         
         <div class="jd-descrdiv">Sets applicationId</div>
   
@@ -1105,7 +1083,25 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setConnectionPassword(java.lang.Object)">setConnectionPassword</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setCondition(java.lang.Object)">setCondition</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets condition</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setConnectionPassword(java.lang.Object)">setConnectionPassword</a></span>(Object value)</nobr>
         
         <div class="jd-descrdiv">Sets connectionPassword</div>
   
@@ -1113,7 +1109,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1123,7 +1119,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setConnectionUser(java.lang.Object)">setConnectionUser</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setConnectionUser(java.lang.Object)">setConnectionUser</a></span>(Object value)</nobr>
         
         <div class="jd-descrdiv">Sets connectionUser</div>
   
@@ -1131,7 +1127,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1141,7 +1137,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setFieldsToRetrieve(java.lang.Object)">setFieldsToRetrieve</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setFieldsToRetrieve(java.lang.Object)">setFieldsToRetrieve</a></span>(Object value)</nobr>
         
         <div class="jd-descrdiv">Sets fieldsToRetrieve</div>
   
@@ -1149,7 +1145,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1159,7 +1155,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
         
         <div class="jd-descrdiv">Sets flow construct</div>
   
@@ -1167,7 +1163,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1177,7 +1173,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setModuleObject(java.lang.Object)">setModuleObject</a></span>(Object moduleObject)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setModuleObject(java.lang.Object)">setModuleObject</a></span>(Object moduleObject)</nobr>
         
         <div class="jd-descrdiv">Sets the instance of the object under which the processor will execute</div>
   
@@ -1185,7 +1181,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1195,7 +1191,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
         
         <div class="jd-descrdiv">Set the Mule context</div>
   
@@ -1203,6 +1199,24 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setPageSize(java.lang.Object)">setPageSize</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets pageSize</div>
+  
+  </td></tr>
+
+
+	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
@@ -1213,9 +1227,9 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setPageSize(java.lang.Object)">setPageSize</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setPartnerId(java.lang.Object)">setPartnerId</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Sets pageSize</div>
+        <div class="jd-descrdiv">Sets partnerId</div>
   
   </td></tr>
 
@@ -1231,9 +1245,9 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setPartnerId(java.lang.Object)">setPartnerId</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setQueryTypeName(java.lang.Object)">setQueryTypeName</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Sets partnerId</div>
+        <div class="jd-descrdiv">Sets queryTypeName</div>
   
   </td></tr>
 
@@ -1249,7 +1263,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setRetryMax(int)">setRetryMax</a></span>(int value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#setRetryMax(int)">setRetryMax</a></span>(int value)</nobr>
         
         <div class="jd-descrdiv">Sets retryMax</div>
   
@@ -1267,10 +1281,8 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setWorkItemFilter(java.lang.Object)">setWorkItemFilter</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#start()">start</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Sets workItemFilter</div>
-  
   </td></tr>
 
 
@@ -1285,59 +1297,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setWorkItemState(java.lang.Object)">setWorkItemState</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets workItemState</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#setWorkItemType(java.lang.Object)">setWorkItemType</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets workItemType</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#start()">start</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html#stop()">stop</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html#stop()">stop</a></span>()</nobr>
         
   </td></tr>
 
@@ -1914,6 +1874,36 @@ From interface
 
 
 
+<A NAME="_conditionType"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../../java/org/mule/modules/clarizen/api/model/QueryCondition.html">QueryCondition</a>
+      </span>
+        _conditionType
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="_connectionPasswordType"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2064,7 +2054,7 @@ From interface
 
 
 
-<A NAME="_workItemFilterType"></A>
+<A NAME="_queryTypeNameType"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2072,69 +2062,9 @@ From interface
         private 
          
          
-        <a href="../../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a>
+        String
       </span>
-        _workItemFilterType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_workItemStateType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        <a href="../../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a>
-      </span>
-        _workItemStateType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_workItemTypeType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        <a href="../../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a>
-      </span>
-        _workItemTypeType
+        _queryTypeNameType
     </h4>
       <div class="api-level">
         
@@ -2165,6 +2095,36 @@ From interface
         Object
       </span>
         applicationId
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="condition"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        Object
+      </span>
+        condition
     </h4>
       <div class="api-level">
         
@@ -2524,6 +2484,36 @@ From interface
 
 
 
+<A NAME="queryTypeName"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        Object
+      </span>
+        queryTypeName
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="retryCount"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2588,96 +2578,6 @@ From interface
 
 
 
-<A NAME="workItemFilter"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        workItemFilter
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="workItemState"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        workItemState
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="workItemType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        workItemType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
 
 <!-- Public ctors -->
 
@@ -2687,7 +2587,7 @@ From interface
 
 
 
-<A NAME="WorkItemsQueryMessageProcessor()"></A>
+<A NAME="EntityQueryMessageProcessor()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2699,7 +2599,7 @@ From interface
          
         
       </span>
-      <span class="sympad">WorkItemsQueryMessageProcessor</span>
+      <span class="sympad">EntityQueryMessageProcessor</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2879,6 +2779,47 @@ From interface
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Sets applicationId</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setCondition(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setCondition</span>
+      <span class="normal">(Object value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets condition</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -3222,6 +3163,47 @@ From interface
 </div>
 
 
+<A NAME="setQueryTypeName(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setQueryTypeName</span>
+      <span class="normal">(Object value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets queryTypeName</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="setRetryMax(int)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3248,129 +3230,6 @@ From interface
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Sets retryMax</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setWorkItemFilter(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setWorkItemFilter</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets workItemFilter</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setWorkItemState(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setWorkItemState</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets workItemState</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setWorkItemType(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setWorkItemType</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets workItemType</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">

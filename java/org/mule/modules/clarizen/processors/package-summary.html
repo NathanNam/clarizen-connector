@@ -242,6 +242,7 @@
       <ul>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html">AddWorkItemResourcesMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateAllIssueMessageProcessor.html">CreateAllIssueMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateCaseMessageProcessor.html">CreateCaseMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityMessageProcessor.html">CreateEntityMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityQueryMessageProcessor.html">CreateEntityQueryMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateIssuesQueryMessageProcessor.html">CreateIssuesQueryMessageProcessor</a></li>
@@ -249,11 +250,16 @@
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemByParentIdMessageProcessor.html">CreateWorkItemByParentIdMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemMessageProcessor.html">CreateWorkItemMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemSingleValuesMessageProcessor.html">CreateWorkItemSingleValuesMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DescribeEntityMessageProcessor.html">DescribeEntityMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetMyWorkItemsMessageProcessor.html">GetMyWorkItemsMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetWorkItemByIdMessageProcessor.html">GetWorkItemByIdMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/IssueQueryMessageProcessor.html">IssueQueryMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/ListEntitiesMessageProcessor.html">ListEntitiesMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/LoginMessageProcessor.html">LoginMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/LogoutMessageProcessor.html">LogoutMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateAllIssueMessageProcessor.html">UpdateAllIssueMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateCaseMessageProcessor.html">UpdateCaseMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateTaskMessageProcessor.html">UpdateTaskMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateTaskWithSingleValuesMessageProcessor.html">UpdateTaskWithSingleValuesMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateWorkItemMessageProcessor.html">UpdateWorkItemMessageProcessor</a></li>
@@ -337,63 +343,87 @@
           </tr>
         <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateAllIssueMessageProcessor.html">CreateAllIssueMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">CreateAllIssueMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createAllIssue(org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String)">createAllIssue(org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">CreateAllIssueMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#createAllIssue(org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateCaseMessageProcessor.html">CreateCaseMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateCaseMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createCase(org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createCase(org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityMessageProcessor.html">CreateEntityMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateEntityMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createEntity(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createEntity(java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityQueryMessageProcessor.html">CreateEntityQueryMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">CreateEntityQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createEntityQuery(java.util.List<java.lang.String>, java.lang.String, java.lang.String, org.mule.modules.clarizen.api.model.Operator, java.lang.String)">createEntityQuery(java.util.List, java.lang.String, java.lang.String, org.mule.modules.clarizen.api.model.Operator, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
-          </tr>
-        <tr class="alt-color api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateIssuesQueryMessageProcessor.html">CreateIssuesQueryMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">CreateIssuesQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createIssuesQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String, org.mule.modules.clarizen.api.model.Operator, java.lang.String)">createIssuesQuery(java.util.List, org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String, org.mule.modules.clarizen.api.model.Operator, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">CreateEntityQueryMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#createEntityQuery(java.util.List, java.lang.String, java.lang.String, org.mule.modules.clarizen.api.model.Operator, java.lang.String) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateTaskMessageProcessor.html">CreateTaskMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">CreateTaskMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createTask(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String, java.lang.String)">createTask(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateIssuesQueryMessageProcessor.html">CreateIssuesQueryMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateIssuesQueryMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#createIssuesQuery(java.util.List, org.mule.modules.clarizen.api.model.AllIssueType, java.lang.String, org.mule.modules.clarizen.api.model.Operator, java.lang.String) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateTaskMessageProcessor.html">CreateTaskMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateTaskMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#createTask(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String, java.lang.String) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemByParentIdMessageProcessor.html">CreateWorkItemByParentIdMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateWorkItemByParentIdMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createWorkItemByParentId(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.lang.String, java.lang.String)">createWorkItemByParentId(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemMessageProcessor.html">CreateWorkItemMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateWorkItemMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createWorkItem(org.mule.modules.clarizen.api.model.Entity, org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createWorkItem(org.mule.modules.clarizen.api.model.Entity, org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemSingleValuesMessageProcessor.html">CreateWorkItemSingleValuesMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateWorkItemSingleValuesMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createWorkItemSingleValues(org.mule.modules.clarizen.api.model.Entity, org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.lang.String, java.lang.String)">createWorkItemSingleValues(org.mule.modules.clarizen.api.model.Entity, org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DescribeEntityMessageProcessor.html">DescribeEntityMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">DescribeEntityMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#describeEntity(java.lang.String)">describeEntity(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
         <tr class=" api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetMyWorkItemsMessageProcessor.html">GetMyWorkItemsMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">GetMyWorkItemsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#getMyWorkItems(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter)">getMyWorkItems(java.util.List, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">EntityQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#entityQuery(java.util.List<java.lang.String>, java.lang.String, org.mule.modules.clarizen.api.model.QueryCondition, java.lang.Integer)">entityQuery(java.util.List, java.lang.String, org.mule.modules.clarizen.api.model.QueryCondition, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetMyWorkItemsMessageProcessor.html">GetMyWorkItemsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">GetMyWorkItemsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#getMyWorkItems(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer)">getMyWorkItems(java.util.List, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetWorkItemByIdMessageProcessor.html">GetWorkItemByIdMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetWorkItemByIdMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#getWorkItemById(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.List<java.lang.String>)">getWorkItemById(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/IssueQueryMessageProcessor.html">IssueQueryMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">IssueQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#issueQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.AllIssueType, org.mule.modules.clarizen.api.model.QueryCondition, java.lang.Integer)">issueQuery(java.util.List, org.mule.modules.clarizen.api.model.AllIssueType, org.mule.modules.clarizen.api.model.QueryCondition, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
         <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/ListEntitiesMessageProcessor.html">ListEntitiesMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListEntitiesMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#listEntities()">listEntities()</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/LoginMessageProcessor.html">LoginMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">LoginMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#login(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">login(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/LogoutMessageProcessor.html">LogoutMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">LogoutMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#logout()">logout()</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateAllIssueMessageProcessor.html">UpdateAllIssueMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">UpdateAllIssueMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#updateAllIssue(org.mule.modules.clarizen.api.model.Entity, java.util.Map<java.lang.String, java.lang.Object>)">updateAllIssue(org.mule.modules.clarizen.api.model.Entity, java.util.Map)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">UpdateAllIssueMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#updateAllIssue(org.mule.modules.clarizen.api.model.Entity, java.util.Map) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateCaseMessageProcessor.html">UpdateCaseMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateCaseMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#updateCase(org.mule.modules.clarizen.api.model.Entity, java.util.Map<java.lang.String, java.lang.Object>)">updateCase(org.mule.modules.clarizen.api.model.Entity, java.util.Map)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateTaskMessageProcessor.html">UpdateTaskMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">UpdateTaskMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#updateTask(org.mule.modules.clarizen.api.model.Entity, java.util.Map<java.lang.String, java.lang.Object>)">updateTask(org.mule.modules.clarizen.api.model.Entity, java.util.Map)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">UpdateTaskMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#updateTask(org.mule.modules.clarizen.api.model.Entity, java.util.Map) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateTaskWithSingleValuesMessageProcessor.html">UpdateTaskWithSingleValuesMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">UpdateTaskWithSingleValuesMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#updateTaskWithSingleValues(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String)">updateTaskWithSingleValues(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">UpdateTaskWithSingleValuesMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#updateTaskWithSingleValues(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.lang.String) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateWorkItemMessageProcessor.html">UpdateWorkItemMessageProcessor</a></td>
@@ -405,7 +435,7 @@
           </tr>
         <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html">WorkItemsQueryMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">WorkItemsQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#workItemsQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter)">workItemsQuery(java.util.List, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">WorkItemsQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#workItemsQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer)">workItemsQuery(java.util.List, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
   </table>
     </div>
