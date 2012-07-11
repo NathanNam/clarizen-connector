@@ -357,15 +357,15 @@ public class ClarizenConnector
      *
      * @param workItem          the work item to be updated
      * @param resourceId        the resource id to be added
-     * @param units             invested percent of work of specific user. Default value is 100
+     * @param fields            the fields to be created. The fields names are the keys of the map.
      * 
      * @return {@link Entity} Updated work item
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Entity addWorkItemResources(Entity workItem,
-            String resourceId, @Optional @Default("100") String units) {
-        return clarizenClient.addWorkItemResources(workItem, resourceId, units);
+            String resourceId, @Placement(group = "Fields") Map<String, Object> fields) {
+        return clarizenClient.addWorkItemResources(workItem, resourceId, fields);
     }
 
     /**

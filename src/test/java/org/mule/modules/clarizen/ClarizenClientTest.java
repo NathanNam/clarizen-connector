@@ -23,7 +23,6 @@ import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.Entity;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.Operator;
 import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
@@ -72,8 +71,8 @@ public class ClarizenClientTest {
     
     @Test
     public void testAddWorkItemResources() {
-        when(clarizenClient.addWorkItemResources(entity, USER_ID, SOME_VALUE)).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.addWorkItemResources(entity, USER_ID, SOME_VALUE));
+        when(clarizenClient.addWorkItemResources(entity, USER_ID, createMap())).thenReturn(entity);
+        assertEquals(entity, clarizenConnector.addWorkItemResources(entity, USER_ID, createMap()));
     }
 
     @Test

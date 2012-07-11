@@ -23,12 +23,10 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
-import com.clarizen.api.metadata.ListEntitiesResult;
-
 public interface ClarizenClient {
 
     Entity addWorkItemResources(Entity workItem, String resourceId,
-                                           String units);
+            Map<String, Object> fields);
     
     Entity createCase(AllIssueType issueType, String title, 
             Map<String, Object> entityFields);

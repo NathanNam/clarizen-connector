@@ -83,7 +83,11 @@
 <!-- END_INCLUDE(clarizen:create-entity) -->
 
 <!-- BEGIN_INCLUDE(clarizen:add-work-item-resources) -->
-<clarizen:add-work-item-resources workItem-ref="#[payload]" resourceId="resourceId" units="40" />
+<clarizen:add-work-item-resources workItem-ref="#[payload]" resourceId="resourceId" 
+    <clarizen:fields>
+        <clarizen:fields key="Description">New test issue_NEW</clarizen:fields>
+    </clarizen:fields>
+</clarizen:add-work-item-resources>
 <!-- END_INCLUDE(clarizen:add-work-item-resources) -->
 
 <!-- BEGIN_INCLUDE(clarizen:entity-query) -->
