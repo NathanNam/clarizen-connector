@@ -281,14 +281,17 @@ public class ClarizenConnector
      * @param workItemType          the work item type. For further information about the specific values check {@link WorkItemType}
      * @param workItemFilter        the work items filter. For further information about the specific values check {@link WorkItemFilter}
      * @param pageSize              the number of results to be retrieved per page
+     * @param maxNumberOfPages      the maximum number of pages to be retrieved
      * 
      * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity workItemsQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, @Optional @Default("1000") Integer pageSize) {
-        return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, workItemFilter, pageSize);
+            WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, 
+            @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
+        return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, 
+                workItemFilter, pageSize, maxNumberOfPages);
     }
     
     /**
@@ -301,14 +304,16 @@ public class ClarizenConnector
      * @param queryTypeName         the entity type
      * @param condition             the query condition. For further information about the condition object check {@link QueryCondition}
      * @param pageSize              the number of results to be retrieved per page
+     * @param maxNumberOfPages      the maximum number of pages to be retrieved
      * 
      * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            String queryTypeName, @Optional @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
-        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize);
+            String queryTypeName, @Optional @Default("#[payload:]") QueryCondition condition, 
+            @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
+        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, maxNumberOfPages);
     }
     
     /**
@@ -321,13 +326,15 @@ public class ClarizenConnector
      * @param issueType             the issue type to be retrieved
      * @param condition             the query condition. For further information about the condition object check {@link QueryCondition}
      * @param pageSize              the number of results to be retrieved per page.
+     * @param maxNumberOfPages      the maximum number of pages to be retrieved
      * @return {@link ArrayOfEntity} List of issues results
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
-            @Optional @Default("#[payload:]") QueryCondition condition, @Optional @Default("1000") Integer pageSize) {
-        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize);
+            @Optional @Default("#[payload:]") QueryCondition condition, 
+            @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
+        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, maxNumberOfPages);
     }
 
     /**
@@ -379,15 +386,17 @@ public class ClarizenConnector
      * @param workItemType          the work item type. For further information about the specific values check {@link WorkItemType}
      * @param workItemFilter        the work items filter. For further information about the specific values check {@link WorkItemFilter} 
      * @param pageSize              the number of results to be retrieved per page
+     * @param maxNumberOfPages      the maximum number of pages to be retrieved
      * @return {@link ArrayOfEntity} List of work items
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public ArrayOfEntity getMyWorkItems(@Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter, @Optional @Default("1000") Integer pageSize) {
+            WorkItemFilter workItemFilter, @Optional @Default("100") Integer pageSize, 
+            @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.getMyWorkItems(fieldsToRetrieve, workItemState, workItemType, 
-                workItemFilter, pageSize);
+                workItemFilter, pageSize, maxNumberOfPages);
     }
 
     /**

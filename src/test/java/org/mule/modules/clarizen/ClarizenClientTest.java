@@ -42,6 +42,7 @@ public class ClarizenClientTest {
     private static final String SOME_QUERY_TYPE = "someQueryType";
     private static final Double SOME_DOUBLE_VALUE = 30.0;
     private static final Integer SOME_PAGE_SIZE = 1000;
+    private static final Integer SOME_MAX_NO_PAGES = 1;
     
     private static final AllIssueType SOME_ISSUE_TYPE = AllIssueType.ISSUE;
     private static final WorkItemFilter SOME_WORK_ITEM_FILTER = WorkItemFilter.ALL;
@@ -91,17 +92,17 @@ public class ClarizenClientTest {
     @Test
     public void testCreateEntityQuery() {
         when(clarizenClient.createEntityQuery(createList(), SOME_QUERY_TYPE, 
-                queryCondition, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
+                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
         assertEquals(arrayOfEntity, clarizenConnector.entityQuery(createList(), SOME_QUERY_TYPE, 
-                queryCondition, SOME_PAGE_SIZE));
+                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
 
     @Test
     public void testCreateIssuesQuery() {
         when(clarizenClient.createIssuesQuery(createList(), SOME_ISSUE_TYPE, 
-                queryCondition, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
+                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
         assertEquals(arrayOfEntity, clarizenConnector.issueQuery(createList(), SOME_ISSUE_TYPE, 
-                queryCondition, SOME_PAGE_SIZE));
+                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
 
     @Test
@@ -131,9 +132,9 @@ public class ClarizenClientTest {
     @Test
     public void testGetMyWorkItems() {
         when(clarizenClient.getMyWorkItems(createList(), SOME_WORK_ITEM_STATE, 
-                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
+                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
         assertEquals(arrayOfEntity, clarizenConnector.getMyWorkItems(createList(), SOME_WORK_ITEM_STATE, 
-                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE));
+                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
 
     @Test
@@ -169,9 +170,9 @@ public class ClarizenClientTest {
     @Test
     public void testWorkItemsQuery() {
         when(clarizenClient.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
-                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE)).thenReturn(arrayOfEntity);
+                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
         assertEquals(arrayOfEntity, clarizenConnector.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
-                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE));
+                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
     
     private Map<String, Object> createMap() {

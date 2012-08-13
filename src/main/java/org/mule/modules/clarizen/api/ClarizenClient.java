@@ -35,10 +35,10 @@ public interface ClarizenClient {
             Map<String, Object> entityFields);
 
     ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, 
-            QueryCondition condition, Integer pageSize);
+            QueryCondition condition, Integer pageSize, Integer maxNumberOfPages);
     
     ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
-            QueryCondition condition, Integer pageSize);
+            QueryCondition condition, Integer pageSize, Integer maxNumberOfPages);
 
     Entity createWorkItem(Entity parentEntity, WorkItemType workItemType, 
                                  String workItemName, Map<String, Object> workItemFields);
@@ -53,7 +53,7 @@ public interface ClarizenClient {
 
     ArrayOfEntity getMyWorkItems(List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter, Integer pageSize);
+            WorkItemFilter workItemFilter, Integer pageSize, Integer maxNumberOfPages);
 
     EntityMetadataDescription describeEntity(String typeName);
     
@@ -72,5 +72,6 @@ public interface ClarizenClient {
     Entity updateWorkItemProgress(Entity workItem, Double percentCompleted);
 
     ArrayOfEntity workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
-                               WorkItemType workItemType, WorkItemFilter workItemFilter, Integer pageSize);
+                               WorkItemType workItemType, WorkItemFilter workItemFilter, 
+                               Integer pageSize, Integer maxNumberOfPages);
 }
