@@ -1594,8 +1594,17 @@ attribute on each operation.</p>
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>pageSize</nobr></td>
-                    <td class="jd-descrcol">1000</td>
+                    <td class="jd-descrcol">100</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The number of results to be retrieved per page</td>
+                </tr>
+                
+                
+          
+                
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>maxNumberOfPages</nobr></td>
+                    <td class="jd-descrcol">1</td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The maximum number of pages to be retrieved</td>
                 </tr>
                 
                 
@@ -1603,28 +1612,28 @@ attribute on each operation.</p>
           
           <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionUser</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login user</td>
                 </tr>
                 
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionPassword</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login pass</td>
                 </tr>
                 
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>applicationId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a specific partner application that can be used for licensing purposed</td>
                 </tr>
                 
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>partnerId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a Clarizen partner
@@ -1637,7 +1646,7 @@ attribute on each operation.</p>
           
           
             <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
-            <tr class="alt-color api apilevel-" >
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
@@ -1655,6 +1664,8 @@ attribute on each operation.</p>
             
             <tr><th colspan="12"><nobr>&lt;clarizen:fields-to-retrieve&gt;</nobr></br><span style="font-weight: normal;">The fields to be retrieved. The fields names are the keys of the map</span></th></tr>
             
+            
+          
             
           
             
@@ -1742,8 +1753,17 @@ attribute on each operation.</p>
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>pageSize</nobr></td>
-                    <td class="jd-descrcol">1000</td>
+                    <td class="jd-descrcol">100</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The number of results to be retrieved per page</td>
+                </tr>
+                
+                
+          
+                
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>maxNumberOfPages</nobr></td>
+                    <td class="jd-descrcol">1</td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The maximum number of pages to be retrieved</td>
                 </tr>
                 
                 
@@ -1751,28 +1771,28 @@ attribute on each operation.</p>
           
           <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionUser</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login user</td>
                 </tr>
                 
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionPassword</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login pass</td>
                 </tr>
                 
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>applicationId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a specific partner application that can be used for licensing purposed</td>
                 </tr>
                 
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>partnerId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a Clarizen partner
@@ -1785,7 +1805,7 @@ attribute on each operation.</p>
           
           
             <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
-            <tr class=" api apilevel-" >
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
@@ -1803,6 +1823,8 @@ attribute on each operation.</p>
             
             <tr><th colspan="12"><nobr>&lt;clarizen:fields-to-retrieve&gt;</nobr></br><span style="font-weight: normal;">The fields to be retrieved. The fields names are the keys of the map</span></th></tr>
             
+            
+          
             
           
             
@@ -2011,8 +2033,17 @@ attribute on each operation.</p>
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>pageSize</nobr></td>
-                    <td class="jd-descrcol">1000</td>
+                    <td class="jd-descrcol">100</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The number of results to be retrieved per page.</td>
+                </tr>
+                
+                
+          
+                
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>maxNumberOfPages</nobr></td>
+                    <td class="jd-descrcol">1</td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The maximum number of pages to be retrieved</td>
                 </tr>
                 
                 
@@ -2020,28 +2051,28 @@ attribute on each operation.</p>
           
           <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionUser</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login user</td>
                 </tr>
                 
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionPassword</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login pass</td>
                 </tr>
                 
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>applicationId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a specific partner application that can be used for licensing purposed</td>
                 </tr>
                 
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>partnerId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a Clarizen partner
@@ -2054,7 +2085,7 @@ attribute on each operation.</p>
           
           
             <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
-            <tr class="alt-color api apilevel-" >
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
@@ -2072,6 +2103,8 @@ attribute on each operation.</p>
             
             <tr><th colspan="12"><nobr>&lt;clarizen:fields-to-retrieve&gt;</nobr></br><span style="font-weight: normal;">The fields to be retrieved. The fields names are the keys of the map</span></th></tr>
             
+            
+          
             
           
             
@@ -2605,8 +2638,17 @@ attribute on each operation.</p>
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>pageSize</nobr></td>
-                    <td class="jd-descrcol">1000</td>
+                    <td class="jd-descrcol">100</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The number of results to be retrieved per page</td>
+                </tr>
+                
+                
+          
+                
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>maxNumberOfPages</nobr></td>
+                    <td class="jd-descrcol">1</td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The maximum number of pages to be retrieved</td>
                 </tr>
                 
                 
@@ -2614,28 +2656,28 @@ attribute on each operation.</p>
           
           <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionUser</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login user</td>
                 </tr>
                 
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>connectionPassword</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The user login pass</td>
                 </tr>
                 
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>applicationId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a specific partner application that can be used for licensing purposed</td>
                 </tr>
                 
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>partnerId</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The id of a Clarizen partner
@@ -2648,7 +2690,7 @@ attribute on each operation.</p>
           
           
             <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
-            <tr class=" api apilevel-" >
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
@@ -2666,6 +2708,8 @@ attribute on each operation.</p>
             
             <tr><th colspan="12"><nobr>&lt;clarizen:fields-to-retrieve&gt;</nobr></br><span style="font-weight: normal;">The fields to be retrieved. The fields names are the keys of the map</span></th></tr>
             
+            
+          
             
           
             
