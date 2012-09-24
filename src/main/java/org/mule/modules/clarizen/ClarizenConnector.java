@@ -14,7 +14,6 @@
 package org.mule.modules.clarizen;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mule.api.ConnectionException;
 import org.mule.api.annotations.Connect;
@@ -34,13 +33,15 @@ import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientFactory;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
-import org.mule.modules.clarizen.api.model.Entity;
+import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
 import org.mule.modules.clarizen.api.model.EntityMetadataDescription;
 import org.mule.modules.clarizen.api.model.Login;
 import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
+
+import com.clarizen.api.GenericEntity;
 
 /**
  * Clarizen Cloud Connector
@@ -53,7 +54,7 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
  *
  * @author MuleSoft, Inc.
  */
-@Connector(name="clarizen")
+@Connector(name="clarizen", friendlyName = "Clarizen")
 public class ClarizenConnector
 {
 
@@ -108,7 +109,7 @@ public class ClarizenConnector
     }
     
     /**
-     * Retrieve a workitem by id.
+     * Retrieves a workitem by id.
      * 
      * <p/>
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:get-work-item-by-id}
@@ -117,157 +118,45 @@ public class ClarizenConnector
      * @param workItemId        the work item id
      * @param fieldsToRetrieve  the list of the work item fields to be retrieved. The fields names are the keys of the map
      * 
-     * @return {@link Entity} Work item with fields indicated through fieldToRetrieve
+     * @return {@link GenericEntity} Work item with fields indicated through fieldToRetrieve
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity getWorkItemById(WorkItemType workItemType, String workItemId,  
+    public GenericEntity getWorkItemById(WorkItemType workItemType, String workItemId,  
             @Placement(group = "Fields") List<String> fieldsToRetrieve) {
         return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve);
     }
     
     /**
-     * Create a new work item
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item}
-     *
-     * @param parentEntity      represents parent entity to which work item belongs
-     * @param workItemType      the work item type. For further information about the specific values check {@link WorkItemType}
-     * @param workItemName      the work item name
-     * @param workItemFields    the fields to be created. The fields names are the keys of the map.
-     * 
-     * @return {@link Entity} Created work item
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createWorkItem(Entity parentEntity,
-            WorkItemType workItemType, String workItemName,
-            @Optional @Placement(group = "Fields") Map<String, Object> workItemFields) {
-        return clarizenClient.createWorkItem(parentEntity, workItemType, workItemName, workItemFields);
-    }
-    
-
-    /**
-     * Create a new work item indicating the parent id
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item-by-parent-id}
-     *
-     * @param parentType        represents parent entity type. For further information about the specific values check {@link WorkItemType}
-     * @param parentId          represents the parent id
-     * @param workItemType      the work item type. For further information about the specific values check {@link WorkItemType}
-     * @param workItemName      the work item name
-     * @param workItemDescription the work item description
-     * @param startDate         the start date of the work item using the format MM-dd-yyy'T'HH:mm:ss
-     * 
-     * @return {@link Entity} Created work item
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createWorkItemByParentId(WorkItemType parentType,
-            String parentId, WorkItemType workItemType, String workItemName,
-            @Optional String workItemDescription, @Optional String startDate) {
-        return clarizenClient.createWorkItemByParentId(parentType, parentId, workItemType, workItemName, 
-                workItemDescription, startDate);
-    }
-    
-    /**
-     * Create a new work item with a set of defined fields
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-work-item-single-values}
-     *
-     * @param parentEntity      represents parent entity to which work item belongs
-     * @param workItemType      the work item type. For further information about the specific values check {@link WorkItemType}
-     * @param workItemName      the work item name
-     * @param workItemDescription the work item description
-     * @param startDate         the start date of the work item using the format MM-dd-yyy'T'HH:mm:ss
-     * 
-     * @return {@link Entity} Created work item
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createWorkItemSingleValues(Entity parentEntity,
-            WorkItemType workItemType, String workItemName,
-            @Optional String workItemDescription, @Optional String startDate) {
-        return clarizenClient.createWorkItemSingleValues(parentEntity, workItemType, 
-                workItemName, workItemDescription, startDate);
-    }
-    
-
-    /**
-     * Create a new Clarizen entity
+     * Creates a new Clarizen entity
      * 
      * <p/>
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-entity}
      *
-     * @param entityType        Clarizen entity type
-     * @param entityId          entity id
-     * @param entityFields      the fields to be created. The fields names are the keys of the map.
+     * @param entity          Entity to be created
      * 
-     * @return {@link Entity} Created entity
+     * @return Created entity
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createEntity(String entityType, @Optional String entityId,
-            @Placement(group = "Fields") Map<String, Object> entityFields) {
-        return clarizenClient.createEntity(entityType, entityId, entityFields);
-    }
-
-    /**
-     * Update a work item
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-work-item}
-     *
-     * @param workItem          the work item type. For further information about the specific values check {@link WorkItemType}
-     * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
-     * 
-     * @return {@link Entity} Updated work item
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity updateWorkItem(Entity workItem,
-            @Placement(group = "Fields") Map<String, Object> fieldsToUpdate) {
-        return clarizenClient.updateWorkItem(workItem, fieldsToUpdate);
+    public BaseClarizenEntity createEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+        return clarizenClient.createEntity(entity);
     }
     
     /**
-     * Create a new issue
+     * Updates a new Clarizen entity
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-case}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-entity}
      *
-     * @param caseType  the case type. For further information about the specific values check {@link AllIssueType}
-     * @param title     the case title
-     * @param caseFields the fields to be created. The fields names are the keys of the map.
+     * @param entity          Entity to be updated
      * 
-     * @return {@link Entity} Created case
+     * @return Created entity
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity createCase(AllIssueType caseType, String title,
-            @Optional @Placement(group = "Fields") Map<String, Object> caseFields) {
-        return clarizenClient.createCase(caseType, title, caseFields);
-    }
-    
-    /**
-     * Update an issue
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-case}
-     *
-     * @param caseEntity        the case to be updated
-     * @param fieldsToUpdate    the fields to be updated. The fields names are the keys of the map
-     * 
-     * @return {@link Entity} Updated case
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity updateCase(Entity caseEntity,
-            @Placement(group = "Fields") Map<String, Object> fieldsToUpdate) {
-        return clarizenClient.updateCase(caseEntity, fieldsToUpdate);
+    public BaseClarizenEntity updateEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+        return clarizenClient.updateEntity(entity);
     }
     
     /**
@@ -335,44 +224,6 @@ public class ClarizenConnector
             @Optional @Default("#[payload:]") QueryCondition condition, 
             @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, maxNumberOfPages);
-    }
-
-    /**
-     * Update a work item progress
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-work-item-progress}
-     *
-     * @param workItem          the work item to be updated.
-     * @param description       the task description
-     * @param percentCompleted  percent of progress completeness correct for current date
-     * 
-     * @return {@link Entity} Updated work item
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity updateWorkItemProgress(Entity workItem,
-            Double percentCompleted) {
-        return clarizenClient.updateWorkItemProgress(workItem, percentCompleted);
-    }
-    
-    /**
-     * Update a resource to a work item
-     * 
-     * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:add-work-item-resources}
-     *
-     * @param workItem          the work item to be updated
-     * @param resourceId        the resource id to be added
-     * @param fields            the fields to be created. The fields names are the keys of the map.
-     * 
-     * @return {@link Entity} Updated work item
-     */
-    @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Entity addWorkItemResources(Entity workItem,
-            String resourceId, @Placement(group = "Fields") Map<String, Object> fields) {
-        return clarizenClient.addWorkItemResources(workItem, resourceId, fields);
     }
 
     /**

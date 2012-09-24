@@ -11,9 +11,7 @@
 package org.mule.modules.clarizen;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,26 +19,24 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.ArrayOfEntity;
-import org.mule.modules.clarizen.api.model.Entity;
+import org.mule.modules.clarizen.api.model.ClarizenEntity;
 import org.mule.modules.clarizen.api.model.Login;
 import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
+import com.clarizen.api.GenericEntity;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class ClarizenClientTest {
     
-    private static final String USER_ID = "userId";
     private static final String USER_NAME = "userName";
     private static final String USER_PASSWORD = "password";
     private static final String SOME_VALUE = "someValue";
-    private static final String SOME_ID = "someId";
-    private static final String SOME_TYPE = "someType";
     private static final String SOME_QUERY_TYPE = "someQueryType";
-    private static final Double SOME_DOUBLE_VALUE = 30.0;
     private static final Integer SOME_PAGE_SIZE = 1000;
     private static final Integer SOME_MAX_NO_PAGES = 1;
     
@@ -53,9 +49,9 @@ public class ClarizenClientTest {
     private DefaultClarizenClient clarizenClient;
     private ClarizenConnector clarizenConnector;
     @Mock
-    private Entity entity;
+    private ClarizenEntity entity;
     @Mock
-    private Entity parentEntity;
+    private GenericEntity genericEntity;
     @Mock
     private ArrayOfEntity arrayOfEntity;
     @Mock
@@ -69,24 +65,11 @@ public class ClarizenClientTest {
         clarizenConnector = new ClarizenConnector();
         clarizenConnector.setClarizenClient(clarizenClient);
     }
-    
-    @Test
-    public void testAddWorkItemResources() {
-        when(clarizenClient.addWorkItemResources(entity, USER_ID, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.addWorkItemResources(entity, USER_ID, createMap()));
-    }
-
-    @Test
-    public void testCreateCase() {
-        AllIssueType type = AllIssueType.ISSUE;;
-        when(clarizenClient.createCase(type, SOME_VALUE, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.createCase(type, SOME_VALUE, createMap()));
-    }
 
     @Test
     public void testCreateEntity() {
-        when(clarizenClient.createEntity(SOME_TYPE, SOME_ID, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.createEntity(SOME_TYPE, SOME_ID, createMap()));
+        when(clarizenClient.createEntity(entity)).thenReturn(entity);
+        assertEquals(entity, clarizenConnector.createEntity(entity));
     }
 
     @Test
@@ -106,30 +89,6 @@ public class ClarizenClientTest {
     }
 
     @Test
-    public void testCreateWorkItem() {
-        when(clarizenClient.createWorkItem(parentEntity, SOME_WORK_ITEM_TYPE, 
-                SOME_VALUE, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.createWorkItem(parentEntity, SOME_WORK_ITEM_TYPE, 
-                SOME_VALUE, createMap()));
-    }
-
-    @Test
-    public void testCreateWorkItemByParentId() {
-        when(clarizenClient.createWorkItemByParentId(SOME_WORK_ITEM_TYPE, SOME_VALUE, SOME_WORK_ITEM_TYPE, SOME_VALUE, 
-                SOME_VALUE, SOME_VALUE)).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.createWorkItemByParentId(SOME_WORK_ITEM_TYPE, SOME_VALUE, 
-                SOME_WORK_ITEM_TYPE, SOME_VALUE, SOME_VALUE, SOME_VALUE));
-    }
-
-    @Test
-    public void testCreateWorkItemSingleValues() {
-        when(clarizenClient.createWorkItemSingleValues(parentEntity, SOME_WORK_ITEM_TYPE, 
-                SOME_VALUE, SOME_VALUE, SOME_VALUE)).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.createWorkItemSingleValues(parentEntity, 
-                SOME_WORK_ITEM_TYPE, SOME_VALUE, SOME_VALUE, SOME_VALUE));
-    }
-
-    @Test
     public void testGetMyWorkItems() {
         when(clarizenClient.getMyWorkItems(createList(), SOME_WORK_ITEM_STATE, 
                 SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
@@ -139,8 +98,8 @@ public class ClarizenClientTest {
 
     @Test
     public void testGetWorkItemById() {
-        when(clarizenClient.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList()));
+        when(clarizenClient.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList())).thenReturn(genericEntity);
+        assertEquals(genericEntity, clarizenConnector.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList()));
     }
 
     @Test
@@ -148,23 +107,11 @@ public class ClarizenClientTest {
         when(clarizenClient.login(USER_NAME, USER_PASSWORD, SOME_VALUE, SOME_VALUE)).thenReturn(login);
         assertEquals(login, clarizenConnector.login(USER_NAME, USER_PASSWORD, SOME_VALUE, SOME_VALUE));
     }
-    
-    @Test
-    public void testUpdateCase() {
-        when(clarizenClient.updateCase(entity, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.updateCase(entity, createMap()));
-    }
 
     @Test
-    public void testUpdateWorkItem() {
-        when(clarizenClient.updateWorkItem(entity, createMap())).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.updateWorkItem(entity, createMap()));
-    }
-
-    @Test
-    public void testUpdateWorkItemProgress() {
-        when(clarizenClient.updateWorkItemProgress(entity, SOME_DOUBLE_VALUE)).thenReturn(entity);
-        assertEquals(entity, clarizenConnector.updateWorkItemProgress(entity, SOME_DOUBLE_VALUE));
+    public void testUpdateEntity() {
+        when(clarizenClient.updateEntity(entity)).thenReturn(entity);
+        assertEquals(entity, clarizenConnector.updateEntity(entity));
     }
 
     @Test
@@ -173,10 +120,6 @@ public class ClarizenClientTest {
                 SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
         assertEquals(arrayOfEntity, clarizenConnector.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
                 SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
-    }
-    
-    private Map<String, Object> createMap() {
-        return new HashMap<String, Object>();
     }
     
     private List<String> createList() {
