@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.mule.tools.devkit</groupId>
         <artifactId>mule-devkit-parent</artifactId>
-        <version>3.3.0</version>
+        <version>3.3.1</version>
     </parent>
 
     <properties>
@@ -34,8 +34,7 @@
                 <version>${cxf.version}</version>
                 <executions>
                     <execution>
-                        <id>generate-sources</id>
-                        <phase>generate-sources</phase>
+                        <phase>validate</phase>
                         <goals>
                             <goal>wsdl2java</goal>
                         </goals>
@@ -55,7 +54,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
