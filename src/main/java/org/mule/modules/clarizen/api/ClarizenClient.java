@@ -62,7 +62,7 @@ public interface ClarizenClient {
      * @param typeName
      * @return entityDescription object
      */
-    EntityDescription describeEntity(String typeName);
+    List<EntityDescription> describeEntities(List<String> typeNames);
     
     /**
      * Query for current user's workitems

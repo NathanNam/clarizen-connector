@@ -57,9 +57,13 @@
 </clarizen:work-items-query>
 <!-- END_INCLUDE(clarizen:work-items-query) -->
 
-<!-- BEGIN_INCLUDE(clarizen:describe-entity) -->
-<clarizen:describe-entity typeName="TASK" />
-<!-- END_INCLUDE(clarizen:describe-entity) -->
+<!-- BEGIN_INCLUDE(clarizen:describe-entities) -->
+<clarizen:describe-entities>
+    <clarizen:type-names>
+        <clarizen:type-name>Task</clarizen:type-name>
+    </clarizen:type-names>
+</clarizen:describe-entities>
+<!-- END_INCLUDE(clarizen:describe-entities) -->
 
 <!-- BEGIN_INCLUDE(clarizen:list-entities) -->
 <clarizen:list-entities />

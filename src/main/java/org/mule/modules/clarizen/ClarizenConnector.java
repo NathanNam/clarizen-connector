@@ -253,15 +253,15 @@ public class ClarizenConnector
      * Returns the description of an entity
      * 
      * <p/>
-     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:describe-entity}
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:describe-entities}
      *
-     * @param typeName          entity type to be described
+     * @param typeNames          list of entity types to be described
      * @return {@link EntityDescription} Entity description
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public EntityDescription describeEntity(String typeName) {
-        return clarizenClient.describeEntity(typeName);
+    public List<EntityDescription> describeEntities(List<String> typeNames) {
+        return clarizenClient.describeEntities(typeNames);
     }
     
     /**

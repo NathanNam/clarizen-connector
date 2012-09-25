@@ -123,11 +123,11 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     @Override
-    public EntityDescription describeEntity(String typeName) {
+    public List<EntityDescription> describeEntities(List<String> typeNames) {
 
         DescribeEntitiesMessage describeEntityMsg = new DescribeEntitiesMessage();
         StringList types = new StringList();
-        types.getString().add(typeName);
+        types.getString().addAll(typeNames);
         describeEntityMsg.setTypeNames(types);
         
         DescribeEntitiesResult result;
@@ -143,7 +143,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return result.getEntityDescriptions().getEntityDescription().get(0);
+        return result.getEntityDescriptions().getEntityDescription();
     }
 
     @Override
