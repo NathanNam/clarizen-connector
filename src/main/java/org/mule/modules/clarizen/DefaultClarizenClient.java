@@ -13,28 +13,30 @@ package org.mule.modules.clarizen;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.beanutils.BeanMap;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientHelper;
 import org.mule.modules.clarizen.api.ClarizenServiceProvider;
 import org.mule.modules.clarizen.api.model.AllIssueType;
-import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
-import org.mule.modules.clarizen.api.model.EntityMetadataDescription;
+import org.mule.modules.clarizen.api.model.ClarizenEntity;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
+import org.springframework.util.StringUtils;
 
 import com.clarizen.api.ArrayOfBaseMessage;
 import com.clarizen.api.Clarizen;
@@ -58,10 +60,12 @@ import com.clarizen.api.StringList;
 import com.clarizen.api.UpdateMessage;
 import com.clarizen.api.metadata.DescribeEntitiesMessage;
 import com.clarizen.api.metadata.DescribeEntitiesResult;
+import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.metadata.ListEntitiesMessage;
 import com.clarizen.api.metadata.ListEntitiesResult;
 import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
 import com.clarizen.api.projectmanagement.WorkItemsQuery;
+import com.clarizen.api.queries.Condition;
 import com.clarizen.api.queries.EntityQuery;
 import com.clarizen.api.queries.Paging;
 import com.clarizen.api.queries.Query;
@@ -73,37 +77,53 @@ public class DefaultClarizenClient implements ClarizenClient {
     private IClarizen service;
     private ClarizenServiceProvider serviceProvider;
     private String sessionId;
+    private static final String DEFAULT_PACKAGE_MODEL = "org.mule.modules.clarizen.api.model.";
     
     public DefaultClarizenClient(ClarizenServiceProvider provider) {
         helper = new ClarizenClientHelper();
         serviceProvider = provider;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve,
-            String queryTypeName, QueryCondition condition, 
+    public <T extends BaseClarizenEntity> List<T> createEntityQuery(List<String> fieldsToRetrieve,
+            String queryTypeName, Condition condition, 
             Integer pageSize, Integer maxNumberOfPages) {
         
         EntityQuery query = new EntityQuery();
         query.setTypeName(queryTypeName);
-        
-        return createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);       
+
+        if (condition != null) {
+            query.setWhere(condition);
+        }
+
+        List<GenericEntity> results = createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
+
+        return (List<T>) listBaseClarizenEntityFromGenericEntity(results, 
+                    ((EntityQuery) query).getTypeName());
     }
     
+    @SuppressWarnings("unchecked")
     @Override
-    public ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve,
-            AllIssueType issueType, QueryCondition condition, 
+    public <T extends BaseClarizenEntity> List<T> createIssuesQuery(List<String> fieldsToRetrieve,
+            AllIssueType issueType, Condition condition, 
             Integer pageSize, Integer maxNumberOfPages) {
 
         EntityQuery query = new EntityQuery();
         query.setTypeName(issueType.value());
+
+        if (condition != null) {
+            query.setWhere(condition);
+        }
+
+        List<GenericEntity> results = createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
         
-        return createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
-        
+        return (List<T>) listBaseClarizenEntityFromGenericEntity(results, 
+                ((EntityQuery) query).getTypeName());
     }
 
     @Override
-    public EntityMetadataDescription describeEntity(String typeName) {
+    public EntityDescription describeEntity(String typeName) {
 
         DescribeEntitiesMessage describeEntityMsg = new DescribeEntitiesMessage();
         StringList types = new StringList();
@@ -123,11 +143,11 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return new EntityMetadataDescription(result.getEntityDescriptions().getEntityDescription().get(0));
+        return result.getEntityDescriptions().getEntityDescription().get(0);
     }
 
     @Override
-    public ArrayOfEntity getMyWorkItems(List<String> fieldsToRetrieve,
+    public List<GenericEntity> getMyWorkItems(List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter, Integer pageSize, Integer maxNumberOfPages) {
         
@@ -139,7 +159,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         return createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
     }
 
-    public GenericEntity getWorkItemById(WorkItemType type, String workItemId, List<String> fieldsToRetrieve) {
+    public BaseClarizenEntity getWorkItemById(WorkItemType type, String workItemId, List<String> fieldsToRetrieve) {
         
         RetrieveMessage retrieveMsg = new RetrieveMessage();
         retrieveMsg.setId(helper.createBaseEntityId(type.value(), workItemId));
@@ -167,7 +187,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return (GenericEntity) result.getEntity();
+        return toBaseClarizenEntity((GenericEntity) result.getEntity(), type.value());
     }
 
     @Override
@@ -230,7 +250,7 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     @Override
-    public ArrayOfEntity workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
+    public List<GenericEntity> workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
                                         WorkItemType workItemType, WorkItemFilter workItemFilter,
                                         Integer pageSize, Integer maxNumberOfPages) {
 
@@ -244,7 +264,7 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private ArrayOfEntity createQuery(Query query, List<String> fieldsToRetrieve, 
+    private List<GenericEntity> createQuery(Query query, List<String> fieldsToRetrieve, 
                                       Integer pageSize, Integer maxNumberOfPages) {
         
         int pageNumber = 0;
@@ -299,7 +319,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return new ArrayOfEntity(listResults);
+        return listResults;
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -359,6 +379,95 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return entity;        
+    }
+    
+    /**
+     * Converts a GenericEntity into a model class.
+     * This is useful for obtaining the java classes from the Clarizen WebService responses
+     * 
+     * @param genericEntity to be converted
+     * @param clarizenType type to be created
+     * @return the created entity extending BaseClarizenEntity
+     */
+    private BaseClarizenEntity toBaseClarizenEntity(GenericEntity genericEntity, String clarizenType) {
+        
+        ClarizenEntity baseEntity = null;
+        try {
+            baseEntity = (ClarizenEntity) Class.forName(DEFAULT_PACKAGE_MODEL + 
+                    StringUtils.capitalize(clarizenType)).newInstance();
+        } catch (InstantiationException e1) {
+            throw new ClarizenRuntimeException(e1);
+        } catch (IllegalAccessException e1) {
+            throw new ClarizenRuntimeException(e1);
+        } catch (ClassNotFoundException e1) {
+            throw new ClarizenRuntimeException(e1);
+        }
+
+        //Assigns entity id
+        try {
+            EntityId entityId = (EntityId) genericEntity.getClass().getMethod("getId").invoke(genericEntity);
+            if (entityId == null) {
+                baseEntity.setId(helper.createBaseEntityId(genericEntity.getClass().getSimpleName(), null));
+            }
+            else {
+                baseEntity.setId(entityId);
+            }
+        } catch (IllegalArgumentException e) {
+            throw new ClarizenRuntimeException(e);
+        } catch (SecurityException e) {
+            throw new ClarizenRuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new ClarizenRuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new ClarizenRuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new ClarizenRuntimeException(e);
+        }
+
+        List<FieldValue> entityFields = genericEntity.getValues().getFieldValue();
+        Map<String, Object> entityFieldsMap = getFieldsFromGenericEntity(entityFields);
+        
+        try {
+            BeanUtils.populate(baseEntity, entityFieldsMap);
+        } catch (IllegalAccessException e) {
+            throw new ClarizenRuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new ClarizenRuntimeException(e);
+        }  
+        
+        return baseEntity;       
+    }
+
+    /**
+     * Extracts the attributes from a GenericEntity using Clarizen model classes
+     * 
+     * @param entity
+     * @return map of entity fields 
+     */
+    private Map<String, Object> getFieldsFromGenericEntity(List<FieldValue> entityFields) {
+        Map<String, Object> entityMap = new HashMap<String, Object>();
+        
+        Object fieldValue;
+        String fieldName;
+        for (FieldValue field : entityFields) {
+            fieldName = StringUtils.uncapitalize(field.getFieldName());
+
+            if (field.getValue() != null)
+            {
+                //if it's a GenericEntity it must be converted into a model class
+                if (field.getValue().getClass().getSimpleName().equals("GenericEntity")) {
+                    fieldValue = toBaseClarizenEntity((GenericEntity) field.getValue(), 
+                            ((GenericEntity) field.getValue()).getId().getTypeName());
+                }
+                else {
+                    fieldValue = field.getValue();
+                }
+                
+                entityMap.put(fieldName, fieldValue);
+            }
+        }
+        
+        return entityMap;
     }
     
     /**
@@ -445,6 +554,26 @@ public class DefaultClarizenClient implements ClarizenClient {
      */
     private boolean isAttributeAnEntity(Class<? extends Object> clazz) {
         return BaseClarizenEntity.class.isAssignableFrom(clazz);
+    }
+    
+    /**
+     * Converts a List of GenericEntity's into a List of model classes.
+     * This is useful for obtaining the java classes from the Clarizen WebService responses
+     * 
+     * @param entity to be converted
+     * @param clarizenType type to be created
+     * @return the created entity extending BaseClarizenEntity
+     */
+    private List<BaseClarizenEntity> listBaseClarizenEntityFromGenericEntity(List<GenericEntity> listGenericEntity, 
+            String clarizenType) {
+    
+        List<BaseClarizenEntity> list = new ArrayList<BaseClarizenEntity>();
+        
+        for (GenericEntity genericEntity : listGenericEntity) {
+            list.add(toBaseClarizenEntity(genericEntity, clarizenType));
+        }
+        
+        return list;
     }
     
     public ClarizenClientHelper getHelper() {

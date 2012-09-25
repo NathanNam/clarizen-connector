@@ -32,16 +32,15 @@ import org.mule.api.annotations.param.Optional;
 import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientFactory;
 import org.mule.modules.clarizen.api.model.AllIssueType;
-import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
-import org.mule.modules.clarizen.api.model.EntityMetadataDescription;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
 import com.clarizen.api.GenericEntity;
+import com.clarizen.api.metadata.EntityDescription;
+import com.clarizen.api.queries.Condition;
 
 /**
  * Clarizen Cloud Connector
@@ -118,11 +117,11 @@ public class ClarizenConnector
      * @param workItemId        the work item id
      * @param fieldsToRetrieve  the list of the work item fields to be retrieved. The fields names are the keys of the map
      * 
-     * @return {@link GenericEntity} Work item with fields indicated through fieldToRetrieve
+     * @return Work item with fields indicated through fieldToRetrieve
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public GenericEntity getWorkItemById(WorkItemType workItemType, String workItemId,  
+    public BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId,  
             @Placement(group = "Fields") List<String> fieldsToRetrieve) {
         return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve);
     }
@@ -176,7 +175,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity workItemsQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
+    public List<GenericEntity> workItemsQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
             WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, 
             @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, 
@@ -191,7 +190,7 @@ public class ClarizenConnector
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param queryTypeName         the entity type
-     * @param condition             the query condition. For further information about the condition object check {@link QueryCondition}
+     * @param condition             the query condition. For further information about the condition object check {@link Condition}
      * @param pageSize              the number of results to be retrieved per page
      * @param maxNumberOfPages      the maximum number of pages to be retrieved
      * 
@@ -199,8 +198,8 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            String queryTypeName, @Optional @Default("#[payload:]") QueryCondition condition, 
+    public List<BaseClarizenEntity> entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
+            String queryTypeName, @Optional @Default("#[payload:]") Condition condition, 
             @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, maxNumberOfPages);
     }
@@ -213,15 +212,15 @@ public class ClarizenConnector
      *
      * @param fieldsToRetrieve      the fields to be retrieved. The fields names are the keys of the map
      * @param issueType             the issue type to be retrieved
-     * @param condition             the query condition. For further information about the condition object check {@link QueryCondition}
+     * @param condition             the query condition. For further information about the condition object check {@link Condition}
      * @param pageSize              the number of results to be retrieved per page.
      * @param maxNumberOfPages      the maximum number of pages to be retrieved
      * @return {@link ArrayOfEntity} List of issues results
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
-            @Optional @Default("#[payload:]") QueryCondition condition, 
+    public List<BaseClarizenEntity> issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
+            @Optional @Default("#[payload:]") Condition condition, 
             @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, maxNumberOfPages);
     }
@@ -242,7 +241,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public ArrayOfEntity getMyWorkItems(@Placement(group = "Fields") List<String> fieldsToRetrieve,
+    public List<GenericEntity> getMyWorkItems(@Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter, @Optional @Default("100") Integer pageSize, 
             @Optional @Default("1") Integer maxNumberOfPages) {
@@ -257,11 +256,11 @@ public class ClarizenConnector
      * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:describe-entity}
      *
      * @param typeName          entity type to be described
-     * @return {@link EntityMetadataDescription} Entity description
+     * @return {@link EntityDescription} Entity description
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public EntityMetadataDescription describeEntity(String typeName) {
+    public EntityDescription describeEntity(String typeName) {
         return clarizenClient.describeEntity(typeName);
     }
     

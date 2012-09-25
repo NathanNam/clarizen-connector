@@ -13,45 +13,119 @@ package org.mule.modules.clarizen.api;
 import java.util.List;
 
 import org.mule.modules.clarizen.api.model.AllIssueType;
-import org.mule.modules.clarizen.api.model.ArrayOfEntity;
 import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
-import org.mule.modules.clarizen.api.model.EntityMetadataDescription;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
-
 import com.clarizen.api.GenericEntity;
+import com.clarizen.api.metadata.EntityDescription;
+import com.clarizen.api.queries.Condition;
 
 public interface ClarizenClient {
 
+    /**
+     * Creates an entity
+     * @param entity model class extending BaseClarizenClient
+     * @return created entity
+     */
     BaseClarizenEntity createEntity(BaseClarizenEntity entity);
     
-    ArrayOfEntity createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, 
-            QueryCondition condition, Integer pageSize, Integer maxNumberOfPages);
+    /**
+     * Creates an entity query
+     * 
+     * @param fieldsToRetrieve
+     * @param queryTypeName
+     * @param condition
+     * @param pageSize
+     * @param maxNumberOfPages
+     * @return a list of entities taking into account depending on the parameter queryTypeName
+     */
+    <T extends BaseClarizenEntity> List<T> createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, 
+            Condition condition, Integer pageSize, Integer maxNumberOfPages);
     
-    ArrayOfEntity createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
-            QueryCondition condition, Integer pageSize, Integer maxNumberOfPages);
+    /**
+     * Creates an issue query
+     * @param fieldsToRetrieve
+     * @param issueType
+     * @param condition
+     * @param pageSize
+     * @param maxNumberOfPages
+     * @return a list of entities taking into account depending on the parameter issueType
+     */
+    <T extends BaseClarizenEntity> List<T> createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
+            Condition condition, Integer pageSize, Integer maxNumberOfPages);
 
-    EntityMetadataDescription describeEntity(String typeName);
+    /**
+     * Describes an entity querying the metadata information provided by the webservice
+     * @param typeName
+     * @return entityDescription object
+     */
+    EntityDescription describeEntity(String typeName);
     
-    ArrayOfEntity getMyWorkItems(List<String> fieldsToRetrieve,
+    /**
+     * Query for current user's workitems
+     * @param fieldsToRetrieve
+     * @param workItemState
+     * @param workItemType
+     * @param workItemFilter
+     * @param pageSize
+     * @param maxNumberOfPages
+     * @return list of GenericEntity containing the workitems objects
+     */
+    List<GenericEntity> getMyWorkItems(List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter, Integer pageSize, Integer maxNumberOfPages);
     
-    GenericEntity getWorkItemById(WorkItemType workItemType, String workItemId, List<String> fieldsToRetrieve);
+    /**
+     * Gets workItem information by id
+     * @param workItemType
+     * @param workItemId
+     * @param fieldsToRetrieve
+     * @return GenericEntity
+     */
+    BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId, List<String> fieldsToRetrieve);
     
+    /**
+     * Queries metadata information provided by the webservice for available entities
+     * @return list of entities names
+     */
     List<String> listEntities();
     
+    /**
+     * Login to the webservice
+     * @param username
+     * @param password
+     * @param applicationId
+     * @param partnerId
+     * @return Login information including session id
+     */
     Login login(String username, String password, String applicationId, String partnerId);
     
+    /**
+     * Logout
+     */
     void logout();
     
+    /**
+     * Updates an entity
+     * @param entity model class extending BaseClarizenClient
+     * @return updated entity
+     */
     BaseClarizenEntity updateEntity(BaseClarizenEntity entity);
     
-    ArrayOfEntity workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
+    /**
+     * Queries workItems
+     * @param fieldsToRetrieve
+     * @param workItemState
+     * @param workItemType
+     * @param workItemFilter
+     * @param pageSize
+     * @param maxNumberOfPages
+     * @return list of GenericEntity containing the workitems objects
+     */
+    List<GenericEntity> workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
                                WorkItemType workItemType, WorkItemFilter workItemFilter, 
                                Integer pageSize, Integer maxNumberOfPages);
 }

@@ -18,15 +18,15 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mule.modules.clarizen.api.model.AllIssueType;
-import org.mule.modules.clarizen.api.model.ArrayOfEntity;
+import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
 import org.mule.modules.clarizen.api.model.ClarizenEntity;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.QueryCondition;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
 import com.clarizen.api.GenericEntity;
+import com.clarizen.api.queries.Condition;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -49,15 +49,13 @@ public class ClarizenClientTest {
     private DefaultClarizenClient clarizenClient;
     private ClarizenConnector clarizenConnector;
     @Mock
-    private ClarizenEntity entity;
+    private BaseClarizenEntity entity;
     @Mock
     private GenericEntity genericEntity;
     @Mock
-    private ArrayOfEntity arrayOfEntity;
-    @Mock
     private Login login;
     @Mock
-    private QueryCondition queryCondition;
+    private Condition queryCondition;
     
     @Before
     public void setUp() {
@@ -75,31 +73,31 @@ public class ClarizenClientTest {
     @Test
     public void testCreateEntityQuery() {
         when(clarizenClient.createEntityQuery(createList(), SOME_QUERY_TYPE, 
-                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
-        assertEquals(arrayOfEntity, clarizenConnector.entityQuery(createList(), SOME_QUERY_TYPE, 
+                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(createListBaseClarizenEntity());
+        assertEquals(createListGenericEntity(), clarizenConnector.entityQuery(createList(), SOME_QUERY_TYPE, 
                 queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
 
     @Test
     public void testCreateIssuesQuery() {
         when(clarizenClient.createIssuesQuery(createList(), SOME_ISSUE_TYPE, 
-                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
-        assertEquals(arrayOfEntity, clarizenConnector.issueQuery(createList(), SOME_ISSUE_TYPE, 
+                queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(createListBaseClarizenEntity());
+        assertEquals(createListGenericEntity(), clarizenConnector.issueQuery(createList(), SOME_ISSUE_TYPE, 
                 queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
 
     @Test
     public void testGetMyWorkItems() {
         when(clarizenClient.getMyWorkItems(createList(), SOME_WORK_ITEM_STATE, 
-                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
-        assertEquals(arrayOfEntity, clarizenConnector.getMyWorkItems(createList(), SOME_WORK_ITEM_STATE, 
+                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(createListGenericEntity());
+        assertEquals(createListGenericEntity(), clarizenConnector.getMyWorkItems(createList(), SOME_WORK_ITEM_STATE, 
                 SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
 
     @Test
     public void testGetWorkItemById() {
-        when(clarizenClient.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList())).thenReturn(genericEntity);
-        assertEquals(genericEntity, clarizenConnector.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList()));
+        when(clarizenClient.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList())).thenReturn(entity);
+        assertEquals(entity, clarizenConnector.getWorkItemById(SOME_WORK_ITEM_TYPE, SOME_VALUE, createList()));
     }
 
     @Test
@@ -117,13 +115,22 @@ public class ClarizenClientTest {
     @Test
     public void testWorkItemsQuery() {
         when(clarizenClient.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
-                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(arrayOfEntity);
-        assertEquals(arrayOfEntity, clarizenConnector.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
+                SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES)).thenReturn(createListGenericEntity());
+        assertEquals(createListGenericEntity(), clarizenConnector.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
                 SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
     
     private List<String> createList() {
         return new ArrayList<String>();
     }
+    
+    private List<GenericEntity> createListGenericEntity() {
+        return new ArrayList<GenericEntity>();
+    }
+    
+    private List<BaseClarizenEntity> createListBaseClarizenEntity() {
+        return new ArrayList<BaseClarizenEntity>();
+    }
+
 
 }
