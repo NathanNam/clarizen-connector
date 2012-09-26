@@ -42,6 +42,7 @@ import com.clarizen.api.ArrayOfBaseMessage;
 import com.clarizen.api.Clarizen;
 import com.clarizen.api.CreateMessage;
 import com.clarizen.api.CreateResult;
+import com.clarizen.api.DeleteMessage;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.FieldValue;
 import com.clarizen.api.GenericEntity;
@@ -50,6 +51,7 @@ import com.clarizen.api.IClarizenExecuteSessionTimeoutFailureFaultFaultMessage;
 import com.clarizen.api.IClarizenLoginLoginFailureFaultFaultMessage;
 import com.clarizen.api.IClarizenMetadataSessionTimeoutFailureFaultFaultMessage;
 import com.clarizen.api.IClarizenQuerySessionTimeoutFailureFaultFaultMessage;
+import com.clarizen.api.LifecycleMessage;
 import com.clarizen.api.LoginOptions;
 import com.clarizen.api.LoginResult;
 import com.clarizen.api.Result;
@@ -83,7 +85,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         helper = new ClarizenClientHelper();
         serviceProvider = provider;
     }
-
+    
     @SuppressWarnings("unchecked")
     @Override
     public <T extends BaseClarizenEntity> List<T> createEntityQuery(List<String> fieldsToRetrieve,
@@ -324,6 +326,37 @@ public class DefaultClarizenClient implements ClarizenClient {
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
+    public Boolean lifecycleChange(List<EntityId> entityIdList, 
+            String operation, Boolean recursive) {
+        
+        LifecycleMessage lifecycleMessage = new LifecycleMessage();
+        lifecycleMessage.setIds(helper.createArrayOfEntityId(entityIdList));
+        lifecycleMessage.setOperation(operation);
+        lifecycleMessage.setRecursive(recursive);
+        
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(lifecycleMessage);
+        
+        List<Result> results;
+        try {
+            results = (List) getService().execute(messages).getResult();
+            
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
+                }
+            }
+            
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return true;
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
     public BaseClarizenEntity createEntity(BaseClarizenEntity entity) {
 
         GenericEntity genericEntity = toGenericEntity(entity);
@@ -379,6 +412,29 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return entity;        
+    }
+    
+    @Override
+    public Boolean deleteEntity(BaseClarizenEntity entity) {
+        
+        DeleteMessage deleteMsg = new DeleteMessage();
+        deleteMsg.setId(entity.getId());
+
+        ArrayOfBaseMessage messages = helper.createMessage(deleteMsg);
+
+        try {
+            Result result = getService().execute(messages).getResult().get(0);
+            
+            if (!result.isSuccess()) {
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                        result.getError().getMessage());
+            }
+            
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return true;
     }
     
     /**
@@ -610,4 +666,6 @@ public class DefaultClarizenClient implements ClarizenClient {
     public String getSessionId() {
         return sessionId;
     }
+
+
 }

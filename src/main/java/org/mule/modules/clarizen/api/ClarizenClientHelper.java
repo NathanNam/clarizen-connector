@@ -13,6 +13,7 @@ package org.mule.modules.clarizen.api;
 import java.util.List;
 
 import com.clarizen.api.ArrayOfBaseMessage;
+import com.clarizen.api.ArrayOfEntityId;
 import com.clarizen.api.ArrayOfFieldValue;
 import com.clarizen.api.BaseMessage;
 import com.clarizen.api.EntityId;
@@ -142,5 +143,11 @@ public class ClarizenClientHelper {
     
     public Operator createOperator(String operator) {
         return Operator.fromValue(operator);
+    }
+    
+    public ArrayOfEntityId createArrayOfEntityId(List<EntityId> entityIdList) {
+        ArrayOfEntityId array = new ArrayOfEntityId();
+        array.getEntityId().addAll(entityIdList);
+        return array;
     }
 }

@@ -38,6 +38,7 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
+import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
@@ -122,7 +123,7 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId,  
-            @Placement(group = "Fields") List<String> fieldsToRetrieve) {
+            @Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve) {
         return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve);
     }
     
@@ -175,7 +176,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<GenericEntity> workItemsQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
+    public List<GenericEntity> workItemsQuery(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve, 
             WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, 
             @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, 
@@ -199,7 +200,7 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            String queryTypeName, @Optional @Default("#[payload:]") Condition condition, 
+            String queryTypeName, @Optional @Default("#[payload]") Condition condition, 
             @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, maxNumberOfPages);
     }
@@ -220,7 +221,7 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
-            @Optional @Default("#[payload:]") Condition condition, 
+            @Optional @Default("#[payload]") Condition condition, 
             @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, maxNumberOfPages);
     }
@@ -241,7 +242,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<GenericEntity> getMyWorkItems(@Placement(group = "Fields") List<String> fieldsToRetrieve,
+    public List<GenericEntity> getMyWorkItems(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter, @Optional @Default("100") Integer pageSize, 
             @Optional @Default("1") Integer maxNumberOfPages) {
@@ -260,7 +261,7 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<EntityDescription> describeEntities(List<String> typeNames) {
+    public List<EntityDescription> describeEntities(@Optional @Default("#[payload]") List<String> typeNames) {
         return clarizenClient.describeEntities(typeNames);
     }
     
@@ -276,6 +277,38 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<String> listEntities() {
         return clarizenClient.listEntities();
+    }
+    
+    /**
+     * Performs lifecycle changes on an entity or a group of entities
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:lifecycle-change}
+     * @param entityIdList the list of entities to be updated
+     * @param operation the operation to be performed
+     * @param recursive if the operation will be recursived
+     * @return true if the change was successful
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public Boolean lifecycleChange(@Optional @Default("#[payload]") List<EntityId> entityIdList, 
+            String operation, Boolean recursive) {
+        return clarizenClient.lifecycleChange(entityIdList, operation, recursive);
+    }
+    
+    /**
+     * Deletes an entity
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:delete-entity}
+     *
+     * @param entity the entity to be deleted
+     * @return true if the entity was successfully deleted
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public Boolean deleteEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+        return clarizenClient.deleteEntity(entity);
     }
     
     public ClarizenClient getClarizenClient() {

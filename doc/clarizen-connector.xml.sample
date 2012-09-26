@@ -68,3 +68,11 @@
 <!-- BEGIN_INCLUDE(clarizen:list-entities) -->
 <clarizen:list-entities />
 <!-- END_INCLUDE(clarizen:list-entities) -->
+
+<!-- BEGIN_INCLUDE(clarizen:lifecycle-change) -->
+<clarizen:lifecycle-change operation="operation" recursive="true" />
+<!-- END_INCLUDE(clarizen:lifecycle-change) -->
+
+<!-- BEGIN_INCLUDE(clarizen:delete-entity) -->
+<clarizen:delete-entity />
+<!-- END_INCLUDE(clarizen:delete-entity) -->

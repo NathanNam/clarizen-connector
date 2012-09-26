@@ -19,6 +19,7 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
+import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
@@ -58,6 +59,13 @@ public interface ClarizenClient {
             Condition condition, Integer pageSize, Integer maxNumberOfPages);
 
     /**
+     * Deletes en entity
+     * @param entity to be deleted
+     * @return true if the entity was successfully deleted
+     */
+    Boolean deleteEntity(BaseClarizenEntity entity);
+
+    /**
      * Describes an entity querying the metadata information provided by the webservice
      * @param typeName
      * @return entityDescription object
@@ -86,7 +94,16 @@ public interface ClarizenClient {
      * @return GenericEntity
      */
     BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId, List<String> fieldsToRetrieve);
-    
+
+    /**
+     * Changes the state of an entity
+     * @param entityIdList list of entityIds to be updated
+     * @param operation lifecycle change
+     * @param recursive
+     * @return true if the change was successful
+     */
+    Boolean lifecycleChange(List<EntityId> entityIdList, String operation, Boolean recursive);
+
     /**
      * Queries metadata information provided by the webservice for available entities
      * @return list of entities names
