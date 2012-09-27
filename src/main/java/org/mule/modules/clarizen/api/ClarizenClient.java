@@ -22,6 +22,7 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
 import com.clarizen.api.GetCalendarInfoResult;
+import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
 
@@ -73,6 +74,13 @@ public interface ClarizenClient {
      * @return true if the entity was successfully deleted
      */
     Boolean deleteEntity(BaseClarizenEntity entity);
+    
+    /**
+     * Download file information
+     * @param entity to be downloaded
+     * @return File information
+     */
+    FileInformation downloadFileInformation(BaseClarizenEntity entity);
 
     /**
      * Describes an entity querying the metadata information provided by the webservice

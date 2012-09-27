@@ -88,3 +88,7 @@
 <!-- BEGIN_INCLUDE(clarizen:create-from-template) -->
 <clarizen:create-from-template templateName="template" />
 <!-- END_INCLUDE(clarizen:create-from-template) -->
+
+<!-- BEGIN_INCLUDE(clarizen:download-file-information) -->
+<clarizen:download-file-information />
+<!-- END_INCLUDE(clarizen:download-file-information) -->

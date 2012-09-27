@@ -63,6 +63,9 @@ import com.clarizen.api.RetrieveResult;
 import com.clarizen.api.SessionHeader;
 import com.clarizen.api.StringList;
 import com.clarizen.api.UpdateMessage;
+import com.clarizen.api.files.DownloadMessage;
+import com.clarizen.api.files.DownloadResult;
+import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.DescribeEntitiesMessage;
 import com.clarizen.api.metadata.DescribeEntitiesResult;
 import com.clarizen.api.metadata.EntityDescription;
@@ -758,5 +761,33 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return entity;
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public FileInformation downloadFileInformation(BaseClarizenEntity entity) {
+        
+        DownloadMessage downloadMessage = new DownloadMessage();
+        downloadMessage.setDocumentId(entity.getId());
+        
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(downloadMessage);
+        
+        List<DownloadResult> results;
+        try {
+            results = (List) getService().execute(messages).getResult();
+            
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
+                }
+            }
+
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return results.get(0).getFileInformation();
     }
 }

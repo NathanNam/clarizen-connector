@@ -41,6 +41,7 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
 import com.clarizen.api.GetCalendarInfoResult;
+import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
 
@@ -356,6 +357,21 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public BaseClarizenEntity createFromTemplate(String templateName, @Optional @Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.createFromTemplate(templateName, entity);
+    }
+
+    /**
+     * Download file information
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:download-file-information}
+     *
+     * @param entity Document entity
+     * @return entity file information
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public FileInformation downloadFileInformation(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+        return clarizenClient.downloadFileInformation(entity);
     }
     
     public ClarizenClient getClarizenClient() {
