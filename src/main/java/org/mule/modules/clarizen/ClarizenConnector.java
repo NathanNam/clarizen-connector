@@ -179,7 +179,7 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<GenericEntity> workItemsQuery(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve, 
             WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, 
-            @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
+            @Optional Integer pageSize, @Optional Integer maxNumberOfPages) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, 
                 workItemFilter, pageSize, maxNumberOfPages);
     }
@@ -201,8 +201,8 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
-            String queryTypeName, @Optional @Default("#[payload]") Condition condition, 
-            @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
+            String queryTypeName, @Optional Condition condition, 
+            @Optional Integer pageSize, @Optional Integer maxNumberOfPages) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, maxNumberOfPages);
     }
     
@@ -222,8 +222,8 @@ public class ClarizenConnector
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
-            @Optional @Default("#[payload]") Condition condition, 
-            @Optional @Default("100") Integer pageSize, @Optional @Default("1") Integer maxNumberOfPages) {
+            @Optional Condition condition, 
+            @Optional Integer pageSize, @Optional Integer maxNumberOfPages) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, maxNumberOfPages);
     }
 
@@ -245,8 +245,8 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<GenericEntity> getMyWorkItems(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter, @Optional @Default("100") Integer pageSize, 
-            @Optional @Default("1") Integer maxNumberOfPages) {
+            WorkItemFilter workItemFilter, @Optional Integer pageSize, 
+            @Optional Integer maxNumberOfPages) {
         return clarizenClient.getMyWorkItems(fieldsToRetrieve, workItemState, workItemType, 
                 workItemFilter, pageSize, maxNumberOfPages);
     }
