@@ -342,6 +342,22 @@ public class ClarizenConnector
         return clarizenClient.getSystemSettings(settings);
     }
     
+    /**
+     * Creates milestones and projects from templates
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-from-template}
+     *
+     * @param templateName template to be used
+     * @param entity entity to be created from template
+     * @return created entity
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public BaseClarizenEntity createFromTemplate(String templateName, @Optional @Default("#[payload]") BaseClarizenEntity entity) {
+        return clarizenClient.createFromTemplate(templateName, entity);
+    }
+    
     public ClarizenClient getClarizenClient() {
         return clarizenClient;
     }

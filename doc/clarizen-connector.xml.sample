@@ -84,3 +84,7 @@
 <!-- BEGIN_INCLUDE(clarizen:get-system-settings) -->
 <clarizen:get-system-settings />
 <!-- END_INCLUDE(clarizen:get-system-settings) -->
+
+<!-- BEGIN_INCLUDE(clarizen:create-from-template) -->
+<clarizen:create-from-template templateName="template" />
+<!-- END_INCLUDE(clarizen:create-from-template) -->

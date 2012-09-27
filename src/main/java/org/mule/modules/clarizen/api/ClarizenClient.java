@@ -48,6 +48,14 @@ public interface ClarizenClient {
             Condition condition, Integer pageSize, Integer maxNumberOfPages);
     
     /**
+     * Creates milestones and projects from templates
+     * @param templateName
+     * @param entity
+     * @return created entity
+     */
+    BaseClarizenEntity createFromTemplate(String templateName, BaseClarizenEntity entity);
+    
+    /**
      * Creates an issue query
      * @param fieldsToRetrieve
      * @param issueType

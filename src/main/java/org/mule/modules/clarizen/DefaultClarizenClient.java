@@ -40,6 +40,7 @@ import org.springframework.util.StringUtils;
 
 import com.clarizen.api.ArrayOfBaseMessage;
 import com.clarizen.api.Clarizen;
+import com.clarizen.api.CreateFromTemplateMessage;
 import com.clarizen.api.CreateMessage;
 import com.clarizen.api.CreateResult;
 import com.clarizen.api.DeleteMessage;
@@ -724,5 +725,38 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return ((GetSystemSettingsValuesResult) results).getValues().getAnyType();
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public BaseClarizenEntity createFromTemplate(String templateName, BaseClarizenEntity entity) {
+        
+        CreateFromTemplateMessage createFromTemplateMsg = new CreateFromTemplateMessage();
+        createFromTemplateMsg.setTemplateName(templateName);
+        createFromTemplateMsg.setEntity(toGenericEntity(entity));
+        
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(createFromTemplateMsg);
+        
+        List<CreateResult> results;
+        try {
+            results = (List) getService().execute(messages).getResult();
+            
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
+                }
+            }
+            
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        if (results.get(0).getId() != null) {
+            entity.setId(results.get(0).getId());
+        }
+        
+        return entity;
     }
 }
