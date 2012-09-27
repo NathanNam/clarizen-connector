@@ -81,6 +81,13 @@ public interface ClarizenClient {
     GetCalendarInfoResult getCalendarInfo(EntityId userId);
     
     /**
+     * Gets System settings
+     * @param settings list
+     * @return system settings values
+     */
+    List<Object> getSystemSettings(List<String> settingList);
+    
+    /**
      * Query for current user's workitems
      * @param fieldsToRetrieve
      * @param workItemState

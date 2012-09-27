@@ -80,3 +80,7 @@
 <!-- BEGIN_INCLUDE(clarizen:get-calendar-information) -->
 <clarizen:get-calendar-information />
 <!-- END_INCLUDE(clarizen:get-calendar-information) -->
+
+<!-- BEGIN_INCLUDE(clarizen:get-system-settings) -->
+<clarizen:get-system-settings />
+<!-- END_INCLUDE(clarizen:get-system-settings) -->

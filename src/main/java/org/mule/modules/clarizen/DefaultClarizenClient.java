@@ -65,6 +65,8 @@ import com.clarizen.api.UpdateMessage;
 import com.clarizen.api.metadata.DescribeEntitiesMessage;
 import com.clarizen.api.metadata.DescribeEntitiesResult;
 import com.clarizen.api.metadata.EntityDescription;
+import com.clarizen.api.metadata.GetSystemSettingsValuesMessage;
+import com.clarizen.api.metadata.GetSystemSettingsValuesResult;
 import com.clarizen.api.metadata.ListEntitiesMessage;
 import com.clarizen.api.metadata.ListEntitiesResult;
 import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
@@ -672,9 +674,9 @@ public class DefaultClarizenClient implements ClarizenClient {
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    //TODO:complete operation!
     public GetCalendarInfoResult getCalendarInfo(EntityId userId) {
         GetCalendarInfoMessage getCalendarInfoMsg = new GetCalendarInfoMessage();
+        getCalendarInfoMsg.setUserId(userId);
         
         ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
         messages.getBaseMessage().add(getCalendarInfoMsg);
@@ -695,5 +697,32 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return (GetCalendarInfoResult) results.get(0);
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public List<Object> getSystemSettings(List<String> settingList) {
+        GetSystemSettingsValuesMessage getSystemSettingsInfoMsg = new GetSystemSettingsValuesMessage();
+        getSystemSettingsInfoMsg.setSettings(helper.createStringList(settingList));
+        
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(getSystemSettingsInfoMsg);
+        
+        List<Result> results;
+        try {
+            results = (List) getService().execute(messages).getResult();
+            
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
+                }
+            }
+            
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return ((GetSystemSettingsValuesResult) results).getValues().getAnyType();
     }
 }

@@ -327,6 +327,21 @@ public class ClarizenConnector
         return clarizenClient.getCalendarInfo(userId);
     }
     
+    /**
+     * Gets system settings values
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:get-system-settings}
+     *
+     * @param settings list
+     * @return system settings
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public List<Object> getSystemSettings(@Optional @Default("#[payload]") List<String> settings) {
+        return clarizenClient.getSystemSettings(settings);
+    }
+    
     public ClarizenClient getClarizenClient() {
         return clarizenClient;
     }

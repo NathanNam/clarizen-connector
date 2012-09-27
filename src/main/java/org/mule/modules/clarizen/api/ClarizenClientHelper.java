@@ -19,6 +19,7 @@ import com.clarizen.api.BaseMessage;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.FieldValue;
 import com.clarizen.api.SessionHeader;
+import com.clarizen.api.StringList;
 import com.clarizen.api.queries.ConstantExpression;
 import com.clarizen.api.queries.Expression;
 import com.clarizen.api.queries.FieldExpression;
@@ -150,4 +151,11 @@ public class ClarizenClientHelper {
         array.getEntityId().addAll(entityIdList);
         return array;
     }
+    
+    public StringList createStringList(List<String> stringList) {
+        StringList list = new StringList();
+        list.getString().addAll(stringList);
+        return list;
+    }
+    
 }
