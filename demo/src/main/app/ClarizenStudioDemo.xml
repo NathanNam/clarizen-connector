@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:context="http://www.springframework.org/schema/context" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/clarizen http://www.mulesoft.org/schema/mule/clarizen/1.0/mule-clarizen.xsd 
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd ">   
+ <clarizen:config name="Clarizen" connectionUser="${clarizen.user}" connectionPassword="${clarizen.password}" applicationId="${clarizen.appId}" partnerId="${clarizen.partnerId}" doc:name="Clarizen"/>
+    <context:property-placeholder location="mule.properties"/>
+    <flow name="CreateTask" doc:name="CreateTask">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-task" doc:name="HTTP"/>
+        <scripting:component doc:name="Groovy">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[new org.mule.modules.clarizen.api.model.Task (
+                description: "New task - Studio demo",
+                name: "Studio demo task"
+                )]]></scripting:text>
+            </scripting:script>
+        </scripting:component>
+        <clarizen:create-entity config-ref="Clarizen" doc:name="Clarizen">
+            <clarizen:entity ref="#[payload]"/>
+        </clarizen:create-entity>
+        <logger message="Task created! #[payload.description]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="CreateIssue" doc:name="CreateIssue">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-issue" doc:name="HTTP"/>
+        <scripting:component doc:name="Groovy">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[new org.mule.modules.clarizen.api.model.Issue (
+                description: "New issue - Studio demo",
+                title: "Studio demo issue"  
+                )]]></scripting:text>
+            </scripting:script>
+        </scripting:component>
+        <clarizen:create-entity config-ref="Clarizen" doc:name="Clarizen">
+            <clarizen:entity ref="#[payload]"/>
+        </clarizen:create-entity>
+        <logger message="Issue created! #[payload.title]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="EntityQuery" doc:name="EntityQuery">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-entity-query" doc:name="HTTP"/>
+        <scripting:transformer doc:name="Create condition">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import com.clarizen.api.ConditionList
+                                                                                import com.clarizen.api.queries.*
+                                                                                                                                                                        
+                                                                                new Or(
+                                                                                  conditions: 
+                                                                                    new ConditionList( condition: [ 
+                                                                                                          new Compare(leftExpression: new FieldExpression( fieldName: "Name" ),
+                                                                                                                      rightExpression: new ConstantExpression ( value: "New Task testing--107" ),
+                                                                                                                      operator: "CONTAINS" ),
+                                                                                                          new Compare(leftExpression: new FieldExpression( fieldName: "Name" ),
+                                                                                                                     rightExpression: new ConstantExpression ( value: "New Task testing--108" ),
+                                                                                                                            operator: "CONTAINS" )
+                                                                                ])
+                                                                                )]]></scripting:text>
+            </scripting:script>
+        </scripting:transformer>
+        <clarizen:entity-query config-ref="Clarizen" queryTypeName="Task" maxNumberOfPages="1" pageSize="100" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Description</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:entity-query>
+        <foreach collection="#[payload]" doc:name="Foreach">
+            <logger message="Entity: #[payload.id]" level="INFO" doc:name="Logger"/>
+        </foreach>
+    </flow>
+    <flow name="GetEntityFields" doc:name="GetEntityFields">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="get-entity-fields" doc:name="HTTP"/>
+        <clarizen:get-my-work-items config-ref="Clarizen"  maxNumberOfPages="1" pageSize="100" doc:name="Clarizen" workItemFilter="ALL" workItemState="ALL" workItemType="ALL">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>name</clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>description</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:get-my-work-items>
+        <foreach collection="#[payload]" doc:name="Foreach">
+            <foreach collection="payload.values.fieldValue" doc:name="Foreach">
+                <logger message="The field name is #[groovy:payload.fieldName], the field value is #[groovy:payload.value]" level="INFO" doc:name="Logger"/>
+            </foreach>
+        </foreach>
+    </flow>
+    <flow name="ListEntities" doc:name="ListEntities">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="list-entities" doc:name="HTTP"/>
+        <clarizen:list-entities config-ref="Clarizen" doc:name="Clarizen"/>
+        <collection-splitter doc:name="Collection Splitter"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="DescribeEntities" doc:name="DescribeEntities">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="describe-entities" doc:name="HTTP"/>
+        <clarizen:describe-entities config-ref="Clarizen" doc:name="Clarizen">
+            <clarizen:type-names>
+                <clarizen:type-name>User</clarizen:type-name>
+            </clarizen:type-names>
+        </clarizen:describe-entities>
+        <collection-splitter doc:name="Collection Splitter"/>
+        <logger message="The entity typeName is #[payload.typeName]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="DeleteEntity" doc:name="DeleteEntity">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="delete-entity" doc:name="HTTP"/>
+        <clarizen:entity-query config-ref="Clarizen" queryTypeName="Task" maxNumberOfPages="1" pageSize="100" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>description</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:entity-query>
+        <clarizen:delete-entity config-ref="Clarizen" doc:name="Clarizen">
+            <clarizen:entity ref="#[groovy:payload.get(0)]"/>
+        </clarizen:delete-entity>
+        <logger message="The entity was deleted!" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="GetCalendarInfo" doc:name="GetCalendarInfo">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="get-calendar-info" doc:name="HTTP"/>
+        <clarizen:entity-query config-ref="Clarizen" queryTypeName="User" maxNumberOfPages="1" pageSize="50" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>displayName</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:entity-query>
+        <clarizen:get-calendar-information config-ref="Clarizen" doc:name="Clarizen">
+            <clarizen:user-id ref="#[groovy:payload.get(0).id]"/>
+        </clarizen:get-calendar-information>
+    </flow>
+  </mule>
