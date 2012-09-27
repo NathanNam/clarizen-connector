@@ -92,3 +92,7 @@
 <!-- BEGIN_INCLUDE(clarizen:download-file-information) -->
 <clarizen:download-file-information />
 <!-- END_INCLUDE(clarizen:download-file-information) -->
+
+<!-- BEGIN_INCLUDE(clarizen:send-email) -->
+<clarizen:send-email accessType="PUBLIC" subject="Subject" body="body" />
+<!-- END_INCLUDE(clarizen:send-email) -->

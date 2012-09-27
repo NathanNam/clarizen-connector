@@ -38,6 +38,7 @@ import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 import org.springframework.util.StringUtils;
 
+import com.clarizen.api.AccessType;
 import com.clarizen.api.ArrayOfBaseMessage;
 import com.clarizen.api.Clarizen;
 import com.clarizen.api.CreateFromTemplateMessage;
@@ -57,9 +58,11 @@ import com.clarizen.api.IClarizenQuerySessionTimeoutFailureFaultFaultMessage;
 import com.clarizen.api.LifecycleMessage;
 import com.clarizen.api.LoginOptions;
 import com.clarizen.api.LoginResult;
+import com.clarizen.api.Recipient;
 import com.clarizen.api.Result;
 import com.clarizen.api.RetrieveMessage;
 import com.clarizen.api.RetrieveResult;
+import com.clarizen.api.SendEMailMessage;
 import com.clarizen.api.SessionHeader;
 import com.clarizen.api.StringList;
 import com.clarizen.api.UpdateMessage;
@@ -789,5 +792,44 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return results.get(0).getFileInformation();
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public Boolean sendEmail(AccessType accessType, String body, String subject,
+            List<Recipient> recipients, BaseClarizenEntity relatedEntity) {
+        
+        SendEMailMessage sendEmailMessage = new SendEMailMessage();
+        sendEmailMessage.setAccessType(accessType);
+        sendEmailMessage.setBody(body);
+        sendEmailMessage.setSubject(subject);
+
+        if (recipients != null) {
+            sendEmailMessage.setRecipients(helper.createArrayOfRecipients(recipients));
+        }
+        
+        if (relatedEntity != null) {
+            sendEmailMessage.setRelatedEntity(relatedEntity.getId());
+        }
+        
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(sendEmailMessage);
+        
+        List<Result> results;
+        try {
+            results = (List) getService().execute(messages).getResult();
+            
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
+                }
+            }
+
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return true;
     }
 }

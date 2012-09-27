@@ -38,9 +38,11 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
+import com.clarizen.api.AccessType;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
 import com.clarizen.api.GetCalendarInfoResult;
+import com.clarizen.api.Recipient;
 import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
@@ -372,6 +374,26 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public FileInformation downloadFileInformation(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.downloadFileInformation(entity);
+    }
+    
+    /**
+     * Sends an email to the specified recipients
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:send-email}
+     *
+     * @param accessType PUBLIC or PRIVATE
+     * @param body message body
+     * @param subject message subject
+     * @param recipients list of recipients
+     * @param relatedEntity entity related to the email
+     * @return true if the action was successful
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public Boolean sendEmail(AccessType accessType, @Optional String body, @Optional String subject, 
+            @Optional List<Recipient> recipients, @Optional BaseClarizenEntity relatedEntity) {
+        return clarizenClient.sendEmail(accessType, body, subject, recipients, relatedEntity);
     }
     
     public ClarizenClient getClarizenClient() {

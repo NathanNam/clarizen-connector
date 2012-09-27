@@ -19,9 +19,11 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
+import com.clarizen.api.AccessType;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
 import com.clarizen.api.GetCalendarInfoResult;
+import com.clarizen.api.Recipient;
 import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
@@ -155,7 +157,19 @@ public interface ClarizenClient {
      * Logout
      */
     void logout();
-    
+
+    /**
+     * Sends an email
+     * @param accessType PUBLIC or PRIVATE
+     * @param body
+     * @param subject
+     * @param recipients
+     * @param relatedEntity
+     * @return true if the action was successful
+     */
+    Boolean sendEmail(AccessType accessType, String body, String subject, List<Recipient> recipients, 
+            BaseClarizenEntity relatedEntity);
+
     /**
      * Updates an entity
      * @param entity model class extending BaseClarizenClient
