@@ -76,3 +76,7 @@
 <!-- BEGIN_INCLUDE(clarizen:delete-entity) -->
 <clarizen:delete-entity />
 <!-- END_INCLUDE(clarizen:delete-entity) -->
+
+<!-- BEGIN_INCLUDE(clarizen:get-calendar-information) -->
+<clarizen:get-calendar-information />
+<!-- END_INCLUDE(clarizen:get-calendar-information) -->

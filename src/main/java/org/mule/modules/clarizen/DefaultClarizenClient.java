@@ -46,6 +46,8 @@ import com.clarizen.api.DeleteMessage;
 import com.clarizen.api.EntityId;
 import com.clarizen.api.FieldValue;
 import com.clarizen.api.GenericEntity;
+import com.clarizen.api.GetCalendarInfoMessage;
+import com.clarizen.api.GetCalendarInfoResult;
 import com.clarizen.api.IClarizen;
 import com.clarizen.api.IClarizenExecuteSessionTimeoutFailureFaultFaultMessage;
 import com.clarizen.api.IClarizenLoginLoginFailureFaultFaultMessage;
@@ -667,5 +669,31 @@ public class DefaultClarizenClient implements ClarizenClient {
         return sessionId;
     }
 
-
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    //TODO:complete operation!
+    public GetCalendarInfoResult getCalendarInfo(EntityId userId) {
+        GetCalendarInfoMessage getCalendarInfoMsg = new GetCalendarInfoMessage();
+        
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(getCalendarInfoMsg);
+        
+        List<Result> results;
+        try {
+            results = (List) getService().execute(messages).getResult();
+            
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
+                            result.getError().getMessage());
+                }
+            }
+            
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        
+        return (GetCalendarInfoResult) results.get(0);
+    }
 }

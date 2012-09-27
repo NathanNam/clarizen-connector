@@ -21,6 +21,7 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
 
 import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
+import com.clarizen.api.GetCalendarInfoResult;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
 
@@ -71,6 +72,13 @@ public interface ClarizenClient {
      * @return entityDescription object
      */
     List<EntityDescription> describeEntities(List<String> typeNames);
+
+    /**
+     * Get Calendar Information
+     * @param userId
+     * @return calendar information
+     */
+    GetCalendarInfoResult getCalendarInfo(EntityId userId);
     
     /**
      * Query for current user's workitems

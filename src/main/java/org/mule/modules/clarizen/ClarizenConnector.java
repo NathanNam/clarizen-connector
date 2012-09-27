@@ -40,6 +40,7 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
 
 import com.clarizen.api.EntityId;
 import com.clarizen.api.GenericEntity;
+import com.clarizen.api.GetCalendarInfoResult;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
 
@@ -309,6 +310,21 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Boolean deleteEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.deleteEntity(entity);
+    }
+    
+    /**
+     * Gets calendar information for the specified user
+     * 
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:get-calendar-information}
+     *
+     * @param userId the userId entityId
+     * @return calendar information
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public GetCalendarInfoResult getCalendarInformation(@Optional @Default("#[payload]") EntityId userId) {
+        return clarizenClient.getCalendarInfo(userId);
     }
     
     public ClarizenClient getClarizenClient() {
