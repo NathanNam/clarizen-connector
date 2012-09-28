@@ -516,6 +516,8 @@ public class DefaultClarizenClient implements ClarizenClient {
         
         Object fieldValue;
         String fieldName;
+        List<FieldValue> customFields = new ArrayList<FieldValue>();
+
         for (FieldValue field : entityFields) {
             fieldName = StringUtils.uncapitalize(field.getFieldName());
 
@@ -530,8 +532,19 @@ public class DefaultClarizenClient implements ClarizenClient {
                     fieldValue = field.getValue();
                 }
                 
-                entityMap.put(fieldName, fieldValue);
+                //Custom fields starts with c_
+                if (fieldName.startsWith("c_")) {
+                    customFields.add(field);
+                }
+                else {
+                    entityMap.put(fieldName, fieldValue);
+                }
             }
+        }
+        
+        //adds customFields
+        if (customFields != null && customFields.size() > 0) {
+            entityMap.put("customFields", customFields);
         }
         
         return entityMap;
@@ -584,7 +597,7 @@ public class DefaultClarizenClient implements ClarizenClient {
      * @param entity
      * @return a list of FieldValue objects 
      */
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     private List<FieldValue> getFieldValuesFromBean(Object entity) {
         List<FieldValue> fields = new ArrayList<FieldValue>();
 
@@ -597,17 +610,27 @@ public class DefaultClarizenClient implements ClarizenClient {
         while (keyIterator.hasNext()) {
            propertyName = (String) keyIterator.next();
            fieldValue = beanMap.get(propertyName);
+           
+           if (fieldValue == null) {
+               continue;
+           }
+           
+           //adds customFields
+           if (propertyName.equalsIgnoreCase("customFields")) {
+               fields.addAll((List<FieldValue>) fieldValue);
+               continue;
+           }
 
-           if (fieldValue != null && isAttributeAnEntity(fieldValue.getClass())) {
+           //Convert attributes into GenericEntity
+           if (isAttributeAnEntity(fieldValue.getClass())) {
                fieldValue = toGenericEntity(fieldValue);
            }
            
-           //Convert attributes into GenericEntity
-           if (fieldValue != null && !propertyName.equalsIgnoreCase("class") && !propertyName.equalsIgnoreCase("id")) {
+           if (!propertyName.equalsIgnoreCase("class") && !propertyName.equalsIgnoreCase("id")) {
                fields.add(helper.createFieldValue(propertyName, fieldValue));
            }
         }
-        
+            
         return fields;
     }
 
