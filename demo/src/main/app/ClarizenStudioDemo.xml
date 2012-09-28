@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:context="http://www.springframework.org/schema/context" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:context="http://www.springframework.org/schema/context" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:http="http://www.mulesoft.org/schema/mule/http"
 	xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
 	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
 http://www.mulesoft.org/schema/mule/clarizen http://www.mulesoft.org/schema/mule/clarizen/1.0/mule-clarizen.xsd 
 http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd 
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd ">   
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd ">   
  <clarizen:config name="Clarizen" connectionUser="${clarizen.user}" connectionPassword="${clarizen.password}" applicationId="${clarizen.appId}" partnerId="${clarizen.partnerId}" doc:name="Clarizen"/>
     <context:property-placeholder location="mule.properties"/>
     <flow name="CreateTask" doc:name="CreateTask">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-task" doc:name="HTTP"/>
         <scripting:component doc:name="Groovy">
-            <scripting:script engine="Groovy">
-                <scripting:text><![CDATA[new org.mule.modules.clarizen.api.model.Task (
-                description: "New task - Studio demo",
-                name: "Studio demo task"
-                )]]></scripting:text>
-            </scripting:script>
+            <scripting:script engine="Groovy" file="task.groovy" />                
         </scripting:component>
         <clarizen:create-entity config-ref="Clarizen" doc:name="Clarizen">
             <clarizen:entity ref="#[payload]"/>
@@ -28,12 +24,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     <flow name="CreateIssue" doc:name="CreateIssue">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-issue" doc:name="HTTP"/>
         <scripting:component doc:name="Groovy">
-            <scripting:script engine="Groovy">
-                <scripting:text><![CDATA[new org.mule.modules.clarizen.api.model.Issue (
-                description: "New issue - Studio demo",
-                title: "Studio demo issue"  
-                )]]></scripting:text>
-            </scripting:script>
+            <scripting:script engine="Groovy" file="issue.groovy"/>
         </scripting:component>
         <clarizen:create-entity config-ref="Clarizen" doc:name="Clarizen">
             <clarizen:entity ref="#[payload]"/>
@@ -42,23 +33,8 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     </flow>
     <flow name="EntityQuery" doc:name="EntityQuery">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-entity-query" doc:name="HTTP"/>
-        <scripting:transformer doc:name="Create condition">
-            <scripting:script engine="Groovy">
-                <scripting:text><![CDATA[import com.clarizen.api.ConditionList
-                                                                                import com.clarizen.api.queries.*
-                                                                                                                                                                        
-                                                                                new Or(
-                                                                                  conditions: 
-                                                                                    new ConditionList( condition: [ 
-                                                                                                          new Compare(leftExpression: new FieldExpression( fieldName: "Name" ),
-                                                                                                                      rightExpression: new ConstantExpression ( value: "New Task testing--107" ),
-                                                                                                                      operator: "CONTAINS" ),
-                                                                                                          new Compare(leftExpression: new FieldExpression( fieldName: "Name" ),
-                                                                                                                     rightExpression: new ConstantExpression ( value: "New Task testing--108" ),
-                                                                                                                            operator: "CONTAINS" )
-                                                                                ])
-                                                                                )]]></scripting:text>
-            </scripting:script>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy" file="condition.groovy"/>
         </scripting:transformer>
         <clarizen:entity-query config-ref="Clarizen" queryTypeName="Task" maxNumberOfPages="1" pageSize="100" doc:name="Clarizen">
             <clarizen:fields-to-retrieve>
@@ -121,5 +97,45 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <clarizen:get-calendar-information config-ref="Clarizen" doc:name="Clarizen">
             <clarizen:user-id ref="#[groovy:payload.get(0).id]"/>
         </clarizen:get-calendar-information>
+        <logger message="Calendar info: #[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="GetSystemSettings" doc:name="GetSystemSettings">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="get-system-settings" doc:name="HTTP"/>
+        <clarizen:get-system-settings config-ref="Clarizen" doc:name="Clarizen">
+            <clarizen:settings>
+                <clarizen:setting>reportable</clarizen:setting>
+            </clarizen:settings>
+        </clarizen:get-system-settings>
+        <logger message="Settings" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="CreateFromTemplate" doc:name="CreateFromTemplate">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-from-template" doc:name="HTTP"/>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy" file="project.groovy"/>
+        </scripting:transformer>
+        <clarizen:create-from-template config-ref="Clarizen" templateName="Your First Project" doc:name="Clarizen"/>
+        <logger message="Created entity from template! #[payload.id]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="DownloadFileInformation" doc:name="DownloadFileInformation">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="download-file-information" doc:name="HTTP"/>
+        <clarizen:entity-query config-ref="Clarizen" queryTypeName="Document" maxNumberOfPages="1" pageSize="10" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>name</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:entity-query>
+        <clarizen:download-file-information config-ref="Clarizen" doc:name="Clarizen">
+            <clarizen:entity ref="#[groovy:payload.get(0)]"/>
+        </clarizen:download-file-information>
+        <logger message="File information -- file name: #[payload.fileName], url: #[payload.url]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="SendEmail" doc:name="SendEmail">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="send-email" doc:name="HTTP"/>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy" file="recipient.groovy"/>
+        </scripting:transformer>
+        <clarizen:send-email config-ref="Clarizen" body="body" subject="subject" accessType="PUBLIC" doc:name="Clarizen">
+            <clarizen:recipients ref="#[payload]"/>
+        </clarizen:send-email>
+        <logger message="Email sent? #[payload]" level="INFO" doc:name="Logger"/>
     </flow>
   </mule>
