@@ -738,6 +738,8 @@ public class DefaultClarizenClient implements ClarizenClient {
         ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
         messages.getBaseMessage().add(getSystemSettingsInfoMsg);
         
+        List<Object> listOfResults = new ArrayList<Object>();
+        
         List<Result> results;
         try {
             results = (List) getService().execute(messages).getResult();
@@ -747,13 +749,15 @@ public class DefaultClarizenClient implements ClarizenClient {
                     throw new ClarizenRuntimeException(result.getError().getErrorCode(), 
                             result.getError().getMessage());
                 }
+                
+                listOfResults.addAll(((GetSystemSettingsValuesResult) result).getValues().getAnyType());
             }
             
         } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return ((GetSystemSettingsValuesResult) results).getValues().getAnyType();
+        return listOfResults;
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
