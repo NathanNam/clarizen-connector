@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     <context:property-placeholder location="mule.properties"/>
     <flow name="CreateTask" doc:name="CreateTask">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-task" doc:name="HTTP"/>
-        <scripting:component doc:name="Groovy">
+        <scripting:component doc:name="Task">
             <scripting:script engine="Groovy" file="task.groovy" />                
         </scripting:component>
         <clarizen:create-entity config-ref="Clarizen" doc:name="Clarizen">
@@ -23,7 +23,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     <flow name="CreateIssue" doc:name="CreateIssue">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-issue" doc:name="HTTP"/>
-        <scripting:component doc:name="Groovy">
+        <scripting:component doc:name="Issue">
             <scripting:script engine="Groovy" file="issue.groovy"/>
         </scripting:component>
         <clarizen:create-entity config-ref="Clarizen" doc:name="Clarizen">
@@ -33,7 +33,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     <flow name="EntityQuery" doc:name="EntityQuery">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-entity-query" doc:name="HTTP"/>
-        <scripting:transformer doc:name="Groovy">
+        <scripting:transformer doc:name="Create condition">
             <scripting:script engine="Groovy" file="condition.groovy"/>
         </scripting:transformer>
         <clarizen:entity-query config-ref="Clarizen" queryTypeName="Task" maxNumberOfPages="1" pageSize="100" doc:name="Clarizen">
@@ -103,17 +103,17 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="get-system-settings" doc:name="HTTP"/>
         <clarizen:get-system-settings config-ref="Clarizen" doc:name="Clarizen">
             <clarizen:settings>
-                <clarizen:setting>reportable</clarizen:setting>
+                <clarizen:setting>Enable bug tracking</clarizen:setting>
             </clarizen:settings>
         </clarizen:get-system-settings>
-        <logger message="Settings" level="INFO" doc:name="Logger"/>
+        <logger message="#[payload.get(0)]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="CreateFromTemplate" doc:name="CreateFromTemplate">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-from-template" doc:name="HTTP"/>
-        <scripting:transformer doc:name="Groovy">
+        <scripting:transformer doc:name="Project info">
             <scripting:script engine="Groovy" file="project.groovy"/>
         </scripting:transformer>
-        <clarizen:create-from-template config-ref="Clarizen" templateName="Your First Project" doc:name="Clarizen"/>
+        <clarizen:create-from-template config-ref="Clarizen" templateName="Basic Project" doc:name="Clarizen"/>
         <logger message="Created entity from template! #[payload.id]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="DownloadFileInformation" doc:name="DownloadFileInformation">
@@ -130,10 +130,17 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     <flow name="SendEmail" doc:name="SendEmail">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="send-email" doc:name="HTTP"/>
-        <scripting:transformer doc:name="Groovy">
+        <clarizen:entity-query config-ref="Clarizen" queryTypeName="Task" maxNumberOfPages="1" pageSize="100" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Description</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:entity-query>
+        <set-variable variableName="entityReference" value="#[payload.get(0)]" doc:name="Variable"/>
+        <scripting:transformer doc:name="Create recipients">
             <scripting:script engine="Groovy" file="recipient.groovy"/>
         </scripting:transformer>
         <clarizen:send-email config-ref="Clarizen" body="body" subject="subject" accessType="PUBLIC" doc:name="Clarizen">
+            <clarizen:related-entity ref="#[variable:entityReference]"/>
             <clarizen:recipients ref="#[payload]"/>
         </clarizen:send-email>
         <logger message="Email sent? #[payload]" level="INFO" doc:name="Logger"/>
