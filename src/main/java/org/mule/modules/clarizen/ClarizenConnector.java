@@ -391,8 +391,8 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Boolean sendEmail(AccessType accessType, @Optional String body, @Optional String subject, 
-            @Optional List<Recipient> recipients, @Optional BaseClarizenEntity relatedEntity) {
+    public Boolean sendEmail(AccessType accessType, BaseClarizenEntity relatedEntity, 
+            @Optional String body, @Optional String subject, @Optional List<Recipient> recipients) {
         return clarizenClient.sendEmail(accessType, body, subject, recipients, relatedEntity);
     }
     

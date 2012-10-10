@@ -94,5 +94,7 @@
 <!-- END_INCLUDE(clarizen:download-file-information) -->
 
 <!-- BEGIN_INCLUDE(clarizen:send-email) -->
-<clarizen:send-email accessType="PUBLIC" subject="Subject" body="body" />
+<clarizen:send-email accessType="PUBLIC" subject="Subject" body="body">
+ <clarizen:related-entity ref="#[payload]" />
+</clarizen:send-email>
 <!-- END_INCLUDE(clarizen:send-email) -->
