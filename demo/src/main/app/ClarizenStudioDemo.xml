@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:context="http://www.springframework.org/schema/context" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+<mule xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:context="http://www.springframework.org/schema/context" xmlns:clarizen="http://www.mulesoft.org/schema/mule/clarizen" xmlns:http="http://www.mulesoft.org/schema/mule/http"
 	xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
 	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
 http://www.mulesoft.org/schema/mule/clarizen http://www.mulesoft.org/schema/mule/clarizen/1.0/mule-clarizen.xsd 
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd 
 http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd 
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd ">   
  <clarizen:config name="Clarizen" connectionUser="${clarizen.user}" connectionPassword="${clarizen.password}" applicationId="${clarizen.appId}" partnerId="${clarizen.partnerId}" doc:name="Clarizen"/>
     <context:property-placeholder location="mule.properties"/>
-    <flow name="CreateTask" doc:name="CreateTask">
+    <data-mapper:config name="UpdateTask" transformationGraphPath="updatetask.grf" doc:name="DataMapper"/>
+    <flow name="CreateTaskAndLinkToProject" doc:name="CreateTaskAndLinkToProject">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-task" doc:name="HTTP"/>
         <scripting:component doc:name="Task">
             <scripting:script engine="Groovy" file="task.groovy" />                
         </scripting:component>
-        <clarizen:create-entity config-ref="Clarizen" doc:name="Clarizen">
+        <clarizen:create-entity config-ref="Clarizen" doc:name="Create Task">
             <clarizen:entity ref="#[payload]"/>
         </clarizen:create-entity>
+        <set-variable variableName="newTask" value="#[payload.id]" doc:name="Set new Task"/>
         <logger message="Task created! #[payload.description]" level="INFO" doc:name="Logger"/>
+        <clarizen:work-items-query config-ref="Clarizen" maxNumberOfPages="1" pageSize="10" workItemFilter="ALL" workItemState="ALL" workItemType="PROJECT" doc:name="Get Projects">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>description</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:work-items-query>
+        <scripting:component doc:name="Groovy">
+            <scripting:script engine="Groovy" file="workitemhierarchylink.groovy"/>
+        </scripting:component>
+        <clarizen:create-entity config-ref="Clarizen" doc:name="Create Link">
+            <clarizen:entity ref="#[payload]"/>
+        </clarizen:create-entity>
+        <logger message="Task Linked to Project #[payload.parent]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="CreateIssue" doc:name="CreateIssue">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-issue" doc:name="HTTP"/>
@@ -30,6 +45,19 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
             <clarizen:entity ref="#[payload]"/>
         </clarizen:create-entity>
         <logger message="Issue created! #[payload.title]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="GetMyWorkItems" doc:name="GetMyWorkItems">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8081" path="get-my-work-items" doc:name="HTTP"/>
+        <clarizen:get-my-work-items config-ref="Clarizen" maxNumberOfPages="1" pageSize="100" workItemFilter="ALL" workItemState="ALL" workItemType="ALL" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>description</clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>parentProject</clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>name</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:get-my-work-items>
+        <foreach collection="#[payload]" doc:name="Foreach">
+            <logger message="WorkItem description: #[payload.description]" level="INFO" doc:name="Logger"/>
+        </foreach>
     </flow>
     <flow name="EntityQuery" doc:name="EntityQuery">
         <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="create-entity-query" doc:name="HTTP"/>
@@ -43,20 +71,6 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
         </clarizen:entity-query>
         <foreach collection="#[payload]" doc:name="Foreach">
             <logger message="Entity: #[payload.id]" level="INFO" doc:name="Logger"/>
-        </foreach>
-    </flow>
-    <flow name="GetEntityFields" doc:name="GetEntityFields">
-        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" path="get-entity-fields" doc:name="HTTP"/>
-        <clarizen:get-my-work-items config-ref="Clarizen"  maxNumberOfPages="1" pageSize="100" doc:name="Clarizen" workItemFilter="ALL" workItemState="ALL" workItemType="ALL">
-            <clarizen:fields-to-retrieve>
-                <clarizen:fields-to-retrieve>name</clarizen:fields-to-retrieve>
-                <clarizen:fields-to-retrieve>description</clarizen:fields-to-retrieve>
-            </clarizen:fields-to-retrieve>
-        </clarizen:get-my-work-items>
-        <foreach collection="#[payload]" doc:name="Foreach">
-            <foreach collection="payload.values.fieldValue" doc:name="Foreach">
-                <logger message="The field name is #[groovy:payload.fieldName], the field value is #[groovy:payload.value]" level="INFO" doc:name="Logger"/>
-            </foreach>
         </foreach>
     </flow>
     <flow name="ListEntities" doc:name="ListEntities">
@@ -140,9 +154,26 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
             <scripting:script engine="Groovy" file="recipient.groovy"/>
         </scripting:transformer>
         <clarizen:send-email config-ref="Clarizen" body="body" subject="subject" accessType="PUBLIC" doc:name="Clarizen">
-            <clarizen:related-entity ref="#[variable:entityReference]"/>
             <clarizen:recipients ref="#[payload]"/>
         </clarizen:send-email>
         <logger message="Email sent? #[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="UpdateTask-DM" doc:name="UpdateTask-DM">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8090" doc:name="HTTP" path="update-task-dm"/>
+        <clarizen:entity-query config-ref="Clarizen" doc:name="Clarizen" queryTypeName="Task" maxNumberOfPages="1" pageSize="100">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Name</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:entity-query>
+        <clarizen:get-work-item-by-id config-ref="Clarizen" workItemId="#[payload.get(0).id.value]" workItemType="TASK" doc:name="Clarizen">
+            <clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>parentProject</clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Name</clarizen:fields-to-retrieve>
+                <clarizen:fields-to-retrieve>Description</clarizen:fields-to-retrieve>
+            </clarizen:fields-to-retrieve>
+        </clarizen:get-work-item-by-id>
+        <data-mapper:transform config-ref="UpdateTask" doc:name="DataMapper"/>
+        <clarizen:update-entity config-ref="Clarizen" doc:name="Clarizen"/>
+        <logger message="Updated Task! #[payload.description]" level="INFO" doc:name="Logger"/>
     </flow>
   </mule>

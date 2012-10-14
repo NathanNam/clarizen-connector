@@ -23,374 +23,472 @@
             <property value="2" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="CreateTask" entity-id="1c589527-2dd4-428e-a841-99140ed9e534">
+    <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="DataMapper" entity-id="DataMapper#1">
+        <properties>
+            <property value="UpdateTask" name="name"/>
+            <property value="updatetask.grf" name="transformationGraphPath"/>
+            <property value="3" name="auxiliary;index"/>
+            <property value="3" name="auxiliary;index"/>
+            <property value="3" name="auxiliary;index"/>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="CreateTaskAndLinkToProject" entity-id="fe4ba8f3-bf8f-4687-9951-b48254660951">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="3" name="auxiliary;index"/>
+            <property value="4" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="3" name="auxiliary;index"/>
-            <property value="3" name="auxiliary;index"/>
-            <property value="3" name="auxiliary;index"/>
+            <property value="4" name="auxiliary;index"/>
+            <property value="4" name="auxiliary;index"/>
+            <property value="4" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
                     <property value="create-task" name="path"/>
                     <property name="method"/>
-                    <property value="4" name="auxiliary;index"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="4" name="auxiliary;index"/>
-                    <property value="4" name="auxiliary;index"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="4" name="auxiliary;index"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="4" name="auxiliary;index"/>
-                    <property value="4" name="auxiliary;index"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
                 </properties>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" name="Task" entity-id="Groovy#1">
                 <properties>
-                    <property value="5" name="auxiliary;index"/>
-                    <property value="5" name="auxiliary;index"/>
-                    <property value="5" name="auxiliary;index"/>
-                    <property value="5" name="auxiliary;index"/>
-                    <property value="5" name="auxiliary;index"/>
-                    <property value="5" name="auxiliary;index"/>
+                    <property value="6" name="auxiliary;index"/>
+                    <property value="6" name="auxiliary;index"/>
+                    <property value="6" name="auxiliary;index"/>
+                    <property value="6" name="auxiliary;index"/>
+                    <property value="6" name="auxiliary;index"/>
+                    <property value="6" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property value="Groovy" name="engine"/>
                         <property value="task.groovy" name="file"/>
-                        <property value="6" name="auxiliary;wrapIn"/>
-                        <property value="6" name="auxiliary;index"/>
+                        <property value="7" name="auxiliary;wrapIn"/>
+                        <property value="7" name="auxiliary;index"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
                         <property value="Groovy" name="engine"/>
                         <property value="task.groovy" name="file"/>
-                        <property value="6" name="auxiliary;wrapIn"/>
-                        <property value="6" name="auxiliary;index"/>
+                        <property value="7" name="auxiliary;wrapIn"/>
+                        <property value="7" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Create Task" entity-id="Clarizen#2">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
-                    <property value="7" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property value="8" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity;0">
                         <property value="#[payload]" name="ref"/>
-                        <property value="8" name="auxiliary;wrapIn"/>
-                        <property value="8" name="auxiliary;index"/>
+                        <property value="9" name="auxiliary;wrapIn"/>
+                        <property value="9" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="Set new Task" entity-id="fc48e581-5d06-4cdd-a242-254b864ce482">
+                <properties>
+                    <property value="newTask" name="variableName"/>
+                    <property value="#[payload.id]" name="value"/>
+                    <property value="http://www.mulesoft.org/schema/mule/core/set-variable" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#1">
                 <properties>
                     <property value="Task created! #[payload.description]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="9" name="auxiliary;index"/>
-                    <property value="9" name="auxiliary;index"/>
-                    <property value="9" name="auxiliary;index"/>
+                    <property value="10" name="auxiliary;index"/>
+                    <property value="10" name="auxiliary;index"/>
+                    <property value="10" name="auxiliary;index"/>
                 </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Get Projects" entity-id="Clarizen#3">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/work-items-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="1" name="maxNumberOfPages"/>
+                    <property value="10" name="pageSize"/>
+                    <property value="ALL" name="workItemFilter"/>
+                    <property value="ALL" name="workItemState"/>
+                    <property value="PROJECT" name="workItemType"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property value="11" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/work-items-query-fields-to-retrieves;0">
+                        <property value="12" name="auxiliary;wrapIn"/>
+                        <property value="12" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/work-items-query-fields-to-retrieve;1">
+                            <property value="description" name="value"/>
+                            <property value="13" name="auxiliary;wrapIn"/>
+                            <property value="13" name="auxiliary;index"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" name="Groovy" entity-id="Groovy#2">
+                <properties>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="workitemhierarchylink.groovy" name="file"/>
+                        <property value="16" name="auxiliary;wrapIn"/>
+                        <property value="16" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="workitemhierarchylink.groovy" name="file"/>
+                        <property value="16" name="auxiliary;wrapIn"/>
+                        <property value="16" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Create Link" entity-id="Clarizen#4">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity;0">
+                        <property value="#[payload]" name="ref"/>
+                        <property value="18" name="auxiliary;wrapIn"/>
+                        <property value="18" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
+                <properties>
+                    <property value="Task Linked to Project #[payload.parent]" name="message"/>
+                    <property value="" name="category"/>
+                    <property value="INFO" name="level"/>
+                    <property value="19" name="auxiliary;index"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="CreateIssue" entity-id="62878c4a-b24f-4e76-87fc-027c08bb6a0b">
+    <flow SubFlow="false" name="CreateIssue" entity-id="5ca6e8a8-ea0a-4100-93cf-3c1905be38c7">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="10" name="auxiliary;index"/>
+            <property value="20" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="10" name="auxiliary;index"/>
-            <property value="10" name="auxiliary;index"/>
-            <property value="10" name="auxiliary;index"/>
+            <property value="20" name="auxiliary;index"/>
+            <property value="20" name="auxiliary;index"/>
+            <property value="20" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#2">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
                     <property value="create-issue" name="path"/>
                     <property name="method"/>
-                    <property value="11" name="auxiliary;index"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="11" name="auxiliary;index"/>
-                    <property value="11" name="auxiliary;index"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="11" name="auxiliary;index"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="11" name="auxiliary;index"/>
-                    <property value="11" name="auxiliary;index"/>
-                    <property value="11" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" name="Issue" entity-id="Groovy#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" name="Issue" entity-id="Groovy#3">
                 <properties>
-                    <property value="12" name="auxiliary;index"/>
-                    <property value="12" name="auxiliary;index"/>
-                    <property value="12" name="auxiliary;index"/>
-                    <property value="12" name="auxiliary;index"/>
-                    <property value="12" name="auxiliary;index"/>
-                    <property value="12" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property value="Groovy" name="engine"/>
                         <property value="issue.groovy" name="file"/>
-                        <property value="13" name="auxiliary;wrapIn"/>
-                        <property value="13" name="auxiliary;index"/>
+                        <property value="23" name="auxiliary;wrapIn"/>
+                        <property value="23" name="auxiliary;index"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
                         <property value="Groovy" name="engine"/>
                         <property value="issue.groovy" name="file"/>
-                        <property value="13" name="auxiliary;wrapIn"/>
-                        <property value="13" name="auxiliary;index"/>
+                        <property value="23" name="auxiliary;wrapIn"/>
+                        <property value="23" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#3">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#5">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/create-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
-                    <property value="14" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
+                    <property value="24" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity;0">
                         <property value="#[payload]" name="ref"/>
-                        <property value="15" name="auxiliary;wrapIn"/>
-                        <property value="15" name="auxiliary;index"/>
+                        <property value="25" name="auxiliary;wrapIn"/>
+                        <property value="25" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#3">
                 <properties>
                     <property value="Issue created! #[payload.title]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
+                    <property value="26" name="auxiliary;index"/>
+                    <property value="26" name="auxiliary;index"/>
+                    <property value="26" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="EntityQuery" entity-id="9099f94d-c1a5-4691-b5fd-1fe5d1403ffd">
+    <flow SubFlow="false" name="GetMyWorkItems" entity-id="cb1ddbaf-8964-4406-8711-1dceb646807c">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="17" name="auxiliary;index"/>
+            <property value="27" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="17" name="auxiliary;index"/>
-            <property value="17" name="auxiliary;index"/>
-            <property value="17" name="auxiliary;index"/>
+            <property value="27" name="auxiliary;index"/>
+            <property value="27" name="auxiliary;index"/>
+            <property value="27" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#3">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#3">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
-                    <property value="8090" name="port"/>
-                    <property value="create-entity-query" name="path"/>
+                    <property value="8081" name="port"/>
+                    <property value="get-my-work-items" name="path"/>
                     <property name="method"/>
-                    <property value="18" name="auxiliary;index"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="18" name="auxiliary;index"/>
-                    <property value="18" name="auxiliary;index"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="18" name="auxiliary;index"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="18" name="auxiliary;index"/>
-                    <property value="18" name="auxiliary;index"/>
-                    <property value="18" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Create condition" entity-id="Groovy#3">
-                <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
-                    <property value="19" name="auxiliary;index"/>
-                    <property name="mimeType"/>
-                    <property value="19" name="auxiliary;index"/>
-                    <property value="19" name="auxiliary;index"/>
-                    <property value="19" name="auxiliary;index"/>
-                    <property value="19" name="auxiliary;index"/>
-                    <property value="19" name="auxiliary;index"/>
-                    <property value="19" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="Groovy" name="engine"/>
-                        <property value="condition.groovy" name="file"/>
-                        <property value="20" name="auxiliary;wrapIn"/>
-                        <property value="20" name="auxiliary;index"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
-                        <property value="Groovy" name="engine"/>
-                        <property value="condition.groovy" name="file"/>
-                        <property value="20" name="auxiliary;wrapIn"/>
-                        <property value="20" name="auxiliary;index"/>
-                    </property-collection>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#4">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#6">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="Task" name="queryTypeName"/>
-                    <property name="condition-ref"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
                     <property value="1" name="maxNumberOfPages"/>
                     <property value="100" name="pageSize"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
+                    <property value="ALL" name="workItemFilter"/>
+                    <property value="ALL" name="workItemState"/>
+                    <property value="ALL" name="workItemType"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
-                        <property value="22" name="auxiliary;wrapIn"/>
-                        <property value="22" name="auxiliary;index"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
-                            <property value="Description" name="value"/>
-                            <property value="23" name="auxiliary;wrapIn"/>
-                            <property value="23" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieves;0">
+                        <property value="30" name="auxiliary;wrapIn"/>
+                        <property value="30" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;1">
+                            <property value="description" name="value"/>
+                            <property value="31" name="auxiliary;wrapIn"/>
+                            <property value="31" name="auxiliary;index"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;2">
+                            <property value="parentProject" name="value"/>
+                            <property value="32" name="auxiliary;wrapIn"/>
+                            <property value="32" name="auxiliary;index"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;3">
+                            <property value="name" name="value"/>
+                            <property value="33" name="auxiliary;wrapIn"/>
+                            <property value="33" name="auxiliary;index"/>
                         </property-collection>
                     </property-collection>
                 </properties>
             </pattern>
             <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="Foreach" entity-id="Foreach#1">
                 <properties>
-                    <property value="24" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
                     <property value="#[payload]" name="collection"/>
                     <property name="counterVariableName"/>
                     <property name="batchSize"/>
                     <property name="rootMessageVariableName"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
                 </properties>
                 <compartment entity-id="compartment#1">
                     <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#4">
-                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#3">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#4">
                             <properties>
-<property value="Entity: #[payload.id]" name="message"/>
+<property value="WorkItem description: #[payload.description]" name="message"/>
 <property value="INFO" name="level"/>
 <property name="category"/>
-<property value="25" name="auxiliary;index"/>
-<property value="25" name="auxiliary;index"/>
-<property value="25" name="auxiliary;index"/>
+<property value="35" name="auxiliary;index"/>
+<property value="35" name="auxiliary;index"/>
+<property value="35" name="auxiliary;index"/>
                             </properties>
                         </pattern>
                     </lane>
@@ -398,326 +496,331 @@
             </scope>
         </lane>
     </flow>
-    <flow SubFlow="false" name="GetEntityFields" entity-id="3a5fd697-02e1-41ff-b174-edd57ec9e13b">
+    <flow SubFlow="false" name="EntityQuery" entity-id="cf3f435f-4ad3-4f29-af0d-f7216d014029">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="26" name="auxiliary;index"/>
+            <property value="36" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="26" name="auxiliary;index"/>
-            <property value="26" name="auxiliary;index"/>
-            <property value="26" name="auxiliary;index"/>
+            <property value="36" name="auxiliary;index"/>
+            <property value="36" name="auxiliary;index"/>
+            <property value="36" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#5">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#4">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
-                    <property value="get-entity-fields" name="path"/>
+                    <property value="create-entity-query" name="path"/>
                     <property name="method"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#5">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Create condition" entity-id="Groovy#4">
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property value="38" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property value="38" name="auxiliary;index"/>
+                    <property value="38" name="auxiliary;index"/>
+                    <property value="38" name="auxiliary;index"/>
+                    <property value="38" name="auxiliary;index"/>
+                    <property value="38" name="auxiliary;index"/>
+                    <property value="38" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="condition.groovy" name="file"/>
+                        <property value="39" name="auxiliary;wrapIn"/>
+                        <property value="39" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="condition.groovy" name="file"/>
+                        <property value="39" name="auxiliary;wrapIn"/>
+                        <property value="39" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#7">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="Task" name="queryTypeName"/>
+                    <property name="condition-ref"/>
                     <property value="1" name="maxNumberOfPages"/>
                     <property value="100" name="pageSize"/>
-                    <property value="ALL" name="workItemFilter"/>
-                    <property value="ALL" name="workItemState"/>
-                    <property value="ALL" name="workItemType"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property value="28" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieves;0">
-                        <property value="29" name="auxiliary;wrapIn"/>
-                        <property value="29" name="auxiliary;index"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;1">
-                            <property value="name" name="value"/>
-                            <property value="30" name="auxiliary;wrapIn"/>
-                            <property value="30" name="auxiliary;index"/>
-                        </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items-fields-to-retrieve;2">
-                            <property value="description" name="value"/>
-                            <property value="31" name="auxiliary;wrapIn"/>
-                            <property value="31" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property value="40" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
+                        <property value="41" name="auxiliary;wrapIn"/>
+                        <property value="41" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
+                            <property value="Description" name="value"/>
+                            <property value="42" name="auxiliary;wrapIn"/>
+                            <property value="42" name="auxiliary;index"/>
                         </property-collection>
                     </property-collection>
                 </properties>
             </pattern>
             <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="Foreach" entity-id="Foreach#2">
                 <properties>
-                    <property value="32" name="auxiliary;index"/>
+                    <property value="43" name="auxiliary;index"/>
                     <property value="#[payload]" name="collection"/>
                     <property name="counterVariableName"/>
                     <property name="batchSize"/>
                     <property name="rootMessageVariableName"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
+                    <property value="43" name="auxiliary;index"/>
+                    <property value="43" name="auxiliary;index"/>
+                    <property value="43" name="auxiliary;index"/>
                 </properties>
                 <compartment entity-id="compartment#2">
                     <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#6">
-                        <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="Foreach" entity-id="Foreach#3">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#5">
                             <properties>
-<property value="33" name="auxiliary;index"/>
-<property value="payload.values.fieldValue" name="collection"/>
-<property name="counterVariableName"/>
-<property name="batchSize"/>
-<property name="rootMessageVariableName"/>
-<property value="33" name="auxiliary;index"/>
-<property value="33" name="auxiliary;index"/>
-<property value="33" name="auxiliary;index"/>
+<property value="Entity: #[payload.id]" name="message"/>
+<property value="INFO" name="level"/>
+<property name="category"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
                             </properties>
-                            <compartment entity-id="compartment#3">
-<lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#7">
-    <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#4">
-        <properties>
-            <property value="The field name is #[groovy:payload.fieldName], the field value is #[groovy:payload.value]" name="message"/>
-            <property value="INFO" name="level"/>
-            <property name="category"/>
-            <property value="34" name="auxiliary;index"/>
-            <property value="34" name="auxiliary;index"/>
-            <property value="34" name="auxiliary;index"/>
-        </properties>
-    </pattern>
-</lane>
-                            </compartment>
-                        </scope>
+                        </pattern>
                     </lane>
                 </compartment>
             </scope>
         </lane>
     </flow>
-    <flow SubFlow="false" name="ListEntities" entity-id="935db60d-e23e-491f-9b67-0ac18274c8f7">
+    <flow SubFlow="false" name="ListEntities" entity-id="cbe0999a-bbba-42ec-bbfe-3f8d221ccf67">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="35" name="auxiliary;index"/>
+            <property value="45" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="35" name="auxiliary;index"/>
-            <property value="35" name="auxiliary;index"/>
-            <property value="35" name="auxiliary;index"/>
+            <property value="45" name="auxiliary;index"/>
+            <property value="45" name="auxiliary;index"/>
+            <property value="45" name="auxiliary;index"/>
         </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#8">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#7">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#5">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
                     <property value="list-entities" name="path"/>
                     <property name="method"/>
-                    <property value="36" name="auxiliary;index"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="36" name="auxiliary;index"/>
-                    <property value="36" name="auxiliary;index"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="36" name="auxiliary;index"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="36" name="auxiliary;index"/>
-                    <property value="36" name="auxiliary;index"/>
-                    <property value="36" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#6">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#8">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/list-entities" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="37" name="auxiliary;index"/>
-                    <property value="37" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="37" name="auxiliary;index"/>
-                    <property value="37" name="auxiliary;index"/>
-                    <property value="37" name="auxiliary;index"/>
-                    <property value="37" name="auxiliary;index"/>
-                    <property value="37" name="auxiliary;index"/>
-                    <property value="37" name="auxiliary;index"/>
-                    <property value="37" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter" entity-id="Collection Splitter#1">
                 <properties>
                     <property name="enableCorrelation"/>
-                    <property value="38" name="auxiliary;index"/>
-                    <property value="38" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="38" name="auxiliary;index"/>
-                    <property value="38" name="auxiliary;index"/>
-                    <property value="38" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#5">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#6">
                 <properties>
                     <property value="#[payload]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="39" name="auxiliary;index"/>
-                    <property value="39" name="auxiliary;index"/>
-                    <property value="39" name="auxiliary;index"/>
+                    <property value="49" name="auxiliary;index"/>
+                    <property value="49" name="auxiliary;index"/>
+                    <property value="49" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="DescribeEntities" entity-id="2ce1950f-0be4-4c0e-998a-03d4d8a2e8f3">
+    <flow SubFlow="false" name="DescribeEntities" entity-id="4ab6492e-eac7-4884-8084-9dd7d54aa5aa">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="40" name="auxiliary;index"/>
+            <property value="50" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="40" name="auxiliary;index"/>
-            <property value="40" name="auxiliary;index"/>
-            <property value="40" name="auxiliary;index"/>
+            <property value="50" name="auxiliary;index"/>
+            <property value="50" name="auxiliary;index"/>
+            <property value="50" name="auxiliary;index"/>
         </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#9">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#8">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#6">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
                     <property value="describe-entities" name="path"/>
                     <property name="method"/>
-                    <property value="41" name="auxiliary;index"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="41" name="auxiliary;index"/>
-                    <property value="41" name="auxiliary;index"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="41" name="auxiliary;index"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="41" name="auxiliary;index"/>
-                    <property value="41" name="auxiliary;index"/>
-                    <property value="41" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
+                    <property value="51" name="auxiliary;index"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#7">
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#9">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/describe-entities" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
-                    <property value="42" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/describe-entities-type-namess;0">
-                        <property value="43" name="auxiliary;wrapIn"/>
-                        <property value="43" name="auxiliary;index"/>
+                        <property value="53" name="auxiliary;wrapIn"/>
+                        <property value="53" name="auxiliary;index"/>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/describe-entities-type-names;1">
                             <property value="User" name="value"/>
-                            <property value="44" name="auxiliary;wrapIn"/>
-                            <property value="44" name="auxiliary;index"/>
+                            <property value="54" name="auxiliary;wrapIn"/>
+                            <property value="54" name="auxiliary;index"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -725,208 +828,79 @@
             <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Collection Splitter" entity-id="Collection Splitter#2">
                 <properties>
                     <property name="enableCorrelation"/>
-                    <property value="45" name="auxiliary;index"/>
-                    <property value="45" name="auxiliary;index"/>
+                    <property value="55" name="auxiliary;index"/>
+                    <property value="55" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="45" name="auxiliary;index"/>
-                    <property value="45" name="auxiliary;index"/>
-                    <property value="45" name="auxiliary;index"/>
+                    <property value="55" name="auxiliary;index"/>
+                    <property value="55" name="auxiliary;index"/>
+                    <property value="55" name="auxiliary;index"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#6">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#7">
                 <properties>
                     <property value="The entity typeName is #[payload.typeName]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="46" name="auxiliary;index"/>
-                    <property value="46" name="auxiliary;index"/>
-                    <property value="46" name="auxiliary;index"/>
+                    <property value="56" name="auxiliary;index"/>
+                    <property value="56" name="auxiliary;index"/>
+                    <property value="56" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="DeleteEntity" entity-id="0a5f33d3-b35f-4822-8359-6d776c54d11f">
+    <flow SubFlow="false" name="DeleteEntity" entity-id="820e4ffc-263a-4d22-9a2c-1a562fdfa00b">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="47" name="auxiliary;index"/>
+            <property value="57" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="47" name="auxiliary;index"/>
-            <property value="47" name="auxiliary;index"/>
-            <property value="47" name="auxiliary;index"/>
+            <property value="57" name="auxiliary;index"/>
+            <property value="57" name="auxiliary;index"/>
+            <property value="57" name="auxiliary;index"/>
         </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#10">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#9">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#7">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="48" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="48" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
                     <property value="delete-entity" name="path"/>
                     <property name="method"/>
-                    <property value="48" name="auxiliary;index"/>
-                    <property value="48" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="48" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="48" name="auxiliary;index"/>
-                    <property value="48" name="auxiliary;index"/>
-                    <property value="48" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="48" name="auxiliary;index"/>
-                    <property value="48" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="48" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="48" name="auxiliary;index"/>
-                    <property value="48" name="auxiliary;index"/>
-                    <property value="48" name="auxiliary;index"/>
-                </properties>
-            </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#8">
-                <properties>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="Task" name="queryTypeName"/>
-                    <property name="condition-ref"/>
-                    <property value="1" name="maxNumberOfPages"/>
-                    <property value="100" name="pageSize"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property name=""/>
-                    <property name="connectionUser"/>
-                    <property name="connectionPassword"/>
-                    <property name="applicationId"/>
-                    <property name="partnerId"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property value="49" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
-                        <property value="50" name="auxiliary;wrapIn"/>
-                        <property value="50" name="auxiliary;index"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
-                            <property value="description" name="value"/>
-                            <property value="51" name="auxiliary;wrapIn"/>
-                            <property value="51" name="auxiliary;index"/>
-                        </property-collection>
-                    </property-collection>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#9">
-                <properties>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/delete-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="Clarizen" name="config-ref"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property name=""/>
-                    <property name="connectionUser"/>
-                    <property name="connectionPassword"/>
-                    <property name="applicationId"/>
-                    <property name="partnerId"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property value="52" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity;0">
-                        <property value="#[groovy:payload.get(0)]" name="ref"/>
-                        <property value="53" name="auxiliary;wrapIn"/>
-                        <property value="53" name="auxiliary;index"/>
-                    </property-collection>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#7">
-                <properties>
-                    <property value="The entity was deleted!" name="message"/>
-                    <property value="INFO" name="level"/>
-                    <property name="category"/>
-                    <property value="54" name="auxiliary;index"/>
-                    <property value="54" name="auxiliary;index"/>
-                    <property value="54" name="auxiliary;index"/>
-                </properties>
-            </pattern>
-        </lane>
-    </flow>
-    <flow SubFlow="false" name="GetCalendarInfo" entity-id="0c1d6938-1a9d-4d1c-8643-18b5714bda72">
-        <properties>
-            <property name="processingStrategy2"/>
-            <property name="processingStrategy"/>
-            <property value="55" name="auxiliary;index"/>
-            <property name="bussinessEventsLabel"/>
-            <property name="tracking:enable-default-events"/>
-            <property value="55" name="auxiliary;index"/>
-            <property value="55" name="auxiliary;index"/>
-            <property value="55" name="auxiliary;index"/>
-        </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#11">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#8">
-                <properties>
-                    <property value="one-way" name="exchange-pattern"/>
-                    <property value="one-way" name="exchange-pattern"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property name="httpLabel"/>
-                    <property value="localhost" name="host"/>
-                    <property value="8090" name="port"/>
-                    <property value="get-calendar-info" name="path"/>
-                    <property name="method"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property name="address"/>
-                    <property name="encoding"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
-                    <property name="followRedirects"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property name="connector-ref"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="responseTransformer-refs"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property name="user"/>
-                    <property name="password"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property name="contentType"/>
-                    <property name="keep-alive"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property value="56" name="auxiliary;index"/>
-                    <property value="56" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
                 </properties>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#10">
@@ -934,33 +908,33 @@
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="User" name="queryTypeName"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="Task" name="queryTypeName"/>
                     <property name="condition-ref"/>
                     <property value="1" name="maxNumberOfPages"/>
-                    <property value="50" name="pageSize"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
+                    <property value="100" name="pageSize"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
-                    <property value="57" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
+                    <property value="59" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
-                        <property value="58" name="auxiliary;wrapIn"/>
-                        <property value="58" name="auxiliary;index"/>
+                        <property value="60" name="auxiliary;wrapIn"/>
+                        <property value="60" name="auxiliary;index"/>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
-                            <property value="displayName" name="value"/>
-                            <property value="59" name="auxiliary;wrapIn"/>
-                            <property value="59" name="auxiliary;index"/>
+                            <property value="description" name="value"/>
+                            <property value="61" name="auxiliary;wrapIn"/>
+                            <property value="61" name="auxiliary;index"/>
                         </property-collection>
                     </property-collection>
                 </properties>
@@ -968,436 +942,436 @@
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#11">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/get-calendar-information" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/delete-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property value="60" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/user-id;0">
-                        <property value="#[groovy:payload.get(0).id]" name="ref"/>
-                        <property value="61" name="auxiliary;wrapIn"/>
-                        <property value="61" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity;0">
+                        <property value="#[groovy:payload.get(0)]" name="ref"/>
+                        <property value="63" name="auxiliary;wrapIn"/>
+                        <property value="63" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#8">
                 <properties>
-                    <property value="Calendar info: #[payload]" name="message"/>
+                    <property value="The entity was deleted!" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="62" name="auxiliary;index"/>
-                    <property value="62" name="auxiliary;index"/>
-                    <property value="62" name="auxiliary;index"/>
+                    <property value="64" name="auxiliary;index"/>
+                    <property value="64" name="auxiliary;index"/>
+                    <property value="64" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="GetSystemSettings" entity-id="38f13e49-beca-4b83-91f2-e70ad614de78">
+    <flow SubFlow="false" name="GetCalendarInfo" entity-id="8d8062c4-145c-4dac-916f-67da87c569d5">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="63" name="auxiliary;index"/>
+            <property value="65" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="63" name="auxiliary;index"/>
-            <property value="63" name="auxiliary;index"/>
-            <property value="63" name="auxiliary;index"/>
+            <property value="65" name="auxiliary;index"/>
+            <property value="65" name="auxiliary;index"/>
+            <property value="65" name="auxiliary;index"/>
         </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#12">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#9">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#10">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#8">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
-                    <property value="get-system-settings" name="path"/>
+                    <property value="get-calendar-info" name="path"/>
                     <property name="method"/>
-                    <property value="64" name="auxiliary;index"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="64" name="auxiliary;index"/>
-                    <property value="64" name="auxiliary;index"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="64" name="auxiliary;index"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="64" name="auxiliary;index"/>
-                    <property value="64" name="auxiliary;index"/>
-                    <property value="64" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
+                    <property value="66" name="auxiliary;index"/>
                 </properties>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#12">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/get-system-settings" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="User" name="queryTypeName"/>
+                    <property name="condition-ref"/>
+                    <property value="1" name="maxNumberOfPages"/>
+                    <property value="50" name="pageSize"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property value="65" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-system-settings-settingss;0">
-                        <property value="66" name="auxiliary;wrapIn"/>
-                        <property value="66" name="auxiliary;index"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-system-settings-settings;1">
-                            <property value="Enable bug tracking" name="value"/>
-                            <property value="67" name="auxiliary;wrapIn"/>
-                            <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
+                        <property value="68" name="auxiliary;wrapIn"/>
+                        <property value="68" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
+                            <property value="displayName" name="value"/>
+                            <property value="69" name="auxiliary;wrapIn"/>
+                            <property value="69" name="auxiliary;index"/>
                         </property-collection>
-                    </property-collection>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#9">
-                <properties>
-                    <property value="#[payload.get(0)]" name="message"/>
-                    <property value="" name="category"/>
-                    <property value="INFO" name="level"/>
-                    <property value="68" name="auxiliary;index"/>
-                    <property name="updated"/>
-                </properties>
-                <description></description>
-            </pattern>
-        </lane>
-    </flow>
-    <flow SubFlow="false" name="CreateFromTemplate" entity-id="5d67dc85-5687-4dbf-a8ba-971983539271">
-        <properties>
-            <property name="processingStrategy2"/>
-            <property name="processingStrategy"/>
-            <property value="69" name="auxiliary;index"/>
-            <property name="bussinessEventsLabel"/>
-            <property name="tracking:enable-default-events"/>
-            <property value="69" name="auxiliary;index"/>
-            <property value="69" name="auxiliary;index"/>
-            <property value="69" name="auxiliary;index"/>
-        </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#13">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#10">
-                <properties>
-                    <property value="one-way" name="exchange-pattern"/>
-                    <property value="one-way" name="exchange-pattern"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property name="httpLabel"/>
-                    <property value="localhost" name="host"/>
-                    <property value="8090" name="port"/>
-                    <property value="create-from-template" name="path"/>
-                    <property name="method"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property name="address"/>
-                    <property name="encoding"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
-                    <property name="followRedirects"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property name="connector-ref"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="responseTransformer-refs"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property name="user"/>
-                    <property name="password"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property name="contentType"/>
-                    <property name="keep-alive"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property value="70" name="auxiliary;index"/>
-                    <property value="70" name="auxiliary;index"/>
-                </properties>
-            </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Project info" entity-id="Groovy#4">
-                <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
-                    <property value="71" name="auxiliary;index"/>
-                    <property name="mimeType"/>
-                    <property value="71" name="auxiliary;index"/>
-                    <property value="71" name="auxiliary;index"/>
-                    <property value="71" name="auxiliary;index"/>
-                    <property value="71" name="auxiliary;index"/>
-                    <property value="71" name="auxiliary;index"/>
-                    <property value="71" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="Groovy" name="engine"/>
-                        <property value="project.groovy" name="file"/>
-                        <property value="72" name="auxiliary;wrapIn"/>
-                        <property value="72" name="auxiliary;index"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
-                        <property value="Groovy" name="engine"/>
-                        <property value="project.groovy" name="file"/>
-                        <property value="72" name="auxiliary;wrapIn"/>
-                        <property value="72" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#13">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-from-template" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/get-calendar-information" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="Basic Project" name="templateName"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="73" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="73" name="auxiliary;index"/>
-                    <property value="73" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property value="70" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/user-id;0">
+                        <property value="#[groovy:payload.get(0).id]" name="ref"/>
+                        <property value="71" name="auxiliary;wrapIn"/>
+                        <property value="71" name="auxiliary;index"/>
+                    </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#10">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#9">
                 <properties>
-                    <property value="Created entity from template! #[payload.id]" name="message"/>
+                    <property value="Calendar info: #[payload]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="74" name="auxiliary;index"/>
-                    <property value="74" name="auxiliary;index"/>
-                    <property value="74" name="auxiliary;index"/>
+                    <property value="72" name="auxiliary;index"/>
+                    <property value="72" name="auxiliary;index"/>
+                    <property value="72" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="DownloadFileInformation" entity-id="fee58c6a-eaba-48bc-a809-522ce903c7dc">
+    <flow SubFlow="false" name="GetSystemSettings" entity-id="3c6ce08e-5f1d-4bba-be44-af3f08132c5b">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="75" name="auxiliary;index"/>
+            <property value="73" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="75" name="auxiliary;index"/>
-            <property value="75" name="auxiliary;index"/>
-            <property value="75" name="auxiliary;index"/>
+            <property value="73" name="auxiliary;index"/>
+            <property value="73" name="auxiliary;index"/>
+            <property value="73" name="auxiliary;index"/>
         </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#14">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#11">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#11">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#9">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
-                    <property value="download-file-information" name="path"/>
+                    <property value="get-system-settings" name="path"/>
                     <property name="method"/>
-                    <property value="76" name="auxiliary;index"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="76" name="auxiliary;index"/>
-                    <property value="76" name="auxiliary;index"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="76" name="auxiliary;index"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="76" name="auxiliary;index"/>
-                    <property value="76" name="auxiliary;index"/>
-                    <property value="76" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
+                    <property value="74" name="auxiliary;index"/>
                 </properties>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#14">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/get-system-settings" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="Document" name="queryTypeName"/>
-                    <property name="condition-ref"/>
-                    <property value="1" name="maxNumberOfPages"/>
-                    <property value="10" name="pageSize"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property value="77" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
-                        <property value="78" name="auxiliary;wrapIn"/>
-                        <property value="78" name="auxiliary;index"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
-                            <property value="name" name="value"/>
-                            <property value="79" name="auxiliary;wrapIn"/>
-                            <property value="79" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property value="75" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-system-settings-settingss;0">
+                        <property value="76" name="auxiliary;wrapIn"/>
+                        <property value="76" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-system-settings-settings;1">
+                            <property value="Enable bug tracking" name="value"/>
+                            <property value="77" name="auxiliary;wrapIn"/>
+                            <property value="77" name="auxiliary;index"/>
                         </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#10">
+                <properties>
+                    <property value="#[payload.get(0)]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="78" name="auxiliary;index"/>
+                    <property value="78" name="auxiliary;index"/>
+                    <property value="78" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="CreateFromTemplate" entity-id="0f690f8d-74ac-4c98-88bc-37d74fdd3831">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property value="79" name="auxiliary;index"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="79" name="auxiliary;index"/>
+            <property value="79" name="auxiliary;index"/>
+            <property value="79" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#12">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#10">
+                <properties>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8090" name="port"/>
+                    <property value="create-from-template" name="path"/>
+                    <property name="method"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property value="80" name="auxiliary;index"/>
+                    <property value="80" name="auxiliary;index"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Project info" entity-id="Groovy#5">
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property value="81" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property value="81" name="auxiliary;index"/>
+                    <property value="81" name="auxiliary;index"/>
+                    <property value="81" name="auxiliary;index"/>
+                    <property value="81" name="auxiliary;index"/>
+                    <property value="81" name="auxiliary;index"/>
+                    <property value="81" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="project.groovy" name="file"/>
+                        <property value="82" name="auxiliary;wrapIn"/>
+                        <property value="82" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="project.groovy" name="file"/>
+                        <property value="82" name="auxiliary;wrapIn"/>
+                        <property value="82" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#15">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/download-file-information" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/create-from-template" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="Basic Project" name="templateName"/>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property value="80" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity;0">
-                        <property value="#[groovy:payload.get(0)]" name="ref"/>
-                        <property value="81" name="auxiliary;wrapIn"/>
-                        <property value="81" name="auxiliary;index"/>
-                    </property-collection>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
+                    <property value="83" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#11">
                 <properties>
-                    <property value="File information -- file name: #[payload.fileName], url: #[payload.url]" name="message"/>
+                    <property value="Created entity from template! #[payload.id]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="82" name="auxiliary;index"/>
-                    <property value="82" name="auxiliary;index"/>
-                    <property value="82" name="auxiliary;index"/>
+                    <property value="84" name="auxiliary;index"/>
+                    <property value="84" name="auxiliary;index"/>
+                    <property value="84" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="SendEmail" entity-id="2407aa9e-3962-4fd5-a431-89a73ac3c647">
+    <flow SubFlow="false" name="DownloadFileInformation" entity-id="0ab218ac-57c2-45bd-9a36-4a8c9da2e4c5">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="83" name="auxiliary;index"/>
+            <property value="85" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="83" name="auxiliary;index"/>
-            <property value="83" name="auxiliary;index"/>
-            <property value="83" name="auxiliary;index"/>
+            <property value="85" name="auxiliary;index"/>
+            <property value="85" name="auxiliary;index"/>
+            <property value="85" name="auxiliary;index"/>
         </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#15">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#12">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#13">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#11">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8090" name="port"/>
-                    <property value="send-email" name="path"/>
+                    <property value="download-file-information" name="path"/>
                     <property name="method"/>
-                    <property value="84" name="auxiliary;index"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
-                    <property value="84" name="auxiliary;index"/>
-                    <property value="84" name="auxiliary;index"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="84" name="auxiliary;index"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
-                    <property value="84" name="auxiliary;index"/>
-                    <property value="84" name="auxiliary;index"/>
-                    <property value="84" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
+                    <property value="86" name="auxiliary;index"/>
                 </properties>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#16">
@@ -1405,116 +1379,430 @@
                     <property value="Clarizen" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="Task" name="queryTypeName"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="Document" name="queryTypeName"/>
                     <property name="condition-ref"/>
                     <property value="1" name="maxNumberOfPages"/>
-                    <property value="100" name="pageSize"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
+                    <property value="10" name="pageSize"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
-                    <property value="85" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
+                    <property value="87" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
-                        <property value="86" name="auxiliary;wrapIn"/>
-                        <property value="86" name="auxiliary;index"/>
+                        <property value="88" name="auxiliary;wrapIn"/>
+                        <property value="88" name="auxiliary;index"/>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
-                            <property value="Description" name="value"/>
-                            <property value="87" name="auxiliary;wrapIn"/>
-                            <property value="87" name="auxiliary;index"/>
+                            <property value="name" name="value"/>
+                            <property value="89" name="auxiliary;wrapIn"/>
+                            <property value="89" name="auxiliary;index"/>
                         </property-collection>
-                    </property-collection>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="Variable" entity-id="7e5fc581-0419-4f1f-8dfd-1b610369760c">
-                <properties>
-                    <property value="entityReference" name="variableName"/>
-                    <property value="#[payload.get(0)]" name="value"/>
-                    <property value="http://www.mulesoft.org/schema/mule/core/set-variable" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property name="updated"/>
-                </properties>
-                <description></description>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Create recipients" entity-id="Groovy#5">
-                <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
-                    <property value="89" name="auxiliary;index"/>
-                    <property name="mimeType"/>
-                    <property value="89" name="auxiliary;index"/>
-                    <property value="89" name="auxiliary;index"/>
-                    <property value="89" name="auxiliary;index"/>
-                    <property value="89" name="auxiliary;index"/>
-                    <property value="89" name="auxiliary;index"/>
-                    <property value="89" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="Groovy" name="engine"/>
-                        <property value="recipient.groovy" name="file"/>
-                        <property value="90" name="auxiliary;wrapIn"/>
-                        <property value="90" name="auxiliary;index"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
-                        <property value="Groovy" name="engine"/>
-                        <property value="recipient.groovy" name="file"/>
-                        <property value="90" name="auxiliary;wrapIn"/>
-                        <property value="90" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#17">
                 <properties>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="http://www.mulesoft.org/schema/mule/clarizen/send-email" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/download-file-information" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Clarizen" name="config-ref"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="body" name="body"/>
-                    <property value="subject" name="subject"/>
-                    <property value="PUBLIC" name="accessType"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="91" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="connectionUser"/>
                     <property name="connectionPassword"/>
                     <property name="applicationId"/>
                     <property name="partnerId"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property value="91" name="auxiliary;index"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/related-entity;0">
-                        <property value="#[variable:entityReference]" name="ref"/>
-                        <property value="92" name="auxiliary;wrapIn"/>
-                        <property value="92" name="auxiliary;index"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/send-email-recipientss;0">
-                        <property value="#[payload]" name="ref"/>
-                        <property value="93" name="auxiliary;wrapIn"/>
-                        <property value="93" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property value="90" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity;0">
+                        <property value="#[groovy:payload.get(0)]" name="ref"/>
+                        <property value="91" name="auxiliary;wrapIn"/>
+                        <property value="91" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#12">
                 <properties>
+                    <property value="File information -- file name: #[payload.fileName], url: #[payload.url]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="92" name="auxiliary;index"/>
+                    <property value="92" name="auxiliary;index"/>
+                    <property value="92" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="SendEmail" entity-id="1204e8e7-5308-400e-9ab9-9183f83872be">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property value="93" name="auxiliary;index"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="93" name="auxiliary;index"/>
+            <property value="93" name="auxiliary;index"/>
+            <property value="93" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#14">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#12">
+                <properties>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8090" name="port"/>
+                    <property value="send-email" name="path"/>
+                    <property name="method"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property value="94" name="auxiliary;index"/>
+                    <property value="94" name="auxiliary;index"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#18">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="Task" name="queryTypeName"/>
+                    <property name="condition-ref"/>
+                    <property value="1" name="maxNumberOfPages"/>
+                    <property value="100" name="pageSize"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property value="95" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
+                        <property value="96" name="auxiliary;wrapIn"/>
+                        <property value="96" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
+                            <property value="Description" name="value"/>
+                            <property value="97" name="auxiliary;wrapIn"/>
+                            <property value="97" name="auxiliary;index"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="Variable" entity-id="Variable#2">
+                <properties>
+                    <property value="http://www.mulesoft.org/schema/mule/core/set-variable" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="entityReference" name="variableName"/>
+                    <property value="#[payload.get(0)]" name="value"/>
+                    <property value="98" name="auxiliary;index"/>
+                    <property value="98" name="auxiliary;index"/>
+                    <property value="98" name="auxiliary;index"/>
+                    <property value="98" name="auxiliary;index"/>
+                    <property value="98" name="auxiliary;index"/>
+                    <property value="98" name="auxiliary;index"/>
+                    <property value="98" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Create recipients" entity-id="Groovy#6">
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property value="99" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property value="99" name="auxiliary;index"/>
+                    <property value="99" name="auxiliary;index"/>
+                    <property value="99" name="auxiliary;index"/>
+                    <property value="99" name="auxiliary;index"/>
+                    <property value="99" name="auxiliary;index"/>
+                    <property value="99" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="recipient.groovy" name="file"/>
+                        <property value="100" name="auxiliary;wrapIn"/>
+                        <property value="100" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="Groovy" name="engine"/>
+                        <property value="recipient.groovy" name="file"/>
+                        <property value="100" name="auxiliary;wrapIn"/>
+                        <property value="100" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#19">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/send-email" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="body" name="body"/>
+                    <property value="subject" name="subject"/>
+                    <property value="PUBLIC" name="accessType"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property value="101" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/send-email-recipientss;0">
+                        <property value="#[payload]" name="ref"/>
+                        <property value="102" name="auxiliary;wrapIn"/>
+                        <property value="102" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#13">
+                <properties>
                     <property value="Email sent? #[payload]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="94" name="auxiliary;index"/>
-                    <property value="94" name="auxiliary;index"/>
-                    <property value="94" name="auxiliary;index"/>
+                    <property value="103" name="auxiliary;index"/>
+                    <property value="103" name="auxiliary;index"/>
+                    <property value="103" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="UpdateTask-DM" entity-id="2722864d-6ed3-4995-8615-de3ae1929127">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property value="104" name="auxiliary;index"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="104" name="auxiliary;index"/>
+            <property value="104" name="auxiliary;index"/>
+            <property value="104" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#15">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#13">
+                <properties>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8090" name="port"/>
+                    <property value="update-task-dm" name="path"/>
+                    <property name="method"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property value="105" name="auxiliary;index"/>
+                    <property value="105" name="auxiliary;index"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#20">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/entity-query" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="Task" name="queryTypeName"/>
+                    <property name="condition-ref"/>
+                    <property value="1" name="maxNumberOfPages"/>
+                    <property value="100" name="pageSize"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property value="106" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieves;0">
+                        <property value="107" name="auxiliary;wrapIn"/>
+                        <property value="107" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/entity-query-fields-to-retrieve;1">
+                            <property value="Name" name="value"/>
+                            <property value="108" name="auxiliary;wrapIn"/>
+                            <property value="108" name="auxiliary;index"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#21">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="#[payload.get(0).id.value]" name="workItemId"/>
+                    <property value="TASK" name="workItemType"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property value="109" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieves;0">
+                        <property value="110" name="auxiliary;wrapIn"/>
+                        <property value="110" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieve;1">
+                            <property value="parentProject" name="value"/>
+                            <property value="111" name="auxiliary;wrapIn"/>
+                            <property value="111" name="auxiliary;index"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieve;2">
+                            <property value="Name" name="value"/>
+                            <property value="112" name="auxiliary;wrapIn"/>
+                            <property value="112" name="auxiliary;index"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id-fields-to-retrieve;3">
+                            <property value="Description" name="value"/>
+                            <property value="113" name="auxiliary;wrapIn"/>
+                            <property value="113" name="auxiliary;index"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" name="DataMapper" entity-id="DataMapper#2">
+                <properties>
+                    <property value="UpdateTask" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="UpdateTask" name="config-ref"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property name="input-ref"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property value="114" name="auxiliary;index"/>
+                    <property value="114" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/clarizen/clarizen-connector" name="Clarizen" entity-id="Clarizen#22">
+                <properties>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/clarizen/update-entity" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Clarizen" name="config-ref"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property name=""/>
+                    <property name="connectionUser"/>
+                    <property name="connectionPassword"/>
+                    <property name="applicationId"/>
+                    <property name="partnerId"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                    <property value="115" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#14">
+                <properties>
+                    <property value="Updated Task! #[payload.description]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="116" name="auxiliary;index"/>
+                    <property value="116" name="auxiliary;index"/>
+                    <property value="116" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>

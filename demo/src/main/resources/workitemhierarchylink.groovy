@@ -8,7 +8,9 @@
  * LICENSE.txt file.
  */
 
-new org.mule.modules.clarizen.api.model.Issue (
-description: "New issue - Studio demo",
-title: "Studio issue test"  
+import org.mule.modules.clarizen.api.model.WorkItemHierarchyLink
+
+new WorkItemHierarchyLink(
+  child: message.getInvocationProperty('newTask'),
+  parent: message.getPayload().get(0).getId()
 )
