@@ -21,7 +21,6 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
 
 import com.clarizen.api.AccessType;
 import com.clarizen.api.EntityId;
-import com.clarizen.api.GenericEntity;
 import com.clarizen.api.GetCalendarInfoResult;
 import com.clarizen.api.Recipient;
 import com.clarizen.api.files.FileInformation;
@@ -45,10 +44,11 @@ public interface ClarizenClient {
      * @param condition
      * @param pageSize
      * @param maxNumberOfPages
+     * @param useFlatClasses use flat model classes org.mule.modules.clarizen.api.model.flat
      * @return a list of entities taking into account depending on the parameter queryTypeName
      */
     <T extends BaseClarizenEntity> List<T> createEntityQuery(List<String> fieldsToRetrieve, String queryTypeName, 
-            Condition condition, Integer pageSize, Integer maxNumberOfPages);
+            Condition condition, Integer pageSize, Integer maxNumberOfPages, boolean useFlatClasses);
     
     /**
      * Creates milestones and projects from templates
@@ -65,10 +65,11 @@ public interface ClarizenClient {
      * @param condition
      * @param pageSize
      * @param maxNumberOfPages
+     * @param useFlatClasses use flat model classes org.mule.modules.clarizen.api.model.flat
      * @return a list of entities taking into account depending on the parameter issueType
      */
     <T extends BaseClarizenEntity> List<T> createIssuesQuery(List<String> fieldsToRetrieve, AllIssueType issueType,
-            Condition condition, Integer pageSize, Integer maxNumberOfPages);
+            Condition condition, Integer pageSize, Integer maxNumberOfPages, boolean useFlatClasses);
 
     /**
      * Deletes en entity
@@ -113,20 +114,24 @@ public interface ClarizenClient {
      * @param workItemFilter
      * @param pageSize
      * @param maxNumberOfPages
-     * @return list of GenericEntity containing the workitems objects
+     * @param useFlatClasses
+     * @return list containing the workitems objects
      */
-    List<GenericEntity> getMyWorkItems(List<String> fieldsToRetrieve,
+    <T extends BaseClarizenEntity> List<T> getMyWorkItems(List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter, Integer pageSize, Integer maxNumberOfPages);
+            WorkItemFilter workItemFilter, Integer pageSize, Integer maxNumberOfPages,
+            Boolean useFlatClasses);
     
     /**
      * Gets workItem information by id
      * @param workItemType
      * @param workItemId
      * @param fieldsToRetrieve
+     * @param useFlatClasses use flat model classes org.mule.modules.clarizen.api.model.flat
      * @return GenericEntity
      */
-    BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId, List<String> fieldsToRetrieve);
+    BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId, 
+            List<String> fieldsToRetrieve, boolean useFlatClasses);
 
     /**
      * Changes the state of an entity
@@ -185,9 +190,11 @@ public interface ClarizenClient {
      * @param workItemFilter
      * @param pageSize
      * @param maxNumberOfPages
-     * @return list of GenericEntity containing the workitems objects
+     * @param useFlatClasses
+     * @return list containing the workitems objects
      */
-    List<GenericEntity> workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
-                               WorkItemType workItemType, WorkItemFilter workItemFilter, 
-                               Integer pageSize, Integer maxNumberOfPages);
+    <T extends BaseClarizenEntity> List<T> workItemsQuery(List<String> fieldsToRetrieve, 
+                               WorkItemState workItemState, WorkItemType workItemType, 
+                               WorkItemFilter workItemFilter, 
+                               Integer pageSize, Integer maxNumberOfPages, Boolean useFlatClasses);
 }

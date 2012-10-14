@@ -40,7 +40,6 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
 
 import com.clarizen.api.AccessType;
 import com.clarizen.api.EntityId;
-import com.clarizen.api.GenericEntity;
 import com.clarizen.api.GetCalendarInfoResult;
 import com.clarizen.api.Recipient;
 import com.clarizen.api.files.FileInformation;
@@ -128,7 +127,7 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId,  
             @Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve) {
-        return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve);
+        return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve, true);
     }
     
     /**
@@ -180,11 +179,11 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<GenericEntity> workItemsQuery(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve, 
+    public List<BaseClarizenEntity> workItemsQuery(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve, 
             WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, 
             @Optional Integer pageSize, @Optional Integer maxNumberOfPages) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, 
-                workItemFilter, pageSize, maxNumberOfPages);
+                workItemFilter, pageSize, maxNumberOfPages, true);
     }
     
     /**
@@ -206,7 +205,8 @@ public class ClarizenConnector
     public List<BaseClarizenEntity> entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
             String queryTypeName, @Optional Condition condition, 
             @Optional Integer pageSize, @Optional Integer maxNumberOfPages) {
-        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, maxNumberOfPages);
+        return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, 
+                maxNumberOfPages, true);
     }
     
     /**
@@ -227,7 +227,8 @@ public class ClarizenConnector
     public List<BaseClarizenEntity> issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
             @Optional Condition condition, 
             @Optional Integer pageSize, @Optional Integer maxNumberOfPages) {
-        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, maxNumberOfPages);
+        return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, 
+                maxNumberOfPages, true);
     }
 
     /**
@@ -246,12 +247,13 @@ public class ClarizenConnector
      */
     @Processor
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<GenericEntity> getMyWorkItems(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve,
+    public List<BaseClarizenEntity> getMyWorkItems(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter, @Optional Integer pageSize, 
             @Optional Integer maxNumberOfPages) {
+
         return clarizenClient.getMyWorkItems(fieldsToRetrieve, workItemState, workItemType, 
-                workItemFilter, pageSize, maxNumberOfPages);
+                workItemFilter, pageSize, maxNumberOfPages, true);
     }
 
     /**

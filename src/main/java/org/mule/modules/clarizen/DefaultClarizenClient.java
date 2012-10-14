@@ -24,6 +24,7 @@ import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.beanutils.BeanMap;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.mule.modules.clarizen.api.ClarizenClient;
@@ -31,12 +32,10 @@ import org.mule.modules.clarizen.api.ClarizenClientHelper;
 import org.mule.modules.clarizen.api.ClarizenServiceProvider;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
-import org.mule.modules.clarizen.api.model.ClarizenEntity;
 import org.mule.modules.clarizen.api.model.Login;
 import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
-import org.springframework.util.StringUtils;
 
 import com.clarizen.api.AccessType;
 import com.clarizen.api.ArrayOfBaseMessage;
@@ -92,6 +91,16 @@ public class DefaultClarizenClient implements ClarizenClient {
     private String sessionId;
     private static final String DEFAULT_PACKAGE_MODEL = "org.mule.modules.clarizen.api.model.";
     
+    /**
+     * Package used for model classes containing only EntityId references
+     */
+    private static final String DEFAULT_PACKAGE_MODEL_FLAT = "org.mule.modules.clarizen.api.model.flat.";
+    
+    /**
+     * Suffix for flat classes
+     */
+    private static final String SUFFIX_FLAT_CLASSES = "Flat";
+    
     public DefaultClarizenClient(ClarizenServiceProvider provider) {
         helper = new ClarizenClientHelper();
         serviceProvider = provider;
@@ -101,7 +110,7 @@ public class DefaultClarizenClient implements ClarizenClient {
     @Override
     public <T extends BaseClarizenEntity> List<T> createEntityQuery(List<String> fieldsToRetrieve,
             String queryTypeName, Condition condition, 
-            Integer pageSize, Integer maxNumberOfPages) {
+            Integer pageSize, Integer maxNumberOfPages, boolean useFlatClasses) {
         
         EntityQuery query = new EntityQuery();
         query.setTypeName(queryTypeName);
@@ -113,14 +122,14 @@ public class DefaultClarizenClient implements ClarizenClient {
         List<GenericEntity> results = createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
 
         return (List<T>) listBaseClarizenEntityFromGenericEntity(results, 
-                    ((EntityQuery) query).getTypeName());
+                    ((EntityQuery) query).getTypeName(), useFlatClasses);
     }
     
     @SuppressWarnings("unchecked")
     @Override
     public <T extends BaseClarizenEntity> List<T> createIssuesQuery(List<String> fieldsToRetrieve,
             AllIssueType issueType, Condition condition, 
-            Integer pageSize, Integer maxNumberOfPages) {
+            Integer pageSize, Integer maxNumberOfPages, boolean useFlatClasses) {
 
         EntityQuery query = new EntityQuery();
         query.setTypeName(issueType.value());
@@ -132,7 +141,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         List<GenericEntity> results = createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
         
         return (List<T>) listBaseClarizenEntityFromGenericEntity(results, 
-                ((EntityQuery) query).getTypeName());
+                ((EntityQuery) query).getTypeName(), useFlatClasses);
     }
 
     @Override
@@ -159,20 +168,31 @@ public class DefaultClarizenClient implements ClarizenClient {
         return result.getEntityDescriptions().getEntityDescription();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public List<GenericEntity> getMyWorkItems(List<String> fieldsToRetrieve,
+    public <T extends BaseClarizenEntity> List<T> getMyWorkItems(List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter, Integer pageSize, Integer maxNumberOfPages) {
+            WorkItemFilter workItemFilter, Integer pageSize, Integer maxNumberOfPages,
+            Boolean useFlatClasses) {
         
         MyWorkItemsQuery query = new MyWorkItemsQuery();
         query.setItemsState(helper.createWorkItemState(workItemState.value()));
         query.setItemsFilter(helper.createWorkItemFilter(workItemFilter.value()));
         query.setItemsType(helper.createWorkItemType(workItemType.value()));
         
-        return createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
+        List<GenericEntity> results = createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
+        String classToRetrieve = "WorkItem";
+        
+        if (workItemType != WorkItemType.ALL) {
+            classToRetrieve = workItemType.value();
+        }
+        
+        return (List<T>) listBaseClarizenEntityFromGenericEntity(results, 
+                classToRetrieve, useFlatClasses);
     }
 
-    public BaseClarizenEntity getWorkItemById(WorkItemType type, String workItemId, List<String> fieldsToRetrieve) {
+    public BaseClarizenEntity getWorkItemById(WorkItemType type, String workItemId, 
+            List<String> fieldsToRetrieve, boolean useFlatClasses) {
         
         RetrieveMessage retrieveMsg = new RetrieveMessage();
         retrieveMsg.setId(helper.createBaseEntityId(type.value(), workItemId));
@@ -200,7 +220,10 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
-        return toBaseClarizenEntity((GenericEntity) result.getEntity(), type.value());
+        //Creates a non-flat ClarizenEntity
+        BaseClarizenEntity baseClarizenEntity = createBaseClarizenEntity(type.value(), false);
+        return toBaseClarizenEntity((GenericEntity) result.getEntity(), baseClarizenEntity, 
+                type.value(), useFlatClasses);
     }
 
     @Override
@@ -262,17 +285,27 @@ public class DefaultClarizenClient implements ClarizenClient {
         getService().logout();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public List<GenericEntity> workItemsQuery(List<String> fieldsToRetrieve, WorkItemState workItemState,
-                                        WorkItemType workItemType, WorkItemFilter workItemFilter,
-                                        Integer pageSize, Integer maxNumberOfPages) {
+    public <T extends BaseClarizenEntity> List<T> workItemsQuery(List<String> fieldsToRetrieve, 
+                                        WorkItemState workItemState, WorkItemType workItemType, 
+                                        WorkItemFilter workItemFilter, Integer pageSize, 
+                                        Integer maxNumberOfPages, Boolean useFlatClasses) {
 
         WorkItemsQuery query = new WorkItemsQuery();
         query.setItemsState(helper.createWorkItemState(workItemState.value()));
         query.setItemsFilter(helper.createWorkItemFilter(workItemFilter.value()));
         query.setItemsType(helper.createWorkItemType(workItemType.value()));
         
-        return createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
+        List<GenericEntity> results = createQuery(query, fieldsToRetrieve, pageSize, maxNumberOfPages);
+        String classToRetrieve = "WorkItem";
+        
+        if (workItemType != WorkItemType.ALL) {
+            classToRetrieve = workItemType.value();
+        }
+        
+        return (List<T>) listBaseClarizenEntityFromGenericEntity(results, 
+                classToRetrieve, useFlatClasses);
         
     }
     
@@ -453,21 +486,21 @@ public class DefaultClarizenClient implements ClarizenClient {
      * This is useful for obtaining the java classes from the Clarizen WebService responses
      * 
      * @param genericEntity to be converted
+     * @param newEntity if it's null the method will create a new class depending on useFlatClasses parameters
      * @param clarizenType type to be created
+     * @param useFlatClasses defines if the method will use flatClasses
      * @return the created entity extending BaseClarizenEntity
      */
-    private BaseClarizenEntity toBaseClarizenEntity(GenericEntity genericEntity, String clarizenType) {
+    private BaseClarizenEntity toBaseClarizenEntity(GenericEntity genericEntity, 
+            BaseClarizenEntity newEntity, String clarizenType, boolean useFlatClasses) {
         
-        ClarizenEntity baseEntity = null;
-        try {
-            baseEntity = (ClarizenEntity) Class.forName(DEFAULT_PACKAGE_MODEL + 
-                    StringUtils.capitalize(clarizenType)).newInstance();
-        } catch (InstantiationException e1) {
-            throw new ClarizenRuntimeException(e1);
-        } catch (IllegalAccessException e1) {
-            throw new ClarizenRuntimeException(e1);
-        } catch (ClassNotFoundException e1) {
-            throw new ClarizenRuntimeException(e1);
+        BaseClarizenEntity baseEntity = null;
+        
+        if (newEntity != null) {
+            baseEntity = newEntity;
+        }
+        else {
+            baseEntity = createBaseClarizenEntity(clarizenType, useFlatClasses);
         }
 
         //Assigns entity id
@@ -492,7 +525,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         List<FieldValue> entityFields = genericEntity.getValues().getFieldValue();
-        Map<String, Object> entityFieldsMap = getFieldsFromGenericEntity(entityFields);
+        Map<String, Object> entityFieldsMap = getFieldsFromGenericEntity(entityFields, useFlatClasses);
         
         try {
             BeanUtils.populate(baseEntity, entityFieldsMap);
@@ -506,12 +539,46 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     /**
+     * Creates a new BaseClarizenEntity
+     * @param clarizenType
+     * @param useFlatClasses
+     * @return
+     */
+    private BaseClarizenEntity createBaseClarizenEntity(String clarizenType,
+            boolean useFlatClasses) {
+        String defaultPackageModel;
+        String clarizenClassName;
+        if (useFlatClasses) {
+            defaultPackageModel = DEFAULT_PACKAGE_MODEL_FLAT;
+            clarizenClassName = defaultPackageModel + 
+            StringUtils.capitalize(clarizenType) + SUFFIX_FLAT_CLASSES;
+        } 
+        else {
+            defaultPackageModel = DEFAULT_PACKAGE_MODEL;
+            clarizenClassName = defaultPackageModel + 
+                    StringUtils.capitalize(clarizenType);
+        }
+   
+        try {
+            return (BaseClarizenEntity) Class.forName(clarizenClassName).newInstance();
+        } catch (InstantiationException e1) {
+            throw new ClarizenRuntimeException(e1);
+        } catch (IllegalAccessException e1) {
+            throw new ClarizenRuntimeException(e1);
+        } catch (ClassNotFoundException e1) {
+            throw new ClarizenRuntimeException(e1);
+        }
+    }
+
+    /**
      * Extracts the attributes from a GenericEntity using Clarizen model classes
      * 
      * @param entity
      * @return map of entity fields 
      */
-    private Map<String, Object> getFieldsFromGenericEntity(List<FieldValue> entityFields) {
+    private Map<String, Object> getFieldsFromGenericEntity(List<FieldValue> entityFields,
+            boolean useFlatClasses) {
+
         Map<String, Object> entityMap = new HashMap<String, Object>();
         
         Object fieldValue;
@@ -524,9 +591,9 @@ public class DefaultClarizenClient implements ClarizenClient {
             if (field.getValue() != null)
             {
                 //if it's a GenericEntity it must be converted into a model class
-                if (field.getValue().getClass().getSimpleName().equals("GenericEntity")) {
-                    fieldValue = toBaseClarizenEntity((GenericEntity) field.getValue(), 
-                            ((GenericEntity) field.getValue()).getId().getTypeName());
+                if (field.getValue() instanceof GenericEntity) {
+                    fieldValue = toBaseClarizenEntity((GenericEntity) field.getValue(), null,
+                            ((GenericEntity) field.getValue()).getId().getTypeName(), useFlatClasses);
                 }
                 else {
                     fieldValue = field.getValue();
@@ -561,11 +628,17 @@ public class DefaultClarizenClient implements ClarizenClient {
         
         GenericEntity newGenericEntity = new GenericEntity();
 
+        //For flat classes (only references to EntityIds)
+        if (isAnEntityId(entity.getClass(), null)) {
+            newGenericEntity.setId((EntityId) entity);
+            return newGenericEntity;
+        }
+        
         //Assigns entity id
         try {
             EntityId entityId = (EntityId) entity.getClass().getMethod("getId").invoke(entity);
             if (entityId == null) {
-                newGenericEntity.setId(helper.createBaseEntityId(entity.getClass().getSimpleName(), null));
+                newGenericEntity.setId(helper.createBaseEntityId(extractFlatName(entity.getClass().getSimpleName()), null));
             }
             else {
                 newGenericEntity.setId(entityId);
@@ -622,7 +695,8 @@ public class DefaultClarizenClient implements ClarizenClient {
            }
 
            //Convert attributes into GenericEntity
-           if (isAttributeAnEntity(fieldValue.getClass())) {
+           if (isAttributeAnEntity(fieldValue.getClass()) 
+                   || isAnEntityId(fieldValue.getClass(), propertyName)) {
                fieldValue = toGenericEntity(fieldValue);
            }
            
@@ -643,7 +717,28 @@ public class DefaultClarizenClient implements ClarizenClient {
      * @return true if the attribute has to be converted into a GenericEntity
      */
     private boolean isAttributeAnEntity(Class<? extends Object> clazz) {
-        return BaseClarizenEntity.class.isAssignableFrom(clazz);
+        return org.mule.modules.clarizen.api.model.BaseClarizenEntity.class.isAssignableFrom(clazz);
+    }
+    
+    /**
+     * Checks if the attribute is an EntityId. This is useful for flat model classes.
+     * It ignores entityType and id, two fields used by Clarizen for sending EntityIds
+     * @param clazz
+     * @return true if the attribute is an EntityId class
+     */
+    private boolean isAnEntityId(Class<? extends Object> clazz, String entityName) {
+        return EntityId.class.isAssignableFrom(clazz) && 
+                !StringUtils.equals(entityName, "entityType") && 
+                !StringUtils.equals(entityName, "id");
+    }
+    
+    /**
+     * Extracts Flat from classNames
+     * @param className
+     * @return class name without Flat
+     */
+    private String extractFlatName(String className) {
+        return StringUtils.removeEnd(className, "Flat");
     }
     
     /**
@@ -655,12 +750,14 @@ public class DefaultClarizenClient implements ClarizenClient {
      * @return the created entity extending BaseClarizenEntity
      */
     private List<BaseClarizenEntity> listBaseClarizenEntityFromGenericEntity(List<GenericEntity> listGenericEntity, 
-            String clarizenType) {
+            String clarizenType, boolean useFlatClasses) {
     
         List<BaseClarizenEntity> list = new ArrayList<BaseClarizenEntity>();
         
         for (GenericEntity genericEntity : listGenericEntity) {
-            list.add(toBaseClarizenEntity(genericEntity, clarizenType));
+            //Creates a non-flat ClarizenEntity
+            BaseClarizenEntity newEntity = createBaseClarizenEntity(clarizenType, false);
+            list.add(toBaseClarizenEntity(genericEntity, newEntity, clarizenType, useFlatClasses));
         }
         
         return list;
