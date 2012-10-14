@@ -17,21 +17,20 @@ import com.clarizen.api.FieldValue;
 
 public class ClarizenEntity extends BaseClarizenEntity {
 
-    private User createdBy;
+    private org.mule.modules.clarizen.api.model.flat.UserFlat createdBy;
     private Date createdOn;
-    private User lastUpdatedBy;
+    private org.mule.modules.clarizen.api.model.flat.UserFlat lastUpdatedBy;
     private Date lastUpdatedOn;
     private Date lastUpdatedBySystemOn;
     private List<FieldValue> customFields;
 
-    
-    public User getCreatedBy() {
+    public org.mule.modules.clarizen.api.model.flat.UserFlat getCreatedBy() {
         return createdBy;
     }
     public Date getCreatedOn() {
         return createdOn;
     }
-    public User getLastUpdatedBy() {
+    public org.mule.modules.clarizen.api.model.flat.UserFlat getLastUpdatedBy() {
         return lastUpdatedBy;
     }
     public Date getLastUpdatedOn() {
@@ -43,13 +42,14 @@ public class ClarizenEntity extends BaseClarizenEntity {
     public List<FieldValue> getCustomFields() {
         return customFields;
     }
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(org.mule.modules.clarizen.api.model.flat.UserFlat createdBy) {
         this.createdBy = createdBy;
     }
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
-    public void setLastUpdatedBy(User lastUpdatedBy) {
+    public void setLastUpdatedBy(
+            org.mule.modules.clarizen.api.model.flat.UserFlat lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
     }
     public void setLastUpdatedOn(Date lastUpdatedOn) {

@@ -12,19 +12,20 @@ package org.mule.modules.clarizen.api.model;
 
 public class WorkItemAttachmentLink extends ClarizenEntity {
     
-    private WorkItem entity;
-    private Document document;
+    private org.mule.modules.clarizen.api.model.flat.WorkItemFlat entity;
+    private org.mule.modules.clarizen.api.model.flat.DocumentFlat document;
 
-    public WorkItem getEntity() {
+    public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getEntity() {
         return entity;
     }
-    public Document getDocument() {
+    public org.mule.modules.clarizen.api.model.flat.DocumentFlat getDocument() {
         return document;
     }
-    public void setEntity(WorkItem entity) {
+    public void setEntity(org.mule.modules.clarizen.api.model.flat.WorkItemFlat entity) {
         this.entity = entity;
     }
-    public void setDocument(Document document) {
+    public void setDocument(
+            org.mule.modules.clarizen.api.model.flat.DocumentFlat document) {
         this.document = document;
     }
 

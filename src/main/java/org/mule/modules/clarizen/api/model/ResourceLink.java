@@ -19,7 +19,7 @@ public class ResourceLink extends ClarizenEntity {
         private EntityId resource;
         private Duration remainingEffort;
         private Double units;
-        private ResourceRole resourceRole;
+        private org.mule.modules.clarizen.api.model.flat.ResourceRoleFlat resourceRole;
         private Duration work;
         private Boolean workManuallySet;
         private Boolean remainingEffortManuallySet;
@@ -30,7 +30,7 @@ public class ResourceLink extends ClarizenEntity {
         private Duration actualOvertimeEffort;
         private Boolean actualOvertimeEffortManuallySet;
         private Duration workVariance;
-        private Role role;
+        private org.mule.modules.clarizen.api.model.flat.RoleFlat role;
         private Double availability;
         private Double percentCompleted;
         private Long completnessDefinition;
@@ -48,7 +48,7 @@ public class ResourceLink extends ClarizenEntity {
         public Double getUnits() {
             return units;
         }
-        public ResourceRole getResourceRole() {
+        public org.mule.modules.clarizen.api.model.flat.ResourceRoleFlat getResourceRole() {
             return resourceRole;
         }
         public Duration getWork() {
@@ -81,7 +81,7 @@ public class ResourceLink extends ClarizenEntity {
         public Duration getWorkVariance() {
             return workVariance;
         }
-        public Role getRole() {
+        public org.mule.modules.clarizen.api.model.flat.RoleFlat getRole() {
             return role;
         }
         public Double getAvailability() {
@@ -108,7 +108,8 @@ public class ResourceLink extends ClarizenEntity {
         public void setUnits(Double units) {
             this.units = units;
         }
-        public void setResourceRole(ResourceRole resourceRole) {
+        public void setResourceRole(
+                org.mule.modules.clarizen.api.model.flat.ResourceRoleFlat resourceRole) {
             this.resourceRole = resourceRole;
         }
         public void setWork(Duration work) {
@@ -142,7 +143,7 @@ public class ResourceLink extends ClarizenEntity {
         public void setWorkVariance(Duration workVariance) {
             this.workVariance = workVariance;
         }
-        public void setRole(Role role) {
+        public void setRole(org.mule.modules.clarizen.api.model.flat.RoleFlat role) {
             this.role = role;
         }
         public void setAvailability(Double availability) {

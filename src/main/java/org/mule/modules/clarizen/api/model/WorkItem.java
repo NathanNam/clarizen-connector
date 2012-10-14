@@ -18,14 +18,14 @@ import com.clarizen.api.Money;
 public class WorkItem extends ClarizenEntity {
 
     private String description;
-    private State state;
-    private Phase phase;
+    private org.mule.modules.clarizen.api.model.flat.StateFlat state;
+    private org.mule.modules.clarizen.api.model.flat.PhaseFlat phase;
     private Date startDate;
     private Date dueDate;
     private Duration duration;
     private Date actualStartDate;
     private Date actualEndDate;
-    private TrackStatus trackStatus;
+    private org.mule.modules.clarizen.api.model.flat.TrackStatusFlat trackStatus;
     private Long conflicts;
     private Boolean onCriticalPath;
     private Date earliestStartDate;
@@ -33,12 +33,12 @@ public class WorkItem extends ClarizenEntity {
     private Date earliestEndDate;
     private Date latestEndDate;
     private Double expectedProgress;
-    private SchedulingType schedulingType;
-    private ImportedFrom importedFrom;
-    private Importance importance;
+    private org.mule.modules.clarizen.api.model.flat.SchedulingTypeFlat schedulingType;
+    private org.mule.modules.clarizen.api.model.flat.ImportedFromFlat importedFrom;
+    private org.mule.modules.clarizen.api.model.flat.ImportanceFlat importance;
     private Integer priority;
     private Double percentCompleted;
-    private User manager;
+    private org.mule.modules.clarizen.api.model.flat.UserFlat manager;
     private Boolean chargedTypeManuallySet;
     private Integer childrenCount;
     private Integer successorsCount;
@@ -50,9 +50,9 @@ public class WorkItem extends ClarizenEntity {
     private Boolean reportableManuallySet;
     private Boolean billable;
     private Integer childShortcutCount;
-    private Project project;
-    private WorkPolicy workPolicy;
-    private CommitLevel commitLevel;
+    private org.mule.modules.clarizen.api.model.flat.ProjectFlat project;
+    private org.mule.modules.clarizen.api.model.flat.WorkPolicyFlat workPolicy;
+    private org.mule.modules.clarizen.api.model.flat.CommitLevelFlat commitLevel;
     private Date reportingStartDate;
     private String SYSID;
     private Duration work;
@@ -97,9 +97,9 @@ public class WorkItem extends ClarizenEntity {
     private Money directActualBilledExpenses;
     private Money projectedBilledExpenses;
     private Money directProjectedBilledExpenses;
-    private CurrencyType revenueCurrencyType;
-    private CurrencyType costCurrencyType;
-    private Pending pending;
+    private org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat revenueCurrencyType;
+    private org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat costCurrencyType;
+    private org.mule.modules.clarizen.api.model.flat.PendingFlat pending;
     private Integer issuesCount;
     private Date lastUpdatedBySystemOn;
     private Boolean allowReportingOnSubItems;
@@ -108,10 +108,10 @@ public class WorkItem extends ClarizenEntity {
     private Duration budgetedHours;
     private Integer emailsCount;
     private Money costBalance;
-    private BudgetStatus budgetStatus;
+    private org.mule.modules.clarizen.api.model.flat.BudgetStatusFlat budgetStatus;
     private Money revenueBalance;
     private Boolean actualEffortUpdatedFromTimesheets;
-    private Project parentProject;
+    private org.mule.modules.clarizen.api.model.flat.ProjectFlat parentProject;
     private String sfExternalId;
     private String sfExternalName;
     private String internalId;
@@ -133,7 +133,7 @@ public class WorkItem extends ClarizenEntity {
     private Boolean deliverable;
     private String deliverableType;
     private Boolean executable;
-    private WorkItem parent;
+    private org.mule.modules.clarizen.api.model.flat.WorkItemFlat parent;
     private Money plannedAmount;
     private Double ETC;
     private Money chargedAmount;
@@ -142,18 +142,18 @@ public class WorkItem extends ClarizenEntity {
     private Money totalEstimatedCost;
     private Boolean chargedAmountManuallySet;
     private Money revenueEarnedValue;
-    private ChargedType charged;
+    private org.mule.modules.clarizen.api.model.flat.ChargedTypeFlat charged;
     private Double RPI;
     private Double RETC;
     private Double REAC;
     private Double RTCPI;
     private Long completnessDefinition;
-    private TaskReportingPolicy taskReportingPolicy;
+    private org.mule.modules.clarizen.api.model.flat.TaskReportingPolicyFlat taskReportingPolicy;
     private Boolean taskReportingPolicyManuallySet;
     private Boolean individualReporting;
     private Date baselineCreationDate;
     private Integer aggregatedStopwatchesCount;
-    private StopwatchAggregateState activeStopwatch;
+    private org.mule.modules.clarizen.api.model.flat.StopwatchAggregateStateFlat activeStopwatch;
     private String objectAlias;
     private Integer stopwatchesCount;
     private Duration pendingTimeTrackingEffort;
@@ -161,10 +161,10 @@ public class WorkItem extends ClarizenEntity {
     public String getDescription() {
         return description;
     }
-    public State getState() {
+    public org.mule.modules.clarizen.api.model.flat.StateFlat getState() {
         return state;
     }
-    public Phase getPhase() {
+    public org.mule.modules.clarizen.api.model.flat.PhaseFlat getPhase() {
         return phase;
     }
     public Date getStartDate() {
@@ -182,7 +182,7 @@ public class WorkItem extends ClarizenEntity {
     public Date getActualEndDate() {
         return actualEndDate;
     }
-    public TrackStatus getTrackStatus() {
+    public org.mule.modules.clarizen.api.model.flat.TrackStatusFlat getTrackStatus() {
         return trackStatus;
     }
     public Long getConflicts() {
@@ -206,13 +206,13 @@ public class WorkItem extends ClarizenEntity {
     public Double getExpectedProgress() {
         return expectedProgress;
     }
-    public SchedulingType getSchedulingType() {
+    public org.mule.modules.clarizen.api.model.flat.SchedulingTypeFlat getSchedulingType() {
         return schedulingType;
     }
-    public ImportedFrom getImportedFrom() {
+    public org.mule.modules.clarizen.api.model.flat.ImportedFromFlat getImportedFrom() {
         return importedFrom;
     }
-    public Importance getImportance() {
+    public org.mule.modules.clarizen.api.model.flat.ImportanceFlat getImportance() {
         return importance;
     }
     public Integer getPriority() {
@@ -221,7 +221,7 @@ public class WorkItem extends ClarizenEntity {
     public Double getPercentCompleted() {
         return percentCompleted;
     }
-    public User getManager() {
+    public org.mule.modules.clarizen.api.model.flat.UserFlat getManager() {
         return manager;
     }
     public Boolean getChargedTypeManuallySet() {
@@ -257,13 +257,13 @@ public class WorkItem extends ClarizenEntity {
     public Integer getChildShortcutCount() {
         return childShortcutCount;
     }
-    public Project getProject() {
+    public org.mule.modules.clarizen.api.model.flat.ProjectFlat getProject() {
         return project;
     }
-    public WorkPolicy getWorkPolicy() {
+    public org.mule.modules.clarizen.api.model.flat.WorkPolicyFlat getWorkPolicy() {
         return workPolicy;
     }
-    public CommitLevel getCommitLevel() {
+    public org.mule.modules.clarizen.api.model.flat.CommitLevelFlat getCommitLevel() {
         return commitLevel;
     }
     public Date getReportingStartDate() {
@@ -398,13 +398,13 @@ public class WorkItem extends ClarizenEntity {
     public Money getDirectProjectedBilledExpenses() {
         return directProjectedBilledExpenses;
     }
-    public CurrencyType getRevenueCurrencyType() {
+    public org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat getRevenueCurrencyType() {
         return revenueCurrencyType;
     }
-    public CurrencyType getCostCurrencyType() {
+    public org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat getCostCurrencyType() {
         return costCurrencyType;
     }
-    public Pending getPending() {
+    public org.mule.modules.clarizen.api.model.flat.PendingFlat getPending() {
         return pending;
     }
     public Integer getIssuesCount() {
@@ -431,7 +431,7 @@ public class WorkItem extends ClarizenEntity {
     public Money getCostBalance() {
         return costBalance;
     }
-    public BudgetStatus getBudgetStatus() {
+    public org.mule.modules.clarizen.api.model.flat.BudgetStatusFlat getBudgetStatus() {
         return budgetStatus;
     }
     public Money getRevenueBalance() {
@@ -440,7 +440,7 @@ public class WorkItem extends ClarizenEntity {
     public Boolean getActualEffortUpdatedFromTimesheets() {
         return actualEffortUpdatedFromTimesheets;
     }
-    public Project getParentProject() {
+    public org.mule.modules.clarizen.api.model.flat.ProjectFlat getParentProject() {
         return parentProject;
     }
     public String getSfExternalId() {
@@ -506,7 +506,7 @@ public class WorkItem extends ClarizenEntity {
     public Boolean getExecutable() {
         return executable;
     }
-    public WorkItem getParent() {
+    public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getParent() {
         return parent;
     }
     public Money getPlannedAmount() {
@@ -533,7 +533,7 @@ public class WorkItem extends ClarizenEntity {
     public Money getRevenueEarnedValue() {
         return revenueEarnedValue;
     }
-    public ChargedType getCharged() {
+    public org.mule.modules.clarizen.api.model.flat.ChargedTypeFlat getCharged() {
         return charged;
     }
     public Double getRPI() {
@@ -551,7 +551,7 @@ public class WorkItem extends ClarizenEntity {
     public Long getCompletnessDefinition() {
         return completnessDefinition;
     }
-    public TaskReportingPolicy getTaskReportingPolicy() {
+    public org.mule.modules.clarizen.api.model.flat.TaskReportingPolicyFlat getTaskReportingPolicy() {
         return taskReportingPolicy;
     }
     public Boolean getTaskReportingPolicyManuallySet() {
@@ -566,7 +566,7 @@ public class WorkItem extends ClarizenEntity {
     public Integer getAggregatedStopwatchesCount() {
         return aggregatedStopwatchesCount;
     }
-    public StopwatchAggregateState getActiveStopwatch() {
+    public org.mule.modules.clarizen.api.model.flat.StopwatchAggregateStateFlat getActiveStopwatch() {
         return activeStopwatch;
     }
     public String getObjectAlias() {
@@ -581,10 +581,10 @@ public class WorkItem extends ClarizenEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setState(State state) {
+    public void setState(org.mule.modules.clarizen.api.model.flat.StateFlat state) {
         this.state = state;
     }
-    public void setPhase(Phase phase) {
+    public void setPhase(org.mule.modules.clarizen.api.model.flat.PhaseFlat phase) {
         this.phase = phase;
     }
     public void setStartDate(Date startDate) {
@@ -602,7 +602,8 @@ public class WorkItem extends ClarizenEntity {
     public void setActualEndDate(Date actualEndDate) {
         this.actualEndDate = actualEndDate;
     }
-    public void setTrackStatus(TrackStatus trackStatus) {
+    public void setTrackStatus(
+            org.mule.modules.clarizen.api.model.flat.TrackStatusFlat trackStatus) {
         this.trackStatus = trackStatus;
     }
     public void setConflicts(Long conflicts) {
@@ -626,13 +627,16 @@ public class WorkItem extends ClarizenEntity {
     public void setExpectedProgress(Double expectedProgress) {
         this.expectedProgress = expectedProgress;
     }
-    public void setSchedulingType(SchedulingType schedulingType) {
+    public void setSchedulingType(
+            org.mule.modules.clarizen.api.model.flat.SchedulingTypeFlat schedulingType) {
         this.schedulingType = schedulingType;
     }
-    public void setImportedFrom(ImportedFrom importedFrom) {
+    public void setImportedFrom(
+            org.mule.modules.clarizen.api.model.flat.ImportedFromFlat importedFrom) {
         this.importedFrom = importedFrom;
     }
-    public void setImportance(Importance importance) {
+    public void setImportance(
+            org.mule.modules.clarizen.api.model.flat.ImportanceFlat importance) {
         this.importance = importance;
     }
     public void setPriority(Integer priority) {
@@ -641,7 +645,7 @@ public class WorkItem extends ClarizenEntity {
     public void setPercentCompleted(Double percentCompleted) {
         this.percentCompleted = percentCompleted;
     }
-    public void setManager(User manager) {
+    public void setManager(org.mule.modules.clarizen.api.model.flat.UserFlat manager) {
         this.manager = manager;
     }
     public void setChargedTypeManuallySet(Boolean chargedTypeManuallySet) {
@@ -677,13 +681,15 @@ public class WorkItem extends ClarizenEntity {
     public void setChildShortcutCount(Integer childShortcutCount) {
         this.childShortcutCount = childShortcutCount;
     }
-    public void setProject(Project project) {
+    public void setProject(org.mule.modules.clarizen.api.model.flat.ProjectFlat project) {
         this.project = project;
     }
-    public void setWorkPolicy(WorkPolicy workPolicy) {
+    public void setWorkPolicy(
+            org.mule.modules.clarizen.api.model.flat.WorkPolicyFlat workPolicy) {
         this.workPolicy = workPolicy;
     }
-    public void setCommitLevel(CommitLevel commitLevel) {
+    public void setCommitLevel(
+            org.mule.modules.clarizen.api.model.flat.CommitLevelFlat commitLevel) {
         this.commitLevel = commitLevel;
     }
     public void setReportingStartDate(Date reportingStartDate) {
@@ -818,13 +824,15 @@ public class WorkItem extends ClarizenEntity {
     public void setDirectProjectedBilledExpenses(Money directProjectedBilledExpenses) {
         this.directProjectedBilledExpenses = directProjectedBilledExpenses;
     }
-    public void setRevenueCurrencyType(CurrencyType revenueCurrencyType) {
+    public void setRevenueCurrencyType(
+            org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat revenueCurrencyType) {
         this.revenueCurrencyType = revenueCurrencyType;
     }
-    public void setCostCurrencyType(CurrencyType costCurrencyType) {
+    public void setCostCurrencyType(
+            org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat costCurrencyType) {
         this.costCurrencyType = costCurrencyType;
     }
-    public void setPending(Pending pending) {
+    public void setPending(org.mule.modules.clarizen.api.model.flat.PendingFlat pending) {
         this.pending = pending;
     }
     public void setIssuesCount(Integer issuesCount) {
@@ -851,7 +859,8 @@ public class WorkItem extends ClarizenEntity {
     public void setCostBalance(Money costBalance) {
         this.costBalance = costBalance;
     }
-    public void setBudgetStatus(BudgetStatus budgetStatus) {
+    public void setBudgetStatus(
+            org.mule.modules.clarizen.api.model.flat.BudgetStatusFlat budgetStatus) {
         this.budgetStatus = budgetStatus;
     }
     public void setRevenueBalance(Money revenueBalance) {
@@ -861,7 +870,8 @@ public class WorkItem extends ClarizenEntity {
             Boolean actualEffortUpdatedFromTimesheets) {
         this.actualEffortUpdatedFromTimesheets = actualEffortUpdatedFromTimesheets;
     }
-    public void setParentProject(Project parentProject) {
+    public void setParentProject(
+            org.mule.modules.clarizen.api.model.flat.ProjectFlat parentProject) {
         this.parentProject = parentProject;
     }
     public void setSfExternalId(String sfExternalId) {
@@ -927,7 +937,7 @@ public class WorkItem extends ClarizenEntity {
     public void setExecutable(Boolean executable) {
         this.executable = executable;
     }
-    public void setParent(WorkItem parent) {
+    public void setParent(org.mule.modules.clarizen.api.model.flat.WorkItemFlat parent) {
         this.parent = parent;
     }
     public void setPlannedAmount(Money plannedAmount) {
@@ -954,7 +964,8 @@ public class WorkItem extends ClarizenEntity {
     public void setRevenueEarnedValue(Money revenueEarnedValue) {
         this.revenueEarnedValue = revenueEarnedValue;
     }
-    public void setCharged(ChargedType charged) {
+    public void setCharged(
+            org.mule.modules.clarizen.api.model.flat.ChargedTypeFlat charged) {
         this.charged = charged;
     }
     public void setRPI(Double rPI) {
@@ -972,7 +983,8 @@ public class WorkItem extends ClarizenEntity {
     public void setCompletnessDefinition(Long completnessDefinition) {
         this.completnessDefinition = completnessDefinition;
     }
-    public void setTaskReportingPolicy(TaskReportingPolicy taskReportingPolicy) {
+    public void setTaskReportingPolicy(
+            org.mule.modules.clarizen.api.model.flat.TaskReportingPolicyFlat taskReportingPolicy) {
         this.taskReportingPolicy = taskReportingPolicy;
     }
     public void setTaskReportingPolicyManuallySet(
@@ -988,7 +1000,8 @@ public class WorkItem extends ClarizenEntity {
     public void setAggregatedStopwatchesCount(Integer aggregatedStopwatchesCount) {
         this.aggregatedStopwatchesCount = aggregatedStopwatchesCount;
     }
-    public void setActiveStopwatch(StopwatchAggregateState activeStopwatch) {
+    public void setActiveStopwatch(
+            org.mule.modules.clarizen.api.model.flat.StopwatchAggregateStateFlat activeStopwatch) {
         this.activeStopwatch = activeStopwatch;
     }
     public void setObjectAlias(String objectAlias) {
@@ -1000,4 +1013,6 @@ public class WorkItem extends ClarizenEntity {
     public void setPendingTimeTrackingEffort(Duration pendingTimeTrackingEffort) {
         this.pendingTimeTrackingEffort = pendingTimeTrackingEffort;
     }
+
+
 }

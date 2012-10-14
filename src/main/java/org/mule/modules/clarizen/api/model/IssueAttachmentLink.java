@@ -12,19 +12,20 @@ package org.mule.modules.clarizen.api.model;
 
 public class IssueAttachmentLink extends ClarizenEntity {
 
-    private Case entity;
-    private Document document;
+    private org.mule.modules.clarizen.api.model.flat.CaseFlat entity;
+    private org.mule.modules.clarizen.api.model.flat.DocumentFlat document;
 
-    public Case getEntity() {
+    public org.mule.modules.clarizen.api.model.flat.CaseFlat getEntity() {
         return entity;
     }
-    public Document getDocument() {
+    public org.mule.modules.clarizen.api.model.flat.DocumentFlat getDocument() {
         return document;
     }
-    public void setEntity(Case entity) {
+    public void setEntity(org.mule.modules.clarizen.api.model.flat.CaseFlat entity) {
         this.entity = entity;
     }
-    public void setDocument(Document document) {
+    public void setDocument(
+            org.mule.modules.clarizen.api.model.flat.DocumentFlat document) {
         this.document = document;
-    }
+    }   
 }

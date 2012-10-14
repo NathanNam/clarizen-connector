@@ -17,7 +17,7 @@ public class Comment extends ClarizenEntity {
     private String comment;
     private String plainText;
     private EntityId attachedTo;
-    private CommentType visibility;
+    private org.mule.modules.clarizen.api.model.flat.CommentTypeFlat visibility;
 
     public String getComment() {
         return comment;
@@ -28,7 +28,7 @@ public class Comment extends ClarizenEntity {
     public EntityId getAttachedTo() {
         return attachedTo;
     }
-    public CommentType getVisibility() {
+    public org.mule.modules.clarizen.api.model.flat.CommentTypeFlat getVisibility() {
         return visibility;
     }
     public void setComment(String comment) {
@@ -40,7 +40,8 @@ public class Comment extends ClarizenEntity {
     public void setAttachedTo(EntityId attachedTo) {
         this.attachedTo = attachedTo;
     }
-    public void setVisibility(CommentType visibility) {
+    public void setVisibility(
+            org.mule.modules.clarizen.api.model.flat.CommentTypeFlat visibility) {
         this.visibility = visibility;
     }
 }

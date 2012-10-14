@@ -18,11 +18,11 @@ public class Project extends WorkItem {
     private String plannedSavings;
     private String expectedBusinessValue;
     private String projectGoals;
-    private ProjectSize projectSize;
-    private User projectSponsor;
+    private org.mule.modules.clarizen.api.model.flat.ProjectSizeFlat projectSize;
+    private org.mule.modules.clarizen.api.model.flat.UserFlat projectSponsor;
     private Boolean goalsAchieved;
     private Double expectedROI;
-    private BusinessImpact businessImpact;
+    private org.mule.modules.clarizen.api.model.flat.BusinessImpactFlat businessImpact;
     private Double score;
     private String overallSummary;
     private String scheduleSummary;
@@ -30,16 +30,15 @@ public class Project extends WorkItem {
     private String additionalComments;
     private String risks;
     private String mitigation;
-    private RisksRate risksRate;
-    private RiskImpact risksImpact;
+    private org.mule.modules.clarizen.api.model.flat.RisksRateFlat risksRate;
+    private org.mule.modules.clarizen.api.model.flat.RiskImpactFlat risksImpact;
     private Double risksTotalScore;
     private Boolean rollupProgressAndDatesFromShortcut;
     private String holdingNotes;
     private String closingNotes;
-    private ProjectType projectType;
-    private User projectManager;
+    private org.mule.modules.clarizen.api.model.flat.ProjectTypeFlat projectType;
+    private org.mule.modules.clarizen.api.model.flat.UserFlat projectManager;
     private String projectTagging;
-    private Project parentProject;
 
     public Boolean getRollupFinancialAndEffortDataFromShortcut() {
         return rollupFinancialAndEffortDataFromShortcut;
@@ -59,10 +58,10 @@ public class Project extends WorkItem {
     public String getProjectGoals() {
         return projectGoals;
     }
-    public ProjectSize getProjectSize() {
+    public org.mule.modules.clarizen.api.model.flat.ProjectSizeFlat getProjectSize() {
         return projectSize;
     }
-    public User getProjectSponsor() {
+    public org.mule.modules.clarizen.api.model.flat.UserFlat getProjectSponsor() {
         return projectSponsor;
     }
     public Boolean getGoalsAchieved() {
@@ -71,7 +70,7 @@ public class Project extends WorkItem {
     public Double getExpectedROI() {
         return expectedROI;
     }
-    public BusinessImpact getBusinessImpact() {
+    public org.mule.modules.clarizen.api.model.flat.BusinessImpactFlat getBusinessImpact() {
         return businessImpact;
     }
     public Double getScore() {
@@ -95,10 +94,10 @@ public class Project extends WorkItem {
     public String getMitigation() {
         return mitigation;
     }
-    public RisksRate getRisksRate() {
+    public org.mule.modules.clarizen.api.model.flat.RisksRateFlat getRisksRate() {
         return risksRate;
     }
-    public RiskImpact getRisksImpact() {
+    public org.mule.modules.clarizen.api.model.flat.RiskImpactFlat getRisksImpact() {
         return risksImpact;
     }
     public Double getRisksTotalScore() {
@@ -113,17 +112,14 @@ public class Project extends WorkItem {
     public String getClosingNotes() {
         return closingNotes;
     }
-    public ProjectType getProjectType() {
+    public org.mule.modules.clarizen.api.model.flat.ProjectTypeFlat getProjectType() {
         return projectType;
     }
-    public User getProjectManager() {
+    public org.mule.modules.clarizen.api.model.flat.UserFlat getProjectManager() {
         return projectManager;
     }
     public String getProjectTagging() {
         return projectTagging;
-    }
-    public Project getParentProject() {
-        return parentProject;
     }
     public void setRollupFinancialAndEffortDataFromShortcut(
             Boolean rollupFinancialAndEffortDataFromShortcut) {
@@ -144,10 +140,12 @@ public class Project extends WorkItem {
     public void setProjectGoals(String projectGoals) {
         this.projectGoals = projectGoals;
     }
-    public void setProjectSize(ProjectSize projectSize) {
+    public void setProjectSize(
+            org.mule.modules.clarizen.api.model.flat.ProjectSizeFlat projectSize) {
         this.projectSize = projectSize;
     }
-    public void setProjectSponsor(User projectSponsor) {
+    public void setProjectSponsor(
+            org.mule.modules.clarizen.api.model.flat.UserFlat projectSponsor) {
         this.projectSponsor = projectSponsor;
     }
     public void setGoalsAchieved(Boolean goalsAchieved) {
@@ -156,7 +154,8 @@ public class Project extends WorkItem {
     public void setExpectedROI(Double expectedROI) {
         this.expectedROI = expectedROI;
     }
-    public void setBusinessImpact(BusinessImpact businessImpact) {
+    public void setBusinessImpact(
+            org.mule.modules.clarizen.api.model.flat.BusinessImpactFlat businessImpact) {
         this.businessImpact = businessImpact;
     }
     public void setScore(Double score) {
@@ -180,10 +179,12 @@ public class Project extends WorkItem {
     public void setMitigation(String mitigation) {
         this.mitigation = mitigation;
     }
-    public void setRisksRate(RisksRate risksRate) {
+    public void setRisksRate(
+            org.mule.modules.clarizen.api.model.flat.RisksRateFlat risksRate) {
         this.risksRate = risksRate;
     }
-    public void setRisksImpact(RiskImpact risksImpact) {
+    public void setRisksImpact(
+            org.mule.modules.clarizen.api.model.flat.RiskImpactFlat risksImpact) {
         this.risksImpact = risksImpact;
     }
     public void setRisksTotalScore(Double risksTotalScore) {
@@ -199,17 +200,15 @@ public class Project extends WorkItem {
     public void setClosingNotes(String closingNotes) {
         this.closingNotes = closingNotes;
     }
-    public void setProjectType(ProjectType projectType) {
+    public void setProjectType(
+            org.mule.modules.clarizen.api.model.flat.ProjectTypeFlat projectType) {
         this.projectType = projectType;
     }
-    public void setProjectManager(User projectManager) {
+    public void setProjectManager(
+            org.mule.modules.clarizen.api.model.flat.UserFlat projectManager) {
         this.projectManager = projectManager;
     }
     public void setProjectTagging(String projectTagging) {
         this.projectTagging = projectTagging;
     }
-    public void setParentProject(Project parentProject) {
-        this.parentProject = parentProject;
-    }
-    
 }

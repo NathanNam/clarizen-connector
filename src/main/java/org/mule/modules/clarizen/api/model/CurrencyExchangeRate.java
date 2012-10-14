@@ -14,15 +14,15 @@ import java.util.Date;
 
 public class CurrencyExchangeRate extends ClarizenEntity {
 
-        private CurrencyType baseCurrency;
-        private CurrencyType quoteCurrency;
+        private org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat baseCurrency;
+        private org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat quoteCurrency;
         private Date effectiveFrom;
         private Double exchangeRate;
 
-        public CurrencyType getBaseCurrency() {
+        public org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat getBaseCurrency() {
             return baseCurrency;
         }
-        public CurrencyType getQuoteCurrency() {
+        public org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat getQuoteCurrency() {
             return quoteCurrency;
         }
         public Date getEffectiveFrom() {
@@ -31,10 +31,12 @@ public class CurrencyExchangeRate extends ClarizenEntity {
         public Double getExchangeRate() {
             return exchangeRate;
         }
-        public void setBaseCurrency(CurrencyType baseCurrency) {
+        public void setBaseCurrency(
+                org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat baseCurrency) {
             this.baseCurrency = baseCurrency;
         }
-        public void setQuoteCurrency(CurrencyType quoteCurrency) {
+        public void setQuoteCurrency(
+                org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat quoteCurrency) {
             this.quoteCurrency = quoteCurrency;
         }
         public void setEffectiveFrom(Date effectiveFrom) {

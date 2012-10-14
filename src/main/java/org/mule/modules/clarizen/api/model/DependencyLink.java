@@ -14,19 +14,19 @@ import com.clarizen.api.Duration;
 
 public class DependencyLink extends ClarizenEntity {
 
-    private WorkItem workItem;
-    private WorkItem DependsOn;
-    private DependencyType dependencyType;
+    private org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem;
+    private org.mule.modules.clarizen.api.model.flat.WorkItemFlat DependsOn;
+    private org.mule.modules.clarizen.api.model.flat.DependencyTypeFlat dependencyType;
     private Duration Lag;
     private Boolean Shortcut;
 
-    public WorkItem getWorkItem() {
+    public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getWorkItem() {
         return workItem;
     }
-    public WorkItem getDependsOn() {
+    public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getDependsOn() {
         return DependsOn;
     }
-    public DependencyType getDependencyType() {
+    public org.mule.modules.clarizen.api.model.flat.DependencyTypeFlat getDependencyType() {
         return dependencyType;
     }
     public Duration getLag() {
@@ -35,13 +35,16 @@ public class DependencyLink extends ClarizenEntity {
     public Boolean getShortcut() {
         return Shortcut;
     }
-    public void setWorkItem(WorkItem workItem) {
+    public void setWorkItem(
+            org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem) {
         this.workItem = workItem;
     }
-    public void setDependsOn(WorkItem dependsOn) {
+    public void setDependsOn(
+            org.mule.modules.clarizen.api.model.flat.WorkItemFlat dependsOn) {
         DependsOn = dependsOn;
     }
-    public void setDependencyType(DependencyType dependencyType) {
+    public void setDependencyType(
+            org.mule.modules.clarizen.api.model.flat.DependencyTypeFlat dependencyType) {
         this.dependencyType = dependencyType;
     }
     public void setLag(Duration lag) {

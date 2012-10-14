@@ -12,16 +12,16 @@ package org.mule.modules.clarizen.api.model;
 
 public class EnhancementRequest extends Case {
     
-        private RequestType requestType;
+        private org.mule.modules.clarizen.api.model.flat.RequestTypeFlat requestType;
         private Double expectedCost;
         private Double expectedRevenue;
         private String risks;
         private String mitigation;
-        private RisksRate risksRate;
-        private RiskImpact risksImpact;
+        private org.mule.modules.clarizen.api.model.flat.RisksRateFlat risksRate;
+        private org.mule.modules.clarizen.api.model.flat.RiskImpactFlat risksImpact;
         private Double risksTotalScore;
 
-        public RequestType getRequestType() {
+        public org.mule.modules.clarizen.api.model.flat.RequestTypeFlat getRequestType() {
             return requestType;
         }
         public Double getExpectedCost() {
@@ -36,16 +36,17 @@ public class EnhancementRequest extends Case {
         public String getMitigation() {
             return mitigation;
         }
-        public RisksRate getRisksRate() {
+        public org.mule.modules.clarizen.api.model.flat.RisksRateFlat getRisksRate() {
             return risksRate;
         }
-        public RiskImpact getRisksImpact() {
+        public org.mule.modules.clarizen.api.model.flat.RiskImpactFlat getRisksImpact() {
             return risksImpact;
         }
         public Double getRisksTotalScore() {
             return risksTotalScore;
         }
-        public void setRequestType(RequestType requestType) {
+        public void setRequestType(
+                org.mule.modules.clarizen.api.model.flat.RequestTypeFlat requestType) {
             this.requestType = requestType;
         }
         public void setExpectedCost(Double expectedCost) {
@@ -60,10 +61,12 @@ public class EnhancementRequest extends Case {
         public void setMitigation(String mitigation) {
             this.mitigation = mitigation;
         }
-        public void setRisksRate(RisksRate risksRate) {
+        public void setRisksRate(
+                org.mule.modules.clarizen.api.model.flat.RisksRateFlat risksRate) {
             this.risksRate = risksRate;
         }
-        public void setRisksImpact(RiskImpact risksImpact) {
+        public void setRisksImpact(
+                org.mule.modules.clarizen.api.model.flat.RiskImpactFlat risksImpact) {
             this.risksImpact = risksImpact;
         }
         public void setRisksTotalScore(Double risksTotalScore) {

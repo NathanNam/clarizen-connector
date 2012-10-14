@@ -16,26 +16,26 @@ import com.clarizen.api.Duration;
 
 public class RecurringTask extends WorkItem {
 
-    private TaskType taskType;
-    private Milestone milestone;
-    private RecurrenceType recurrenceType;
+    private org.mule.modules.clarizen.api.model.flat.TaskTypeFlat taskType;
+    private org.mule.modules.clarizen.api.model.flat.MilestoneFlat milestone;
+    private org.mule.modules.clarizen.api.model.flat.RecurrenceTypeFlat recurrenceType;
     private Integer recurrenceInterval;
     private Boolean workdaysOnly;
     private Integer weekDays;
     private Integer recurrenceDayOfMonth;
-    private Months recurrenceMonthOfYear;
+    private org.mule.modules.clarizen.api.model.flat.MonthsFlat recurrenceMonthOfYear;
     private Date recurrenceStartDate;
     private Date recurrenceEndDate;
     private Duration occurenceDuration;
     private Integer occurrences;
 
-    public TaskType getTaskType() {
+    public org.mule.modules.clarizen.api.model.flat.TaskTypeFlat getTaskType() {
         return taskType;
     }
-    public Milestone getMilestone() {
+    public org.mule.modules.clarizen.api.model.flat.MilestoneFlat getMilestone() {
         return milestone;
     }
-    public RecurrenceType getRecurrenceType() {
+    public org.mule.modules.clarizen.api.model.flat.RecurrenceTypeFlat getRecurrenceType() {
         return recurrenceType;
     }
     public Integer getRecurrenceInterval() {
@@ -50,7 +50,7 @@ public class RecurringTask extends WorkItem {
     public Integer getRecurrenceDayOfMonth() {
         return recurrenceDayOfMonth;
     }
-    public Months getRecurrenceMonthOfYear() {
+    public org.mule.modules.clarizen.api.model.flat.MonthsFlat getRecurrenceMonthOfYear() {
         return recurrenceMonthOfYear;
     }
     public Date getRecurrenceStartDate() {
@@ -65,13 +65,16 @@ public class RecurringTask extends WorkItem {
     public Integer getOccurrences() {
         return occurrences;
     }
-    public void setTaskType(TaskType taskType) {
+    public void setTaskType(
+            org.mule.modules.clarizen.api.model.flat.TaskTypeFlat taskType) {
         this.taskType = taskType;
     }
-    public void setMilestone(Milestone milestone) {
+    public void setMilestone(
+            org.mule.modules.clarizen.api.model.flat.MilestoneFlat milestone) {
         this.milestone = milestone;
     }
-    public void setRecurrenceType(RecurrenceType recurrenceType) {
+    public void setRecurrenceType(
+            org.mule.modules.clarizen.api.model.flat.RecurrenceTypeFlat recurrenceType) {
         this.recurrenceType = recurrenceType;
     }
     public void setRecurrenceInterval(Integer recurrenceInterval) {
@@ -86,7 +89,8 @@ public class RecurringTask extends WorkItem {
     public void setRecurrenceDayOfMonth(Integer recurrenceDayOfMonth) {
         this.recurrenceDayOfMonth = recurrenceDayOfMonth;
     }
-    public void setRecurrenceMonthOfYear(Months recurrenceMonthOfYear) {
+    public void setRecurrenceMonthOfYear(
+            org.mule.modules.clarizen.api.model.flat.MonthsFlat recurrenceMonthOfYear) {
         this.recurrenceMonthOfYear = recurrenceMonthOfYear;
     }
     public void setRecurrenceStartDate(Date recurrenceStartDate) {

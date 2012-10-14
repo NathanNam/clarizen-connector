@@ -12,19 +12,20 @@ package org.mule.modules.clarizen.api.model;
 
 public class IssueTeamMembers extends ClarizenEntity {
     
-        private Case Case;
-        private User teamMember;
+        private org.mule.modules.clarizen.api.model.flat.CaseFlat Case;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat teamMember;
 
-        public Case getCase() {
+        public org.mule.modules.clarizen.api.model.flat.CaseFlat getCase() {
             return Case;
         }
-        public User getTeamMember() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getTeamMember() {
             return teamMember;
         }
-        public void setCase(Case case1) {
+        public void setCase(org.mule.modules.clarizen.api.model.flat.CaseFlat case1) {
             Case = case1;
         }
-        public void setTeamMember(User teamMember) {
+        public void setTeamMember(
+                org.mule.modules.clarizen.api.model.flat.UserFlat teamMember) {
             this.teamMember = teamMember;
-        }
+        }       
 }

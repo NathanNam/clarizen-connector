@@ -13,41 +13,41 @@ package org.mule.modules.clarizen.api.model;
 public class Organization extends ClarizenEntity {
     
         private String description;
-        private State state;
-        private Countries country;
-        private TimeZone timeZone;
-        private CountryState countryState;
-        private CurrencyType defaultCurrency;
-        private Language language;
+        private org.mule.modules.clarizen.api.model.flat.StateFlat state;
+        private org.mule.modules.clarizen.api.model.flat.CountriesFlat country;
+        private org.mule.modules.clarizen.api.model.flat.TimeZoneFlat timeZone;
+        private org.mule.modules.clarizen.api.model.flat.CountryStateFlat countryState;
+        private org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat defaultCurrency;
+        private org.mule.modules.clarizen.api.model.flat.LanguageFlat language;
         private String domain;
-        private User supportUser;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat supportUser;
         private Long updateRequestsCounter;
 
         public String getDescription() {
             return description;
         }
-        public State getState() {
+        public org.mule.modules.clarizen.api.model.flat.StateFlat getState() {
             return state;
         }
-        public Countries getCountry() {
+        public org.mule.modules.clarizen.api.model.flat.CountriesFlat getCountry() {
             return country;
         }
-        public TimeZone getTimeZone() {
+        public org.mule.modules.clarizen.api.model.flat.TimeZoneFlat getTimeZone() {
             return timeZone;
         }
-        public CountryState getCountryState() {
+        public org.mule.modules.clarizen.api.model.flat.CountryStateFlat getCountryState() {
             return countryState;
         }
-        public CurrencyType getDefaultCurrency() {
+        public org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat getDefaultCurrency() {
             return defaultCurrency;
         }
-        public Language getLanguage() {
+        public org.mule.modules.clarizen.api.model.flat.LanguageFlat getLanguage() {
             return language;
         }
         public String getDomain() {
             return domain;
         }
-        public User getSupportUser() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getSupportUser() {
             return supportUser;
         }
         public Long getUpdateRequestsCounter() {
@@ -56,31 +56,38 @@ public class Organization extends ClarizenEntity {
         public void setDescription(String description) {
             this.description = description;
         }
-        public void setState(State state) {
+        public void setState(org.mule.modules.clarizen.api.model.flat.StateFlat state) {
             this.state = state;
         }
-        public void setCountry(Countries country) {
+        public void setCountry(
+                org.mule.modules.clarizen.api.model.flat.CountriesFlat country) {
             this.country = country;
         }
-        public void setTimeZone(TimeZone timeZone) {
+        public void setTimeZone(
+                org.mule.modules.clarizen.api.model.flat.TimeZoneFlat timeZone) {
             this.timeZone = timeZone;
         }
-        public void setCountryState(CountryState countryState) {
+        public void setCountryState(
+                org.mule.modules.clarizen.api.model.flat.CountryStateFlat countryState) {
             this.countryState = countryState;
         }
-        public void setDefaultCurrency(CurrencyType defaultCurrency) {
+        public void setDefaultCurrency(
+                org.mule.modules.clarizen.api.model.flat.CurrencyTypeFlat defaultCurrency) {
             this.defaultCurrency = defaultCurrency;
         }
-        public void setLanguage(Language language) {
+        public void setLanguage(
+                org.mule.modules.clarizen.api.model.flat.LanguageFlat language) {
             this.language = language;
         }
         public void setDomain(String domain) {
             this.domain = domain;
         }
-        public void setSupportUser(User supportUser) {
+        public void setSupportUser(
+                org.mule.modules.clarizen.api.model.flat.UserFlat supportUser) {
             this.supportUser = supportUser;
         }
         public void setUpdateRequestsCounter(Long updateRequestsCounter) {
             this.updateRequestsCounter = updateRequestsCounter;
         }
+
 }

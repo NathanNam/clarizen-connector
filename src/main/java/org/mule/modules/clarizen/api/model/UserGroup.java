@@ -20,9 +20,9 @@ public class UserGroup extends ClarizenEntity {
         private Integer stopwatchesCount;
         private EntityId entityType;
         private Boolean organizationUnit;
-        private User directManager;
-        private TimeZone timeZone;
-        private Language language;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat directManager;
+        private org.mule.modules.clarizen.api.model.flat.TimeZoneFlat timeZone;
+        private org.mule.modules.clarizen.api.model.flat.LanguageFlat language;
 
         public String getDescription() {
             return description;
@@ -42,13 +42,13 @@ public class UserGroup extends ClarizenEntity {
         public Boolean getOrganizationUnit() {
             return organizationUnit;
         }
-        public User getDirectManager() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getDirectManager() {
             return directManager;
         }
-        public TimeZone getTimeZone() {
+        public org.mule.modules.clarizen.api.model.flat.TimeZoneFlat getTimeZone() {
             return timeZone;
         }
-        public Language getLanguage() {
+        public org.mule.modules.clarizen.api.model.flat.LanguageFlat getLanguage() {
             return language;
         }
         public void setDescription(String description) {
@@ -69,13 +69,16 @@ public class UserGroup extends ClarizenEntity {
         public void setOrganizationUnit(Boolean organizationUnit) {
             this.organizationUnit = organizationUnit;
         }
-        public void setDirectManager(User directManager) {
+        public void setDirectManager(
+                org.mule.modules.clarizen.api.model.flat.UserFlat directManager) {
             this.directManager = directManager;
         }
-        public void setTimeZone(TimeZone timeZone) {
+        public void setTimeZone(
+                org.mule.modules.clarizen.api.model.flat.TimeZoneFlat timeZone) {
             this.timeZone = timeZone;
         }
-        public void setLanguage(Language language) {
+        public void setLanguage(
+                org.mule.modules.clarizen.api.model.flat.LanguageFlat language) {
             this.language = language;
         }
 }

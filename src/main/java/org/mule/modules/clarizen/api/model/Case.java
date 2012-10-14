@@ -23,34 +23,34 @@ public class Case extends ClarizenEntity {
         private Integer postsCount;
         private Integer notesCount;
         private String title;
-        private Severity severity;
+        private org.mule.modules.clarizen.api.model.flat.SeverityFlat severity;
         private Integer priority;
         private Boolean mandatory;
-        private User owner;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat owner;
         private Date dueDate;
-        private User sssignedTo;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat sssignedTo;
         private Date assignmentDate;
-        private User submittedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat submittedBy;
         private Date submissionDate;
-        private User evaluatedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat evaluatedBy;
         private Date evaluationDate;
-        private User openedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat openedBy;
         private Date openingDate;
-        private User resolvedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat resolvedBy;
         private Date resolvedDate;
         private String resolutionDetails;
-        private User closedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat closedBy;
         private Date closureDate;
-        private User rejectedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat rejectedBy;
         private Date rejectionDate;
         private String rejectDetails;
-        private User reopenedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat reopenedBy;
         private Date reopeningDate;
         private String reopenReasons;
-        private User deferredBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat deferredBy;
         private Date deferringDate;
         private String comment;
-        private Project plannedFor;
+        private org.mule.modules.clarizen.api.model.flat.ProjectFlat plannedFor;
         private Boolean reportedbyCustomer;
         private String category;
         private String duplicateTo;
@@ -71,11 +71,11 @@ public class Case extends ClarizenEntity {
         private String expectedBusinessValue;
         private Boolean goalsAchieved;
         private Double expectedROI;
-        private CaseBusinessImpact businessImpact;
+        private org.mule.modules.clarizen.api.model.flat.CaseBusinessImpactFlat businessImpact;
         private Double score;
-        private WorkItem originatedFrom;
+        private org.mule.modules.clarizen.api.model.flat.WorkItemFlat originatedFrom;
         private String objectAlias;
-        private CaseState state;
+        private org.mule.modules.clarizen.api.model.flat.CaseStateFlat state;
         private EntityId reportedBy;
         private String reportedByMail;
 
@@ -97,7 +97,7 @@ public class Case extends ClarizenEntity {
         public String getTitle() {
             return title;
         }
-        public Severity getSeverity() {
+        public org.mule.modules.clarizen.api.model.flat.SeverityFlat getSeverity() {
             return severity;
         }
         public Integer getPriority() {
@@ -106,37 +106,37 @@ public class Case extends ClarizenEntity {
         public Boolean getMandatory() {
             return mandatory;
         }
-        public User getOwner() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getOwner() {
             return owner;
         }
         public Date getDueDate() {
             return dueDate;
         }
-        public User getSssignedTo() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getSssignedTo() {
             return sssignedTo;
         }
         public Date getAssignmentDate() {
             return assignmentDate;
         }
-        public User getSubmittedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getSubmittedBy() {
             return submittedBy;
         }
         public Date getSubmissionDate() {
             return submissionDate;
         }
-        public User getEvaluatedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getEvaluatedBy() {
             return evaluatedBy;
         }
         public Date getEvaluationDate() {
             return evaluationDate;
         }
-        public User getOpenedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getOpenedBy() {
             return openedBy;
         }
         public Date getOpeningDate() {
             return openingDate;
         }
-        public User getResolvedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getResolvedBy() {
             return resolvedBy;
         }
         public Date getResolvedDate() {
@@ -145,13 +145,13 @@ public class Case extends ClarizenEntity {
         public String getResolutionDetails() {
             return resolutionDetails;
         }
-        public User getClosedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getClosedBy() {
             return closedBy;
         }
         public Date getClosureDate() {
             return closureDate;
         }
-        public User getRejectedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getRejectedBy() {
             return rejectedBy;
         }
         public Date getRejectionDate() {
@@ -160,7 +160,7 @@ public class Case extends ClarizenEntity {
         public String getRejectDetails() {
             return rejectDetails;
         }
-        public User getReopenedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getReopenedBy() {
             return reopenedBy;
         }
         public Date getReopeningDate() {
@@ -169,7 +169,7 @@ public class Case extends ClarizenEntity {
         public String getReopenReasons() {
             return reopenReasons;
         }
-        public User getDeferredBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getDeferredBy() {
             return deferredBy;
         }
         public Date getDeferringDate() {
@@ -178,7 +178,7 @@ public class Case extends ClarizenEntity {
         public String getComment() {
             return comment;
         }
-        public Project getPlannedFor() {
+        public org.mule.modules.clarizen.api.model.flat.ProjectFlat getPlannedFor() {
             return plannedFor;
         }
         public Boolean getReportedbyCustomer() {
@@ -241,19 +241,19 @@ public class Case extends ClarizenEntity {
         public Double getExpectedROI() {
             return expectedROI;
         }
-        public CaseBusinessImpact getBusinessImpact() {
+        public org.mule.modules.clarizen.api.model.flat.CaseBusinessImpactFlat getBusinessImpact() {
             return businessImpact;
         }
         public Double getScore() {
             return score;
         }
-        public WorkItem getOriginatedFrom() {
+        public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getOriginatedFrom() {
             return originatedFrom;
         }
         public String getObjectAlias() {
             return objectAlias;
         }
-        public CaseState getState() {
+        public org.mule.modules.clarizen.api.model.flat.CaseStateFlat getState() {
             return state;
         }
         public EntityId getReportedBy() {
@@ -280,7 +280,8 @@ public class Case extends ClarizenEntity {
         public void setTitle(String title) {
             this.title = title;
         }
-        public void setSeverity(Severity severity) {
+        public void setSeverity(
+                org.mule.modules.clarizen.api.model.flat.SeverityFlat severity) {
             this.severity = severity;
         }
         public void setPriority(Integer priority) {
@@ -289,37 +290,41 @@ public class Case extends ClarizenEntity {
         public void setMandatory(Boolean mandatory) {
             this.mandatory = mandatory;
         }
-        public void setOwner(User owner) {
+        public void setOwner(org.mule.modules.clarizen.api.model.flat.UserFlat owner) {
             this.owner = owner;
         }
         public void setDueDate(Date dueDate) {
             this.dueDate = dueDate;
         }
-        public void setSssignedTo(User sssignedTo) {
+        public void setSssignedTo(
+                org.mule.modules.clarizen.api.model.flat.UserFlat sssignedTo) {
             this.sssignedTo = sssignedTo;
         }
         public void setAssignmentDate(Date assignmentDate) {
             this.assignmentDate = assignmentDate;
         }
-        public void setSubmittedBy(User submittedBy) {
+        public void setSubmittedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat submittedBy) {
             this.submittedBy = submittedBy;
         }
         public void setSubmissionDate(Date submissionDate) {
             this.submissionDate = submissionDate;
         }
-        public void setEvaluatedBy(User evaluatedBy) {
+        public void setEvaluatedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat evaluatedBy) {
             this.evaluatedBy = evaluatedBy;
         }
         public void setEvaluationDate(Date evaluationDate) {
             this.evaluationDate = evaluationDate;
         }
-        public void setOpenedBy(User openedBy) {
+        public void setOpenedBy(org.mule.modules.clarizen.api.model.flat.UserFlat openedBy) {
             this.openedBy = openedBy;
         }
         public void setOpeningDate(Date openingDate) {
             this.openingDate = openingDate;
         }
-        public void setResolvedBy(User resolvedBy) {
+        public void setResolvedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat resolvedBy) {
             this.resolvedBy = resolvedBy;
         }
         public void setResolvedDate(Date resolvedDate) {
@@ -328,13 +333,14 @@ public class Case extends ClarizenEntity {
         public void setResolutionDetails(String resolutionDetails) {
             this.resolutionDetails = resolutionDetails;
         }
-        public void setClosedBy(User closedBy) {
+        public void setClosedBy(org.mule.modules.clarizen.api.model.flat.UserFlat closedBy) {
             this.closedBy = closedBy;
         }
         public void setClosureDate(Date closureDate) {
             this.closureDate = closureDate;
         }
-        public void setRejectedBy(User rejectedBy) {
+        public void setRejectedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat rejectedBy) {
             this.rejectedBy = rejectedBy;
         }
         public void setRejectionDate(Date rejectionDate) {
@@ -343,7 +349,8 @@ public class Case extends ClarizenEntity {
         public void setRejectDetails(String rejectDetails) {
             this.rejectDetails = rejectDetails;
         }
-        public void setReopenedBy(User reopenedBy) {
+        public void setReopenedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat reopenedBy) {
             this.reopenedBy = reopenedBy;
         }
         public void setReopeningDate(Date reopeningDate) {
@@ -352,7 +359,8 @@ public class Case extends ClarizenEntity {
         public void setReopenReasons(String reopenReasons) {
             this.reopenReasons = reopenReasons;
         }
-        public void setDeferredBy(User deferredBy) {
+        public void setDeferredBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat deferredBy) {
             this.deferredBy = deferredBy;
         }
         public void setDeferringDate(Date deferringDate) {
@@ -361,7 +369,8 @@ public class Case extends ClarizenEntity {
         public void setComment(String comment) {
             this.comment = comment;
         }
-        public void setPlannedFor(Project plannedFor) {
+        public void setPlannedFor(
+                org.mule.modules.clarizen.api.model.flat.ProjectFlat plannedFor) {
             this.plannedFor = plannedFor;
         }
         public void setReportedbyCustomer(Boolean reportedbyCustomer) {
@@ -424,19 +433,21 @@ public class Case extends ClarizenEntity {
         public void setExpectedROI(Double expectedROI) {
             this.expectedROI = expectedROI;
         }
-        public void setBusinessImpact(CaseBusinessImpact businessImpact) {
+        public void setBusinessImpact(
+                org.mule.modules.clarizen.api.model.flat.CaseBusinessImpactFlat businessImpact) {
             this.businessImpact = businessImpact;
         }
         public void setScore(Double score) {
             this.score = score;
         }
-        public void setOriginatedFrom(WorkItem originatedFrom) {
+        public void setOriginatedFrom(
+                org.mule.modules.clarizen.api.model.flat.WorkItemFlat originatedFrom) {
             this.originatedFrom = originatedFrom;
         }
         public void setObjectAlias(String objectAlias) {
             this.objectAlias = objectAlias;
         }
-        public void setState(CaseState state) {
+        public void setState(org.mule.modules.clarizen.api.model.flat.CaseStateFlat state) {
             this.state = state;
         }
         public void setReportedBy(EntityId reportedBy) {
@@ -445,4 +456,5 @@ public class Case extends ClarizenEntity {
         public void setReportedByMail(String reportedByMail) {
             this.reportedByMail = reportedByMail;
         }
+       
 }

@@ -13,7 +13,7 @@ package org.mule.modules.clarizen.api.model;
 public class ContactPerson extends ClarizenEntity {
     
         private String description;
-        private Customer customer;
+        private org.mule.modules.clarizen.api.model.flat.CustomerFlat customer;
         private String faxNumber;
         private Boolean mainContact;
         private String firstName;
@@ -27,7 +27,7 @@ public class ContactPerson extends ClarizenEntity {
         public String getDescription() {
             return description;
         }
-        public Customer getCustomer() {
+        public org.mule.modules.clarizen.api.model.flat.CustomerFlat getCustomer() {
             return customer;
         }
         public String getFaxNumber() {
@@ -60,7 +60,8 @@ public class ContactPerson extends ClarizenEntity {
         public void setDescription(String description) {
             this.description = description;
         }
-        public void setCustomer(Customer customer) {
+        public void setCustomer(
+                org.mule.modules.clarizen.api.model.flat.CustomerFlat customer) {
             this.customer = customer;
         }
         public void setFaxNumber(String faxNumber) {

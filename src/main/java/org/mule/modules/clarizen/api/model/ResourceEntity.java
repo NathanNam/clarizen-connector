@@ -13,14 +13,14 @@ package org.mule.modules.clarizen.api.model;
 public class ResourceEntity extends ClarizenEntity {
     
         private String description;
-        private State state;
+        private org.mule.modules.clarizen.api.model.flat.StateFlat state;
         private Double availability;
         private Integer stopwatchesCount;
 
         public String getDescription() {
             return description;
         }
-        public State getState() {
+        public org.mule.modules.clarizen.api.model.flat.StateFlat getState() {
             return state;
         }
         public Double getAvailability() {
@@ -32,7 +32,7 @@ public class ResourceEntity extends ClarizenEntity {
         public void setDescription(String description) {
             this.description = description;
         }
-        public void setState(State state) {
+        public void setState(org.mule.modules.clarizen.api.model.flat.StateFlat state) {
             this.state = state;
         }
         public void setAvailability(Double availability) {
@@ -41,5 +41,4 @@ public class ResourceEntity extends ClarizenEntity {
         public void setStopwatchesCount(Integer stopwatchesCount) {
             this.stopwatchesCount = stopwatchesCount;
         }
-
 }

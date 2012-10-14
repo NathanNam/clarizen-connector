@@ -15,14 +15,14 @@ import com.clarizen.api.EntityId;
 public class Template extends ClarizenEntity {
 
     private String description;
-    private State state;
+    private org.mule.modules.clarizen.api.model.flat.StateFlat state;
     private EntityId referenceToTemplate;
     private String SYSID;
 
     public String getDescription() {
         return description;
     }
-    public State getState() {
+    public org.mule.modules.clarizen.api.model.flat.StateFlat getState() {
         return state;
     }
     public EntityId getReferenceToTemplate() {
@@ -34,7 +34,7 @@ public class Template extends ClarizenEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setState(State state) {
+    public void setState(org.mule.modules.clarizen.api.model.flat.StateFlat state) {
         this.state = state;
     }
     public void setReferenceToTemplate(EntityId referenceToTemplate) {

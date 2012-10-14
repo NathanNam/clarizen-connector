@@ -19,7 +19,7 @@ public class Note extends ClarizenEntity {
     private String comment;
     private String plainText;
     private EntityId attachedTo;
-    private CommentType visibility;
+    private org.mule.modules.clarizen.api.model.flat.CommentTypeFlat visibility;
     private Date relatedDate;
 
     public String getComment() {
@@ -31,7 +31,7 @@ public class Note extends ClarizenEntity {
     public EntityId getAttachedTo() {
         return attachedTo;
     }
-    public CommentType getVisibility() {
+    public org.mule.modules.clarizen.api.model.flat.CommentTypeFlat getVisibility() {
         return visibility;
     }
     public Date getRelatedDate() {
@@ -46,7 +46,8 @@ public class Note extends ClarizenEntity {
     public void setAttachedTo(EntityId attachedTo) {
         this.attachedTo = attachedTo;
     }
-    public void setVisibility(CommentType visibility) {
+    public void setVisibility(
+            org.mule.modules.clarizen.api.model.flat.CommentTypeFlat visibility) {
         this.visibility = visibility;
     }
     public void setRelatedDate(Date relatedDate) {

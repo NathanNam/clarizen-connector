@@ -17,9 +17,9 @@ import com.clarizen.api.Money;
 public class Expense extends ClarizenEntity {
 
         private String description;
-        private WorkItem workItem;
+        private org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem;
         private Integer attachmentsCount;
-        private ExpenseCategory category;
+        private org.mule.modules.clarizen.api.model.flat.ExpenseCategoryFlat category;
         private Date dateIncurred;
         private Date dateInvoiced;
         private Money localAmount;
@@ -29,20 +29,20 @@ public class Expense extends ClarizenEntity {
         private Boolean receipt;
         private Boolean reimburse;
         private String comment;
-        private ExpenseSheet expenseSheet;
+        private org.mule.modules.clarizen.api.model.flat.ExpenseSheetFlat expenseSheet;
         private Money amount;
         private Boolean charged;
-        
+
         public String getDescription() {
             return description;
         }
-        public WorkItem getWorkItem() {
+        public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getWorkItem() {
             return workItem;
         }
         public Integer getAttachmentsCount() {
             return attachmentsCount;
         }
-        public ExpenseCategory getCategory() {
+        public org.mule.modules.clarizen.api.model.flat.ExpenseCategoryFlat getCategory() {
             return category;
         }
         public Date getDateIncurred() {
@@ -72,7 +72,7 @@ public class Expense extends ClarizenEntity {
         public String getComment() {
             return comment;
         }
-        public ExpenseSheet getExpenseSheet() {
+        public org.mule.modules.clarizen.api.model.flat.ExpenseSheetFlat getExpenseSheet() {
             return expenseSheet;
         }
         public Money getAmount() {
@@ -84,13 +84,15 @@ public class Expense extends ClarizenEntity {
         public void setDescription(String description) {
             this.description = description;
         }
-        public void setWorkItem(WorkItem workItem) {
+        public void setWorkItem(
+                org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem) {
             this.workItem = workItem;
         }
         public void setAttachmentsCount(Integer attachmentsCount) {
             this.attachmentsCount = attachmentsCount;
         }
-        public void setCategory(ExpenseCategory category) {
+        public void setCategory(
+                org.mule.modules.clarizen.api.model.flat.ExpenseCategoryFlat category) {
             this.category = category;
         }
         public void setDateIncurred(Date dateIncurred) {
@@ -120,7 +122,8 @@ public class Expense extends ClarizenEntity {
         public void setComment(String comment) {
             this.comment = comment;
         }
-        public void setExpenseSheet(ExpenseSheet expenseSheet) {
+        public void setExpenseSheet(
+                org.mule.modules.clarizen.api.model.flat.ExpenseSheetFlat expenseSheet) {
             this.expenseSheet = expenseSheet;
         }
         public void setAmount(Money amount) {
@@ -128,6 +131,5 @@ public class Expense extends ClarizenEntity {
         }
         public void setCharged(Boolean charged) {
             this.charged = charged;
-        }      
-        
+        }
 }

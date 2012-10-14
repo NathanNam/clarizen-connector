@@ -18,7 +18,7 @@ public class Email extends ClarizenEntity {
     private String comment;
     private String plainText;
     private EntityId attachedTo;
-    private CommentType visibility;
+    private org.mule.modules.clarizen.api.model.flat.CommentTypeFlat visibility;
     private EntityId sentBy;
 
     public String getSubject() {
@@ -33,7 +33,7 @@ public class Email extends ClarizenEntity {
     public EntityId getAttachedTo() {
         return attachedTo;
     }
-    public CommentType getVisibility() {
+    public org.mule.modules.clarizen.api.model.flat.CommentTypeFlat getVisibility() {
         return visibility;
     }
     public EntityId getSentBy() {
@@ -51,7 +51,8 @@ public class Email extends ClarizenEntity {
     public void setAttachedTo(EntityId attachedTo) {
         this.attachedTo = attachedTo;
     }
-    public void setVisibility(CommentType visibility) {
+    public void setVisibility(
+            org.mule.modules.clarizen.api.model.flat.CommentTypeFlat visibility) {
         this.visibility = visibility;
     }
     public void setSentBy(EntityId sentBy) {

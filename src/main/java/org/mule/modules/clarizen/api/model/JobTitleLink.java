@@ -12,20 +12,20 @@ package org.mule.modules.clarizen.api.model;
 
 public class JobTitleLink extends ClarizenEntity {
     
-    private JobTitle container;
-    private User member;
+    private org.mule.modules.clarizen.api.model.flat.JobTitleFlat container;
+    private org.mule.modules.clarizen.api.model.flat.UserFlat member;
 
-    public JobTitle getContainer() {
+    public org.mule.modules.clarizen.api.model.flat.JobTitleFlat getContainer() {
         return container;
     }
-    public User getMember() {
+    public org.mule.modules.clarizen.api.model.flat.UserFlat getMember() {
         return member;
     }
-    public void setContainer(JobTitle container) {
+    public void setContainer(
+            org.mule.modules.clarizen.api.model.flat.JobTitleFlat container) {
         this.container = container;
     }
-    public void setMember(User member) {
+    public void setMember(org.mule.modules.clarizen.api.model.flat.UserFlat member) {
         this.member = member;
     }
-
 }

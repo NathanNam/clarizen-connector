@@ -12,26 +12,29 @@ package org.mule.modules.clarizen.api.model;
 
 public class CustomerLink extends ClarizenEntity {
     
-        private Project entity;
-        private Customer customer;
+        private org.mule.modules.clarizen.api.model.flat.ProjectFlat entity;
+        private org.mule.modules.clarizen.api.model.flat.CustomerFlat customer;
         private Double costAllocation;
 
-        public Project getEntity() {
+        public org.mule.modules.clarizen.api.model.flat.ProjectFlat getEntity() {
             return entity;
         }
-        public Customer getCustomer() {
+        public org.mule.modules.clarizen.api.model.flat.CustomerFlat getCustomer() {
             return customer;
         }
         public Double getCostAllocation() {
             return costAllocation;
         }
-        public void setEntity(Project entity) {
+        public void setEntity(org.mule.modules.clarizen.api.model.flat.ProjectFlat entity) {
             this.entity = entity;
         }
-        public void setCustomer(Customer customer) {
+        public void setCustomer(
+                org.mule.modules.clarizen.api.model.flat.CustomerFlat customer) {
             this.customer = customer;
         }
         public void setCostAllocation(Double costAllocation) {
             this.costAllocation = costAllocation;
         }
+
+       
 }

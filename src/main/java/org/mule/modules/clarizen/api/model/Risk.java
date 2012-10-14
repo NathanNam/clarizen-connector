@@ -20,7 +20,7 @@ public class Risk extends Case {
         private String mitigationPlan;
         private String contingencyPlan;
         private Double riskRate;
-        private RiskState riskState;
+        private org.mule.modules.clarizen.api.model.flat.RiskStateFlat riskState;
 
         public Double getPercentProbability() {
             return percentProbability;
@@ -40,7 +40,7 @@ public class Risk extends Case {
         public Double getRiskRate() {
             return riskRate;
         }
-        public RiskState getRiskState() {
+        public org.mule.modules.clarizen.api.model.flat.RiskStateFlat getRiskState() {
             return riskState;
         }
         public void setPercentProbability(Double percentProbability) {
@@ -61,8 +61,8 @@ public class Risk extends Case {
         public void setRiskRate(Double riskRate) {
             this.riskRate = riskRate;
         }
-        public void setRiskState(RiskState riskState) {
+        public void setRiskState(
+                org.mule.modules.clarizen.api.model.flat.RiskStateFlat riskState) {
             this.riskState = riskState;
         }
-
 }

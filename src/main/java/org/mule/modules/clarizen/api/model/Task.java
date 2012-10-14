@@ -13,15 +13,15 @@ package org.mule.modules.clarizen.api.model;
 import java.util.Date;
 
 public class Task extends WorkItem {
-    private TaskType taskType;
-    private Milestone milestone;
+    private org.mule.modules.clarizen.api.model.flat.TaskTypeFlat taskType;
+    private org.mule.modules.clarizen.api.model.flat.MilestoneFlat milestone;
     private Integer instanceNumber;
     private Date occurrenceStartDate;
 
-    public TaskType getTaskType() {
+    public org.mule.modules.clarizen.api.model.flat.TaskTypeFlat getTaskType() {
         return taskType;
     }
-    public Milestone getMilestone() {
+    public org.mule.modules.clarizen.api.model.flat.MilestoneFlat getMilestone() {
         return milestone;
     }
     public Integer getInstanceNumber() {
@@ -30,10 +30,12 @@ public class Task extends WorkItem {
     public Date getOccurrenceStartDate() {
         return occurrenceStartDate;
     }
-    public void setTaskType(TaskType taskType) {
+    public void setTaskType(
+            org.mule.modules.clarizen.api.model.flat.TaskTypeFlat taskType) {
         this.taskType = taskType;
     }
-    public void setMilestone(Milestone milestone) {
+    public void setMilestone(
+            org.mule.modules.clarizen.api.model.flat.MilestoneFlat milestone) {
         this.milestone = milestone;
     }
     public void setInstanceNumber(Integer instanceNumber) {
@@ -42,6 +44,5 @@ public class Task extends WorkItem {
     public void setOccurrenceStartDate(Date occurrenceStartDate) {
         this.occurrenceStartDate = occurrenceStartDate;
     }
-    
     
 }

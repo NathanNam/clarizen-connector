@@ -14,23 +14,23 @@ import com.clarizen.api.Duration;
 
 public class StopWatch extends ClarizenEntity {
     
-    private WorkItem workItem;
-    private User user;
-    private ResourceLink humanResource;
-    private StopwatchState state;
+    private org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem;
+    private org.mule.modules.clarizen.api.model.flat.UserFlat user;
+    private org.mule.modules.clarizen.api.model.flat.ResourceLinkFlat humanResource;
+    private org.mule.modules.clarizen.api.model.flat.StopwatchStateFlat state;
     private Duration elapsedTime;
     private Duration organizationElapsedTime;
 
-    public WorkItem getWorkItem() {
+    public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getWorkItem() {
         return workItem;
     }
-    public User getUser() {
+    public org.mule.modules.clarizen.api.model.flat.UserFlat getUser() {
         return user;
     }
-    public ResourceLink getHumanResource() {
+    public org.mule.modules.clarizen.api.model.flat.ResourceLinkFlat getHumanResource() {
         return humanResource;
     }
-    public StopwatchState getState() {
+    public org.mule.modules.clarizen.api.model.flat.StopwatchStateFlat getState() {
         return state;
     }
     public Duration getElapsedTime() {
@@ -39,16 +39,19 @@ public class StopWatch extends ClarizenEntity {
     public Duration getOrganizationElapsedTime() {
         return organizationElapsedTime;
     }
-    public void setWorkItem(WorkItem workItem) {
+    public void setWorkItem(
+            org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem) {
         this.workItem = workItem;
     }
-    public void setUser(User user) {
+    public void setUser(org.mule.modules.clarizen.api.model.flat.UserFlat user) {
         this.user = user;
     }
-    public void setHumanResource(ResourceLink humanResource) {
+    public void setHumanResource(
+            org.mule.modules.clarizen.api.model.flat.ResourceLinkFlat humanResource) {
         this.humanResource = humanResource;
     }
-    public void setState(StopwatchState state) {
+    public void setState(
+            org.mule.modules.clarizen.api.model.flat.StopwatchStateFlat state) {
         this.state = state;
     }
     public void setElapsedTime(Duration elapsedTime) {
@@ -56,8 +59,5 @@ public class StopWatch extends ClarizenEntity {
     }
     public void setOrganizationElapsedTime(Duration organizationElapsedTime) {
         this.organizationElapsedTime = organizationElapsedTime;
-    }
-
-    
-
+    }    
 }

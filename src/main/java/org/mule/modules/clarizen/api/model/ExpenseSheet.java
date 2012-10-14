@@ -18,18 +18,18 @@ public class ExpenseSheet extends ClarizenEntity {
     
         private String description;
         private String SYSID;
-        private User owner;
-        private User approvedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat owner;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat approvedBy;
         private Date approvalDate;
-        private Project project;
+        private org.mule.modules.clarizen.api.model.flat.ProjectFlat project;
         private Integer postsCount;
         private Date date;
         private Money total;
         private Money reimbursedTotal;
         private Money billableTotal;
         private Date submittedOn;
-        private User approver;
-        private State state;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat approver;
+        private org.mule.modules.clarizen.api.model.flat.StateFlat state;
 
         public String getDescription() {
             return description;
@@ -37,16 +37,16 @@ public class ExpenseSheet extends ClarizenEntity {
         public String getSYSID() {
             return SYSID;
         }
-        public User getOwner() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getOwner() {
             return owner;
         }
-        public User getApprovedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getApprovedBy() {
             return approvedBy;
         }
         public Date getApprovalDate() {
             return approvalDate;
         }
-        public Project getProject() {
+        public org.mule.modules.clarizen.api.model.flat.ProjectFlat getProject() {
             return project;
         }
         public Integer getPostsCount() {
@@ -67,10 +67,10 @@ public class ExpenseSheet extends ClarizenEntity {
         public Date getSubmittedOn() {
             return submittedOn;
         }
-        public User getApprover() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getApprover() {
             return approver;
         }
-        public State getState() {
+        public org.mule.modules.clarizen.api.model.flat.StateFlat getState() {
             return state;
         }
         public void setDescription(String description) {
@@ -79,16 +79,17 @@ public class ExpenseSheet extends ClarizenEntity {
         public void setSYSID(String sYSID) {
             SYSID = sYSID;
         }
-        public void setOwner(User owner) {
+        public void setOwner(org.mule.modules.clarizen.api.model.flat.UserFlat owner) {
             this.owner = owner;
         }
-        public void setApprovedBy(User approvedBy) {
+        public void setApprovedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat approvedBy) {
             this.approvedBy = approvedBy;
         }
         public void setApprovalDate(Date approvalDate) {
             this.approvalDate = approvalDate;
         }
-        public void setProject(Project project) {
+        public void setProject(org.mule.modules.clarizen.api.model.flat.ProjectFlat project) {
             this.project = project;
         }
         public void setPostsCount(Integer postsCount) {
@@ -109,12 +110,10 @@ public class ExpenseSheet extends ClarizenEntity {
         public void setSubmittedOn(Date submittedOn) {
             this.submittedOn = submittedOn;
         }
-        public void setApprover(User approver) {
+        public void setApprover(org.mule.modules.clarizen.api.model.flat.UserFlat approver) {
             this.approver = approver;
         }
-        public void setState(State state) {
+        public void setState(org.mule.modules.clarizen.api.model.flat.StateFlat state) {
             this.state = state;
         }
-
-
 }

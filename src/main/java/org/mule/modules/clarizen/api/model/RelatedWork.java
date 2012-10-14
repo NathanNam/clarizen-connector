@@ -12,26 +12,27 @@ package org.mule.modules.clarizen.api.model;
 
 public class RelatedWork extends ClarizenEntity {
     
-        private Case Case;
-        private WorkItem workItem;
+        private org.mule.modules.clarizen.api.model.flat.CaseFlat Case;
+        private org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem;
         private Double ImpactWeight;
 
-        public Case getCase() {
+        public org.mule.modules.clarizen.api.model.flat.CaseFlat getCase() {
             return Case;
         }
-        public WorkItem getWorkItem() {
+        public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getWorkItem() {
             return workItem;
         }
         public Double getImpactWeight() {
             return ImpactWeight;
         }
-        public void setCase(Case case1) {
+        public void setCase(org.mule.modules.clarizen.api.model.flat.CaseFlat case1) {
             Case = case1;
         }
-        public void setWorkItem(WorkItem workItem) {
+        public void setWorkItem(
+                org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem) {
             this.workItem = workItem;
         }
         public void setImpactWeight(Double impactWeight) {
             ImpactWeight = impactWeight;
-        }
+        }        
 }

@@ -13,13 +13,13 @@ package org.mule.modules.clarizen.api.model;
 public class Document extends ClarizenEntity {
     
         private String description;
-        private DocumentType documentType;
+        private org.mule.modules.clarizen.api.model.flat.DocumentTypeFlat documentType;
         private String SYSID;
 
         public String getDescription() {
             return description;
         }
-        public DocumentType getDocumentType() {
+        public org.mule.modules.clarizen.api.model.flat.DocumentTypeFlat getDocumentType() {
             return documentType;
         }
         public String getSYSID() {
@@ -28,10 +28,13 @@ public class Document extends ClarizenEntity {
         public void setDescription(String description) {
             this.description = description;
         }
-        public void setDocumentType(DocumentType documentType) {
+        public void setDocumentType(
+                org.mule.modules.clarizen.api.model.flat.DocumentTypeFlat documentType) {
             this.documentType = documentType;
         }
         public void setSYSID(String sYSID) {
             SYSID = sYSID;
         }
+
+        
 }

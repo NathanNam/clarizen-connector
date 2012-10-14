@@ -18,7 +18,7 @@ import com.clarizen.api.Money;
 public class Rate extends ClarizenEntity {
     
         private EntityId rateFor;
-        private RateType rateType;
+        private org.mule.modules.clarizen.api.model.flat.RateTypeFlat rateType;
         private Date effectiveFrom;
         private Date effectiveTo;
         private Money regularRate;
@@ -27,7 +27,7 @@ public class Rate extends ClarizenEntity {
         public EntityId getRateFor() {
             return rateFor;
         }
-        public RateType getRateType() {
+        public org.mule.modules.clarizen.api.model.flat.RateTypeFlat getRateType() {
             return rateType;
         }
         public Date getEffectiveFrom() {
@@ -45,7 +45,8 @@ public class Rate extends ClarizenEntity {
         public void setRateFor(EntityId rateFor) {
             this.rateFor = rateFor;
         }
-        public void setRateType(RateType rateType) {
+        public void setRateType(
+                org.mule.modules.clarizen.api.model.flat.RateTypeFlat rateType) {
             this.rateType = rateType;
         }
         public void setEffectiveFrom(Date effectiveFrom) {
@@ -60,5 +61,4 @@ public class Rate extends ClarizenEntity {
         public void setOvertimeRate(Money overtimeRate) {
             this.overtimeRate = overtimeRate;
         }
-
 }

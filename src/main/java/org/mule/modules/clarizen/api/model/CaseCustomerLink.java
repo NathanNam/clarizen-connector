@@ -14,16 +14,16 @@ import java.util.Date;
 
 public class CaseCustomerLink extends ClarizenEntity {
     
-        private Case entity;
-        private Customer customer;
+        private org.mule.modules.clarizen.api.model.flat.CaseFlat entity;
+        private org.mule.modules.clarizen.api.model.flat.CustomerFlat customer;
         private Boolean submitted;
         private Boolean committed;
         private Date committedDate;
 
-        public Case getEntity() {
+        public org.mule.modules.clarizen.api.model.flat.CaseFlat getEntity() {
             return entity;
         }
-        public Customer getCustomer() {
+        public org.mule.modules.clarizen.api.model.flat.CustomerFlat getCustomer() {
             return customer;
         }
         public Boolean getSubmitted() {
@@ -35,10 +35,11 @@ public class CaseCustomerLink extends ClarizenEntity {
         public Date getCommittedDate() {
             return committedDate;
         }
-        public void setEntity(Case entity) {
+        public void setEntity(org.mule.modules.clarizen.api.model.flat.CaseFlat entity) {
             this.entity = entity;
         }
-        public void setCustomer(Customer customer) {
+        public void setCustomer(
+                org.mule.modules.clarizen.api.model.flat.CustomerFlat customer) {
             this.customer = customer;
         }
         public void setSubmitted(Boolean submitted) {

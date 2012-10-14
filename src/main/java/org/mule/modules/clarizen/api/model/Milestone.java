@@ -12,13 +12,14 @@ package org.mule.modules.clarizen.api.model;
 
 public class Milestone extends WorkItem {
     
-    private MilestoneType milestoneType;
+    private org.mule.modules.clarizen.api.model.flat.MilestoneTypeFlat milestoneType;
 
-    public MilestoneType getMilestoneType() {
+    public org.mule.modules.clarizen.api.model.flat.MilestoneTypeFlat getMilestoneType() {
         return milestoneType;
     }
 
-    public void setMilestoneType(MilestoneType milestoneType) {
+    public void setMilestoneType(
+            org.mule.modules.clarizen.api.model.flat.MilestoneTypeFlat milestoneType) {
         this.milestoneType = milestoneType;
     }
 

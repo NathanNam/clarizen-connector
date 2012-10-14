@@ -16,8 +16,8 @@ public class EmailRecipient extends ClarizenEntity {
     
         private EntityId recipient;
         private String emailAddress;
-        private RecipientType recipientType;
-        private Email email;
+        private org.mule.modules.clarizen.api.model.flat.RecipientTypeFlat recipientType;
+        private org.mule.modules.clarizen.api.model.flat.EmailFlat email;
 
         public EntityId getRecipient() {
             return recipient;
@@ -25,10 +25,10 @@ public class EmailRecipient extends ClarizenEntity {
         public String getEmailAddress() {
             return emailAddress;
         }
-        public RecipientType getRecipientType() {
+        public org.mule.modules.clarizen.api.model.flat.RecipientTypeFlat getRecipientType() {
             return recipientType;
         }
-        public Email getEmail() {
+        public org.mule.modules.clarizen.api.model.flat.EmailFlat getEmail() {
             return email;
         }
         public void setRecipient(EntityId recipient) {
@@ -37,10 +37,11 @@ public class EmailRecipient extends ClarizenEntity {
         public void setEmailAddress(String emailAddress) {
             this.emailAddress = emailAddress;
         }
-        public void setRecipientType(RecipientType recipientType) {
+        public void setRecipientType(
+                org.mule.modules.clarizen.api.model.flat.RecipientTypeFlat recipientType) {
             this.recipientType = recipientType;
         }
-        public void setEmail(Email email) {
+        public void setEmail(org.mule.modules.clarizen.api.model.flat.EmailFlat email) {
             this.email = email;
         }
 }

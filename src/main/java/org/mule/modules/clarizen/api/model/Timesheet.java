@@ -17,33 +17,33 @@ import com.clarizen.api.Money;
 
 public class Timesheet extends ClarizenEntity {
     
-        private State state;
-        private User approvedBy;
+        private org.mule.modules.clarizen.api.model.flat.StateFlat state;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat approvedBy;
         private Date approvalDate;
-        private User reportedBy;
+        private org.mule.modules.clarizen.api.model.flat.UserFlat reportedBy;
         private Date reportedDate;
         private Duration duration;
         private Boolean regularHours;
         private String comment;
         private Money billingRate;
         private Money cost;
-        private WorkItem workItem;
+        private org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem;
         private Money costRate;
         private Money price;
         private Boolean charged;
-        private CreatorType creatorType;
-        private RegularResourceLink humanResource;
+        private org.mule.modules.clarizen.api.model.flat.CreatorTypeFlat creatorType;
+        private org.mule.modules.clarizen.api.model.flat.RegularResourceLinkFlat humanResource;
 
-        public State getState() {
+        public org.mule.modules.clarizen.api.model.flat.StateFlat getState() {
             return state;
         }
-        public User getApprovedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getApprovedBy() {
             return approvedBy;
         }
         public Date getApprovalDate() {
             return approvalDate;
         }
-        public User getReportedBy() {
+        public org.mule.modules.clarizen.api.model.flat.UserFlat getReportedBy() {
             return reportedBy;
         }
         public Date getReportedDate() {
@@ -64,7 +64,7 @@ public class Timesheet extends ClarizenEntity {
         public Money getCost() {
             return cost;
         }
-        public WorkItem getWorkItem() {
+        public org.mule.modules.clarizen.api.model.flat.WorkItemFlat getWorkItem() {
             return workItem;
         }
         public Money getCostRate() {
@@ -76,22 +76,24 @@ public class Timesheet extends ClarizenEntity {
         public Boolean getCharged() {
             return charged;
         }
-        public CreatorType getCreatorType() {
+        public org.mule.modules.clarizen.api.model.flat.CreatorTypeFlat getCreatorType() {
             return creatorType;
         }
-        public RegularResourceLink getHumanResource() {
+        public org.mule.modules.clarizen.api.model.flat.RegularResourceLinkFlat getHumanResource() {
             return humanResource;
         }
-        public void setState(State state) {
+        public void setState(org.mule.modules.clarizen.api.model.flat.StateFlat state) {
             this.state = state;
         }
-        public void setApprovedBy(User approvedBy) {
+        public void setApprovedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat approvedBy) {
             this.approvedBy = approvedBy;
         }
         public void setApprovalDate(Date approvalDate) {
             this.approvalDate = approvalDate;
         }
-        public void setReportedBy(User reportedBy) {
+        public void setReportedBy(
+                org.mule.modules.clarizen.api.model.flat.UserFlat reportedBy) {
             this.reportedBy = reportedBy;
         }
         public void setReportedDate(Date reportedDate) {
@@ -112,7 +114,8 @@ public class Timesheet extends ClarizenEntity {
         public void setCost(Money cost) {
             this.cost = cost;
         }
-        public void setWorkItem(WorkItem workItem) {
+        public void setWorkItem(
+                org.mule.modules.clarizen.api.model.flat.WorkItemFlat workItem) {
             this.workItem = workItem;
         }
         public void setCostRate(Money costRate) {
@@ -124,10 +127,12 @@ public class Timesheet extends ClarizenEntity {
         public void setCharged(Boolean charged) {
             this.charged = charged;
         }
-        public void setCreatorType(CreatorType creatorType) {
+        public void setCreatorType(
+                org.mule.modules.clarizen.api.model.flat.CreatorTypeFlat creatorType) {
             this.creatorType = creatorType;
         }
-        public void setHumanResource(RegularResourceLink humanResource) {
+        public void setHumanResource(
+                org.mule.modules.clarizen.api.model.flat.RegularResourceLinkFlat humanResource) {
             this.humanResource = humanResource;
         }
 }
