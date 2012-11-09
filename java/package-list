@@ -1,15 +1,23 @@
 com.clarizen.api
 com.clarizen.api.faults
 com.clarizen.api.files
+com.clarizen.api.holders
 com.clarizen.api.metadata
 com.clarizen.api.projectmanagement
 com.clarizen.api.queries
+com.clarizen.api.transformers
 com.microsoft.schemas._2003._10.serialization
 org.mule.modules.clarizen
 org.mule.modules.clarizen.adapters
+org.mule.modules.clarizen.agents
 org.mule.modules.clarizen.api
 org.mule.modules.clarizen.api.model
+org.mule.modules.clarizen.api.model.flat
+org.mule.modules.clarizen.api.model.holders
+org.mule.modules.clarizen.api.model.transformers
 org.mule.modules.clarizen.config
+org.mule.modules.clarizen.connectivity
+org.mule.modules.clarizen.process
 org.mule.modules.clarizen.processors
 org.mule.modules.clarizen.transformers
 
