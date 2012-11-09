@@ -23,13 +23,16 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 
 import org.apache.commons.beanutils.BeanMap;
-import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.ConvertUtilsBean;
+import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.commons.lang.StringUtils;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientHelper;
 import org.mule.modules.clarizen.api.ClarizenServiceProvider;
+import org.mule.modules.clarizen.api.ClarizenDateConverter;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
 import org.mule.modules.clarizen.api.model.Login;
@@ -89,6 +92,10 @@ public class DefaultClarizenClient implements ClarizenClient {
     private IClarizen service;
     private ClarizenServiceProvider serviceProvider;
     private String sessionId;
+    private ConvertUtilsBean convertUtilsBean;
+    private ClarizenDateConverter clarizenDateConverter;
+    private BeanUtilsBean beanUtilsBean;
+    private static final String DEFAULT_DATE_CONVERTER_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
     private static final String DEFAULT_PACKAGE_MODEL = "org.mule.modules.clarizen.api.model.";
     
     /**
@@ -104,6 +111,11 @@ public class DefaultClarizenClient implements ClarizenClient {
     public DefaultClarizenClient(ClarizenServiceProvider provider) {
         helper = new ClarizenClientHelper();
         serviceProvider = provider;
+        convertUtilsBean = new ConvertUtilsBean();
+        clarizenDateConverter = new ClarizenDateConverter();
+        clarizenDateConverter.setPattern(DEFAULT_DATE_CONVERTER_PATTERN);
+        convertUtilsBean.register(clarizenDateConverter, java.util.Date.class);
+        beanUtilsBean = new BeanUtilsBean(convertUtilsBean, new PropertyUtilsBean());        
     }
     
     @SuppressWarnings("unchecked")
@@ -528,7 +540,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         Map<String, Object> entityFieldsMap = getFieldsFromGenericEntity(entityFields, useFlatClasses);
         
         try {
-            BeanUtils.populate(baseEntity, entityFieldsMap);
+            beanUtilsBean.populate(baseEntity, entityFieldsMap);
         } catch (IllegalAccessException e) {
             throw new ClarizenRuntimeException(e);
         } catch (InvocationTargetException e) {
@@ -955,5 +967,22 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
         
         return true;
+    }
+
+    public ConvertUtilsBean getConvertUtilsBean() {
+        return convertUtilsBean;
+    }
+
+    public ClarizenDateConverter getXmlGregorianCalendarConverter() {
+        return clarizenDateConverter;
+    }
+
+    public void setConvertUtilsBean(ConvertUtilsBean convertUtilsBean) {
+        this.convertUtilsBean = convertUtilsBean;
+    }
+
+    public void setXmlGregorianCalendarConverter(
+            ClarizenDateConverter xmlGregorianCalendarConverter) {
+        this.clarizenDateConverter = xmlGregorianCalendarConverter;
     }
 }
