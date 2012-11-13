@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  ClarizenClientHelper
+  ClarizenDateConverter
 
 
 | Clarizen Cloud Connector
@@ -262,8 +262,8 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenClientFactory.html">ClarizenClientFactory</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenClientHelper.html">ClarizenClientHelper</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenDateConverter.html">ClarizenDateConverter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenClientHelper.html">ClarizenClientHelper</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/api/ClarizenDateConverter.html">ClarizenDateConverter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/api/DefaultClarizenServiceProvider.html">DefaultClarizenServiceProvider</a></li>
       </ul>
     </li>
@@ -312,6 +312,24 @@
    
   
   
+   
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
   
   
 
@@ -326,10 +344,16 @@ Summary:
 
 
 
-
-  <a href="#lfields">Fields</a>
+  <a href="#inhconstants">Inherited Constants</a>
   
 
+
+  &#124; <a href="#lfields">Fields</a>
+  
+
+
+  &#124; <a href="#inhfields">Inherited Fields</a>
+  
 
 
   &#124; <a href="#pubctors">Ctors</a>
@@ -340,6 +364,9 @@ Summary:
   &#124; <a href="#pubmethods">Methods</a>
   
 
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
 
 
   &#124; <a href="#inhmethods">Inherited Methods</a>
@@ -366,12 +393,16 @@ Summary:
      
     
     class
-<h1>ClarizenClientHelper</h1>
+<h1>ClarizenDateConverter</h1>
 
 
 
   
-    extends Object<br/>
+  
+  
+
+  
+    extends AbstractConverter<br/>
   
   
   
@@ -391,7 +422,7 @@ Summary:
 
     <tr>
         
-        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -399,7 +430,17 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.clarizen.api.ClarizenClientHelper</td>
+        <td colspan="2" class="jd-inheritance-class-cell">org.apache.commons.beanutils.converters.AbstractConverter</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.clarizen.api.ClarizenDateConverter</td>
     </tr>
     
 
@@ -455,6 +496,56 @@ Summary:
 
 
 
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.apache.commons.beanutils.converters.AbstractConverter" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.apache.commons.beanutils.converters.AbstractConverter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+org.apache.commons.beanutils.converters.AbstractConverter
+<div id="inherited-constants-org.apache.commons.beanutils.converters.AbstractConverter">
+  <div id="inherited-constants-org.apache.commons.beanutils.converters.AbstractConverter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.apache.commons.beanutils.converters.AbstractConverter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">DEFAULT_CONFIG_MSG</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PACKAGE</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+</table>
+
+
 
 
 <!-- =========== FIELD SUMMARY =========== -->
@@ -467,8 +558,8 @@ Summary:
           private
           
           
-          <a href="../../../../../../java/com/clarizen/api/ObjectFactory.html">ObjectFactory</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#objectFactoryApi">objectFactoryApi</a></td>
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#displayPatterns">displayPatterns</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -478,8 +569,8 @@ Summary:
           private
           
           
-          <a href="../../../../../../java/com/clarizen/api/files/ObjectFactory.html">ObjectFactory</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#objectFactoryFiles">objectFactoryFiles</a></td>
+          Locale</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#locale">locale</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -489,8 +580,8 @@ Summary:
           private
           
           
-          <a href="../../../../../../java/com/clarizen/api/projectmanagement/ObjectFactory.html">ObjectFactory</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#objectFactoryProject">objectFactoryProject</a></td>
+          String[]</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#patterns">patterns</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -500,8 +591,19 @@ Summary:
           private
           
           
-          <a href="../../../../../../java/com/clarizen/api/queries/ObjectFactory.html">ObjectFactory</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#objectFactoryQueries">objectFactoryQueries</a></td>
+          TimeZone</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#timeZone">timeZone</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          boolean</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#useLocaleFormat">useLocaleFormat</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -511,6 +613,75 @@ Summary:
 
 
 
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.apache.commons.beanutils.converters.AbstractConverter" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.apache.commons.beanutils.converters.AbstractConverter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+org.apache.commons.beanutils.converters.AbstractConverter
+<div id="inherited-fields-org.apache.commons.beanutils.converters.AbstractConverter">
+  <div id="inherited-fields-org.apache.commons.beanutils.converters.AbstractConverter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.apache.commons.beanutils.converters.AbstractConverter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol">defaultValue</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Log</nobr></td>
+          <td class="jd-linkcol">log</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          boolean</nobr></td>
+          <td class="jd-linkcol">useDefault</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+</table>
 
 
 
@@ -531,7 +702,23 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#ClarizenClientHelper()">ClarizenClientHelper</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#ClarizenDateConverter()">ClarizenDateConverter</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#ClarizenDateConverter(java.lang.Object)">ClarizenDateConverter</a></span>(Object defaultValue)</nobr>
         
   </td></tr>
 
@@ -557,11 +744,13 @@ Summary:
             
             
             
-            <a href="../../../../../../java/com/clarizen/api/ArrayOfEntityId.html">ArrayOfEntityId</a></nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createArrayOfEntityId(java.util.List<com.clarizen.api.EntityId>)">createArrayOfEntityId</a></span>(List&lt;<a href="../../../../../../java/com/clarizen/api/EntityId.html">EntityId</a>&gt; entityIdList)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#classToString(java.lang.Class)">classToString</a></span>(Class type)</nobr>
         
+        <div class="jd-descrdiv">Provide a String representation of a <code>java.lang.Class</code>.</div>
+  
   </td></tr>
 
 
@@ -573,10 +762,10 @@ Summary:
             
             
             
-            <a href="../../../../../../java/com/clarizen/api/ArrayOfRecipient.html">ArrayOfRecipient</a></nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createArrayOfRecipients(java.util.List<com.clarizen.api.Recipient>)">createArrayOfRecipients</a></span>(List&lt;<a href="../../../../../../java/com/clarizen/api/Recipient.html">Recipient</a>&gt; recipients)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#getDisplayPatterns()">getDisplayPatterns</a></span>()</nobr>
         
   </td></tr>
 
@@ -589,10 +778,10 @@ Summary:
             
             
             
-            <a href="../../../../../../java/com/clarizen/api/EntityId.html">EntityId</a></nobr>
+            Locale</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createBaseEntityId(java.lang.String, java.lang.String)">createBaseEntityId</a></span>(String typeName, String value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#getLocale()">getLocale</a></span>()</nobr>
         
   </td></tr>
 
@@ -605,11 +794,15 @@ Summary:
             
             
             
-            <a href="../../../../../../java/com/clarizen/api/queries/Expression.html">Expression</a></nobr>
+            String[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createConstantExpression(java.lang.String)">createConstantExpression</a></span>(String constantExpression)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#getPatterns()">getPatterns</a></span>()</nobr>
         
+        <div class="jd-descrdiv">Return the date format patterns used to convert
+ dates to/from a <code>java.lang.String</code>
+ (or <code>null</code> if none specified).</div>
+  
   </td></tr>
 
 
@@ -621,10 +814,10 @@ Summary:
             
             
             
-            <a href="../../../../../../java/com/clarizen/api/queries/Expression.html">Expression</a></nobr>
+            TimeZone</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createConstantExpressionUser(java.lang.String)">createConstantExpressionUser</a></span>(String userId)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#getTimeZone()">getTimeZone</a></span>()</nobr>
         
   </td></tr>
 
@@ -637,234 +830,10 @@ Summary:
             
             
             
-            <a href="../../../../../../java/com/clarizen/api/queries/Expression.html">Expression</a></nobr>
+            boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createFieldExpression(java.lang.String)">createFieldExpression</a></span>(String fieldExpression)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/FieldValue.html">FieldValue</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createFieldValue(java.lang.String, java.lang.Object)">createFieldValue</a></span>(String fieldName, Object value)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/ArrayOfFieldValue.html">ArrayOfFieldValue</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createGenericEntityArrayOfFieldValue(java.util.List<com.clarizen.api.FieldValue>)">createGenericEntityArrayOfFieldValue</a></span>(List&lt;<a href="../../../../../../java/com/clarizen/api/FieldValue.html">FieldValue</a>&gt; fieldValueList)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/ArrayOfBaseMessage.html">ArrayOfBaseMessage</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createMessage(com.clarizen.api.BaseMessage)">createMessage</a></span>(<a href="../../../../../../java/com/clarizen/api/BaseMessage.html">BaseMessage</a> message)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/queries/Operator.html">Operator</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createOperator(java.lang.String)">createOperator</a></span>(String operator)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/SessionHeader.html">SessionHeader</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createSessionHeader(java.lang.String)">createSessionHeader</a></span>(String sessionId)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/StringList.html">StringList</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createStringList(java.util.List<java.lang.String>)">createStringList</a></span>(List&lt;String&gt; stringList)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/projectmanagement/WorkItemFilter.html">WorkItemFilter</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createWorkItemFilter(java.lang.String)">createWorkItemFilter</a></span>(String filter)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/projectmanagement/WorkItemState.html">WorkItemState</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createWorkItemState(java.lang.String)">createWorkItemState</a></span>(String state)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/projectmanagement/WorkItemType.html">WorkItemType</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#createWorkItemType(java.lang.String)">createWorkItemType</a></span>(String type)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/ObjectFactory.html">ObjectFactory</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#getObjectFactoryApi()">getObjectFactoryApi</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/files/ObjectFactory.html">ObjectFactory</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#getObjectFactoryFiles()">getObjectFactoryFiles</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/projectmanagement/ObjectFactory.html">ObjectFactory</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#getObjectFactoryProject()">getObjectFactoryProject</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/com/clarizen/api/queries/ObjectFactory.html">ObjectFactory</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#getObjectFactoryQueries()">getObjectFactoryQueries</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#setObjectFactoryApi(com.clarizen.api.ObjectFactory)">setObjectFactoryApi</a></span>(<a href="../../../../../../java/com/clarizen/api/ObjectFactory.html">ObjectFactory</a> objectFactoryApi)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#isUseLocaleFormat()">isUseLocaleFormat</a></span>()</nobr>
         
   </td></tr>
 
@@ -880,7 +849,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#setObjectFactoryFiles(com.clarizen.api.files.ObjectFactory)">setObjectFactoryFiles</a></span>(<a href="../../../../../../java/com/clarizen/api/files/ObjectFactory.html">ObjectFactory</a> objectFactoryFiles)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#setDisplayPatterns(java.lang.String)">setDisplayPatterns</a></span>(String displayPatterns)</nobr>
         
   </td></tr>
 
@@ -896,7 +865,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#setObjectFactoryProject(com.clarizen.api.projectmanagement.ObjectFactory)">setObjectFactoryProject</a></span>(<a href="../../../../../../java/com/clarizen/api/projectmanagement/ObjectFactory.html">ObjectFactory</a> objectFactoryProject)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#setLocale(java.util.Locale)">setLocale</a></span>(Locale locale)</nobr>
         
   </td></tr>
 
@@ -912,8 +881,160 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenClientHelper.html#setObjectFactoryQueries(com.clarizen.api.queries.ObjectFactory)">setObjectFactoryQueries</a></span>(<a href="../../../../../../java/com/clarizen/api/queries/ObjectFactory.html">ObjectFactory</a> objectFactoryQueries)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#setPattern(java.lang.String)">setPattern</a></span>(String pattern)</nobr>
         
+        <div class="jd-descrdiv">Set a date format pattern to use to convert
+ dates to/from a <code>java.lang.String</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#setPatterns(java.lang.String[])">setPatterns</a></span>(String[] patterns)</nobr>
+        
+        <div class="jd-descrdiv">Set the date format patterns to use to convert
+ dates to/from a <code>java.lang.String</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#setTimeZone(java.util.TimeZone)">setTimeZone</a></span>(TimeZone timeZone)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#setUseLocaleFormat(boolean)">setUseLocaleFormat</a></span>(boolean useLocaleFormat)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Provide a String representation of this date/time converter.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#convertToString(java.lang.Object)">convertToString</a></span>(Object value)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#convertToType(java.lang.Class, java.lang.Object)">convertToType</a></span>(Class targetType, Object value)</nobr>
+        
+        <div class="jd-descrdiv">Convert the input object into a Date object of the
+ specified type.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#getDefaultType()">getDefaultType</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            DateFormat</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/api/ClarizenDateConverter.html#getFormat(java.util.Locale, java.util.TimeZone)">getFormat</a></span>(Locale locale, TimeZone timeZone)</nobr>
+        
+        <div class="jd-descrdiv">Return a <code>DateFormat<code> for the Locale.</div>
+  
   </td></tr>
 
 
@@ -924,12 +1045,212 @@ Summary:
 
 
 
-
-
 <!-- ========== METHOD SUMMARY =========== -->
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.apache.commons.beanutils.converters.AbstractConverter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.apache.commons.beanutils.converters.AbstractConverter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  org.apache.commons.beanutils.converters.AbstractConverter
+
+<div id="inherited-methods-org.apache.commons.beanutils.converters.AbstractConverter">
+  <div id="inherited-methods-org.apache.commons.beanutils.converters.AbstractConverter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.apache.commons.beanutils.converters.AbstractConverter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">convert</span>(Class arg0, Object arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">convertArray</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">convertToString</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">convertToType</span>(Class arg0, Object arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getDefault</span>(Class arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Class</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getDefaultType</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">handleError</span>(Class arg0, Object arg1, Throwable arg2)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">handleMissing</span>(Class arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isUseDefault</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">setDefaultValue</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
 
 
 <tr class="api apilevel-" >
@@ -1133,6 +1454,48 @@ From class
 </td></tr>
 
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.apache.commons.beanutils.Converter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.apache.commons.beanutils.Converter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.apache.commons.beanutils.Converter
+
+<div id="inherited-methods-org.apache.commons.beanutils.Converter">
+  <div id="inherited-methods-org.apache.commons.beanutils.Converter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.apache.commons.beanutils.Converter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">convert</span>(Class arg0, Object arg1)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 </table>
 
 
@@ -1165,7 +1528,7 @@ From class
 
 
 
-<A NAME="objectFactoryApi"></A>
+<A NAME="displayPatterns"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1173,9 +1536,9 @@ From class
         private 
          
          
-        <a href="../../../../../../java/com/clarizen/api/ObjectFactory.html">ObjectFactory</a>
+        String
       </span>
-        objectFactoryApi
+        displayPatterns
     </h4>
       <div class="api-level">
         
@@ -1195,7 +1558,7 @@ From class
 
 
 
-<A NAME="objectFactoryFiles"></A>
+<A NAME="locale"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1203,9 +1566,9 @@ From class
         private 
          
          
-        <a href="../../../../../../java/com/clarizen/api/files/ObjectFactory.html">ObjectFactory</a>
+        Locale
       </span>
-        objectFactoryFiles
+        locale
     </h4>
       <div class="api-level">
         
@@ -1225,7 +1588,7 @@ From class
 
 
 
-<A NAME="objectFactoryProject"></A>
+<A NAME="patterns"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1233,9 +1596,9 @@ From class
         private 
          
          
-        <a href="../../../../../../java/com/clarizen/api/projectmanagement/ObjectFactory.html">ObjectFactory</a>
+        String[]
       </span>
-        objectFactoryProject
+        patterns
     </h4>
       <div class="api-level">
         
@@ -1255,7 +1618,7 @@ From class
 
 
 
-<A NAME="objectFactoryQueries"></A>
+<A NAME="timeZone"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1263,9 +1626,39 @@ From class
         private 
          
          
-        <a href="../../../../../../java/com/clarizen/api/queries/ObjectFactory.html">ObjectFactory</a>
+        TimeZone
       </span>
-        objectFactoryQueries
+        timeZone
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="useLocaleFormat"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        boolean
+      </span>
+        useLocaleFormat
     </h4>
       <div class="api-level">
         
@@ -1294,7 +1687,7 @@ From class
 
 
 
-<A NAME="ClarizenClientHelper()"></A>
+<A NAME="ClarizenDateConverter()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1306,7 +1699,7 @@ From class
          
         
       </span>
-      <span class="sympad">ClarizenClientHelper</span>
+      <span class="sympad">ClarizenDateConverter</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1320,6 +1713,46 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="ClarizenDateConverter(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">ClarizenDateConverter</span>
+      <span class="normal">(Object defaultValue)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>defaultValue</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>
@@ -1340,7 +1773,7 @@ From class
 
 
 
-<A NAME="createArrayOfEntityId(java.util.List<com.clarizen.api.EntityId>)"></A>
+<A NAME="classToString(java.lang.Class)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1350,10 +1783,10 @@ From class
          
          
          
-        <a href="../../../../../../java/com/clarizen/api/ArrayOfEntityId.html">ArrayOfEntityId</a>
+        String
       </span>
-      <span class="sympad">createArrayOfEntityId</span>
-      <span class="normal">(List&lt;<a href="../../../../../../java/com/clarizen/api/EntityId.html">EntityId</a>&gt; entityIdList)</span>
+      <span class="sympad">classToString</span>
+      <span class="normal">(Class type)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1365,590 +1798,27 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>entityIdList</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createArrayOfRecipients(java.util.List<com.clarizen.api.Recipient>)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/ArrayOfRecipient.html">ArrayOfRecipient</a>
-      </span>
-      <span class="sympad">createArrayOfRecipients</span>
-      <span class="normal">(List&lt;<a href="../../../../../../java/com/clarizen/api/Recipient.html">Recipient</a>&gt; recipients)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>recipients</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createBaseEntityId(java.lang.String, java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/EntityId.html">EntityId</a>
-      </span>
-      <span class="sympad">createBaseEntityId</span>
-      <span class="normal">(String typeName, String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>typeName</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>value</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createConstantExpression(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/queries/Expression.html">Expression</a>
-      </span>
-      <span class="sympad">createConstantExpression</span>
-      <span class="normal">(String constantExpression)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>constantExpression</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createConstantExpressionUser(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/queries/Expression.html">Expression</a>
-      </span>
-      <span class="sympad">createConstantExpressionUser</span>
-      <span class="normal">(String userId)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>userId</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createFieldExpression(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/queries/Expression.html">Expression</a>
-      </span>
-      <span class="sympad">createFieldExpression</span>
-      <span class="normal">(String fieldExpression)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>fieldExpression</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createFieldValue(java.lang.String, java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/FieldValue.html">FieldValue</a>
-      </span>
-      <span class="sympad">createFieldValue</span>
-      <span class="normal">(String fieldName, Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>fieldName</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>value</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createGenericEntityArrayOfFieldValue(java.util.List<com.clarizen.api.FieldValue>)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/ArrayOfFieldValue.html">ArrayOfFieldValue</a>
-      </span>
-      <span class="sympad">createGenericEntityArrayOfFieldValue</span>
-      <span class="normal">(List&lt;<a href="../../../../../../java/com/clarizen/api/FieldValue.html">FieldValue</a>&gt; fieldValueList)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>fieldValueList</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createMessage(com.clarizen.api.BaseMessage)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/ArrayOfBaseMessage.html">ArrayOfBaseMessage</a>
-      </span>
-      <span class="sympad">createMessage</span>
-      <span class="normal">(<a href="../../../../../../java/com/clarizen/api/BaseMessage.html">BaseMessage</a> message)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>message</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createOperator(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/queries/Operator.html">Operator</a>
-      </span>
-      <span class="sympad">createOperator</span>
-      <span class="normal">(String operator)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>operator</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createSessionHeader(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/SessionHeader.html">SessionHeader</a>
-      </span>
-      <span class="sympad">createSessionHeader</span>
-      <span class="normal">(String sessionId)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>sessionId</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createStringList(java.util.List<java.lang.String>)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/StringList.html">StringList</a>
-      </span>
-      <span class="sympad">createStringList</span>
-      <span class="normal">(List&lt;String&gt; stringList)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>stringList</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createWorkItemFilter(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/projectmanagement/WorkItemFilter.html">WorkItemFilter</a>
-      </span>
-      <span class="sympad">createWorkItemFilter</span>
-      <span class="normal">(String filter)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>filter</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createWorkItemState(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/projectmanagement/WorkItemState.html">WorkItemState</a>
-      </span>
-      <span class="sympad">createWorkItemState</span>
-      <span class="normal">(String state)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>state</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="createWorkItemType(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../java/com/clarizen/api/projectmanagement/WorkItemType.html">WorkItemType</a>
-      </span>
-      <span class="sympad">createWorkItemType</span>
-      <span class="normal">(String type)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Provide a String representation of a <code>java.lang.Class</code>.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>type</td>
-          <td></td>
+          <td>The <code>java.lang.Class</code>.</td>
         </tr>
       </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The String representation.
+</li></ul>
   </div>
 
     </div>
 </div>
 
 
-<A NAME="getObjectFactoryApi()"></A>
+<A NAME="getDisplayPatterns()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1958,9 +1828,9 @@ From class
          
          
          
-        <a href="../../../../../../java/com/clarizen/api/ObjectFactory.html">ObjectFactory</a>
+        String
       </span>
-      <span class="sympad">getObjectFactoryApi</span>
+      <span class="sympad">getDisplayPatterns</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1979,7 +1849,7 @@ From class
 </div>
 
 
-<A NAME="getObjectFactoryFiles()"></A>
+<A NAME="getLocale()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1989,9 +1859,9 @@ From class
          
          
          
-        <a href="../../../../../../java/com/clarizen/api/files/ObjectFactory.html">ObjectFactory</a>
+        Locale
       </span>
-      <span class="sympad">getObjectFactoryFiles</span>
+      <span class="sympad">getLocale</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2010,7 +1880,7 @@ From class
 </div>
 
 
-<A NAME="getObjectFactoryProject()"></A>
+<A NAME="getPatterns()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2020,9 +1890,52 @@ From class
          
          
          
-        <a href="../../../../../../java/com/clarizen/api/projectmanagement/ObjectFactory.html">ObjectFactory</a>
+        String[]
       </span>
-      <span class="sympad">getObjectFactoryProject</span>
+      <span class="sympad">getPatterns</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the date format patterns used to convert
+ dates to/from a <code>java.lang.String</code>
+ (or <code>null</code> if none specified).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Array of format patterns.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li>SimpleDateFormat</li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTimeZone()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        TimeZone
+      </span>
+      <span class="sympad">getTimeZone</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2041,7 +1954,7 @@ From class
 </div>
 
 
-<A NAME="getObjectFactoryQueries()"></A>
+<A NAME="isUseLocaleFormat()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2051,9 +1964,9 @@ From class
          
          
          
-        <a href="../../../../../../java/com/clarizen/api/queries/ObjectFactory.html">ObjectFactory</a>
+        boolean
       </span>
-      <span class="sympad">getObjectFactoryQueries</span>
+      <span class="sympad">isUseLocaleFormat</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2072,7 +1985,7 @@ From class
 </div>
 
 
-<A NAME="setObjectFactoryApi(com.clarizen.api.ObjectFactory)"></A>
+<A NAME="setDisplayPatterns(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2084,8 +1997,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setObjectFactoryApi</span>
-      <span class="normal">(<a href="../../../../../../java/com/clarizen/api/ObjectFactory.html">ObjectFactory</a> objectFactoryApi)</span>
+      <span class="sympad">setDisplayPatterns</span>
+      <span class="normal">(String displayPatterns)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2102,7 +2015,7 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>objectFactoryApi</td>
+          <th>displayPatterns</td>
           <td></td>
         </tr>
       </table>
@@ -2112,7 +2025,7 @@ From class
 </div>
 
 
-<A NAME="setObjectFactoryFiles(com.clarizen.api.files.ObjectFactory)"></A>
+<A NAME="setLocale(java.util.Locale)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2124,8 +2037,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setObjectFactoryFiles</span>
-      <span class="normal">(<a href="../../../../../../java/com/clarizen/api/files/ObjectFactory.html">ObjectFactory</a> objectFactoryFiles)</span>
+      <span class="sympad">setLocale</span>
+      <span class="normal">(Locale locale)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2142,7 +2055,7 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>objectFactoryFiles</td>
+          <th>locale</td>
           <td></td>
         </tr>
       </table>
@@ -2152,7 +2065,7 @@ From class
 </div>
 
 
-<A NAME="setObjectFactoryProject(com.clarizen.api.projectmanagement.ObjectFactory)"></A>
+<A NAME="setPattern(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2164,8 +2077,102 @@ From class
          
         void
       </span>
-      <span class="sympad">setObjectFactoryProject</span>
-      <span class="normal">(<a href="../../../../../../java/com/clarizen/api/projectmanagement/ObjectFactory.html">ObjectFactory</a> objectFactoryProject)</span>
+      <span class="sympad">setPattern</span>
+      <span class="normal">(String pattern)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set a date format pattern to use to convert
+ dates to/from a <code>java.lang.String</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>pattern</td>
+          <td>The format pattern.
+</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li>SimpleDateFormat</li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setPatterns(java.lang.String[])"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setPatterns</span>
+      <span class="normal">(String[] patterns)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set the date format patterns to use to convert
+ dates to/from a <code>java.lang.String</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>patterns</td>
+          <td>Array of format patterns.
+</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li>SimpleDateFormat</li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setTimeZone(java.util.TimeZone)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setTimeZone</span>
+      <span class="normal">(TimeZone timeZone)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2182,7 +2189,7 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>objectFactoryProject</td>
+          <th>timeZone</td>
           <td></td>
         </tr>
       </table>
@@ -2192,7 +2199,7 @@ From class
 </div>
 
 
-<A NAME="setObjectFactoryQueries(com.clarizen.api.queries.ObjectFactory)"></A>
+<A NAME="setUseLocaleFormat(boolean)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2204,8 +2211,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setObjectFactoryQueries</span>
-      <span class="normal">(<a href="../../../../../../java/com/clarizen/api/queries/ObjectFactory.html">ObjectFactory</a> objectFactoryQueries)</span>
+      <span class="sympad">setUseLocaleFormat</span>
+      <span class="normal">(boolean useLocaleFormat)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2222,10 +2229,46 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>objectFactoryQueries</td>
+          <th>useLocaleFormat</td>
           <td></td>
         </tr>
       </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="toString()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">toString</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Provide a String representation of this date/time converter.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A String representation of this date/time converter
+</li></ul>
   </div>
 
     </div>
@@ -2236,6 +2279,220 @@ From class
 
 
 <!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="convertToString(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">convertToString</span>
+      <span class="normal">(Object value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Throwable</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="convertToType(java.lang.Class, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        Object
+      </span>
+      <span class="sympad">convertToType</span>
+      <span class="normal">(Class targetType, Object value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Convert the input object into a Date object of the
+ specified type.
+ <p>
+ This method handles conversions between the following
+ types:
+ <ul>
+     <li><code>javax.xml.datatype.XMLGregorianCalendar</code></li>
+     <li><code>java.util.Date</code></li>
+     <li><code>java.util.Calendar</code></li>
+     <li><code>java.sql.Date</code></li>
+     <li><code>java.sql.Time</code></li>
+     <li><code>java.sql.Timestamp</code></li>
+ </ul>
+
+ It also handles conversion from a <code>String</code> to
+ any of the above types.
+ <p>
+
+ For <code>String</code> conversion, if the converter has been configured
+ with one or more patterns (using <code>setPatterns()</code>), then
+ the conversion is attempted with each of the specified patterns.
+ Otherwise the default <code>DateFormat</code> for the default locale
+ (and <i>style</i> if configured) will be used.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>targetType</td>
+          <td>Data type to which this value should be converted.</td>
+        </tr>
+        <tr>
+          <th>value</td>
+          <td>The input value to be converted.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The converted value.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td>if conversion cannot be performed successfully
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDefaultType()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        Class&lt;?&gt;
+      </span>
+      <span class="sympad">getDefaultType</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getFormat(java.util.Locale, java.util.TimeZone)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        DateFormat
+      </span>
+      <span class="sympad">getFormat</span>
+      <span class="normal">(Locale locale, TimeZone timeZone)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return a <code>DateFormat<code> for the Locale.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>locale</td>
+          <td>The Locale to create the Format with (may be null)</td>
+        </tr>
+        <tr>
+          <th>timeZone</td>
+          <td>The Time Zone create the Format with (may be null)</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A Date Format.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 
 
 
