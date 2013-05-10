@@ -598,11 +598,15 @@ public class DefaultClarizenClient implements ClarizenClient {
         List<FieldValue> customFields = new ArrayList<FieldValue>();
 
         for (FieldValue field : entityFields) {
-            fieldName = StringUtils.uncapitalize(field.getFieldName());
+            if (field.getValue() == null) {
+                continue;
+            }
 
-            if (field.getValue() != null)
-            {
-                //if it's a GenericEntity it must be converted into a model class
+            fieldName = StringUtils.uncapitalize(field.getFieldName());
+            //Custom fields starts with c_
+            if (fieldName.startsWith("c_")) {
+                customFields.add(field);
+            } else {
                 if (field.getValue() instanceof GenericEntity) {
                     fieldValue = toBaseClarizenEntity((GenericEntity) field.getValue(), null,
                             ((GenericEntity) field.getValue()).getId().getTypeName(), useFlatClasses);
@@ -610,15 +614,9 @@ public class DefaultClarizenClient implements ClarizenClient {
                 else {
                     fieldValue = field.getValue();
                 }
-                
-                //Custom fields starts with c_
-                if (fieldName.startsWith("c_")) {
-                    customFields.add(field);
-                }
-                else {
-                    entityMap.put(fieldName, fieldValue);
-                }
+                entityMap.put(fieldName, fieldValue);
             }
+            //if it's a GenericEntity it must be converted into a model class
         }
         
         //adds customFields
