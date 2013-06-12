@@ -108,7 +108,9 @@ public class ClarizenConnector
      *
      */
     public void logout() {
-        clarizenClient.logout();
+        if (clarizenClient != null) {
+            clarizenClient.logout();
+        }
     }
     
     /**
@@ -476,9 +478,9 @@ public class ClarizenConnector
     @Disconnect
     public void disconnect() {
         if (sessionId != null) {
-            clarizenClient = null;
             sessionId = null;
             logout();
+            clarizenClient = null;
         }
     }
 
