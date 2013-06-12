@@ -499,7 +499,6 @@ public class ClarizenConnector
     @Override
     @ConnectionIdentifier
     public String toString() {
-        return "username='" + connectionUser + '\'' +
-                '}';
+        return "{username='" + connectionUser + "'}";
     }
 }
