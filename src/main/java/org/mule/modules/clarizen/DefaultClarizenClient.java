@@ -29,6 +29,7 @@ import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.commons.lang.StringUtils;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
+import org.apache.log4j.Logger;
 import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientHelper;
 import org.mule.modules.clarizen.api.ClarizenServiceProvider;
@@ -95,8 +96,10 @@ public class DefaultClarizenClient implements ClarizenClient {
     private ConvertUtilsBean convertUtilsBean;
     private ClarizenDateConverter clarizenDateConverter;
     private BeanUtilsBean beanUtilsBean;
+    private static Logger logger = Logger.getLogger(DefaultClarizenClient.class);
     private static final String DEFAULT_DATE_CONVERTER_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
     private static final String DEFAULT_PACKAGE_MODEL = "org.mule.modules.clarizen.api.model.";
+    
     
     /**
      * Package used for model classes containing only EntityId references
@@ -598,25 +601,30 @@ public class DefaultClarizenClient implements ClarizenClient {
         List<FieldValue> customFields = new ArrayList<FieldValue>();
 
         for (FieldValue field : entityFields) {
-            if (field.getValue() == null) {
-                continue;
-            }
-
-            fieldName = StringUtils.uncapitalize(field.getFieldName());
-            //Custom fields starts with c_
-            if (fieldName.startsWith("c_")) {
-                customFields.add(field);
-            } else {
-                if (field.getValue() instanceof GenericEntity) {
-                    fieldValue = toBaseClarizenEntity((GenericEntity) field.getValue(), null,
-                            ((GenericEntity) field.getValue()).getId().getTypeName(), useFlatClasses);
-                }
-                else {
-                    fieldValue = field.getValue();
-                }
-                entityMap.put(fieldName, fieldValue);
-            }
-            //if it's a GenericEntity it must be converted into a model class
+        	if(field == null) {
+        		logger.warn("Unavailable field requested. Check your clarizen fields to retrieve.");
+        		continue;
+        	} else {
+        		if (field.getValue() == null) {
+        			continue;
+        		}
+        		
+        		fieldName = StringUtils.uncapitalize(field.getFieldName());
+        		//Custom fields starts with c_
+        		if (fieldName.startsWith("c_")) {
+        			customFields.add(field);
+        		} else {
+        			if (field.getValue() instanceof GenericEntity) {
+        				fieldValue = toBaseClarizenEntity((GenericEntity) field.getValue(), null,
+        						((GenericEntity) field.getValue()).getId().getTypeName(), useFlatClasses);
+        			}
+        			else {
+        				fieldValue = field.getValue();
+        			}
+        			entityMap.put(fieldName, fieldValue);
+        		}
+        		//if it's a GenericEntity it must be converted into a model class
+        	}
         }
         
         //adds customFields
