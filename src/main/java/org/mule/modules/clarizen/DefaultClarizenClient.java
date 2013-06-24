@@ -294,10 +294,13 @@ public class DefaultClarizenClient implements ClarizenClient {
         
         return new Login(login);
     }
-    
+
     @Override
     public void logout() {
-        getService().logout();
+        if (this.service != null) {
+            this.service.logout();
+            this.service = null;
+        }
     }
 
     @SuppressWarnings("unchecked")
