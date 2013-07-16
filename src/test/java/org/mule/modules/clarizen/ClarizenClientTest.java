@@ -13,6 +13,7 @@ package org.mule.modules.clarizen;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.clarizen.api.EntityId;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -28,6 +29,7 @@ import com.clarizen.api.GenericEntity;
 import com.clarizen.api.queries.Condition;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 public class ClarizenClientTest {
@@ -44,6 +46,9 @@ public class ClarizenClientTest {
     private static final WorkItemFilter SOME_WORK_ITEM_FILTER = WorkItemFilter.ALL;
     private static final WorkItemState SOME_WORK_ITEM_STATE = WorkItemState.ALL;
     private static final WorkItemType SOME_WORK_ITEM_TYPE = WorkItemType.TASK;
+
+    private static final String SOME_URL = "http://somesite.com/files/12345";
+    private static final String SOME_FILENAME = "someFile.txt";
     
     @Mock
     private DefaultClarizenClient clarizenClient;
@@ -56,7 +61,9 @@ public class ClarizenClientTest {
     private Login login;
     @Mock
     private Condition queryCondition;
-    
+    @Mock
+    private EntityId entityId;
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -111,6 +118,12 @@ public class ClarizenClientTest {
     public void testUpdateEntity() {
         when(clarizenClient.updateEntity(entity)).thenReturn(entity);
         assertEquals(entity, clarizenConnector.updateEntity(entity));
+    }
+
+    @Test
+    public void testAttachFileUrlToEntity() {
+        when(clarizenClient.attachFileUrlToEntity(entityId, SOME_URL, SOME_FILENAME)).thenReturn(true);
+        assertTrue(clarizenConnector.attachFileUrlToEntity(entityId, SOME_URL, SOME_FILENAME));
     }
 
     @Test

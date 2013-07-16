@@ -11,17 +11,14 @@
 package org.mule.modules.clarizen;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 
+import com.clarizen.api.*;
+import com.clarizen.api.files.*;
 import org.apache.commons.beanutils.BeanMap;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
@@ -41,37 +38,6 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
-import com.clarizen.api.AccessType;
-import com.clarizen.api.ArrayOfBaseMessage;
-import com.clarizen.api.Clarizen;
-import com.clarizen.api.CreateFromTemplateMessage;
-import com.clarizen.api.CreateMessage;
-import com.clarizen.api.CreateResult;
-import com.clarizen.api.DeleteMessage;
-import com.clarizen.api.EntityId;
-import com.clarizen.api.FieldValue;
-import com.clarizen.api.GenericEntity;
-import com.clarizen.api.GetCalendarInfoMessage;
-import com.clarizen.api.GetCalendarInfoResult;
-import com.clarizen.api.IClarizen;
-import com.clarizen.api.IClarizenExecuteSessionTimeoutFailureFaultFaultMessage;
-import com.clarizen.api.IClarizenLoginLoginFailureFaultFaultMessage;
-import com.clarizen.api.IClarizenMetadataSessionTimeoutFailureFaultFaultMessage;
-import com.clarizen.api.IClarizenQuerySessionTimeoutFailureFaultFaultMessage;
-import com.clarizen.api.LifecycleMessage;
-import com.clarizen.api.LoginOptions;
-import com.clarizen.api.LoginResult;
-import com.clarizen.api.Recipient;
-import com.clarizen.api.Result;
-import com.clarizen.api.RetrieveMessage;
-import com.clarizen.api.RetrieveResult;
-import com.clarizen.api.SendEMailMessage;
-import com.clarizen.api.SessionHeader;
-import com.clarizen.api.StringList;
-import com.clarizen.api.UpdateMessage;
-import com.clarizen.api.files.DownloadMessage;
-import com.clarizen.api.files.DownloadResult;
-import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.DescribeEntitiesMessage;
 import com.clarizen.api.metadata.DescribeEntitiesResult;
 import com.clarizen.api.metadata.EntityDescription;
@@ -975,6 +941,95 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
+        return true;
+    }
+
+    @Override
+    public Boolean attachFileUrlToEntity(EntityId entityId, String attachmentUrl, String attachmentFilename) {
+        //1. Create a Document entity
+        GenericEntity document = new GenericEntity();
+
+        // Document Id
+        EntityId documentEntityId = new EntityId();
+        documentEntityId.setTypeName("Document");
+        documentEntityId.setValue(UUID.randomUUID().toString());
+        document.setId(documentEntityId);
+
+        // Document name (file name)
+        FieldValue nameValue = new FieldValue();
+        nameValue.setFieldName("Name");
+        nameValue.setValue(attachmentFilename);
+
+        ArrayOfFieldValue arrayOfFieldValues = new ArrayOfFieldValue();
+        arrayOfFieldValues.getFieldValue().add(nameValue);
+        document.setValues(arrayOfFieldValues);
+
+        // --- Assemble Create Message for Document
+        CreateMessage createDocumentMessage = new CreateMessage();
+        createDocumentMessage.setEntity(document);
+
+        //Step 2: Create a link between WorkItem and Document
+        GenericEntity link = new GenericEntity();
+
+        // Link Id
+        EntityId linkEntityId = new EntityId();
+        linkEntityId.setTypeName("AttachmentLink");
+        linkEntityId.setValue(UUID.randomUUID().toString());
+        link.setId(linkEntityId);
+
+        // Prepare reference to Task
+        FieldValue entityIdField = new FieldValue();
+        entityIdField.setFieldName("Entity");
+        entityIdField.setValue(entityId);
+
+        // Prepare reference to new document
+        FieldValue documentId = new FieldValue();
+        documentId.setFieldName("Document");
+        documentId.setValue(document.getId());
+
+        // Include both references in Link
+        ArrayOfFieldValue arrayOfLinkFieldValues = new ArrayOfFieldValue();
+        arrayOfLinkFieldValues.getFieldValue().add(entityIdField);
+        arrayOfLinkFieldValues.getFieldValue().add(documentId);
+        link.setValues(arrayOfLinkFieldValues);
+
+        // --- Assemble Create Message for Link
+        CreateMessage createLinkMessage = new CreateMessage();
+        createLinkMessage.setEntity(link);
+
+        //Step 3: Upload the file
+        FileInformation fileInformation = new FileInformation();
+        fileInformation.setStorage(Storage.URL);
+        fileInformation.setUrl(attachmentUrl );
+        fileInformation.setFileName(attachmentFilename);
+
+        // --- Assemble Upload Message
+        UploadMessage uploadMessage = new UploadMessage();
+        uploadMessage.setFileInformation(fileInformation);
+        uploadMessage.setDocumentId(document.getId());
+
+
+        //Perform all 3 steps in 1 call to the web service:
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(createDocumentMessage);
+        messages.getBaseMessage().add(createLinkMessage);
+        messages.getBaseMessage().add(uploadMessage);
+
+        List<Result> results;
+        try {
+            results = getService().execute(messages).getResult();
+
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(),
+                            result.getError().getMessage());
+                }
+            }
+
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+
         return true;
     }
 

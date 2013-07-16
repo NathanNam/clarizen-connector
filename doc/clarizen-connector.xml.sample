@@ -98,3 +98,9 @@
  <clarizen:related-entity ref="#[payload]" />
 </clarizen:send-email>
 <!-- END_INCLUDE(clarizen:send-email) -->
+
+<!-- BEGIN_INCLUDE(clarizen:attach-file-url-to-entity) -->
+<clarizen:attach-file-url-to-entity attachmentUrl="http://someSite/files/12345" attachmentFilename="theFile.txt">
+ <clarizen:entity-id ref="#[payload]" />
+</clarizen:attach-file-url-to-entity>
+<!-- END_INCLUDE(clarizen:attach-file-url-to-entity) -->

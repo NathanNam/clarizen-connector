@@ -399,6 +399,23 @@ public class ClarizenConnector
             @Optional String body, @Optional String subject, @Optional List<Recipient> recipients) {
         return clarizenClient.sendEmail(accessType, body, subject, recipients, relatedEntity);
     }
+
+    /**
+     * Attaches a file to an entity, given that the file resides in an external storage and can be accessed via a URL.
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:attach-file-url-to-entity}
+     *
+     * @param entityId ID of the entity to which the file URL will be attached
+     * @param attachmentUrl URL pointing to the attachment
+     * @param attachmentFilename Filename of the attachment
+     * @return true if the action was successful
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public Boolean attachFileUrlToEntity(EntityId entityId, String attachmentUrl, String attachmentFilename) {
+        return clarizenClient.attachFileUrlToEntity(entityId, attachmentUrl, attachmentFilename);
+    }
     
     public ClarizenClient getClarizenClient() {
         return clarizenClient;
