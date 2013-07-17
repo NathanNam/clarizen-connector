@@ -974,7 +974,6 @@ public class DefaultClarizenClient implements ClarizenClient {
         // Link Id
         EntityId linkEntityId = new EntityId();
         linkEntityId.setTypeName("AttachmentLink");
-        linkEntityId.setValue(UUID.randomUUID().toString());
         link.setId(linkEntityId);
 
         // Prepare reference to Task
