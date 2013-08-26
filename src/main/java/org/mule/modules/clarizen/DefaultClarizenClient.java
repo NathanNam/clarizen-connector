@@ -38,6 +38,9 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
+import com.clarizen.api.files.DownloadMessage;
+import com.clarizen.api.files.DownloadResult;
+import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.DescribeEntitiesMessage;
 import com.clarizen.api.metadata.DescribeEntitiesResult;
 import com.clarizen.api.metadata.EntityDescription;
@@ -237,7 +240,10 @@ public class DefaultClarizenClient implements ClarizenClient {
         
         LoginResult login;
         try {
-            login = getService().login(username, password, opts);
+            GetServerDefinitionResult response = getService().getServerDefinition(username, password, null);
+            String clarizenClientUrl = response.getServerLocation();
+            System.out.println("Clarizen client URL: " + clarizenClientUrl);
+            login = getService(clarizenClientUrl).login(username, password, opts);
         } catch (IClarizenLoginLoginFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e);
         }
@@ -774,6 +780,15 @@ public class DefaultClarizenClient implements ClarizenClient {
         if (service == null) {
             service = serviceProvider.getService();
         }
+
+        return service;
+    }
+
+    protected IClarizen getService(String address) {
+        if (service == null) {
+            service = serviceProvider.getService(address);
+        }
+
         return service;
     }
     
