@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
 <title>
 
-  CountQueryResult
+  WorkItemRecursiveQuery
 
 
 | Clarizen Cloud Connector
@@ -275,7 +275,7 @@
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/ConstantExpression.html">ConstantExpression</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/CountQuery.html">CountQuery</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/CountQueryResult.html">CountQueryResult</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/CountQueryResult.html">CountQueryResult</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/EntityIdExpression.html">EntityIdExpression</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/EntityQuery.html">EntityQuery</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/Expression.html">Expression</a></li>
@@ -295,7 +295,7 @@
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/QueryResult.html">QueryResult</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/RecursiveQuery.html">RecursiveQuery</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/SearchQuery.html">SearchQuery</a></li>
-          <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/WorkItemRecursiveQuery.html">WorkItemRecursiveQuery</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/WorkItemRecursiveQuery.html">WorkItemRecursiveQuery</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/clarizen/api/queries/WorkItemResources.html">WorkItemResources</a></li>
       </ul>
     </li>
@@ -360,6 +360,29 @@
   
   
   
+   
+  
+  
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
   
 
 
@@ -416,7 +439,7 @@ Summary:
      
     
     class
-<h1>CountQueryResult</h1>
+<h1>WorkItemRecursiveQuery</h1>
 
 
 
@@ -425,7 +448,19 @@ Summary:
   
 
   
-    extends <a href="../../../../../java/com/clarizen/api/Result.html">Result</a><br/>
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+    extends <a href="../../../../../java/com/clarizen/api/queries/RecursiveQuery.html">RecursiveQuery</a><br/>
   
   
   
@@ -445,7 +480,7 @@ Summary:
 
     <tr>
         
-        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="6" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -453,7 +488,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../java/com/clarizen/api/Result.html">com.clarizen.api.Result</a></td>
+        <td colspan="5" class="jd-inheritance-class-cell"><a href="../../../../../java/com/clarizen/api/BaseMessage.html">com.clarizen.api.BaseMessage</a></td>
     </tr>
     
 
@@ -463,7 +498,49 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">com.clarizen.api.queries.CountQueryResult</td>
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../java/com/clarizen/api/queries/Query.html">com.clarizen.api.queries.Query</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../java/com/clarizen/api/queries/BuiltInQuery.html">com.clarizen.api.queries.BuiltInQuery</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../java/com/clarizen/api/queries/RecursiveQuery.html">com.clarizen.api.queries.RecursiveQuery</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">com.clarizen.api.queries.WorkItemRecursiveQuery</td>
     </tr>
     
 
@@ -479,16 +556,16 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p><p>Java class for CountQueryResult complex type.
+<p><p>Java class for WorkItemRecursiveQuery complex type.
  
  <p>The following schema fragment specifies the expected content contained within this class.
  
  <pre>
- &lt;complexType name="CountQueryResult">
+ &lt;complexType name="WorkItemRecursiveQuery">
    &lt;complexContent>
-     &lt;extension base="{http://clarizen.com/api}Result">
+     &lt;extension base="{http://clarizen.com/api/queries}RecursiveQuery">
        &lt;sequence>
-         &lt;element name="Count" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+         &lt;element name="IncludeShortcuts" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
        &lt;/sequence>
      &lt;/extension>
    &lt;/complexContent>
@@ -551,8 +628,8 @@ Summary:
           protected
           
           
-          Long</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/CountQueryResult.html#count">count</a></td>
+          Boolean</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/WorkItemRecursiveQuery.html#includeShortcuts">includeShortcuts</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -573,16 +650,16 @@ Summary:
 <tr class="api apilevel-" >
 <td colspan="12">
 
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.clarizen.api.Result" class="jd-expando-trigger closed"
-          ><img id="inherited-fields-com.clarizen.api.Result-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.clarizen.api.queries.RecursiveQuery" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-com.clarizen.api.queries.RecursiveQuery-trigger"
           src="../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>From class
-<a href="../../../../../com/clarizen/api/Result.html">com.clarizen.api.Result</a>
-<div id="inherited-fields-com.clarizen.api.Result">
-  <div id="inherited-fields-com.clarizen.api.Result-list"
+<a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html">com.clarizen.api.queries.RecursiveQuery</a>
+<div id="inherited-fields-com.clarizen.api.queries.RecursiveQuery">
+  <div id="inherited-fields-com.clarizen.api.queries.RecursiveQuery-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-fields-com.clarizen.api.Result-summary" style="display: none;">
+  <div id="inherited-fields-com.clarizen.api.queries.RecursiveQuery-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -592,8 +669,8 @@ Summary:
           protected
           
           
-          <a href="../../../../../java/com/clarizen/api/Error.html">Error</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/Result.html#error">error</a></td>
+          int</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#levels">levels</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -603,8 +680,30 @@ Summary:
           protected
           
           
-          boolean</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/Result.html#success">success</a></td>
+          <a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#rootItemId">rootItemId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#typeName">typeName</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#where">where</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -613,6 +712,100 @@ Summary:
   </div>
 </div>
 </td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.clarizen.api.queries.BuiltInQuery" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-com.clarizen.api.queries.BuiltInQuery-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html">com.clarizen.api.queries.BuiltInQuery</a>
+<div id="inherited-fields-com.clarizen.api.queries.BuiltInQuery">
+  <div id="inherited-fields-com.clarizen.api.queries.BuiltInQuery-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-com.clarizen.api.queries.BuiltInQuery-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../../java/com/clarizen/api/StringList.html">StringList</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html#fields">fields</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../../java/com/clarizen/api/queries/ArrayOfOrderBy.html">ArrayOfOrderBy</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html#orders">orders</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.clarizen.api.queries.Query" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-com.clarizen.api.queries.Query-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../com/clarizen/api/queries/Query.html">com.clarizen.api.queries.Query</a>
+<div id="inherited-fields-com.clarizen.api.queries.Query">
+  <div id="inherited-fields-com.clarizen.api.queries.Query-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-com.clarizen.api.queries.Query-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../../java/com/clarizen/api/queries/Paging.html">Paging</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/Query.html#paging">paging</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../../java/com/clarizen/api/PermissionOptions.html">PermissionOptions</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/clarizen/api/queries/Query.html#permissions">permissions</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 
 
 
@@ -638,7 +831,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/CountQueryResult.html#CountQueryResult()">CountQueryResult</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/WorkItemRecursiveQuery.html#WorkItemRecursiveQuery()">WorkItemRecursiveQuery</a></span>()</nobr>
         
   </td></tr>
 
@@ -664,12 +857,12 @@ Summary:
             
             
             
-            Long</nobr>
+            Boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/CountQueryResult.html#getCount()">getCount</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/WorkItemRecursiveQuery.html#isIncludeShortcuts()">isIncludeShortcuts</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the count property.</div>
+        <div class="jd-descrdiv">Gets the value of the includeShortcuts property.</div>
   
   </td></tr>
 
@@ -685,9 +878,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/CountQueryResult.html#setCount(java.lang.Long)">setCount</a></span>(Long value)</nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/WorkItemRecursiveQuery.html#setIncludeShortcuts(java.lang.Boolean)">setIncludeShortcuts</a></span>(Boolean value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the count property.</div>
+        <div class="jd-descrdiv">Sets the value of the includeShortcuts property.</div>
   
   </td></tr>
 
@@ -709,19 +902,19 @@ Summary:
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.clarizen.api.Result" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-com.clarizen.api.Result-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.clarizen.api.queries.RecursiveQuery" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.clarizen.api.queries.RecursiveQuery-trigger"
           src="../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From class
 
-  <a href="../../../../../com/clarizen/api/Result.html">com.clarizen.api.Result</a>
+  <a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html">com.clarizen.api.queries.RecursiveQuery</a>
 
-<div id="inherited-methods-com.clarizen.api.Result">
-  <div id="inherited-methods-com.clarizen.api.Result-list"
+<div id="inherited-methods-com.clarizen.api.queries.RecursiveQuery">
+  <div id="inherited-methods-com.clarizen.api.queries.RecursiveQuery-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-com.clarizen.api.Result-summary" style="display: none;">
+  <div id="inherited-methods-com.clarizen.api.queries.RecursiveQuery-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -734,12 +927,12 @@ From class
             
             
             
-            <a href="../../../../../java/com/clarizen/api/Error.html">Error</a></nobr>
+            int</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/clarizen/api/Result.html#getError()">getError</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#getLevels()">getLevels</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the error property.</div>
+        <div class="jd-descrdiv">Gets the value of the levels property.</div>
   
   </td></tr>
 
@@ -752,12 +945,48 @@ From class
             
             
             
-            boolean</nobr>
+            <a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/clarizen/api/Result.html#isSuccess()">isSuccess</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#getRootItemId()">getRootItemId</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the success property.</div>
+        <div class="jd-descrdiv">Gets the value of the rootItemId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#getTypeName()">getTypeName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the typeName property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#getWhere()">getWhere</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the where property.</div>
   
   </td></tr>
 
@@ -773,9 +1002,9 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/clarizen/api/Result.html#setError(com.clarizen.api.Error)">setError</a></span>(<a href="../../../../../java/com/clarizen/api/Error.html">Error</a> value)</nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#setLevels(int)">setLevels</a></span>(int value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the error property.</div>
+        <div class="jd-descrdiv">Sets the value of the levels property.</div>
   
   </td></tr>
 
@@ -791,9 +1020,45 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/clarizen/api/Result.html#setSuccess(boolean)">setSuccess</a></span>(boolean value)</nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#setRootItemId(com.clarizen.api.EntityId)">setRootItemId</a></span>(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the success property.</div>
+        <div class="jd-descrdiv">Sets the value of the rootItemId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#setTypeName(java.lang.String)">setTypeName</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the typeName property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/RecursiveQuery.html#setWhere(com.clarizen.api.queries.Condition)">setWhere</a></span>(<a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the where property.</div>
   
   </td></tr>
 
@@ -802,6 +1067,204 @@ From class
   </div>
 </div>
 </td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.clarizen.api.queries.BuiltInQuery" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.clarizen.api.queries.BuiltInQuery-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html">com.clarizen.api.queries.BuiltInQuery</a>
+
+<div id="inherited-methods-com.clarizen.api.queries.BuiltInQuery">
+  <div id="inherited-methods-com.clarizen.api.queries.BuiltInQuery-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.clarizen.api.queries.BuiltInQuery-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/StringList.html">StringList</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html#getFields()">getFields</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the fields property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/queries/ArrayOfOrderBy.html">ArrayOfOrderBy</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html#getOrders()">getOrders</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the orders property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html#setFields(com.clarizen.api.StringList)">setFields</a></span>(<a href="../../../../../java/com/clarizen/api/StringList.html">StringList</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the fields property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/BuiltInQuery.html#setOrders(com.clarizen.api.queries.ArrayOfOrderBy)">setOrders</a></span>(<a href="../../../../../java/com/clarizen/api/queries/ArrayOfOrderBy.html">ArrayOfOrderBy</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the orders property.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.clarizen.api.queries.Query" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.clarizen.api.queries.Query-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../com/clarizen/api/queries/Query.html">com.clarizen.api.queries.Query</a>
+
+<div id="inherited-methods-com.clarizen.api.queries.Query">
+  <div id="inherited-methods-com.clarizen.api.queries.Query-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.clarizen.api.queries.Query-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/queries/Paging.html">Paging</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/Query.html#getPaging()">getPaging</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the paging property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/PermissionOptions.html">PermissionOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/Query.html#getPermissions()">getPermissions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the permissions property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/Query.html#setPaging(com.clarizen.api.queries.Paging)">setPaging</a></span>(<a href="../../../../../java/com/clarizen/api/queries/Paging.html">Paging</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the paging property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/clarizen/api/queries/Query.html#setPermissions(com.clarizen.api.PermissionOptions)">setPermissions</a></span>(<a href="../../../../../java/com/clarizen/api/PermissionOptions.html">PermissionOptions</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the permissions property.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 
 
 
@@ -1038,7 +1501,7 @@ From class
 
 
 
-<A NAME="count"></A>
+<A NAME="includeShortcuts"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1046,9 +1509,9 @@ From class
         protected 
          
          
-        Long
+        Boolean
       </span>
-        count
+        includeShortcuts
     </h4>
       <div class="api-level">
         
@@ -1077,7 +1540,7 @@ From class
 
 
 
-<A NAME="CountQueryResult()"></A>
+<A NAME="WorkItemRecursiveQuery()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1089,7 +1552,7 @@ From class
          
         
       </span>
-      <span class="sympad">CountQueryResult</span>
+      <span class="sympad">WorkItemRecursiveQuery</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1123,7 +1586,7 @@ From class
 
 
 
-<A NAME="getCount()"></A>
+<A NAME="isIncludeShortcuts()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1133,9 +1596,9 @@ From class
          
          
          
-        Long
+        Boolean
       </span>
-      <span class="sympad">getCount</span>
+      <span class="sympad">isIncludeShortcuts</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1148,11 +1611,11 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the count property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the includeShortcuts property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
-     Long
+     Boolean
      
 </li></ul>
   </div>
@@ -1161,7 +1624,7 @@ From class
 </div>
 
 
-<A NAME="setCount(java.lang.Long)"></A>
+<A NAME="setIncludeShortcuts(java.lang.Boolean)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1173,8 +1636,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setCount</span>
-      <span class="normal">(Long value)</span>
+      <span class="sympad">setIncludeShortcuts</span>
+      <span class="normal">(Boolean value)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1186,14 +1649,14 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the count property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the includeShortcuts property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>value</td>
           <td>Allowed object is
-     Long
+     Boolean
      
 </td>
         </tr>

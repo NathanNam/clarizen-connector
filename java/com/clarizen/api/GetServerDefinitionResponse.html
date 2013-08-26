@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
-  AppLoginResult
+  GetServerDefinitionResponse
 
 
 | Clarizen Cloud Connector
@@ -274,7 +274,7 @@
       <ul>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/AnyTypeList.html">AnyTypeList</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/AppLoginMessage.html">AppLoginMessage</a></li>
-          <li class="selected api apilevel-"><a href="../../../../java/com/clarizen/api/AppLoginResult.html">AppLoginResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/AppLoginResult.html">AppLoginResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/ArrayOfBaseEntity.html">ArrayOfBaseEntity</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/ArrayOfBaseMessage.html">ArrayOfBaseMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/ArrayOfDayInformation.html">ArrayOfDayInformation</a></li>
@@ -322,7 +322,7 @@
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoMessage.html">GetMultipleTodayInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoResult.html">GetMultipleTodayInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinition.html">GetServerDefinition</a></li>
-          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResponse.html">GetServerDefinitionResponse</a></li>
+          <li class="selected api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResponse.html">GetServerDefinitionResponse</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoExtendedResult.html">GetSessionInfoExtendedResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoMessage.html">GetSessionInfoMessage</a></li>
@@ -432,15 +432,6 @@
   
   
   
-   
-  
-  
-
-  
-   
-  
-  
-  
   
 
 
@@ -458,9 +449,6 @@ Summary:
   <a href="#lfields">Fields</a>
   
 
-
-  &#124; <a href="#inhfields">Inherited Fields</a>
-  
 
 
   &#124; <a href="#pubctors">Ctors</a>
@@ -497,16 +485,12 @@ Summary:
      
     
     class
-<h1>AppLoginResult</h1>
+<h1>GetServerDefinitionResponse</h1>
 
 
 
   
-  
-  
-
-  
-    extends <a href="../../../../java/com/clarizen/api/Result.html">Result</a><br/>
+    extends Object<br/>
   
   
   
@@ -526,7 +510,7 @@ Summary:
 
     <tr>
         
-        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -534,17 +518,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../java/com/clarizen/api/Result.html">com.clarizen.api.Result</a></td>
-    </tr>
-    
-
-    <tr>
-        
-            <td class="jd-inheritance-space">&nbsp;</td>
-        
-            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
-        
-        <td colspan="1" class="jd-inheritance-class-cell">com.clarizen.api.AppLoginResult</td>
+        <td colspan="1" class="jd-inheritance-class-cell">com.clarizen.api.GetServerDefinitionResponse</td>
     </tr>
     
 
@@ -560,18 +534,18 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p><p>Java class for AppLoginResult complex type.
+<p><p>Java class for anonymous complex type.
  
  <p>The following schema fragment specifies the expected content contained within this class.
  
  <pre>
- &lt;complexType name="AppLoginResult">
+ &lt;complexType>
    &lt;complexContent>
-     &lt;extension base="{http://clarizen.com/api}Result">
+     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
        &lt;sequence>
-         &lt;element name="Url" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="GetServerDefinitionResult" type="{http://clarizen.com/api}GetServerDefinitionResult" minOccurs="0"/>
        &lt;/sequence>
-     &lt;/extension>
+     &lt;/restriction>
    &lt;/complexContent>
  &lt;/complexType>
  </pre>
@@ -632,8 +606,8 @@ Summary:
           protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/AppLoginResult.html#url">url</a></td>
+          <a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/GetServerDefinitionResponse.html#getServerDefinitionResult">getServerDefinitionResult</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -643,62 +617,6 @@ Summary:
 
 
 
-
-
-<!-- =========== FIELD SUMMARY =========== -->
-<table id="inhfields" class="jd-sumtable"><tr><th>
-  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
-  <div style="clear:left;">Inherited Fields</div></th></tr>
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.clarizen.api.Result" class="jd-expando-trigger closed"
-          ><img id="inherited-fields-com.clarizen.api.Result-trigger"
-          src="../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From class
-<a href="../../../../com/clarizen/api/Result.html">com.clarizen.api.Result</a>
-<div id="inherited-fields-com.clarizen.api.Result">
-  <div id="inherited-fields-com.clarizen.api.Result-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-fields-com.clarizen.api.Result-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../java/com/clarizen/api/Error.html">Error</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/Result.html#error">error</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          boolean</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/Result.html#success">success</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-
-</table>
 
 
 
@@ -719,7 +637,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/AppLoginResult.html#AppLoginResult()">AppLoginResult</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetServerDefinitionResponse.html#GetServerDefinitionResponse()">GetServerDefinitionResponse</a></span>()</nobr>
         
   </td></tr>
 
@@ -745,12 +663,12 @@ Summary:
             
             
             
-            String</nobr>
+            <a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/AppLoginResult.html#getUrl()">getUrl</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetServerDefinitionResponse.html#getGetServerDefinitionResult()">getGetServerDefinitionResult</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the url property.</div>
+        <div class="jd-descrdiv">Gets the value of the getServerDefinitionResult property.</div>
   
   </td></tr>
 
@@ -766,9 +684,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/AppLoginResult.html#setUrl(java.lang.String)">setUrl</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetServerDefinitionResponse.html#setGetServerDefinitionResult(com.clarizen.api.GetServerDefinitionResult)">setGetServerDefinitionResult</a></span>(<a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the url property.</div>
+        <div class="jd-descrdiv">Sets the value of the getServerDefinitionResult property.</div>
   
   </td></tr>
 
@@ -786,104 +704,6 @@ Summary:
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.clarizen.api.Result" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-com.clarizen.api.Result-trigger"
-          src="../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From class
-
-  <a href="../../../../com/clarizen/api/Result.html">com.clarizen.api.Result</a>
-
-<div id="inherited-methods-com.clarizen.api.Result">
-  <div id="inherited-methods-com.clarizen.api.Result-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-com.clarizen.api.Result-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../java/com/clarizen/api/Error.html">Error</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/Result.html#getError()">getError</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the error property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            boolean</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/Result.html#isSuccess()">isSuccess</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the success property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/Result.html#setError(com.clarizen.api.Error)">setError</a></span>(<a href="../../../../java/com/clarizen/api/Error.html">Error</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the error property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/Result.html#setSuccess(boolean)">setSuccess</a></span>(boolean value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the success property.</div>
-  
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
 
 
 <tr class="api apilevel-" >
@@ -1119,7 +939,7 @@ From class
 
 
 
-<A NAME="url"></A>
+<A NAME="getServerDefinitionResult"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1127,9 +947,9 @@ From class
         protected 
          
          
-        String
+        <a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a>
       </span>
-        url
+        getServerDefinitionResult
     </h4>
       <div class="api-level">
         
@@ -1158,7 +978,7 @@ From class
 
 
 
-<A NAME="AppLoginResult()"></A>
+<A NAME="GetServerDefinitionResponse()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1170,7 +990,7 @@ From class
          
         
       </span>
-      <span class="sympad">AppLoginResult</span>
+      <span class="sympad">GetServerDefinitionResponse</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1204,7 +1024,7 @@ From class
 
 
 
-<A NAME="getUrl()"></A>
+<A NAME="getGetServerDefinitionResult()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1214,9 +1034,9 @@ From class
          
          
          
-        String
+        <a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a>
       </span>
-      <span class="sympad">getUrl</span>
+      <span class="sympad">getGetServerDefinitionResult</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1229,11 +1049,11 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the url property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the getServerDefinitionResult property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
-     String
+     <code><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></code>
      
 </li></ul>
   </div>
@@ -1242,7 +1062,7 @@ From class
 </div>
 
 
-<A NAME="setUrl(java.lang.String)"></A>
+<A NAME="setGetServerDefinitionResult(com.clarizen.api.GetServerDefinitionResult)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1254,8 +1074,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setUrl</span>
-      <span class="normal">(String value)</span>
+      <span class="sympad">setGetServerDefinitionResult</span>
+      <span class="normal">(<a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a> value)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1267,14 +1087,14 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the url property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the getServerDefinitionResult property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>value</td>
           <td>Allowed object is
-     String
+     <code><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></code>
      
 </td>
         </tr>

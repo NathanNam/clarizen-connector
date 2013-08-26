@@ -321,6 +321,10 @@
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetCalendarInfoResult.html">GetCalendarInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoMessage.html">GetMultipleTodayInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoResult.html">GetMultipleTodayInfoResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinition.html">GetServerDefinition</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResponse.html">GetServerDefinitionResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoExtendedResult.html">GetSessionInfoExtendedResult</a></li>
           <li class="selected api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoMessage.html">GetSessionInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoResult.html">GetSessionInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetTodayInfoMessage.html">GetTodayInfoMessage</a></li>
@@ -447,12 +451,18 @@ Summary:
 
 
 
-
-
-  <a href="#pubctors">Ctors</a>
+  <a href="#lfields">Fields</a>
   
 
 
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
 
 
 
@@ -552,6 +562,7 @@ Summary:
    &lt;complexContent>
      &lt;extension base="{http://clarizen.com/api}BaseMessage">
        &lt;sequence>
+         &lt;element name="options" type="{http://clarizen.com/api}LoginOptions" minOccurs="0"/>
        &lt;/sequence>
      &lt;/extension>
    &lt;/complexContent>
@@ -604,6 +615,26 @@ Summary:
 
 
 
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/GetSessionInfoMessage.html#options">options</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+
+</table>
+
+
 
 
 
@@ -636,6 +667,51 @@ Summary:
 
 
 
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetSessionInfoMessage.html#getOptions()">getOptions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the options property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetSessionInfoMessage.html#setOptions(com.clarizen.api.LoginOptions)">setOptions</a></span>(<a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the options property.</div>
+  
+  </td></tr>
+
+
+
+</table>
 
 
 
@@ -878,6 +954,43 @@ From class
 <!-- Fields -->
 
 
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="options"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a>
+      </span>
+        options
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+
 <!-- Public ctors -->
 
 
@@ -927,6 +1040,92 @@ From class
 
 <!-- ========= METHOD DETAIL ======== -->
 <!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="getOptions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a>
+      </span>
+      <span class="sympad">getOptions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the options property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     <code><a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a></code>
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setOptions(com.clarizen.api.LoginOptions)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setOptions</span>
+      <span class="normal">(<a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the options property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     <code><a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a></code>
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 
 
 

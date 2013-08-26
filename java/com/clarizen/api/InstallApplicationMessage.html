@@ -321,6 +321,10 @@
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetCalendarInfoResult.html">GetCalendarInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoMessage.html">GetMultipleTodayInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoResult.html">GetMultipleTodayInfoResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinition.html">GetServerDefinition</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResponse.html">GetServerDefinitionResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoExtendedResult.html">GetSessionInfoExtendedResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoMessage.html">GetSessionInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoResult.html">GetSessionInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetTodayInfoMessage.html">GetTodayInfoMessage</a></li>
@@ -559,6 +563,7 @@ Summary:
      &lt;extension base="{http://clarizen.com/api}BaseMessage">
        &lt;sequence>
          &lt;element name="ApplicationId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="AutoEnable" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
        &lt;/sequence>
      &lt;/extension>
    &lt;/complexContent>
@@ -623,6 +628,17 @@ Summary:
           
           String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../com/clarizen/api/InstallApplicationMessage.html#applicationId">applicationId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Boolean</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/InstallApplicationMessage.html#autoEnable">autoEnable</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -696,12 +712,48 @@ Summary:
             
             
             
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/InstallApplicationMessage.html#isAutoEnable()">isAutoEnable</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the autoEnable property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/clarizen/api/InstallApplicationMessage.html#setApplicationId(java.lang.String)">setApplicationId</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the applicationId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/InstallApplicationMessage.html#setAutoEnable(java.lang.Boolean)">setAutoEnable</a></span>(Boolean value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the autoEnable property.</div>
   
   </td></tr>
 
@@ -986,6 +1038,36 @@ From class
 
 
 
+<A NAME="autoEnable"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        Boolean
+      </span>
+        autoEnable
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 
 <!-- Public ctors -->
 
@@ -1079,6 +1161,44 @@ From class
 </div>
 
 
+<A NAME="isAutoEnable()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">isAutoEnable</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the autoEnable property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     Boolean
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="setApplicationId(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1112,6 +1232,49 @@ From class
           <th>value</td>
           <td>Allowed object is
      String
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setAutoEnable(java.lang.Boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setAutoEnable</span>
+      <span class="normal">(Boolean value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the autoEnable property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     Boolean
      
 </td>
         </tr>

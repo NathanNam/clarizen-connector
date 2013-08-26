@@ -321,6 +321,10 @@
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetCalendarInfoResult.html">GetCalendarInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoMessage.html">GetMultipleTodayInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoResult.html">GetMultipleTodayInfoResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinition.html">GetServerDefinition</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResponse.html">GetServerDefinitionResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoExtendedResult.html">GetSessionInfoExtendedResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoMessage.html">GetSessionInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoResult.html">GetSessionInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetTodayInfoMessage.html">GetTodayInfoMessage</a></li>
@@ -539,6 +543,7 @@ Summary:
    &lt;complexContent>
      &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
        &lt;sequence>
+         &lt;element name="Batch" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
          &lt;element name="DisableValidationRules" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
          &lt;element name="DisableWorkflowRules" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
        &lt;/sequence>
@@ -604,12 +609,23 @@ Summary:
           
           
           Boolean</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/CallOptions.html#disableValidationRules">disableValidationRules</a></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/CallOptions.html#batch">batch</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
       <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Boolean</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/CallOptions.html#disableValidationRules">disableValidationRules</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -674,9 +690,9 @@ Summary:
             Boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/CallOptions.html#isDisableValidationRules()">isDisableValidationRules</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/CallOptions.html#isBatch()">isBatch</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the disableValidationRules property.</div>
+        <div class="jd-descrdiv">Gets the value of the batch property.</div>
   
   </td></tr>
 
@@ -692,9 +708,45 @@ Summary:
             Boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/CallOptions.html#isDisableValidationRules()">isDisableValidationRules</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the disableValidationRules property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/clarizen/api/CallOptions.html#isDisableWorkflowRules()">isDisableWorkflowRules</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the disableWorkflowRules property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/CallOptions.html#setBatch(java.lang.Boolean)">setBatch</a></span>(Boolean value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the batch property.</div>
   
   </td></tr>
 
@@ -983,6 +1035,36 @@ From class
 
 
 
+<A NAME="batch"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        Boolean
+      </span>
+        batch
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="disableValidationRules"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1098,6 +1180,44 @@ From class
 
 
 
+<A NAME="isBatch()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">isBatch</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the batch property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     Boolean
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="isDisableValidationRules()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1168,6 +1288,49 @@ From class
      Boolean
      
 </li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setBatch(java.lang.Boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setBatch</span>
+      <span class="normal">(Boolean value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the batch property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     Boolean
+     
+</td>
+        </tr>
+      </table>
   </div>
 
     </div>

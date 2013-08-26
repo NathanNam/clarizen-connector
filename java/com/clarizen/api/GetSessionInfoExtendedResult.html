@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
-  AppLoginResult
+  GetSessionInfoExtendedResult
 
 
 | Clarizen Cloud Connector
@@ -274,7 +274,7 @@
       <ul>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/AnyTypeList.html">AnyTypeList</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/AppLoginMessage.html">AppLoginMessage</a></li>
-          <li class="selected api apilevel-"><a href="../../../../java/com/clarizen/api/AppLoginResult.html">AppLoginResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/AppLoginResult.html">AppLoginResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/ArrayOfBaseEntity.html">ArrayOfBaseEntity</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/ArrayOfBaseMessage.html">ArrayOfBaseMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/ArrayOfDayInformation.html">ArrayOfDayInformation</a></li>
@@ -324,7 +324,7 @@
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinition.html">GetServerDefinition</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResponse.html">GetServerDefinitionResponse</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></li>
-          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoExtendedResult.html">GetSessionInfoExtendedResult</a></li>
+          <li class="selected api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoExtendedResult.html">GetSessionInfoExtendedResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoMessage.html">GetSessionInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoResult.html">GetSessionInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetTodayInfoMessage.html">GetTodayInfoMessage</a></li>
@@ -441,6 +441,24 @@
   
   
   
+   
+  
+  
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
   
 
 
@@ -497,7 +515,7 @@ Summary:
      
     
     class
-<h1>AppLoginResult</h1>
+<h1>GetSessionInfoExtendedResult</h1>
 
 
 
@@ -506,7 +524,15 @@ Summary:
   
 
   
-    extends <a href="../../../../java/com/clarizen/api/Result.html">Result</a><br/>
+  
+  
+
+  
+  
+  
+
+  
+    extends <a href="../../../../java/com/clarizen/api/GetSessionInfoResult.html">GetSessionInfoResult</a><br/>
   
   
   
@@ -526,7 +552,7 @@ Summary:
 
     <tr>
         
-        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="5" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -534,7 +560,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../java/com/clarizen/api/Result.html">com.clarizen.api.Result</a></td>
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../java/com/clarizen/api/Result.html">com.clarizen.api.Result</a></td>
     </tr>
     
 
@@ -544,7 +570,33 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">com.clarizen.api.AppLoginResult</td>
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../java/com/clarizen/api/LoginResult.html">com.clarizen.api.LoginResult</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../java/com/clarizen/api/GetSessionInfoResult.html">com.clarizen.api.GetSessionInfoResult</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">com.clarizen.api.GetSessionInfoExtendedResult</td>
     </tr>
     
 
@@ -560,16 +612,16 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p><p>Java class for AppLoginResult complex type.
+<p><p>Java class for GetSessionInfoExtendedResult complex type.
  
  <p>The following schema fragment specifies the expected content contained within this class.
  
  <pre>
- &lt;complexType name="AppLoginResult">
+ &lt;complexType name="GetSessionInfoExtendedResult">
    &lt;complexContent>
-     &lt;extension base="{http://clarizen.com/api}Result">
+     &lt;extension base="{http://clarizen.com/api}GetSessionInfoResult">
        &lt;sequence>
-         &lt;element name="Url" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="ClientVersionInfo" type="{http://clarizen.com/api}ClientVersionInfo" minOccurs="0"/>
        &lt;/sequence>
      &lt;/extension>
    &lt;/complexContent>
@@ -632,8 +684,8 @@ Summary:
           protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/AppLoginResult.html#url">url</a></td>
+          <a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/GetSessionInfoExtendedResult.html#clientVersionInfo">clientVersionInfo</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -649,6 +701,120 @@ Summary:
 <table id="inhfields" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.clarizen.api.GetSessionInfoResult" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-com.clarizen.api.GetSessionInfoResult-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../com/clarizen/api/GetSessionInfoResult.html">com.clarizen.api.GetSessionInfoResult</a>
+<div id="inherited-fields-com.clarizen.api.GetSessionInfoResult">
+  <div id="inherited-fields-com.clarizen.api.GetSessionInfoResult-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-com.clarizen.api.GetSessionInfoResult-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../java/com/clarizen/api/ArrayOfFieldValue.html">ArrayOfFieldValue</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/GetSessionInfoResult.html#customInfo">customInfo</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.clarizen.api.LoginResult" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-com.clarizen.api.LoginResult-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../com/clarizen/api/LoginResult.html">com.clarizen.api.LoginResult</a>
+<div id="inherited-fields-com.clarizen.api.LoginResult">
+  <div id="inherited-fields-com.clarizen.api.LoginResult-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-com.clarizen.api.LoginResult-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../java/com/clarizen/api/LicenseType.html">LicenseType</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/LoginResult.html#licenseType">licenseType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/LoginResult.html#organizationId">organizationId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          XMLGregorianCalendar</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/LoginResult.html#serverTime">serverTime</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/LoginResult.html#sessionId">sessionId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/LoginResult.html#userId">userId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
 
 
 <tr class="api apilevel-" >
@@ -719,7 +885,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/AppLoginResult.html#AppLoginResult()">AppLoginResult</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetSessionInfoExtendedResult.html#GetSessionInfoExtendedResult()">GetSessionInfoExtendedResult</a></span>()</nobr>
         
   </td></tr>
 
@@ -745,12 +911,12 @@ Summary:
             
             
             
-            String</nobr>
+            <a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/AppLoginResult.html#getUrl()">getUrl</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetSessionInfoExtendedResult.html#getClientVersionInfo()">getClientVersionInfo</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the url property.</div>
+        <div class="jd-descrdiv">Gets the value of the clientVersionInfo property.</div>
   
   </td></tr>
 
@@ -766,9 +932,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/AppLoginResult.html#setUrl(java.lang.String)">setUrl</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetSessionInfoExtendedResult.html#setClientVersionInfo(com.clarizen.api.ClientVersionInfo)">setClientVersionInfo</a></span>(<a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the url property.</div>
+        <div class="jd-descrdiv">Sets the value of the clientVersionInfo property.</div>
   
   </td></tr>
 
@@ -786,6 +952,274 @@ Summary:
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.clarizen.api.GetSessionInfoResult" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.clarizen.api.GetSessionInfoResult-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../com/clarizen/api/GetSessionInfoResult.html">com.clarizen.api.GetSessionInfoResult</a>
+
+<div id="inherited-methods-com.clarizen.api.GetSessionInfoResult">
+  <div id="inherited-methods-com.clarizen.api.GetSessionInfoResult-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.clarizen.api.GetSessionInfoResult-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/clarizen/api/ArrayOfFieldValue.html">ArrayOfFieldValue</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetSessionInfoResult.html#getCustomInfo()">getCustomInfo</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the customInfo property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/GetSessionInfoResult.html#setCustomInfo(com.clarizen.api.ArrayOfFieldValue)">setCustomInfo</a></span>(<a href="../../../../java/com/clarizen/api/ArrayOfFieldValue.html">ArrayOfFieldValue</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the customInfo property.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.clarizen.api.LoginResult" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.clarizen.api.LoginResult-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../com/clarizen/api/LoginResult.html">com.clarizen.api.LoginResult</a>
+
+<div id="inherited-methods-com.clarizen.api.LoginResult">
+  <div id="inherited-methods-com.clarizen.api.LoginResult-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.clarizen.api.LoginResult-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/clarizen/api/LicenseType.html">LicenseType</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#getLicenseType()">getLicenseType</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the licenseType property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#getOrganizationId()">getOrganizationId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the organizationId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            XMLGregorianCalendar</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#getServerTime()">getServerTime</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the serverTime property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#getSessionId()">getSessionId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the sessionId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#getUserId()">getUserId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the userId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#setLicenseType(com.clarizen.api.LicenseType)">setLicenseType</a></span>(<a href="../../../../java/com/clarizen/api/LicenseType.html">LicenseType</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the licenseType property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#setOrganizationId(java.lang.String)">setOrganizationId</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the organizationId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#setServerTime(javax.xml.datatype.XMLGregorianCalendar)">setServerTime</a></span>(XMLGregorianCalendar value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the serverTime property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#setSessionId(java.lang.String)">setSessionId</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the sessionId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/LoginResult.html#setUserId(java.lang.String)">setUserId</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the userId property.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
 
 
 <tr class="api apilevel-" >
@@ -1119,7 +1553,7 @@ From class
 
 
 
-<A NAME="url"></A>
+<A NAME="clientVersionInfo"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1127,9 +1561,9 @@ From class
         protected 
          
          
-        String
+        <a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a>
       </span>
-        url
+        clientVersionInfo
     </h4>
       <div class="api-level">
         
@@ -1158,7 +1592,7 @@ From class
 
 
 
-<A NAME="AppLoginResult()"></A>
+<A NAME="GetSessionInfoExtendedResult()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1170,7 +1604,7 @@ From class
          
         
       </span>
-      <span class="sympad">AppLoginResult</span>
+      <span class="sympad">GetSessionInfoExtendedResult</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1204,7 +1638,7 @@ From class
 
 
 
-<A NAME="getUrl()"></A>
+<A NAME="getClientVersionInfo()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1214,9 +1648,9 @@ From class
          
          
          
-        String
+        <a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a>
       </span>
-      <span class="sympad">getUrl</span>
+      <span class="sympad">getClientVersionInfo</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1229,11 +1663,11 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the url property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the clientVersionInfo property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
-     String
+     <code><a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a></code>
      
 </li></ul>
   </div>
@@ -1242,7 +1676,7 @@ From class
 </div>
 
 
-<A NAME="setUrl(java.lang.String)"></A>
+<A NAME="setClientVersionInfo(com.clarizen.api.ClientVersionInfo)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1254,8 +1688,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setUrl</span>
-      <span class="normal">(String value)</span>
+      <span class="sympad">setClientVersionInfo</span>
+      <span class="normal">(<a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a> value)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1267,14 +1701,14 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the url property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the clientVersionInfo property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>value</td>
           <td>Allowed object is
-     String
+     <code><a href="../../../../java/com/clarizen/api/ClientVersionInfo.html">ClientVersionInfo</a></code>
      
 </td>
         </tr>

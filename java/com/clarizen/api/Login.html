@@ -321,6 +321,10 @@
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetCalendarInfoResult.html">GetCalendarInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoMessage.html">GetMultipleTodayInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetMultipleTodayInfoResult.html">GetMultipleTodayInfoResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinition.html">GetServerDefinition</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResponse.html">GetServerDefinitionResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetServerDefinitionResult.html">GetServerDefinitionResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoExtendedResult.html">GetSessionInfoExtendedResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoMessage.html">GetSessionInfoMessage</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetSessionInfoResult.html">GetSessionInfoResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/clarizen/api/GetTodayInfoMessage.html">GetTodayInfoMessage</a></li>
@@ -541,7 +545,7 @@ Summary:
        &lt;sequence>
          &lt;element name="userName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-         &lt;element name="opts" type="{http://clarizen.com/api}LoginOptions" minOccurs="0"/>
+         &lt;element name="options" type="{http://clarizen.com/api}LoginOptions" minOccurs="0"/>
        &lt;/sequence>
      &lt;/restriction>
    &lt;/complexContent>
@@ -605,7 +609,7 @@ Summary:
           
           
           <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/Login.html#opts">opts</a></td>
+          <td class="jd-linkcol"><a href="../../../../com/clarizen/api/Login.html#options">options</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -686,9 +690,9 @@ Summary:
             <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/Login.html#getOpts()">getOpts</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/Login.html#getOptions()">getOptions</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the opts property.</div>
+        <div class="jd-descrdiv">Gets the value of the options property.</div>
   
   </td></tr>
 
@@ -740,9 +744,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/clarizen/api/Login.html#setOpts(com.clarizen.api.LoginOptions)">setOpts</a></span>(<a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a> value)</nobr>
+        <span class="sympad"><a href="../../../../com/clarizen/api/Login.html#setOptions(com.clarizen.api.LoginOptions)">setOptions</a></span>(<a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the opts property.</div>
+        <div class="jd-descrdiv">Sets the value of the options property.</div>
   
   </td></tr>
 
@@ -1031,7 +1035,7 @@ From class
 
 
 
-<A NAME="opts"></A>
+<A NAME="options"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1041,7 +1045,7 @@ From class
          
         <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a>
       </span>
-        opts
+        options
     </h4>
       <div class="api-level">
         
@@ -1176,7 +1180,7 @@ From class
 
 
 
-<A NAME="getOpts()"></A>
+<A NAME="getOptions()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1188,7 +1192,7 @@ From class
          
         <a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a>
       </span>
-      <span class="sympad">getOpts</span>
+      <span class="sympad">getOptions</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1201,7 +1205,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the opts property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the options property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
@@ -1290,7 +1294,7 @@ From class
 </div>
 
 
-<A NAME="setOpts(com.clarizen.api.LoginOptions)"></A>
+<A NAME="setOptions(com.clarizen.api.LoginOptions)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1302,7 +1306,7 @@ From class
          
         void
       </span>
-      <span class="sympad">setOpts</span>
+      <span class="sympad">setOptions</span>
       <span class="normal">(<a href="../../../../java/com/clarizen/api/LoginOptions.html">LoginOptions</a> value)</span>
     </h4>
       <div class="api-level">
@@ -1315,7 +1319,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the opts property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the options property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
