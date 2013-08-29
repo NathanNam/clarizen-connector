@@ -60,6 +60,7 @@ import com.clarizen.api.queries.Condition;
 @Connector(name="clarizen", friendlyName = "Clarizen")
 public class ClarizenConnector
 {
+    private Object loginLock = new Object();
 
     /**
      * Username
@@ -482,8 +483,10 @@ public class ClarizenConnector
         this.connectionUser = connectionUser;
         this.connectionPassword = connectionPassword;
         
-        if (clarizenClient == null) {
-            setClarizenClient(ClarizenClientFactory.getClient());
+        synchronized (loginLock) {
+            if (clarizenClient == null) {
+                setClarizenClient(ClarizenClientFactory.getClient());
+            }
         }
         
         setSessionId(login(connectionUser, connectionPassword, applicationId, partnerId).getLoginResult().getSessionId());
