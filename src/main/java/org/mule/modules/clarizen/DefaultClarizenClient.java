@@ -243,6 +243,7 @@ public class DefaultClarizenClient implements ClarizenClient {
             GetServerDefinitionResult response = getService().getServerDefinition(username, password, null);
             String clarizenClientUrl = response.getServerLocation();
             System.out.println("Clarizen client URL: " + clarizenClientUrl);
+            service = null;
             login = getService(clarizenClientUrl).login(username, password, opts);
         } catch (IClarizenLoginLoginFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e);
@@ -785,6 +786,7 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     protected IClarizen getService(String address) {
+
         if (service == null) {
             service = serviceProvider.getService(address);
         }
