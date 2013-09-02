@@ -10,27 +10,44 @@
 
 package org.mule.modules.clarizen.api;
 
+import com.clarizen.api.Clarizen;
+import com.clarizen.api.IClarizen;
+import org.mule.modules.clarizen.ClarizenRuntimeException;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.mule.modules.clarizen.ClarizenRuntimeException;
-
-import com.clarizen.api.Clarizen;
-import com.clarizen.api.IClarizen;
-
 public class DefaultClarizenServiceProvider implements ClarizenServiceProvider {
 
+    private String serviceAddress;
+
+    public DefaultClarizenServiceProvider() {
+    }
+
+    public DefaultClarizenServiceProvider(String serviceAddress) {
+        this.serviceAddress = serviceAddress;
+    }
+
     @Override
-    public IClarizen getService() {
+    public IClarizen getLoginService() {
         return new Clarizen().getClarizen();
     }
 
     @Override
-    public IClarizen getService(String address) {
+    public IClarizen getService() {
         try {
-            return new Clarizen(new URL(address)).getClarizen();
+            return new Clarizen(new URL(getServiceAddress())).getClarizen();
         } catch (MalformedURLException e) {
             throw new ClarizenRuntimeException(e);
         }
+    }
+
+    @Override
+    public String getServiceAddress() {
+        return serviceAddress;
+    }
+
+    public void setServiceAddress(String serviceAddress) {
+        this.serviceAddress = serviceAddress;
     }
 }

@@ -16,5 +16,7 @@ public interface ClarizenServiceProvider {
     
     IClarizen getService();
 
-    IClarizen getService(String address);
+    IClarizen getLoginService();
+
+    String getServiceAddress();
 }
