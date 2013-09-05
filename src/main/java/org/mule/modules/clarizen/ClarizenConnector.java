@@ -13,38 +13,23 @@
  */
 package org.mule.modules.clarizen;
 
-import java.util.List;
-
+import com.clarizen.api.*;
+import com.clarizen.api.files.FileInformation;
+import com.clarizen.api.metadata.EntityDescription;
+import com.clarizen.api.queries.Condition;
 import org.mule.api.ConnectionException;
-import org.mule.api.annotations.Connect;
-import org.mule.api.annotations.ConnectionIdentifier;
-import org.mule.api.annotations.Connector;
-import org.mule.api.annotations.Disconnect;
-import org.mule.api.annotations.InvalidateConnectionOn;
-import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.ValidateConnection;
+import org.mule.api.annotations.*;
 import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.display.Placement;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
-
 import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientFactory;
-import org.mule.modules.clarizen.api.model.AllIssueType;
-import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
+import org.mule.modules.clarizen.api.model.*;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.WorkItemFilter;
-import org.mule.modules.clarizen.api.model.WorkItemState;
-import org.mule.modules.clarizen.api.model.WorkItemType;
 
-import com.clarizen.api.AccessType;
-import com.clarizen.api.EntityId;
-import com.clarizen.api.GetCalendarInfoResult;
-import com.clarizen.api.Recipient;
-import com.clarizen.api.files.FileInformation;
-import com.clarizen.api.metadata.EntityDescription;
-import com.clarizen.api.queries.Condition;
+import java.util.List;
 
 /**
  * Clarizen Cloud Connector
@@ -482,13 +467,18 @@ public class ClarizenConnector
                         @Optional String partnerId) throws ConnectionException {
         this.connectionUser = connectionUser;
         this.connectionPassword = connectionPassword;
-        
+
         synchronized (loginLock) {
             if (clarizenClient == null) {
-                setClarizenClient(ClarizenClientFactory.getClient());
+                DefaultClarizenClient loginDefaultClarizenClient = (DefaultClarizenClient) ClarizenClientFactory.getClient(null);
+                IClarizen loginService = loginDefaultClarizenClient.getServiceProvider().getLoginService();
+                GetServerDefinitionResult response = loginService.getServerDefinition(connectionUser, connectionPassword, null);
+                String clarizenClientUrl = response.getServerLocation();
+                System.out.println("Clarizen client URL: " + clarizenClientUrl);
+                setClarizenClient(ClarizenClientFactory.getClient(clarizenClientUrl));
             }
         }
-        
+
         setSessionId(login(connectionUser, connectionPassword, applicationId, partnerId).getLoginResult().getSessionId());
     }
 

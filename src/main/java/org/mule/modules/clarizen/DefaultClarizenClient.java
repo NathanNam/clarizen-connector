@@ -10,15 +10,13 @@
 
 package org.mule.modules.clarizen;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.*;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
-
 import com.clarizen.api.*;
 import com.clarizen.api.files.*;
+import com.clarizen.api.metadata.*;
+import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
+import com.clarizen.api.projectmanagement.WorkItemsQuery;
+import com.clarizen.api.queries.*;
+import com.clarizen.api.queries.Query;
 import org.apache.commons.beanutils.BeanMap;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
@@ -29,37 +27,22 @@ import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.apache.log4j.Logger;
 import org.mule.modules.clarizen.api.ClarizenClient;
 import org.mule.modules.clarizen.api.ClarizenClientHelper;
-import org.mule.modules.clarizen.api.ClarizenServiceProvider;
 import org.mule.modules.clarizen.api.ClarizenDateConverter;
-import org.mule.modules.clarizen.api.model.AllIssueType;
-import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
+import org.mule.modules.clarizen.api.ClarizenServiceProvider;
+import org.mule.modules.clarizen.api.model.*;
 import org.mule.modules.clarizen.api.model.Login;
-import org.mule.modules.clarizen.api.model.WorkItemFilter;
-import org.mule.modules.clarizen.api.model.WorkItemState;
-import org.mule.modules.clarizen.api.model.WorkItemType;
 
-import com.clarizen.api.files.DownloadMessage;
-import com.clarizen.api.files.DownloadResult;
-import com.clarizen.api.files.FileInformation;
-import com.clarizen.api.metadata.DescribeEntitiesMessage;
-import com.clarizen.api.metadata.DescribeEntitiesResult;
-import com.clarizen.api.metadata.EntityDescription;
-import com.clarizen.api.metadata.GetSystemSettingsValuesMessage;
-import com.clarizen.api.metadata.GetSystemSettingsValuesResult;
-import com.clarizen.api.metadata.ListEntitiesMessage;
-import com.clarizen.api.metadata.ListEntitiesResult;
-import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
-import com.clarizen.api.projectmanagement.WorkItemsQuery;
-import com.clarizen.api.queries.Condition;
-import com.clarizen.api.queries.EntityQuery;
-import com.clarizen.api.queries.Paging;
-import com.clarizen.api.queries.Query;
-import com.clarizen.api.queries.QueryResult;
+import javax.xml.bind.JAXBException;
+import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 public class DefaultClarizenClient implements ClarizenClient {
 
     private ClarizenClientHelper helper;
     private IClarizen service;
+    private IClarizen loginService;
     private ClarizenServiceProvider serviceProvider;
     private String sessionId;
     private ConvertUtilsBean convertUtilsBean;
@@ -68,6 +51,8 @@ public class DefaultClarizenClient implements ClarizenClient {
     private static Logger logger = Logger.getLogger(DefaultClarizenClient.class);
     private static final String DEFAULT_DATE_CONVERTER_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
     private static final String DEFAULT_PACKAGE_MODEL = "org.mule.modules.clarizen.api.model.";
+
+    private String serviceAddress;
     
     
     /**
@@ -87,7 +72,8 @@ public class DefaultClarizenClient implements ClarizenClient {
         clarizenDateConverter = new ClarizenDateConverter();
         clarizenDateConverter.setPattern(DEFAULT_DATE_CONVERTER_PATTERN);
         convertUtilsBean.register(clarizenDateConverter, java.util.Date.class);
-        beanUtilsBean = new BeanUtilsBean(convertUtilsBean, new PropertyUtilsBean());        
+        beanUtilsBean = new BeanUtilsBean(convertUtilsBean, new PropertyUtilsBean());
+        serviceAddress = provider.getServiceAddress();
     }
     
     @SuppressWarnings("unchecked")
@@ -240,11 +226,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         
         LoginResult login;
         try {
-            GetServerDefinitionResult response = getService().getServerDefinition(username, password, null);
-            String clarizenClientUrl = response.getServerLocation();
-            System.out.println("Clarizen client URL: " + clarizenClientUrl);
-            service = null;
-            login = getService(clarizenClientUrl).login(username, password, opts);
+            login = getService().login(username, password, opts);
         } catch (IClarizenLoginLoginFailureFaultFaultMessage e) {
             throw new ClarizenRuntimeException(e);
         }
@@ -777,18 +759,18 @@ public class DefaultClarizenClient implements ClarizenClient {
         this.sessionId = sessionId;
     }
     
-    protected IClarizen getService() {
+    protected IClarizen getLoginService() {
         if (service == null) {
-            service = serviceProvider.getService();
+            service = serviceProvider.getLoginService();
         }
 
         return service;
     }
 
-    protected IClarizen getService(String address) {
+    protected IClarizen getService() {
 
         if (service == null) {
-            service = serviceProvider.getService(address);
+            service = serviceProvider.getService();
         }
 
         return service;
@@ -1064,5 +1046,13 @@ public class DefaultClarizenClient implements ClarizenClient {
     public void setXmlGregorianCalendarConverter(
             ClarizenDateConverter xmlGregorianCalendarConverter) {
         this.clarizenDateConverter = xmlGregorianCalendarConverter;
+    }
+
+    public String getServiceAddress() {
+        return serviceAddress;
+    }
+
+    public void setServiceAddress(String serviceAddress) {
+        this.serviceAddress = serviceAddress;
     }
 }

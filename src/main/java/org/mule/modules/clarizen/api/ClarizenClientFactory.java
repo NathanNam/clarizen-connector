@@ -20,11 +20,12 @@ public class ClarizenClientFactory {
 
     }
 
-    public static ClarizenClient getClient() {
-        if (clarizenClient == null) {
+    public static ClarizenClient getClient(String address) {
+        if (address == null) {
             clarizenClient = new DefaultClarizenClient(new DefaultClarizenServiceProvider());
+        } else {
+            clarizenClient = new DefaultClarizenClient(new DefaultClarizenServiceProvider(address));
         }
         return clarizenClient;
     }
-
 }
