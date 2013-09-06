@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.clarizen.api.EntityId;
+import com.clarizen.api.files.FileInformation;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -63,6 +64,8 @@ public class ClarizenClientTest {
     private Condition queryCondition;
     @Mock
     private EntityId entityId;
+    @Mock
+    private List<FileInformation> fileInformationList;
 
     @Before
     public void setUp() {
@@ -127,11 +130,17 @@ public class ClarizenClientTest {
     }
 
     @Test
+    public void downloadAttachments() {
+        when(clarizenClient.downloadEntityAttachments(entityId)).thenReturn(createFileInformationList());
+        assertEquals(createFileInformationList(), clarizenConnector.downloadEntityAttachments(entityId));
+    }
+
+    @Test
     public void testWorkItemsQuery() {
         when(clarizenClient.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
                 SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES, USE_FLAT_CLASSES)).
                 thenReturn(createListBaseClarizenEntity());
-        assertEquals(createListGenericEntity(), clarizenConnector.workItemsQuery(createList(), SOME_WORK_ITEM_STATE, 
+        assertEquals(createListGenericEntity(), clarizenConnector.workItemsQuery(createList(), SOME_WORK_ITEM_STATE,
                 SOME_WORK_ITEM_TYPE, SOME_WORK_ITEM_FILTER, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES));
     }
     
@@ -147,5 +156,8 @@ public class ClarizenClientTest {
         return new ArrayList<BaseClarizenEntity>();
     }
 
+    private List<FileInformation> createFileInformationList() {
+        return new ArrayList<FileInformation>();
+    }
 
 }

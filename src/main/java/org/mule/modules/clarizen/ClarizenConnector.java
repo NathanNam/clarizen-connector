@@ -402,6 +402,21 @@ public class ClarizenConnector
     public Boolean attachFileUrlToEntity(EntityId entityId, String attachmentUrl, String attachmentFilename) {
         return clarizenClient.attachFileUrlToEntity(entityId, attachmentUrl, attachmentFilename);
     }
+
+    /**
+     * Given a certain Entity Id, retrieves all associated attachments.
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:download-entity-attachments}
+     *
+     * @param entityId The entity Id associated with the attachments
+     * @return The list containing all the attachments.
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public List<FileInformation> downloadEntityAttachments(EntityId entityId) {
+        return clarizenClient.downloadEntityAttachments(entityId);
+    }
     
     public ClarizenClient getClarizenClient() {
         return clarizenClient;

@@ -104,3 +104,9 @@
  <clarizen:entity-id ref="#[payload]" />
 </clarizen:attach-file-url-to-entity>
 <!-- END_INCLUDE(clarizen:attach-file-url-to-entity) -->
+
+<!-- BEGIN_INCLUDE(clarizen:download-entity-attachments) -->
+<clarizen:download-entity-attachments>
+ <clarizen:entity-id ref="#[payload]" />
+</clarizen:download-entity-attachments>
+<!-- END_INCLUDE(clarizen:download-entity-attachments) -->

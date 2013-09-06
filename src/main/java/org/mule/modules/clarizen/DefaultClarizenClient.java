@@ -16,6 +16,7 @@ import com.clarizen.api.metadata.*;
 import com.clarizen.api.projectmanagement.MyWorkItemsQuery;
 import com.clarizen.api.projectmanagement.WorkItemsQuery;
 import com.clarizen.api.queries.*;
+import com.clarizen.api.queries.Operator;
 import com.clarizen.api.queries.Query;
 import org.apache.commons.beanutils.BeanMap;
 import org.apache.commons.beanutils.BeanUtilsBean;
@@ -39,7 +40,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class DefaultClarizenClient implements ClarizenClient {
-
+    /** Large page size for one-page queries */
+    private static final Integer UNLIMITED_QUERY_PAGE_SIZE = 1000;
+    /** Number of pages for large, one-page queries */
+    private static final Integer UNLIMITED_QUERY_PAGE_NUMBER = 1;
     private ClarizenClientHelper helper;
     private IClarizen service;
     private IClarizen loginService;
@@ -1029,6 +1033,81 @@ public class DefaultClarizenClient implements ClarizenClient {
         }
 
         return true;
+    }
+
+    /**
+     * Given a certain Entity Id, retrieves all associated attachments.
+     *
+     * @param entityId The entity Id associated with the attachments
+     * @return The list containing all the attachments.
+     */
+    @Override
+    public List<FileInformation> downloadEntityAttachments(EntityId entityId) {
+        List<EntityId> fileIdList = retrieveAttachmentEntityIds(entityId);
+        List<FileInformation> fileInformationList = retrieveFiles(fileIdList);
+
+        return fileInformationList;
+    }
+
+    private List<FileInformation> retrieveFiles(List<EntityId> fileDocumentGenericEntityIdList) {
+        ArrayOfBaseMessage downloadMessages = new ArrayOfBaseMessage();
+        for(EntityId fileDocumentId : fileDocumentGenericEntityIdList) {
+            DownloadMessage downloadMessage = new DownloadMessage();
+            downloadMessage.setDocumentId(fileDocumentId);
+            downloadMessages.getBaseMessage().add(downloadMessage);
+        }
+
+        List<FileInformation>fileInformationList = new ArrayList<FileInformation>(fileDocumentGenericEntityIdList.size());
+        try {
+            List<DownloadResult> downloadResultList = (List) getService().execute(downloadMessages).getResult();
+
+            for (DownloadResult result: downloadResultList) {
+                if (result.isSuccess()) {
+                    fileInformationList.add(result.getFileInformation());
+                } else {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(),
+                            result.getError().getMessage());
+                }
+            }
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+        return fileInformationList;
+    }
+
+    private List<EntityId> retrieveAttachmentEntityIds(EntityId entityId) {
+        EntityQuery attachmentLinksQuery = createFieldAndConstantConditionQuery("AttachmentLink", "Entity", entityId, Operator.EQUAL);
+
+        List<String> fieldsToRetrieve = Arrays.asList("Document");
+        List<GenericEntity> attachmentLinkResults = createQuery(attachmentLinksQuery, fieldsToRetrieve, UNLIMITED_QUERY_PAGE_SIZE, UNLIMITED_QUERY_PAGE_NUMBER);
+
+        List<EntityId>fileDocumentGenericEntityIdList = new ArrayList<EntityId>(attachmentLinkResults.size());
+        for(GenericEntity resultEntity: attachmentLinkResults) {
+            for(FieldValue fieldValue : resultEntity.getValues().getFieldValue()){
+                if("Document".equals(fieldValue.getFieldName())){
+                    fileDocumentGenericEntityIdList.add(((GenericEntity) fieldValue.getValue()).getId());
+                }
+            }
+        }
+        return fileDocumentGenericEntityIdList;
+    }
+
+    private EntityQuery createFieldAndConstantConditionQuery(String typeName, String field, Object constant, Operator operator) {
+        FieldExpression leftExpression = new FieldExpression();
+        leftExpression.setFieldName(field);
+        ConstantExpression rightExpression = new ConstantExpression();
+        rightExpression.setValue(constant);
+
+        Compare linkCondition = new Compare();
+        linkCondition.setLeftExpression(leftExpression);
+        linkCondition.setRightExpression(rightExpression);
+        linkCondition.setOperator(operator);
+
+        EntityQuery query = new EntityQuery();
+        query.setTypeName(typeName);
+        query.setWhere(linkCondition);
+
+        return query;
     }
 
     public ConvertUtilsBean getConvertUtilsBean() {

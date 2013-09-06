@@ -185,6 +185,14 @@ public interface ClarizenClient {
     Boolean attachFileUrlToEntity(EntityId entityId, String attachmentUrl, String attachmentFilename);
 
     /**
+     * Given a certain Entity Id, retrieves all associated attachments.
+     *
+     * @param entityId The entity Id associated with the attachments
+     * @return The list containing all the attachments.
+     */
+    List<FileInformation> downloadEntityAttachments(EntityId entityId);
+
+    /**
      * Updates an entity
      * @param entity model class extending BaseClarizenClient
      * @return updated entity
