@@ -12,6 +12,7 @@ package org.mule.modules.clarizen.api;
 
 import java.util.List;
 
+import com.clarizen.api.*;
 import org.mule.modules.clarizen.api.model.AllIssueType;
 import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
 import org.mule.modules.clarizen.api.model.Login;
@@ -19,10 +20,6 @@ import org.mule.modules.clarizen.api.model.WorkItemFilter;
 import org.mule.modules.clarizen.api.model.WorkItemState;
 import org.mule.modules.clarizen.api.model.WorkItemType;
 
-import com.clarizen.api.AccessType;
-import com.clarizen.api.EntityId;
-import com.clarizen.api.GetCalendarInfoResult;
-import com.clarizen.api.Recipient;
 import com.clarizen.api.files.FileInformation;
 import com.clarizen.api.metadata.EntityDescription;
 import com.clarizen.api.queries.Condition;
@@ -35,6 +32,13 @@ public interface ClarizenClient {
      * @return created entity
      */
     BaseClarizenEntity createEntity(BaseClarizenEntity entity);
+
+    /**
+     * Creates a generic entity
+     * @param entity model class extending GenericEntity
+     * @return created entity
+     */
+    GenericEntity createEntity(GenericEntity entity);
     
     /**
      * Creates an entity query
@@ -77,6 +81,13 @@ public interface ClarizenClient {
      * @return true if the entity was successfully deleted
      */
     Boolean deleteEntity(BaseClarizenEntity entity);
+
+    /**
+     * Deletes en entity, defined by its entity Id
+     * @param entityId identifies the Entity to delete
+     * @return true if the entity was successfully deleted
+     */
+    Boolean deleteEntity(EntityId entityId);
     
     /**
      * Download file information
@@ -191,6 +202,15 @@ public interface ClarizenClient {
      * @return The list containing all the attachments.
      */
     List<FileInformation> downloadEntityAttachments(EntityId entityId);
+
+    /**
+     * Given a certain Entity Id representing a work item, retrieves all associated human resources.
+     *
+     * @param entityId The entity Id associated with a work item
+     * @param fieldsToRetrieve
+     * @return The list containing all the human resources.
+     */
+    List<GenericEntity> retrieveWorkItemHumanResources(EntityId entityId, List<String> fieldsToRetrieve);
 
     /**
      * Updates an entity

@@ -133,6 +133,22 @@ public class ClarizenConnector
     public BaseClarizenEntity createEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.createEntity(entity);
     }
+
+    /**
+     * Creates a new Clarizen generic entity
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:create-generic-entity}
+     *
+     * @param entity          Entity to be created
+     *
+     * @return Created entity
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public GenericEntity createGenericEntity(@Optional @Default("#[payload]") GenericEntity entity) {
+        return clarizenClient.createEntity(entity);
+    }
     
     /**
      * Updates a new Clarizen entity
@@ -304,6 +320,21 @@ public class ClarizenConnector
     public Boolean deleteEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.deleteEntity(entity);
     }
+
+    /**
+     * Deletes an entity by its entity Id
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:delete-entity-by-id}
+     *
+     * @param entityId the entity Id of the entity to be deleted
+     * @return true if the entity was successfully deleted
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public Boolean deleteEntityById(@Optional @Default("#[payload]") EntityId entityId) {
+        return clarizenClient.deleteEntity(entityId);
+    }
     
     /**
      * Gets calendar information for the specified user
@@ -416,6 +447,22 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<FileInformation> downloadEntityAttachments(EntityId entityId) {
         return clarizenClient.downloadEntityAttachments(entityId);
+    }
+
+    /**
+     * Given a certain Entity Id representing a work item, retrieves all associated human resources.
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:retrieve-work-item-human-resources}
+     *
+     * @param entityId The entity Id associated with a work item
+     * @param fieldsToRetrieve List of strings representing the fields to retrieve
+     * @return The list containing all the human resources.
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public List<GenericEntity> retrieveWorkItemHumanResources(EntityId entityId, List<String> fieldsToRetrieve) {
+        return clarizenClient.retrieveWorkItemHumanResources(entityId, fieldsToRetrieve);
     }
     
     public ClarizenClient getClarizenClient() {

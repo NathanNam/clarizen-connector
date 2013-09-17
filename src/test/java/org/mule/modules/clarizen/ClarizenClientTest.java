@@ -11,6 +11,7 @@
 package org.mule.modules.clarizen;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.clarizen.api.EntityId;
@@ -81,6 +82,12 @@ public class ClarizenClientTest {
     }
 
     @Test
+    public void testCreateGenericEntity() {
+        when(clarizenClient.createEntity(genericEntity)).thenReturn(genericEntity);
+        assertEquals(genericEntity, clarizenConnector.createGenericEntity(genericEntity));
+    }
+
+    @Test
     public void testCreateEntityQuery() {
         when(clarizenClient.createEntityQuery(createList(), SOME_QUERY_TYPE, 
                 queryCondition, SOME_PAGE_SIZE, SOME_MAX_NO_PAGES, USE_FLAT_CLASSES)).thenReturn(createListBaseClarizenEntity());
@@ -133,6 +140,13 @@ public class ClarizenClientTest {
     public void downloadAttachments() {
         when(clarizenClient.downloadEntityAttachments(entityId)).thenReturn(createFileInformationList());
         assertEquals(createFileInformationList(), clarizenConnector.downloadEntityAttachments(entityId));
+    }
+
+    @Test
+    public void retrieveHumanResources() {
+        List<String> fieldsToRetrieve = Arrays.asList("WorkItem", "Resource", "ResourceRole", "Units", "CurrentJiraAssignee");
+        when(clarizenClient.retrieveWorkItemHumanResources(entityId, fieldsToRetrieve)).thenReturn(createListGenericEntity());
+        assertEquals(createListGenericEntity(), clarizenConnector.retrieveWorkItemHumanResources(entityId, fieldsToRetrieve));
     }
 
     @Test

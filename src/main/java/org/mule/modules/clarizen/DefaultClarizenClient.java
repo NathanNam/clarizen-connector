@@ -411,6 +411,36 @@ public class DefaultClarizenClient implements ClarizenClient {
     }
 
     @Override
+    public GenericEntity createEntity(GenericEntity entity) {
+        CreateMessage entityMessage = new CreateMessage();
+        entityMessage.setEntity(entity);
+
+        ArrayOfBaseMessage messages = new ArrayOfBaseMessage();
+        messages.getBaseMessage().add(entityMessage);
+
+        List<CreateResult> results;
+        try {
+            results = (List) getService().execute(messages).getResult();
+
+            for (Result result: results) {
+                if (!result.isSuccess()) {
+                    throw new ClarizenRuntimeException(result.getError().getErrorCode(),
+                            result.getError().getMessage());
+                }
+            }
+
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+
+        if(results.get(0).getId() != null) {
+            entity.setId(results.get(0).getId());
+        }
+
+        return entity;
+    }
+
+    @Override
     public BaseClarizenEntity updateEntity(BaseClarizenEntity entity) {
         
         GenericEntity genericEntity = toGenericEntity(entity);
@@ -455,6 +485,29 @@ public class DefaultClarizenClient implements ClarizenClient {
             throw new ClarizenSessionTimeoutException(e.getMessage());
         }
         
+        return true;
+    }
+
+    @Override
+    public Boolean deleteEntity(EntityId entityId) {
+
+        DeleteMessage deleteMsg = new DeleteMessage();
+        deleteMsg.setId(entityId);
+
+        ArrayOfBaseMessage messages = helper.createMessage(deleteMsg);
+
+        try {
+            Result result = getService().execute(messages).getResult().get(0);
+
+            if (!result.isSuccess()) {
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(),
+                        result.getError().getMessage());
+            }
+
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+
         return true;
     }
     
@@ -1090,6 +1143,15 @@ public class DefaultClarizenClient implements ClarizenClient {
             }
         }
         return fileDocumentGenericEntityIdList;
+    }
+
+    @Override
+    public List<GenericEntity> retrieveWorkItemHumanResources(EntityId entityId, List<String> fieldsToRetrieve) {
+        EntityQuery hrQuery = createFieldAndConstantConditionQuery("ResourceLink", "WorkItem", entityId, Operator.EQUAL);
+
+        List<GenericEntity> hrLinkResults = createQuery(hrQuery, fieldsToRetrieve, UNLIMITED_QUERY_PAGE_SIZE, UNLIMITED_QUERY_PAGE_NUMBER);
+
+        return hrLinkResults;
     }
 
     private EntityQuery createFieldAndConstantConditionQuery(String typeName, String field, Object constant, Operator operator) {

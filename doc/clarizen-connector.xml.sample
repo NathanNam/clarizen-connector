@@ -29,6 +29,10 @@
 <clarizen:create-entity />
 <!-- END_INCLUDE(clarizen:create-entity) -->
 
+<!-- BEGIN_INCLUDE(clarizen:create-generic-entity) -->
+<clarizen:create-generic-entity />
+<!-- END_INCLUDE(clarizen:create-generic-entity) -->
+
 <!-- BEGIN_INCLUDE(clarizen:update-entity) -->
 <clarizen:update-entity />
 <!-- END_INCLUDE(clarizen:update-entity) -->
@@ -77,6 +81,10 @@
 <clarizen:delete-entity />
 <!-- END_INCLUDE(clarizen:delete-entity) -->
 
+<!-- BEGIN_INCLUDE(clarizen:delete-entity-by-id) -->
+<clarizen:delete-entity-by-id />
+<!-- END_INCLUDE(clarizen:delete-entity-by-id) -->
+
 <!-- BEGIN_INCLUDE(clarizen:get-calendar-information) -->
 <clarizen:get-calendar-information />
 <!-- END_INCLUDE(clarizen:get-calendar-information) -->
@@ -110,3 +118,14 @@
  <clarizen:entity-id ref="#[payload]" />
 </clarizen:download-entity-attachments>
 <!-- END_INCLUDE(clarizen:download-entity-attachments) -->
+
+<!-- BEGIN_INCLUDE(clarizen:retrieve-work-item-human-resources) -->
+<clarizen:retrieve-work-item-human-resources>
+ <clarizen:entity-id ref="#[payload]" />
+ <clarizen:fields-to-retrieve>
+  <clarizen:fields-to-retrieve>Resource</clarizen:fields-to-retrieve>
+  <clarizen:fields-to-retrieve>ResourceRole</clarizen:fields-to-retrieve>
+  <clarizen:fields-to-retrieve>Units</clarizen:fields-to-retrieve>
+ </clarizen:fields-to-retrieve>
+</clarizen:retrieve-work-item-human-resources>
+<!-- END_INCLUDE(clarizen:retrieve-work-item-human-resources) -->
