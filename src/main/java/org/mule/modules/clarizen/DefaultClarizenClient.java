@@ -464,6 +464,28 @@ public class DefaultClarizenClient implements ClarizenClient {
         
         return entity;        
     }
+
+    @Override
+    public GenericEntity updateEntity(GenericEntity entity) {
+        UpdateMessage updateMsg = new UpdateMessage();
+        updateMsg.setEntity(entity);
+
+        ArrayOfBaseMessage messages = helper.createMessage(updateMsg);
+
+        try {
+            Result result = getService().execute(messages).getResult().get(0);
+
+            if (!result.isSuccess()) {
+                throw new ClarizenRuntimeException(result.getError().getErrorCode(),
+                        result.getError().getMessage());
+            }
+
+        } catch (IClarizenExecuteSessionTimeoutFailureFaultFaultMessage e) {
+            throw new ClarizenSessionTimeoutException(e.getMessage());
+        }
+
+        return entity;
+    }
     
     @Override
     public Boolean deleteEntity(BaseClarizenEntity entity) {

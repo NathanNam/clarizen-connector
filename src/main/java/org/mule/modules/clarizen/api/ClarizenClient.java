@@ -218,6 +218,13 @@ public interface ClarizenClient {
      * @return updated entity
      */
     BaseClarizenEntity updateEntity(BaseClarizenEntity entity);
+
+    /**
+     * Updates an entity
+     * @param entity model class extending GenericEntity
+     * @return updated entity
+     */
+    GenericEntity updateEntity(GenericEntity entity);
     
     /**
      * Queries workItems

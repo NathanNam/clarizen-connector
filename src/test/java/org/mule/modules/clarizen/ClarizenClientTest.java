@@ -131,6 +131,12 @@ public class ClarizenClientTest {
     }
 
     @Test
+    public void testUpdateGenericEntity() {
+        when(clarizenClient.updateEntity(genericEntity)).thenReturn(genericEntity);
+        assertEquals(genericEntity, clarizenConnector.updateGenericEntity(genericEntity));
+    }
+
+    @Test
     public void testAttachFileUrlToEntity() {
         when(clarizenClient.attachFileUrlToEntity(entityId, SOME_URL, SOME_FILENAME)).thenReturn(true);
         assertTrue(clarizenConnector.attachFileUrlToEntity(entityId, SOME_URL, SOME_FILENAME));

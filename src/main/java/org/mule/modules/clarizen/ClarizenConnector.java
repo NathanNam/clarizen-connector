@@ -165,6 +165,22 @@ public class ClarizenConnector
     public BaseClarizenEntity updateEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.updateEntity(entity);
     }
+
+    /**
+     * Updates a Clarizen generic entity
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/clarizen-connector.xml.sample clarizen:update-generic-entity}
+     *
+     * @param entity          Entity to be updated
+     *
+     * @return Created entity
+     */
+    @Processor
+    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
+    public GenericEntity updateGenericEntity(@Optional @Default("#[payload]") GenericEntity entity) {
+        return clarizenClient.updateEntity(entity);
+    }
     
     /**
      * Search for work items

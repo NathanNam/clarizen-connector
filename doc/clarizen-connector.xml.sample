@@ -37,6 +37,10 @@
 <clarizen:update-entity />
 <!-- END_INCLUDE(clarizen:update-entity) -->
 
+<!-- BEGIN_INCLUDE(clarizen:update-generic-entity) -->
+<clarizen:update-entity />
+<!-- END_INCLUDE(clarizen:update-generic-entity) -->
+
 <!-- BEGIN_INCLUDE(clarizen:entity-query) -->
 <clarizen:entity-query queryTypeName="User" condition-ref="#[payload]" pageSize="1000">
     <clarizen:fields-to-retrieve>
