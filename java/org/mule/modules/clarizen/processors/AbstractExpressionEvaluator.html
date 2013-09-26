@@ -278,14 +278,17 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityMessageProcessor.html">CreateEntityMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityQueryMessageProcessor.html">CreateEntityQueryMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateFromTemplateMessageProcessor.html">CreateFromTemplateMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateGenericEntityMessageProcessor.html">CreateGenericEntityMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateIssuesQueryMessageProcessor.html">CreateIssuesQueryMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateTaskMessageProcessor.html">CreateTaskMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemByParentIdMessageProcessor.html">CreateWorkItemByParentIdMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemMessageProcessor.html">CreateWorkItemMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateWorkItemSingleValuesMessageProcessor.html">CreateWorkItemSingleValuesMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DeleteEntityByIdMessageProcessor.html">DeleteEntityByIdMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DeleteEntityMessageProcessor.html">DeleteEntityMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DescribeEntitiesMessageProcessor.html">DescribeEntitiesMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DescribeEntityMessageProcessor.html">DescribeEntityMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DownloadEntityAttachmentsMessageProcessor.html">DownloadEntityAttachmentsMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DownloadFileInformationMessageProcessor.html">DownloadFileInformationMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetCalendarInformationMessageProcessor.html">GetCalendarInformationMessageProcessor</a></li>
@@ -297,6 +300,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/ListEntitiesMessageProcessor.html">ListEntitiesMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/LoginMessageProcessor.html">LoginMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/LogoutMessageProcessor.html">LogoutMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/RetrieveWorkItemHumanResourcesMessageProcessor.html">RetrieveWorkItemHumanResourcesMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/SendEmailMessageProcessor.html">SendEmailMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateAllIssueMessageProcessor.html">UpdateAllIssueMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateCaseMessageProcessor.html">UpdateCaseMessageProcessor</a></li>
@@ -466,7 +470,11 @@ Summary:
             
               <a href="../../../../../../java/com/clarizen/api/transformers/EntityIdExpressionHolderTransformer.html">EntityIdExpressionHolderTransformer</a>,
             
+              <a href="../../../../../../java/com/clarizen/api/transformers/GenericEntityExpressionHolderTransformer.html">GenericEntityExpressionHolderTransformer</a>,
+            
               <a href="../../../../../../java/org/mule/modules/clarizen/process/ManagedConnectionProcessInterceptor.html">ManagedConnectionProcessInterceptor</a>&lt;T&gt;,
+            
+              <a href="../../../../../../java/com/clarizen/api/transformers/PermissionsExpressionHolderTransformer.html">PermissionsExpressionHolderTransformer</a>,
             
               <a href="../../../../../../java/com/clarizen/api/transformers/RecipientExpressionHolderTransformer.html">RecipientExpressionHolderTransformer</a>
             
@@ -489,7 +497,15 @@ Summary:
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/clarizen/api/transformers/GenericEntityExpressionHolderTransformer.html">GenericEntityExpressionHolderTransformer</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/process/ManagedConnectionProcessInterceptor.html">ManagedConnectionProcessInterceptor</a>&lt;T&gt;</td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/clarizen/api/transformers/PermissionsExpressionHolderTransformer.html">PermissionsExpressionHolderTransformer</a></td>
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
@@ -517,43 +533,83 @@ Summary:
               >
           
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;,
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/AttachFileUrlToEntityMessageProcessor.html">AttachFileUrlToEntityMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityMessageProcessor.html">CreateEntityMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/AttachFileUrlToEntityMessageProcessor.html">AttachFileUrlToEntityMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateFromTemplateMessageProcessor.html">CreateFromTemplateMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateEntityMessageProcessor.html">CreateEntityMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/DeleteEntityMessageProcessor.html">DeleteEntityMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateFromTemplateMessageProcessor.html">CreateFromTemplateMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/DescribeEntitiesMessageProcessor.html">DescribeEntitiesMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateGenericEntityMessageProcessor.html">CreateGenericEntityMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/DownloadFileInformationMessageProcessor.html">DownloadFileInformationMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/DeleteEntityByIdMessageProcessor.html">DeleteEntityByIdMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/DeleteEntityMessageProcessor.html">DeleteEntityMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/GetCalendarInformationMessageProcessor.html">GetCalendarInformationMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/DescribeEntitiesMessageProcessor.html">DescribeEntitiesMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/GetMyWorkItemsMessageProcessor.html">GetMyWorkItemsMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/DownloadEntityAttachmentsMessageProcessor.html">DownloadEntityAttachmentsMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/GetSystemSettingsMessageProcessor.html">GetSystemSettingsMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/DownloadFileInformationMessageProcessor.html">DownloadFileInformationMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/GetWorkItemByIdMessageProcessor.html">GetWorkItemByIdMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/IssueQueryMessageProcessor.html">IssueQueryMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/GetCalendarInformationMessageProcessor.html">GetCalendarInformationMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/LifecycleChangeMessageProcessor.html">LifecycleChangeMessageProcessor</a>,
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/GetMyWorkItemsMessageProcessor.html">GetMyWorkItemsMessageProcessor</a>,
+              
+              
             
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/ListEntitiesMessageProcessor.html">ListEntitiesMessageProcessor</a>,
-            
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/SendEmailMessageProcessor.html">SendEmailMessageProcessor</a>,
-            
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateEntityMessageProcessor.html">UpdateEntityMessageProcessor</a>,
-            
-              <a href="../../../../../../java/org/mule/modules/clarizen/processors/WorkItemsQueryMessageProcessor.html">WorkItemsQueryMessageProcessor</a>
+              
+                <a href="../../../../../../java/org/mule/modules/clarizen/processors/GetSystemSettingsMessageProcessor.html">GetSystemSettingsMessageProcessor</a>,
+              
+              and
+                <a href="#" onclick="return toggleInherited(document.getElementById('subclasses-indirect', null))">8 others.</a>
+              
             
           
       </div>
@@ -582,6 +638,14 @@ Summary:
               <td class="jd-descrcol" width="100%">CreateFromTemplateMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createFromTemplate(java.lang.String, org.mule.modules.clarizen.api.model.BaseClarizenEntity)">createFromTemplate(java.lang.String, org.mule.modules.clarizen.api.model.BaseClarizenEntity)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateGenericEntityMessageProcessor.html">CreateGenericEntityMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateGenericEntityMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#createGenericEntity(com.clarizen.api.GenericEntity)">createGenericEntity(com.clarizen.api.GenericEntity)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DeleteEntityByIdMessageProcessor.html">DeleteEntityByIdMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">DeleteEntityByIdMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#deleteEntityById(com.clarizen.api.EntityId)">deleteEntityById(com.clarizen.api.EntityId)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DeleteEntityMessageProcessor.html">DeleteEntityMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">DeleteEntityMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#deleteEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)">deleteEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
@@ -590,40 +654,48 @@ Summary:
               <td class="jd-descrcol" width="100%">DescribeEntitiesMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#describeEntities(java.util.List<java.lang.String>)">describeEntities(java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DownloadEntityAttachmentsMessageProcessor.html">DownloadEntityAttachmentsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">DownloadEntityAttachmentsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#downloadEntityAttachments(com.clarizen.api.EntityId)">downloadEntityAttachments(com.clarizen.api.EntityId)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/DownloadFileInformationMessageProcessor.html">DownloadFileInformationMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">DownloadFileInformationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#downloadFileInformation(org.mule.modules.clarizen.api.model.BaseClarizenEntity)">downloadFileInformation(org.mule.modules.clarizen.api.model.BaseClarizenEntity)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/EntityQueryMessageProcessor.html">EntityQueryMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">EntityQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#entityQuery(java.util.List<java.lang.String>, java.lang.String, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)">entityQuery(java.util.List, java.lang.String, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetCalendarInformationMessageProcessor.html">GetCalendarInformationMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetCalendarInformationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#getCalendarInformation(com.clarizen.api.EntityId)">getCalendarInformation(com.clarizen.api.EntityId)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetMyWorkItemsMessageProcessor.html">GetMyWorkItemsMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetMyWorkItemsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#getMyWorkItems(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer, java.lang.Integer)">getMyWorkItems(java.util.List, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetSystemSettingsMessageProcessor.html">GetSystemSettingsMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetSystemSettingsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#getSystemSettings(java.util.List<java.lang.String>)">getSystemSettings(java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/GetWorkItemByIdMessageProcessor.html">GetWorkItemByIdMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetWorkItemByIdMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#getWorkItemById(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.List<java.lang.String>)">getWorkItemById(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/IssueQueryMessageProcessor.html">IssueQueryMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">IssueQueryMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#issueQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.AllIssueType, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)">issueQuery(java.util.List, org.mule.modules.clarizen.api.model.AllIssueType, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/LifecycleChangeMessageProcessor.html">LifecycleChangeMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">LifecycleChangeMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#lifecycleChange(java.util.List<com.clarizen.api.EntityId>, java.lang.String, java.lang.Boolean)">lifecycleChange(java.util.List, java.lang.String, java.lang.Boolean)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/ListEntitiesMessageProcessor.html">ListEntitiesMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">ListEntitiesMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#listEntities()">listEntities()</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/RetrieveWorkItemHumanResourcesMessageProcessor.html">RetrieveWorkItemHumanResourcesMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveWorkItemHumanResourcesMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#retrieveWorkItemHumanResources(com.clarizen.api.EntityId, java.util.List<java.lang.String>)">retrieveWorkItemHumanResources(com.clarizen.api.EntityId, java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/clarizen/processors/SendEmailMessageProcessor.html">SendEmailMessageProcessor</a></td>
