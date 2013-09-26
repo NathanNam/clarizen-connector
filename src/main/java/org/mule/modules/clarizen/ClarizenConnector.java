@@ -201,7 +201,7 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> workItemsQuery(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve, 
             WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, 
-            @Optional @Default("100") Integer pageSize, @Optional Integer maxNumberOfPages) {
+            @Optional @Default("100") Integer pageSize, @Optional @Default("100") Integer maxNumberOfPages) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, 
                 workItemFilter, pageSize, maxNumberOfPages, true);
     }
@@ -224,7 +224,7 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
             String queryTypeName, @Optional Condition condition, 
-            @Optional @Default("100") Integer pageSize, @Optional Integer maxNumberOfPages) {
+            @Optional @Default("100") Integer pageSize, @Optional @Default("100") Integer maxNumberOfPages) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, 
                 maxNumberOfPages, true);
     }
@@ -246,7 +246,7 @@ public class ClarizenConnector
     @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
             @Optional Condition condition, 
-            @Optional @Default("100") Integer pageSize, @Optional Integer maxNumberOfPages) {
+            @Optional @Default("100") Integer pageSize, @Optional @Default("100") Integer maxNumberOfPages) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, 
                 maxNumberOfPages, true);
     }
@@ -270,7 +270,7 @@ public class ClarizenConnector
     public List<BaseClarizenEntity> getMyWorkItems(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
             WorkItemFilter workItemFilter, @Optional @Default("100") Integer pageSize, 
-            @Optional Integer maxNumberOfPages) {
+            @Optional @Default("100") Integer maxNumberOfPages) {
 
         return clarizenClient.getMyWorkItems(fieldsToRetrieve, workItemState, workItemType, 
                 workItemFilter, pageSize, maxNumberOfPages, true);
