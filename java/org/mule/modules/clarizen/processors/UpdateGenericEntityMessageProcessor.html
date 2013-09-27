@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  AddWorkItemResourcesMessageProcessor
+  UpdateGenericEntityMessageProcessor
 
 
 | Clarizen Cloud Connector
@@ -271,7 +271,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html">AbstractExpressionEvaluator</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;</li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html">AddWorkItemResourcesMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html">AddWorkItemResourcesMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AttachFileUrlToEntityMessageProcessor.html">AttachFileUrlToEntityMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateAllIssueMessageProcessor.html">CreateAllIssueMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/CreateCaseMessageProcessor.html">CreateCaseMessageProcessor</a></li>
@@ -305,7 +305,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateAllIssueMessageProcessor.html">UpdateAllIssueMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateCaseMessageProcessor.html">UpdateCaseMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateEntityMessageProcessor.html">UpdateEntityMessageProcessor</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html">UpdateGenericEntityMessageProcessor</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html">UpdateGenericEntityMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateTaskMessageProcessor.html">UpdateTaskMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateTaskWithSingleValuesMessageProcessor.html">UpdateTaskWithSingleValuesMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/clarizen/processors/UpdateWorkItemMessageProcessor.html">UpdateWorkItemMessageProcessor</a></li>
@@ -353,6 +353,31 @@
 <div id="api-info-block">
 
 
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
+  
 
   
    
@@ -437,6 +462,9 @@ Summary:
   
 
 
+  &#124; <a href="#inhfields">Inherited Fields</a>
+  
+
 
   &#124; <a href="#pubctors">Ctors</a>
   
@@ -472,12 +500,24 @@ Summary:
      
     
     class
-<h1>AddWorkItemResourcesMessageProcessor</h1>
+<h1>UpdateGenericEntityMessageProcessor</h1>
 
 
 
   
-    extends Object<br/>
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+    extends <a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;<br/>
   
   
   
@@ -485,10 +525,6 @@ Summary:
   
   
       implements 
-      
-        FlowConstructAware 
-      
-        MuleContextAware 
       
         Disposable 
       
@@ -514,7 +550,7 @@ Summary:
 
     <tr>
         
-        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="5" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -522,7 +558,43 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.clarizen.processors.AddWorkItemResourcesMessageProcessor</td>
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html">org.mule.modules.clarizen.processors.AbstractExpressionEvaluator</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html">org.mule.modules.clarizen.processors.AbstractConnectedProcessor</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/clarizen/processors/AbstractMessageProcessor.html">org.mule.modules.clarizen.processors.AbstractMessageProcessor</a>&lt;O&gt;</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.clarizen.processors.UpdateGenericEntityMessageProcessor</td>
     </tr>
     
 
@@ -538,7 +610,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>AddWorkItemResourcesMessageProcessor invokes the org.mule.modules.clarizen.ClarizenConnector#addWorkItemResources(org.mule.modules.clarizen.api.model.Entity, java.lang.String, java.util.Map) method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>UpdateGenericEntityMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html#updateGenericEntity(com.clarizen.api.GenericEntity)">updateGenericEntity(com.clarizen.api.GenericEntity)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  
 </p>
 
@@ -587,6 +659,12 @@ Summary:
 <table id="inhconstants" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+
+
+
+
 
 
 
@@ -732,254 +810,22 @@ org.mule.api.lifecycle.Stoppable
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
-          private
+          protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#_applicationIdType">_applicationIdType</a></td>
+          <a href="../../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#_entityType">_entityType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
-          private
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#_connectionPasswordType">_connectionPasswordType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#_connectionUserType">_connectionUserType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Map&lt;String,&nbsp;Object&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#_fieldsType">_fieldsType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#_partnerIdType">_partnerIdType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#_resourceIdType">_resourceIdType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          org.mule.modules.clarizen.api.model.Entity</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#_workItemType">_workItemType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
+          protected
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#applicationId">applicationId</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#connectionPassword">connectionPassword</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#connectionUser">connectionUser</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          ExpressionManager</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#expressionManager">expressionManager</a></td>
-          <td class="jd-descrcol" width="100%">Mule Expression Manager
- 
-</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#fields">fields</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          FlowConstruct</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#flowConstruct">flowConstruct</a></td>
-          <td class="jd-descrcol" width="100%">Flow construct
- 
-</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          static
-          
-          Logger</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#logger">logger</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#moduleObject">moduleObject</a></td>
-          <td class="jd-descrcol" width="100%">Module object
- 
-</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          MuleContext</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#muleContext">muleContext</a></td>
-          <td class="jd-descrcol" width="100%">Mule Context
- 
-</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#partnerId">partnerId</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          TemplateParser.PatternInfo</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#patternInfo">patternInfo</a></td>
-          <td class="jd-descrcol" width="100%">Mule Pattern Info
- 
-</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#resourceId">resourceId</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          AtomicInteger</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#retryCount">retryCount</a></td>
-          <td class="jd-descrcol" width="100%">Variable used to track how many retries we have attempted on this message processor
- 
-</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          int</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#retryMax">retryMax</a></td>
-          <td class="jd-descrcol" width="100%">Maximum number of retries that can be attempted.</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#workItem">workItem</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#entity">entity</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -989,6 +835,207 @@ org.mule.api.lifecycle.Stoppable
 
 
 
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.modules.clarizen.processors.AbstractMessageProcessor" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.modules.clarizen.processors.AbstractMessageProcessor-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html">org.mule.modules.clarizen.processors.AbstractMessageProcessor</a>
+<div id="inherited-fields-org.mule.modules.clarizen.processors.AbstractMessageProcessor">
+  <div id="inherited-fields-org.mule.modules.clarizen.processors.AbstractMessageProcessor-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.mule.modules.clarizen.processors.AbstractMessageProcessor-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          FlowConstruct</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#flowConstruct">flowConstruct</a></td>
+          <td class="jd-descrcol" width="100%">Flow Construct
+ 
+</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          O</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#moduleObject">moduleObject</a></td>
+          <td class="jd-descrcol" width="100%">Module object
+ 
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          MuleContext</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#muleContext">muleContext</a></td>
+          <td class="jd-descrcol" width="100%">Mule Context
+ 
+</td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.modules.clarizen.processors.AbstractConnectedProcessor" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.modules.clarizen.processors.AbstractConnectedProcessor-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html">org.mule.modules.clarizen.processors.AbstractConnectedProcessor</a>
+<div id="inherited-fields-org.mule.modules.clarizen.processors.AbstractConnectedProcessor">
+  <div id="inherited-fields-org.mule.modules.clarizen.processors.AbstractConnectedProcessor-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.mule.modules.clarizen.processors.AbstractConnectedProcessor-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#_applicationIdType">_applicationIdType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#_connectionPasswordType">_connectionPasswordType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#_connectionUserType">_connectionUserType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#_partnerIdType">_partnerIdType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#applicationId">applicationId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#connectionPassword">connectionPassword</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#connectionUser">connectionUser</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#partnerId">partnerId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
 
 
 
@@ -1009,7 +1056,7 @@ org.mule.api.lifecycle.Stoppable
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#AddWorkItemResourcesMessageProcessor()">AddWorkItemResourcesMessageProcessor</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#UpdateGenericEntityMessageProcessor()">UpdateGenericEntityMessageProcessor</a></span>()</nobr>
         
   </td></tr>
 
@@ -1038,7 +1085,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
         
   </td></tr>
 
@@ -1054,7 +1101,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
         
         <div class="jd-descrdiv">Obtains the expression manager from the Mule context and initialises the connector.</div>
   
@@ -1072,7 +1119,7 @@ org.mule.api.lifecycle.Stoppable
             MuleEvent</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
         
         <div class="jd-descrdiv">Invokes the MessageProcessor.</div>
   
@@ -1090,9 +1137,9 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setApplicationId(java.lang.Object)">setApplicationId</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#setEntity(java.lang.Object)">setEntity</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Sets applicationId</div>
+        <div class="jd-descrdiv">Sets entity</div>
   
   </td></tr>
 
@@ -1108,61 +1155,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setConnectionPassword(java.lang.Object)">setConnectionPassword</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets connectionPassword</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setConnectionUser(java.lang.Object)">setConnectionUser</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets connectionUser</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setFields(java.lang.Object)">setFields</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets fields</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
         
         <div class="jd-descrdiv">Sets flow construct</div>
   
@@ -1170,24 +1163,6 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setModuleObject(java.lang.Object)">setModuleObject</a></span>(Object moduleObject)</nobr>
-        
-        <div class="jd-descrdiv">Sets the instance of the object under which the processor will execute</div>
-  
-  </td></tr>
-
-
-	 
     <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
@@ -1198,7 +1173,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
         
         <div class="jd-descrdiv">Set the Mule context</div>
   
@@ -1216,79 +1191,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setPartnerId(java.lang.Object)">setPartnerId</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets partnerId</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setResourceId(java.lang.Object)">setResourceId</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets resourceId</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setRetryMax(int)">setRetryMax</a></span>(int value)</nobr>
-        
-        <div class="jd-descrdiv">Sets retryMax</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#setWorkItem(java.lang.Object)">setWorkItem</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets workItem</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#start()">start</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#start()">start</a></span>()</nobr>
         
   </td></tr>
 
@@ -1304,7 +1207,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AddWorkItemResourcesMessageProcessor.html#stop()">stop</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/UpdateGenericEntityMessageProcessor.html#stop()">stop</a></span>()</nobr>
         
   </td></tr>
 
@@ -1322,6 +1225,566 @@ org.mule.api.lifecycle.Stoppable
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.clarizen.processors.AbstractMessageProcessor" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.clarizen.processors.AbstractMessageProcessor-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html">org.mule.modules.clarizen.processors.AbstractMessageProcessor</a>
+
+<div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractMessageProcessor">
+  <div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractMessageProcessor-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractMessageProcessor-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            O</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#findOrCreate(java.lang.Class, boolean, org.mule.api.MuleEvent)">findOrCreate</a></span>(Class moduleClass, boolean shouldAutoCreate, MuleEvent muleEvent)</nobr>
+        
+        <div class="jd-descrdiv">Obtains the expression manager from the Mule context and initialises the connector.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            FlowConstruct</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#getFlowConstruct()">getFlowConstruct</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves flowConstruct
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            MuleContext</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#getMuleContext()">getMuleContext</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves muleContext
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#overwritePayload(org.mule.api.MuleEvent, java.lang.Object)">overwritePayload</a></span>(MuleEvent event, Object resultPayload)</nobr>
+        
+        <div class="jd-descrdiv">Overwrites the event payload with the specified one
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct value)</nobr>
+        
+        <div class="jd-descrdiv">Sets flowConstruct</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#setModuleObject(O)">setModuleObject</a></span>(O value)</nobr>
+        
+        <div class="jd-descrdiv">Sets moduleObject</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext value)</nobr>
+        
+        <div class="jd-descrdiv">Sets muleContext</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.clarizen.processors.AbstractConnectedProcessor" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.clarizen.processors.AbstractConnectedProcessor-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html">org.mule.modules.clarizen.processors.AbstractConnectedProcessor</a>
+
+<div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractConnectedProcessor">
+  <div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractConnectedProcessor-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractConnectedProcessor-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#getApplicationId()">getApplicationId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves applicationId
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#getConnectionPassword()">getConnectionPassword</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves connectionPassword
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#getConnectionUser()">getConnectionUser</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves connectionUser
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#getPartnerId()">getPartnerId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves partnerId
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#setApplicationId(java.lang.Object)">setApplicationId</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets applicationId</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#setConnectionPassword(java.lang.Object)">setConnectionPassword</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets connectionPassword</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#setConnectionUser(java.lang.Object)">setConnectionUser</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets connectionUser</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractConnectedProcessor.html#setPartnerId(java.lang.Object)">setPartnerId</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets partnerId</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.clarizen.processors.AbstractExpressionEvaluator" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.clarizen.processors.AbstractExpressionEvaluator-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html">org.mule.modules.clarizen.processors.AbstractExpressionEvaluator</a>
+
+<div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractExpressionEvaluator">
+  <div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractExpressionEvaluator-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.clarizen.processors.AbstractExpressionEvaluator-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#computeClassHierarchy(java.lang.Class, java.util.List)">computeClassHierarchy</a></span>(Class clazz, List classes)</nobr>
+        
+        <div class="jd-descrdiv">Get all superclasses and interfaces recursively.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#evaluate(org.mule.util.TemplateParser.PatternInfo, org.mule.api.expression.ExpressionManager, org.mule.api.MuleMessage, java.lang.Object)">evaluate</a></span>(TemplateParser.PatternInfo patternInfo, ExpressionManager expressionManager, MuleMessage muleMessage, Object source)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#evaluateAndTransform(org.mule.api.MuleContext, org.mule.api.MuleMessage, java.lang.reflect.Type, java.lang.String, java.lang.Object)">evaluateAndTransform</a></span>(MuleContext muleContext, MuleMessage muleMessage, Type expectedType, String expectedMimeType, Object source)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#evaluateAndTransform(org.mule.api.MuleContext, org.mule.api.MuleEvent, java.lang.reflect.Type, java.lang.String, java.lang.Object)">evaluateAndTransform</a></span>(MuleContext muleContext, MuleEvent event, Type expectedType, String expectedMimeType, Object source)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#isAssignableFrom(java.lang.reflect.Type, java.lang.Class)">isAssignableFrom</a></span>(Type expectedType, Class clazz)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#isList(java.lang.reflect.Type)">isList</a></span>(Type type)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#isListClass(java.lang.Class)">isListClass</a></span>(Class clazz)</nobr>
+        
+        <div class="jd-descrdiv">Checks whether the specified class parameter is an instance of List</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#isMap(java.lang.reflect.Type)">isMap</a></span>(Type type)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#isMapClass(java.lang.Class)">isMapClass</a></span>(Class clazz)</nobr>
+        
+        <div class="jd-descrdiv">Checks whether the specified class parameter is an instance of Map</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#transform(org.mule.api.MuleContext, org.mule.api.MuleMessage, java.lang.reflect.Type, java.lang.String, java.lang.Object)">transform</a></span>(MuleContext muleContext, MuleMessage message, Type expectedType, String expectedMimeType, Object source)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#transform(org.mule.api.MuleContext, org.mule.api.MuleEvent, java.lang.reflect.Type, java.lang.String, java.lang.Object)">transform</a></span>(MuleContext muleContext, MuleEvent event, Type expectedType, String expectedMimeType, Object source)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/processors/AbstractExpressionEvaluator.html#transform(org.mule.api.MuleMessage, java.lang.reflect.Type, java.lang.Object)">transform</a></span>(MuleMessage muleMessage, Type expectedType, Object source)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
 
 
 <tr class="api apilevel-" >
@@ -1851,17 +2314,17 @@ From interface
 
 
 
-<A NAME="_applicationIdType"></A>
+<A NAME="_entityType"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
-        private 
+        protected 
          
          
-        String
+        <a href="../../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a>
       </span>
-        _applicationIdType
+        _entityType
     </h4>
       <div class="api-level">
         
@@ -1881,631 +2344,17 @@ From interface
 
 
 
-<A NAME="_connectionPasswordType"></A>
+<A NAME="entity"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
-        private 
-         
-         
-        String
-      </span>
-        _connectionPasswordType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_connectionUserType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        String
-      </span>
-        _connectionUserType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_fieldsType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Map&lt;String,&nbsp;Object&gt;
-      </span>
-        _fieldsType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_partnerIdType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        String
-      </span>
-        _partnerIdType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_resourceIdType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        String
-      </span>
-        _resourceIdType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_workItemType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        org.mule.modules.clarizen.api.model.Entity
-      </span>
-        _workItemType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="applicationId"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
+        protected 
          
          
         Object
       </span>
-        applicationId
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="connectionPassword"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        connectionPassword
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="connectionUser"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        connectionUser
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="expressionManager"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        ExpressionManager
-      </span>
-        expressionManager
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Mule Expression Manager
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="fields"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        fields
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="flowConstruct"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        FlowConstruct
-      </span>
-        flowConstruct
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Flow construct
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="logger"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-        static 
-         
-        Logger
-      </span>
-        logger
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="moduleObject"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        moduleObject
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Module object
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="muleContext"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        MuleContext
-      </span>
-        muleContext
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Mule Context
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="partnerId"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        partnerId
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="patternInfo"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        TemplateParser.PatternInfo
-      </span>
-        patternInfo
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Mule Pattern Info
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="resourceId"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        resourceId
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="retryCount"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        AtomicInteger
-      </span>
-        retryCount
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Variable used to track how many retries we have attempted on this message processor
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="retryMax"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        int
-      </span>
-        retryMax
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Maximum number of retries that can be attempted.
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="workItem"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        workItem
+        entity
     </h4>
       <div class="api-level">
         
@@ -2534,7 +2383,7 @@ From interface
 
 
 
-<A NAME="AddWorkItemResourcesMessageProcessor()"></A>
+<A NAME="UpdateGenericEntityMessageProcessor()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2546,7 +2395,7 @@ From interface
          
         
       </span>
-      <span class="sympad">AddWorkItemResourcesMessageProcessor</span>
+      <span class="sympad">UpdateGenericEntityMessageProcessor</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2700,7 +2549,7 @@ From interface
 </div>
 
 
-<A NAME="setApplicationId(java.lang.Object)"></A>
+<A NAME="setEntity(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2712,7 +2561,7 @@ From interface
          
         void
       </span>
-      <span class="sympad">setApplicationId</span>
+      <span class="sympad">setEntity</span>
       <span class="normal">(Object value)</span>
     </h4>
       <div class="api-level">
@@ -2725,130 +2574,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets applicationId</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setConnectionPassword(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setConnectionPassword</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets connectionPassword</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setConnectionUser(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setConnectionUser</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets connectionUser</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setFields(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setFields</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets fields</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets entity</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -2905,47 +2631,6 @@ From interface
 </div>
 
 
-<A NAME="setModuleObject(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setModuleObject</span>
-      <span class="normal">(Object moduleObject)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the instance of the object under which the processor will execute</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>moduleObject</td>
-          <td>Instace of the module
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="setMuleContext(org.mule.api.MuleContext)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2978,170 +2663,6 @@ From interface
         <tr>
           <th>context</td>
           <td>Mule context to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setPartnerId(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setPartnerId</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets partnerId</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setResourceId(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setResourceId</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets resourceId</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setRetryMax(int)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setRetryMax</span>
-      <span class="normal">(int value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets retryMax</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setWorkItem(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setWorkItem</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets workItem</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
 </td>
         </tr>
       </table>
