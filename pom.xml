@@ -19,6 +19,7 @@
         <cxf.version>2.5.1</cxf.version>
         <licensePath>LICENSE.md</licensePath>
         <mule.module.cxf.version>3.3.0</mule.module.cxf.version>
+        <licm.version>1.1.2</licm.version>
     </properties>
 
     <build>
@@ -64,6 +65,12 @@
           <artifactId>mule-module-cxf</artifactId>
           <version>${mule.module.cxf.version}</version>
           <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mulesoft.licm</groupId>
+            <artifactId>licm</artifactId>
+            <version>${licm.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

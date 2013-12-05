@@ -21,6 +21,7 @@ import org.mule.api.ConnectionException;
 import org.mule.api.annotations.*;
 import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.display.Placement;
+import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
@@ -43,6 +44,7 @@ import java.util.List;
  * @author MuleSoft, Inc.
  */
 @Connector(name="clarizen", friendlyName = "Clarizen")
+@RequiresEnterpriseLicense
 public class ClarizenConnector
 {
     private Object loginLock = new Object();
