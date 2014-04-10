@@ -25,5 +25,4 @@ org.mule.modules.clarizen.devkit
 org.mule.modules.clarizen.oauth
 org.mule.modules.clarizen.process
 org.mule.modules.clarizen.processors
-org.mule.modules.clarizen.transformers
 

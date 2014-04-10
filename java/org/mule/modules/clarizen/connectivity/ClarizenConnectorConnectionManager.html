@@ -256,8 +256,6 @@
   <a href="../../../../../../java/org/mule/modules/clarizen/process/package-summary.html">org.mule.modules.clarizen.process</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/modules/clarizen/processors/package-summary.html">org.mule.modules.clarizen.processors</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/modules/clarizen/transformers/package-summary.html">org.mule.modules.clarizen.transformers</a></li>
               </ul><br/>
             </div> <!-- end packages -->
           </div> <!-- end resize-packages -->
@@ -782,7 +780,7 @@ org.mule.api.lifecycle.Initialisable
             
             
             
-            <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a></nobr>
+            <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionManager.html#acquireConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey)">acquireConnection</a></span>(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key)</nobr>
@@ -801,7 +799,7 @@ org.mule.api.lifecycle.Initialisable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionManager.html#destroyConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter)">destroyConnection</a></span>(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a> connection)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionManager.html#destroyConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker)">destroyConnection</a></span>(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a> connection)</nobr>
         
   </td></tr>
 
@@ -1048,7 +1046,7 @@ org.mule.api.lifecycle.Initialisable
             
             
             &lt;P&gt;
-            <a href="../../../../../../java/org/mule/modules/clarizen/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a>&gt;</nobr>
+            <a href="../../../../../../java/org/mule/modules/clarizen/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionManager.html#getProcessTemplate()">getProcessTemplate</a></span>()</nobr>
@@ -1123,7 +1121,7 @@ org.mule.api.lifecycle.Initialisable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionManager.html#releaseConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter)">releaseConnection</a></span>(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a> connection)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionManager.html#releaseConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker)">releaseConnection</a></span>(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a> connection)</nobr>
         
   </td></tr>
 
@@ -2450,7 +2448,7 @@ From interface
          
          
          
-        <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a>
+        <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a>
       </span>
       <span class="sympad">acquireConnection</span>
       <span class="normal">(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key)</span>
@@ -2489,7 +2487,7 @@ From interface
 </div>
 
 
-<A NAME="destroyConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter)"></A>
+<A NAME="destroyConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2502,7 +2500,7 @@ From interface
         void
       </span>
       <span class="sympad">destroyConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a> connection)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a> connection)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2952,7 +2950,7 @@ From interface
          
          
          
-        <a href="../../../../../../java/org/mule/modules/clarizen/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a>&gt;
+        <a href="../../../../../../java/org/mule/modules/clarizen/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a>&gt;
       </span>
       <span class="sympad">getProcessTemplate</span>
       <span class="normal">()</span>
@@ -3089,7 +3087,7 @@ From interface
 </div>
 
 
-<A NAME="releaseConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter)"></A>
+<A NAME="releaseConnection(org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionKey, org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3102,7 +3100,7 @@ From interface
         void
       </span>
       <span class="sympad">releaseConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a> connection)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/clarizen/connectivity/ClarizenConnectorConnectionKey.html">ClarizenConnectorConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a> connection)</span>
     </h4>
       <div class="api-level">
         <div>
