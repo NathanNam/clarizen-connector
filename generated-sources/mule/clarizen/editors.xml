@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" prefix="clarizen" url="http://www.mulesoft.org/schema/mule/clarizen">
+  <global-cloud-connector connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Clarizen" versions="[3.2.0,8.0.0]"></global-cloud-connector>
+  <nested abstract="true" localId="connection-pooling-profile" description="" caption="">
+    <label description="" caption="Define connection pool configuration" name="poolingProfileLabel"></label>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" description="Controls the maximum number of connections that can be borrowed from the pool at one time. When set to a negative value, there is no limit to the number of connections that may be active at one time. When maxActive is exceeded, the pool is said to be exhausted." caption="Max active" name="maxActive"></integer>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" description="Controls the maximum number of connections that can sit idle in the pool at any time. When set to a negative value, there is no limit to the number of connections that may be idle at one time." caption="Max idle" name="maxIdle"></integer>
+    <enum defaultValue="INITIALISE_ONE" alwaysFill="true" description="Determines how connections in a pool should be initialized. The possible values are: INITIALISE_NONE (will not load any connection into the pool on startup), INITIALISE_ONE (will load one initial connection into the pool on startup), or INITIALISE_ALL (will load all connections in the pool on startup)" caption="Initialisation policy" name="initialisationPolicy">
+      <option value="INITIALISE_NONE"></option>
+      <option value="INITIALISE_ONE"></option>
+      <option value="INITIALISE_ALL"></option>
+    </enum>
+    <enum defaultValue="WHEN_EXHAUSTED_GROW" alwaysFill="true" description="Specifies the behavior of the connection pool when the pool is exhausted. Possible values are: &quot;WHEN_EXHAUSTED_FAIL&quot;, which will throw a NoSuchElementException, &quot;WHEN_EXHAUSTED_WAIT&quot;, which will block by invoking Object.wait(long) until a new or idle object is available, or WHEN_EXHAUSTED_GROW, which will create a new connection and return it, essentially making maxActive meaningless. If a positive maxWait value is supplied, it will block for at most that many milliseconds, after which a NoSuchElementException will be thrown. If maxThreadWait is a negative value, it will block indefinitely." caption="Exhausted action" name="exhaustedAction">
+      <option value="WHEN_EXHAUSTED_WAIT"></option>
+      <option value="WHEN_EXHAUSTED_FAIL"></option>
+      <option value="WHEN_EXHAUSTED_GROW"></option>
+    </enum>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" description="When exhausted action is Wait (or block) this is the amount of time in milliseconds that the pool will wait before failing. Setting a negative value will block indefinitely until an idle instance becomes available." caption="Max wait" name="maxWait"></integer>
+  </nested>
+  <nested abstract="true" localId="reconnectionStrategyElement" description="" caption="">
+    <label description="" caption="Define how mule should attempt to handle a connection failure" name="connectionLabel"></label>
+    <radioBoolean fillLine="true" description="Disable reconection strategy" caption="Do not use a Reconnection strategy" name="noReconnection"></radioBoolean>
+    <radioBoolean fillLine="true" description="A reconnection strategy that allows the user to configure how many times a reconnection should be attempted and how long to wait between attempts." caption="Standard Reconnection" name="standardReconnection"></radioBoolean>
+    <integer step="1" max="2147483647" min="1" defaultValue="2000" indented="true" controlled="standardReconnection" description="How often (in ms) to reconnect" caption="Frequency (ms)" name="reconnectionFrequency"></integer>
+    <integer step="1" max="2147483647" min="1" defaultValue="2" indented="true" controlled="standardReconnection,!reconnectForever" description="How many reconnection attempts to make" caption="Reconnection Attempts" name="reconnectionAttemps"></integer>
+    <boolean indented="true" controlled="standardReconnection" description="A reconnection strategy that retries an infinite number of times at the specified frequency." caption="Reconnect Forever" name="reconnectForever"></boolean>
+    <radioBoolean fillLine="true" description="A user-defined reconnection strategy." caption="Custom Reconnection" name="customReconnection"></radioBoolean>
+    <classname indented="true" controlled="customReconnection" description="A class that implements the RetryPolicyTemplate interface." caption="Class" name="class"></classname>
+    <childElement allowMultiple="true" controlled="customReconnection" description="Property elements." caption="Properties" name="http://www.springframework.org/schema/beans/property"></childElement>
+  </nested>
+  <global-cloud-connector connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/clarizen/parentConfig" abstract="false" image="icons/large/clarizen-connector-48x32.png" localId="config" icon="icons/small/clarizen-connector-24x16.png" description="Global Clarizen configuration information." caption="Clarizen" versions="[3.2.0,8.0.0]">
+    <attribute-category description="Clarizen configuration properties." caption="General">
+      <group caption="Generic" id="clarizenGenericProperties">
+        <name required="true" description="Give a name to this configuration so it can be later referenced by config-ref." caption="Name" name="name"></name>
+      </group>
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Pooling profile options." caption="Pooling Profile">
+      <group caption="Pooling Profile" id="poolingProfile">
+        <childElement inplace="true" description="" caption="" name="http://www.mulesoft.org/schema/mule/clarizen/connection-pooling-profile"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Reconnection options." caption="Reconnection">
+      <group caption="Strategies" id="reconnectionStrategies">
+        <childElement inplace="true" valuePersistence="org.mule.tooling.ui.modules.core.widgets.meta.HTTPTransactionValuePersistence" description="" caption="" name="http://www.mulesoft.org/schema/mule/core/reconnectionStrategyElement"></childElement>
+        <childElement allowedSubTypes="http://www.mulesoft.org/schema/mule/core/reconnect,http://www.mulesoft.org/schema/mule/core/reconnect-custom-strategy,http://www.mulesoft.org/schema/mule/core/reconnect-forever" allowSubTypes="true" visibleInDialog="false" description="" caption="" name="http://www.mulesoft.org/schema/mule/core/abstractReconnectionStrategy"></childElement>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="abstractClarizenConnectorGeneric" icon="icons/small/clarizen-connector-24x16.png" description="Interact with Clarizen." caption="Abstractclarizenconnectorgeneric">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="abstractClarizenConnectorGeneric">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/clarizen/config" required="true" description="Specify which configuration to use for this invocation." caption="Config Reference" name="config-ref"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" image="icons/large/clarizen-connector-48x32.png" localId="clarizen-connector" icon="icons/small/clarizen-connector-24x16.png" description="Clarizen Cloud Connector
+
+Clarizen project management software is a leading global provider of collaborative
+online project management that allows businesses to easily manage all of their projects
+and resources in a single environment.
+
+For futher information visit http://www.clarizen.com." caption="Clarizen" aliasId="org.mule.tooling.ui.modules.core.pattern.clarizen" versions="[3.2.0,8.0.0]">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="clarizenConnectorGeneric">
+        <modeSwitch alwaysCombo="true" description="Operation." caption="Operation" name="Clarizen operations to execute">
+          <mode modeLabel="Attach file url to entity" modeId="http://www.mulesoft.org/schema/mule/clarizen/attach-file-url-to-entity"></mode>
+          <mode modeLabel="Create entity" modeId="http://www.mulesoft.org/schema/mule/clarizen/create-entity"></mode>
+          <mode modeLabel="Create from template" modeId="http://www.mulesoft.org/schema/mule/clarizen/create-from-template"></mode>
+          <mode modeLabel="Create generic entity" modeId="http://www.mulesoft.org/schema/mule/clarizen/create-generic-entity"></mode>
+          <mode modeLabel="Delete entity" modeId="http://www.mulesoft.org/schema/mule/clarizen/delete-entity"></mode>
+          <mode modeLabel="Delete entity by id" modeId="http://www.mulesoft.org/schema/mule/clarizen/delete-entity-by-id"></mode>
+          <mode modeLabel="Describe entities" modeId="http://www.mulesoft.org/schema/mule/clarizen/describe-entities"></mode>
+          <mode modeLabel="Download entity attachments" modeId="http://www.mulesoft.org/schema/mule/clarizen/download-entity-attachments"></mode>
+          <mode modeLabel="Download file information" modeId="http://www.mulesoft.org/schema/mule/clarizen/download-file-information"></mode>
+          <mode modeLabel="Entity query" modeId="http://www.mulesoft.org/schema/mule/clarizen/entity-query"></mode>
+          <mode modeLabel="Get calendar information" modeId="http://www.mulesoft.org/schema/mule/clarizen/get-calendar-information"></mode>
+          <mode modeLabel="Get my work items" modeId="http://www.mulesoft.org/schema/mule/clarizen/get-my-work-items"></mode>
+          <mode modeLabel="Get system settings" modeId="http://www.mulesoft.org/schema/mule/clarizen/get-system-settings"></mode>
+          <mode modeLabel="Get work item by id" modeId="http://www.mulesoft.org/schema/mule/clarizen/get-work-item-by-id"></mode>
+          <mode modeLabel="Issue query" modeId="http://www.mulesoft.org/schema/mule/clarizen/issue-query"></mode>
+          <mode modeLabel="Lifecycle change" modeId="http://www.mulesoft.org/schema/mule/clarizen/lifecycle-change"></mode>
+          <mode modeLabel="List entities" modeId="http://www.mulesoft.org/schema/mule/clarizen/list-entities"></mode>
+          <mode modeLabel="Retrieve work item human resources" modeId="http://www.mulesoft.org/schema/mule/clarizen/retrieve-work-item-human-resources"></mode>
+          <mode modeLabel="Send email" modeId="http://www.mulesoft.org/schema/mule/clarizen/send-email"></mode>
+          <mode modeLabel="Update entity" modeId="http://www.mulesoft.org/schema/mule/clarizen/update-entity"></mode>
+          <mode modeLabel="Update generic entity" modeId="http://www.mulesoft.org/schema/mule/clarizen/update-generic-entity"></mode>
+          <mode modeLabel="Work items query" modeId="http://www.mulesoft.org/schema/mule/clarizen/work-items-query"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="attach-file-url-to-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Attach File Url To Entity">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="true" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
+        <string javaType="java.lang.String" required="true" description="Filename of the attachment." caption="Attachment Filename" name="attachmentFilename"></string>
+        <string javaType="java.lang.String" required="true" description="URL pointing to the attachment." caption="Attachment Url" name="attachmentUrl"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Create Entity">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-from-template" icon="icons/small/clarizen-connector-24x16.png" caption="Create From Template">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="Template to be used." caption="Template Name" name="templateName"></string>
+        <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.clarizen.api.GenericEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-generic-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Create Generic Entity">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.GenericEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="delete-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Delete Entity">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="delete-entity-by-id" icon="icons/small/clarizen-connector-24x16.png" caption="Delete Entity By Id">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="false" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.metadata.EntityDescription&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="describe-entities" icon="icons/small/clarizen-connector-24x16.png" caption="Describe Entities">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <element-controller-list listName="type-names" defaultValue="#[payload]" itemName="type-name" localName="describe-entities-type-names" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="List of entity types to be described." caption="Type Names"></element-controller-list>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.files.FileInformation&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="download-entity-attachments" icon="icons/small/clarizen-connector-24x16.png" caption="Download Entity Attachments">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="true" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.clarizen.api.files.FileInformation" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="download-file-information" icon="icons/small/clarizen-connector-24x16.png" caption="Download File Information">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="entity-query" icon="icons/small/clarizen-connector-24x16.png" caption="Entity Query">
+    <attribute-category description="General." caption="General">
+      <group caption="Fields" id="fields">
+        <element-controller-list listName="fields-to-retrieve" itemName="fields-to-retrieve" localName="entity-query-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="true" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
+      </group>
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The entity type." caption="Query Type Name" name="queryTypeName"></string>
+        <string javaType="com.clarizen.api.queries.Condition" required="false" description="The query condition. For further information about the condition object check." caption="Condition Reference" name="condition-ref"></string>
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The maximum number of pages to be retrieved." caption="Max Number Of Pages" name="maxNumberOfPages"></integer>
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The number of results to be retrieved per page." caption="Page Size" name="pageSize"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.clarizen.api.GetCalendarInfoResult" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-calendar-information" icon="icons/small/clarizen-connector-24x16.png" caption="Get Calendar Information">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="false" caption="User Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/user-id"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-my-work-items" icon="icons/small/clarizen-connector-24x16.png" caption="Get My Work Items">
+    <attribute-category description="General." caption="General">
+      <group caption="Fields" id="fields">
+        <element-controller-list listName="fields-to-retrieve" defaultValue="#[payload]" itemName="fields-to-retrieve" localName="get-my-work-items-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
+      </group>
+      <group caption="General" id="general">
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The maximum number of pages to be retrieved." caption="Max Number Of Pages" name="maxNumberOfPages"></integer>
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The number of results to be retrieved per page." caption="Page Size" name="pageSize"></integer>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.WorkItemFilter" required="true" supportsExpressions="true" description="The work items filter. For further information about the specific values check." caption="Work Item Filter" name="workItemFilter">
+          <option value="ALL"></option>
+          <option value="I_AM_A_MANAGER"></option>
+          <option value="I_AM_A_MANAGER_OR_A_RESOURCE"></option>
+          <option value="I_AM_A_RESOURCE"></option>
+          <option value="I_AM_A_REVIEWER"></option>
+          <option value="I_HAVE_ANY_ROLE"></option>
+          <option value="I_MANAGE_THE_PROJECT"></option>
+        </enum>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.WorkItemState" required="true" supportsExpressions="true" description="The work items state. For further information about the specific values check." caption="Work Item State" name="workItemState">
+          <option value="ACTIVE"></option>
+          <option value="ALL"></option>
+          <option value="CANCELLED"></option>
+          <option value="COMPLETED"></option>
+          <option value="CURRENT"></option>
+          <option value="DRAFT"></option>
+          <option value="EXECUTABLE"></option>
+          <option value="IN_THE_WORKS"></option>
+          <option value="ON_HOLD"></option>
+          <option value="UPCOMING"></option>
+        </enum>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.WorkItemType" required="true" supportsExpressions="true" description="The work item type. For further information about the specific values check." caption="Work Item Type" name="workItemType">
+          <option value="ALL"></option>
+          <option value="MILESTONE"></option>
+          <option value="PROJECT"></option>
+          <option value="TASK"></option>
+        </enum>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;java.lang.Object&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-system-settings" icon="icons/small/clarizen-connector-24x16.png" caption="Get System Settings">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <element-controller-list listName="settings" defaultValue="#[payload]" itemName="setting" localName="get-system-settings-settings" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="List." caption="Settings"></element-controller-list>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-work-item-by-id" icon="icons/small/clarizen-connector-24x16.png" caption="Get Work Item By Id">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The work item id." caption="Work Item Id" name="workItemId"></string>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.WorkItemType" required="true" supportsExpressions="true" description="The work item type. For further information about the specific values check." caption="Work Item Type" name="workItemType">
+          <option value="ALL"></option>
+          <option value="MILESTONE"></option>
+          <option value="PROJECT"></option>
+          <option value="TASK"></option>
+        </enum>
+      </group>
+      <group caption="Fields" id="fields">
+        <element-controller-list listName="fields-to-retrieve" defaultValue="#[payload]" itemName="fields-to-retrieve" localName="get-work-item-by-id-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="The list of the work item fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="issue-query" icon="icons/small/clarizen-connector-24x16.png" caption="Issue Query">
+    <attribute-category description="General." caption="General">
+      <group caption="Fields" id="fields">
+        <element-controller-list listName="fields-to-retrieve" itemName="fields-to-retrieve" localName="issue-query-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="true" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
+      </group>
+      <group caption="General" id="general">
+        <string javaType="com.clarizen.api.queries.Condition" required="false" description="The query condition. For further information about the condition object check." caption="Condition Reference" name="condition-ref"></string>
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The maximum number of pages to be retrieved." caption="Max Number Of Pages" name="maxNumberOfPages"></integer>
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The number of results to be retrieved per page." caption="Page Size" name="pageSize"></integer>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.AllIssueType" required="true" supportsExpressions="true" description="The issue type to be retrieved." caption="Issue Type" name="issueType">
+          <option value="ALL"></option>
+          <option value="BUG"></option>
+          <option value="ENHANCEMENT_REQUEST"></option>
+          <option value="ISSUE"></option>
+          <option value="RISK"></option>
+        </enum>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="lifecycle-change" icon="icons/small/clarizen-connector-24x16.png" caption="Lifecycle Change">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The operation to be performed." caption="Operation" name="operation"></string>
+        <boolean javaType="java.lang.Boolean" required="true" supportsExpressions="true" description="If the operation will be recursived." caption="Recursive" name="recursive"></boolean>
+        <element-controller-listOfPojo listName="entity-id-list" defaultValue="#[payload]" itemName="entity-id-list" localName="lifecycle-change-entity-id-list" javaType="java.util.List&lt;com.clarizen.api.EntityId&gt;" description="The list of entities to be updated." caption="Entity Id List"></element-controller-listOfPojo>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;java.lang.String&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="list-entities" icon="icons/small/clarizen-connector-24x16.png" caption="List Entities">
+    <attribute-category description="General." caption="General"></attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.GenericEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="retrieve-work-item-human-resources" icon="icons/small/clarizen-connector-24x16.png" caption="Retrieve Work Item Human Resources">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="true" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
+        <element-controller-list listName="fields-to-retrieve" itemName="fields-to-retrieve" localName="retrieve-work-item-human-resources-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="true" description="List of strings representing the fields to retrieve." caption="Fields To Retrieve"></element-controller-list>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="send-email" icon="icons/small/clarizen-connector-24x16.png" caption="Send Email">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Related Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/related-entity"></childElement>
+        <string javaType="java.lang.String" required="false" description="Message body." caption="Body" name="body"></string>
+        <string javaType="java.lang.String" required="false" description="Message subject." caption="Subject" name="subject"></string>
+        <enum allowsCustom="true" javaType="com.clarizen.api.AccessType" required="true" supportsExpressions="true" description="PUBLIC or PRIVATE." caption="Access Type" name="accessType">
+          <option value="PRIVATE"></option>
+          <option value="PUBLIC"></option>
+        </enum>
+        <element-controller-listOfPojo listName="recipients" itemName="recipient" localName="send-email-recipients" javaType="java.util.List&lt;com.clarizen.api.Recipient&gt;" description="List of recipients." caption="Recipients"></element-controller-listOfPojo>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="update-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Update Entity">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.clarizen.api.GenericEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="update-generic-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Update Generic Entity">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.GenericEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="work-items-query" icon="icons/small/clarizen-connector-24x16.png" caption="Work Items Query">
+    <attribute-category description="General." caption="General">
+      <group caption="Fields" id="fields">
+        <element-controller-list listName="fields-to-retrieve" defaultValue="#[payload]" itemName="fields-to-retrieve" localName="work-items-query-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
+      </group>
+      <group caption="General" id="general">
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The maximum number of pages to be retrieved." caption="Max Number Of Pages" name="maxNumberOfPages"></integer>
+        <integer step="1" min="0" defaultValue="100" javaType="java.lang.Integer" required="false" description="The number of results to be retrieved per page." caption="Page Size" name="pageSize"></integer>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.WorkItemFilter" required="true" supportsExpressions="true" description="The work items filter. For further information about the specific values check." caption="Work Item Filter" name="workItemFilter">
+          <option value="ALL"></option>
+          <option value="I_AM_A_MANAGER"></option>
+          <option value="I_AM_A_MANAGER_OR_A_RESOURCE"></option>
+          <option value="I_AM_A_RESOURCE"></option>
+          <option value="I_AM_A_REVIEWER"></option>
+          <option value="I_HAVE_ANY_ROLE"></option>
+          <option value="I_MANAGE_THE_PROJECT"></option>
+        </enum>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.WorkItemState" required="true" supportsExpressions="true" description="The work items state. For further information about the specific values check." caption="Work Item State" name="workItemState">
+          <option value="ACTIVE"></option>
+          <option value="ALL"></option>
+          <option value="CANCELLED"></option>
+          <option value="COMPLETED"></option>
+          <option value="CURRENT"></option>
+          <option value="DRAFT"></option>
+          <option value="EXECUTABLE"></option>
+          <option value="IN_THE_WORKS"></option>
+          <option value="ON_HOLD"></option>
+          <option value="UPCOMING"></option>
+        </enum>
+        <enum allowsCustom="true" javaType="org.mule.modules.clarizen.api.model.WorkItemType" required="true" supportsExpressions="true" description="The work item type. For further information about the specific values check." caption="Work Item Type" name="workItemType">
+          <option value="ALL"></option>
+          <option value="MILESTONE"></option>
+          <option value="PROJECT"></option>
+          <option value="TASK"></option>
+        </enum>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Clarizen connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The user login user." caption="Connection User" name="connectionUser"></string>
+        <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
+        <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
+        <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <nested xmlname="entity" abstract="false" localId="entity" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Entity Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" controlled="complex" required="false" caption="Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/id"></childElement>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Name" name="name"></string>
+    <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" controlled="complex" required="false" caption="Entity Type Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-type"></childElement>
+  </nested>
+  <nested xmlname="entity-id" abstract="false" localId="entity-id" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Entity Id Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Type Name" name="typeName"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Value" name="value"></string>
+  </nested>
+  <nested xmlname="entity-type" abstract="false" localId="entity-type" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Entity Type Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Type Name" name="typeName"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Value" name="value"></string>
+  </nested>
+  <nested xmlname="id" abstract="false" localId="id" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Id Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Type Name" name="typeName"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Value" name="value"></string>
+  </nested>
+  <nested xmlname="permissions" abstract="false" localId="permissions" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Permissions Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="com.clarizen.api.ArrayOfFieldPermission" controlled="complex" required="false" description="" caption="Field Permissions Reference" name="fieldPermissions-ref"></string>
+    <string javaType="com.clarizen.api.ArrayOfObjectPermissions" controlled="complex" required="false" description="" caption="Object Permissions Reference" name="objectPermissions-ref"></string>
+  </nested>
+  <nested xmlname="related-entity" abstract="false" localId="related-entity" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Related Entity Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" controlled="complex" required="false" caption="Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/id"></childElement>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Name" name="name"></string>
+    <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" controlled="complex" required="false" caption="Entity Type Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-type"></childElement>
+  </nested>
+  <nested xmlname="user" abstract="false" localId="user" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="User Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Type Name" name="typeName"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Value" name="value"></string>
+  </nested>
+  <nested xmlname="user-id" abstract="false" localId="user-id" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="User Id Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Type Name" name="typeName"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Value" name="value"></string>
+  </nested>
+</namespace>

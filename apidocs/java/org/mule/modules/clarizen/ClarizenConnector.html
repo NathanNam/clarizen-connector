@@ -1,0 +1,3830 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Clarizen Cloud Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
+<title>
+
+  ClarizenConnector
+
+
+| Clarizen Cloud Connector
+
+</title>
+<link href="../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../", "../../../../../assets/");
+</script>
+<script src="../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Clarizen Cloud Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Clarizen Cloud Connector</span>
+    
+    <ul id="header-tabs" class="">
+    
+    	<li id="guide"><a href="../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/package-summary.html">com.clarizen.api</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/faults/package-summary.html">com.clarizen.api.faults</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/files/package-summary.html">com.clarizen.api.files</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/holders/package-summary.html">com.clarizen.api.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/metadata/package-summary.html">com.clarizen.api.metadata</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/projectmanagement/package-summary.html">com.clarizen.api.projectmanagement</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/queries/package-summary.html">com.clarizen.api.queries</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/clarizen/api/transformers/package-summary.html">com.clarizen.api.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/microsoft/schemas/_2003/_10/serialization/package-summary.html">com.microsoft.schemas._2003._10.serialization</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/package-summary.html">org.mule.modules.clarizen</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/adapter/package-summary.html">org.mule.modules.clarizen.adapter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/adapters/package-summary.html">org.mule.modules.clarizen.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/agents/package-summary.html">org.mule.modules.clarizen.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/api/package-summary.html">org.mule.modules.clarizen.api</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/api/model/package-summary.html">org.mule.modules.clarizen.api.model</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/api/model/flat/package-summary.html">org.mule.modules.clarizen.api.model.flat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/api/model/holders/package-summary.html">org.mule.modules.clarizen.api.model.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/api/model/transformers/package-summary.html">org.mule.modules.clarizen.api.model.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/basic/package-summary.html">org.mule.modules.clarizen.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/callback/package-summary.html">org.mule.modules.clarizen.callback</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/config/package-summary.html">org.mule.modules.clarizen.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/connection/package-summary.html">org.mule.modules.clarizen.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/connectivity/package-summary.html">org.mule.modules.clarizen.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/devkit/package-summary.html">org.mule.modules.clarizen.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/oauth/package-summary.html">org.mule.modules.clarizen.oauth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/process/package-summary.html">org.mule.modules.clarizen.process</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/modules/clarizen/processors/package-summary.html">org.mule.modules.clarizen.processors</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="selected api apilevel-"><a href="../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/clarizen/DefaultClarizenClient.html">DefaultClarizenClient</a></li>
+      </ul>
+    </li>
+              
+              
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/clarizen/ClarizenRuntimeException.html">ClarizenRuntimeException</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/clarizen/ClarizenSessionTimeoutException.html">ClarizenSessionTimeoutException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+  <a href="#lfields">Fields</a>
+  
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>ClarizenConnector</h1>
+
+
+
+  
+    extends Object<br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.clarizen.ClarizenConnector</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorCapabilitiesAdapter.html">ClarizenConnectorCapabilitiesAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorCapabilitiesAdapter.html">ClarizenConnectorCapabilitiesAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>ClarizenConnectorCapabilitiesAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a>,
+            
+              <a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a>,
+            
+              <a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLifecycleAdapter.html">ClarizenConnectorLifecycleAdapter</a>,
+            
+              <a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorMetadataAdapater.html">ClarizenConnectorMetadataAdapater</a>,
+            
+              <a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorProcessAdapter.html">ClarizenConnectorProcessAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorConnectionIdentifierAdapter.html">ClarizenConnectorConnectionIdentifierAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>ClarizenConnectorConnectionIdentifierAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code> that implements org.mule.devkit.dynamic.api.helper.Connection interface.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLicenseChecker.html">ClarizenConnectorLicenseChecker</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorLifecycleAdapter.html">ClarizenConnectorLifecycleAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>ClarizenConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorMetadataAdapater.html">ClarizenConnectorMetadataAdapater</a></td>
+              <td class="jd-descrcol" width="100%">A <code>ClarizenConnectorMetadataAdapater</code> is a wrapper around <code><a href="../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code> that adds support for querying metadata about the extension.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/modules/clarizen/adapters/ClarizenConnectorProcessAdapter.html">ClarizenConnectorProcessAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>ClarizenConnectorProcessAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/modules/clarizen/ClarizenConnector.html">ClarizenConnector</a></code> that enables custom processing strategies.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>Clarizen Cloud Connector
+ 
+ Clarizen project management software is a leading global provider of collaborative 
+ online project management that allows businesses to easily manage all of their projects 
+ and resources in a single environment.
+ 
+ For futher information visit http://www.clarizen.com </p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#applicationId">applicationId</a></td>
+          <td class="jd-descrcol" width="100%">Clarizen Application ID
+</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#clarizenClient">clarizenClient</a></td>
+          <td class="jd-descrcol" width="100%">ClarizenClient client.</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#connectionPassword">connectionPassword</a></td>
+          <td class="jd-descrcol" width="100%">Password
+</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#connectionUser">connectionUser</a></td>
+          <td class="jd-descrcol" width="100%">Username
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#loginLock">loginLock</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#partnerId">partnerId</a></td>
+          <td class="jd-descrcol" width="100%">Clarizen Partner ID
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#sessionId">sessionId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+
+</table>
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#ClarizenConnector()">ClarizenConnector</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#attachFileUrlToEntity(com.clarizen.api.EntityId, java.lang.String, java.lang.String)">attachFileUrlToEntity</a></span>(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId, String attachmentUrl, String attachmentFilename)</nobr>
+        
+        <div class="jd-descrdiv">Attaches a file to an entity, given that the file resides in an external storage and can be accessed via a URL.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#connect(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">connect</a></span>(String connectionUser, String connectionPassword, String applicationId, String partnerId)</nobr>
+        
+        <div class="jd-descrdiv">Performs a connection to Clarizen by making a login call with the given credentials.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#createEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)">createEntity</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</nobr>
+        
+        <div class="jd-descrdiv">Creates a new Clarizen entity
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#createFromTemplate(java.lang.String, org.mule.modules.clarizen.api.model.BaseClarizenEntity)">createFromTemplate</a></span>(String templateName, <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</nobr>
+        
+        <div class="jd-descrdiv">Creates milestones and projects from templates
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#createGenericEntity(com.clarizen.api.GenericEntity)">createGenericEntity</a></span>(<a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a> entity)</nobr>
+        
+        <div class="jd-descrdiv">Creates a new Clarizen generic entity
+
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#deleteEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)">deleteEntity</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</nobr>
+        
+        <div class="jd-descrdiv">Deletes an entity
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#deleteEntityById(com.clarizen.api.EntityId)">deleteEntityById</a></span>(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId)</nobr>
+        
+        <div class="jd-descrdiv">Deletes an entity by its entity Id
+
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../java/com/clarizen/api/metadata/EntityDescription.html">EntityDescription</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#describeEntities(java.util.List<java.lang.String>)">describeEntities</a></span>(List&lt;String&gt; typeNames)</nobr>
+        
+        <div class="jd-descrdiv">Returns the description of an entity
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#disconnect()">disconnect</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Performs a logout call.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../java/com/clarizen/api/files/FileInformation.html">FileInformation</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#downloadEntityAttachments(com.clarizen.api.EntityId)">downloadEntityAttachments</a></span>(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId)</nobr>
+        
+        <div class="jd-descrdiv">Given a certain Entity Id, retrieves all associated attachments.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/files/FileInformation.html">FileInformation</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#downloadFileInformation(org.mule.modules.clarizen.api.model.BaseClarizenEntity)">downloadFileInformation</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</nobr>
+        
+        <div class="jd-descrdiv">Download file information
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#entityQuery(java.util.List<java.lang.String>, java.lang.String, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)">entityQuery</a></span>(List&lt;String&gt; fieldsToRetrieve, String queryTypeName, <a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a> condition, Integer pageSize, Integer maxNumberOfPages)</nobr>
+        
+        <div class="jd-descrdiv">Create an entity query
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getApplicationId()">getApplicationId</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/GetCalendarInfoResult.html">GetCalendarInfoResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getCalendarInformation(com.clarizen.api.EntityId)">getCalendarInformation</a></span>(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> userId)</nobr>
+        
+        <div class="jd-descrdiv">Gets calendar information for the specified user
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getClarizenClient()">getClarizenClient</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getConnectionPassword()">getConnectionPassword</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getConnectionUser()">getConnectionUser</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getMyWorkItems(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer, java.lang.Integer)">getMyWorkItems</a></span>(List&lt;String&gt; fieldsToRetrieve, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a> workItemState, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a> workItemType, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a> workItemFilter, Integer pageSize, Integer maxNumberOfPages)</nobr>
+        
+        <div class="jd-descrdiv">Returns the work items for the current user
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getPartnerId()">getPartnerId</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getSessionId()">getSessionId</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getSystemSettings(java.util.List<java.lang.String>)">getSystemSettings</a></span>(List&lt;String&gt; settings)</nobr>
+        
+        <div class="jd-descrdiv">Gets system settings values
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#getWorkItemById(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.List<java.lang.String>)">getWorkItemById</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a> workItemType, String workItemId, List&lt;String&gt; fieldsToRetrieve)</nobr>
+        
+        <div class="jd-descrdiv">Retrieves a workitem by id.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#issueQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.AllIssueType, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)">issueQuery</a></span>(List&lt;String&gt; fieldsToRetrieve, <a href="../../../../../java/org/mule/modules/clarizen/api/model/AllIssueType.html">AllIssueType</a> issueType, <a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a> condition, Integer pageSize, Integer maxNumberOfPages)</nobr>
+        
+        <div class="jd-descrdiv">Create an issues query
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#lifecycleChange(java.util.List<com.clarizen.api.EntityId>, java.lang.String, java.lang.Boolean)">lifecycleChange</a></span>(List&lt;<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a>&gt; entityIdList, String operation, Boolean recursive)</nobr>
+        
+        <div class="jd-descrdiv">Performs lifecycle changes on an entity or a group of entities
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#listEntities()">listEntities</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the list of entities
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/modules/clarizen/api/model/Login.html">Login</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#login(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">login</a></span>(String username, String password, String applicationId, String partnerId)</nobr>
+        
+        <div class="jd-descrdiv">Login to Clarizen</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#logout()">logout</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Cleans up an authentication token that was previously created with a call to login
+
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#retrieveWorkItemHumanResources(com.clarizen.api.EntityId, java.util.List<java.lang.String>)">retrieveWorkItemHumanResources</a></span>(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId, List&lt;String&gt; fieldsToRetrieve)</nobr>
+        
+        <div class="jd-descrdiv">Given a certain Entity Id representing a work item, retrieves all associated human resources.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#sendEmail(com.clarizen.api.AccessType, org.mule.modules.clarizen.api.model.BaseClarizenEntity, java.lang.String, java.lang.String, java.util.List<com.clarizen.api.Recipient>)">sendEmail</a></span>(<a href="../../../../../java/com/clarizen/api/AccessType.html">AccessType</a> accessType, <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> relatedEntity, String body, String subject, List&lt;<a href="../../../../../java/com/clarizen/api/Recipient.html">Recipient</a>&gt; recipients)</nobr>
+        
+        <div class="jd-descrdiv">Sends an email to the specified recipients
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setApplicationId(java.lang.String)">setApplicationId</a></span>(String applicationId)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setClarizenClient(org.mule.modules.clarizen.api.ClarizenClient)">setClarizenClient</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a> clarizenClient)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setConnectionPassword(java.lang.String)">setConnectionPassword</a></span>(String connectionPassword)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setConnectionUser(java.lang.String)">setConnectionUser</a></span>(String connectionUser)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setPartnerId(java.lang.String)">setPartnerId</a></span>(String partnerId)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#setSessionId(java.lang.String)">setSessionId</a></span>(String sessionId)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a connection identifier.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#updateEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)">updateEntity</a></span>(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</nobr>
+        
+        <div class="jd-descrdiv">Updates a new Clarizen entity
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#updateGenericEntity(com.clarizen.api.GenericEntity)">updateGenericEntity</a></span>(<a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a> entity)</nobr>
+        
+        <div class="jd-descrdiv">Updates a Clarizen generic entity
+
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#validateConnection()">validateConnection</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns whether the current user is authenticated.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/clarizen/ClarizenConnector.html#workItemsQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer, java.lang.Integer)">workItemsQuery</a></span>(List&lt;String&gt; fieldsToRetrieve, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a> workItemState, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a> workItemType, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a> workItemFilter, Integer pageSize, Integer maxNumberOfPages)</nobr>
+        
+        <div class="jd-descrdiv">Search for work items
+ 
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="applicationId"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        applicationId
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Clarizen Application ID
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="clarizenClient"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a>
+      </span>
+        clarizenClient
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>ClarizenClient client. Default ClarizenClientImpl.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="connectionPassword"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        connectionPassword
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Password
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="connectionUser"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        connectionUser
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Username
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="loginLock"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        Object
+      </span>
+        loginLock
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="partnerId"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        partnerId
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Clarizen Partner ID
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="sessionId"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        sessionId
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="ClarizenConnector()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">ClarizenConnector</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="attachFileUrlToEntity(com.clarizen.api.EntityId, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">attachFileUrlToEntity</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId, String attachmentUrl, String attachmentFilename)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attaches a file to an entity, given that the file resides in an external storage and can be accessed via a URL.
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entityId</td>
+          <td>ID of the entity to which the file URL will be attached</td>
+        </tr>
+        <tr>
+          <th>attachmentUrl</td>
+          <td>URL pointing to the attachment</td>
+        </tr>
+        <tr>
+          <th>attachmentFilename</td>
+          <td>Filename of the attachment</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the action was successful
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="connect(java.lang.String, java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">connect</span>
+      <span class="normal">(String connectionUser, String connectionPassword, String applicationId, String partnerId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Performs a connection to Clarizen by making a login call with the given credentials.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>connectionUser</td>
+          <td>The user login user</td>
+        </tr>
+        <tr>
+          <th>connectionPassword</td>
+          <td>The user login pass</td>
+        </tr>
+        <tr>
+          <th>applicationId</td>
+          <td>The id of a specific partner application that can be used for licensing purposed</td>
+        </tr>
+        <tr>
+          <th>partnerId</td>
+          <td>The id of a Clarizen partner
+ 
+</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>ConnectionException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>
+      </span>
+      <span class="sympad">createEntity</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates a new Clarizen entity
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entity</td>
+          <td>Entity to be created</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Created entity
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createFromTemplate(java.lang.String, org.mule.modules.clarizen.api.model.BaseClarizenEntity)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>
+      </span>
+      <span class="sympad">createFromTemplate</span>
+      <span class="normal">(String templateName, <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates milestones and projects from templates
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>templateName</td>
+          <td>Template to be used</td>
+        </tr>
+        <tr>
+          <th>entity</td>
+          <td>Entity to be created from template</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>created entity
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createGenericEntity(com.clarizen.api.GenericEntity)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a>
+      </span>
+      <span class="sympad">createGenericEntity</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a> entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates a new Clarizen generic entity
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entity</td>
+          <td>Entity to be created</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Created entity
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="deleteEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">deleteEntity</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Deletes an entity
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entity</td>
+          <td>The entity to be deleted</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the entity was successfully deleted
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="deleteEntityById(com.clarizen.api.EntityId)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">deleteEntityById</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Deletes an entity by its entity Id
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entityId</td>
+          <td>The entity Id of the entity to be deleted</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the entity was successfully deleted
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="describeEntities(java.util.List<java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;<a href="../../../../../java/com/clarizen/api/metadata/EntityDescription.html">EntityDescription</a>&gt;
+      </span>
+      <span class="sympad">describeEntities</span>
+      <span class="normal">(List&lt;String&gt; typeNames)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the description of an entity
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>typeNames</td>
+          <td>List of entity types to be described</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/com/clarizen/api/metadata/EntityDescription.html">EntityDescription</a></code> Entity description
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="disconnect()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">disconnect</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Performs a logout call.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="downloadEntityAttachments(com.clarizen.api.EntityId)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;<a href="../../../../../java/com/clarizen/api/files/FileInformation.html">FileInformation</a>&gt;
+      </span>
+      <span class="sympad">downloadEntityAttachments</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Given a certain Entity Id, retrieves all associated attachments.
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entityId</td>
+          <td>The entity Id associated with the attachments</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The list containing all the attachments.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="downloadFileInformation(org.mule.modules.clarizen.api.model.BaseClarizenEntity)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/com/clarizen/api/files/FileInformation.html">FileInformation</a>
+      </span>
+      <span class="sympad">downloadFileInformation</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Download file information
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entity</td>
+          <td>Document entity</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>entity file information
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="entityQuery(java.util.List<java.lang.String>, java.lang.String, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;
+      </span>
+      <span class="sympad">entityQuery</span>
+      <span class="normal">(List&lt;String&gt; fieldsToRetrieve, String queryTypeName, <a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a> condition, Integer pageSize, Integer maxNumberOfPages)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an entity query
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>fieldsToRetrieve</td>
+          <td>The fields to be retrieved. The fields names are the keys of the map</td>
+        </tr>
+        <tr>
+          <th>queryTypeName</td>
+          <td>The entity type</td>
+        </tr>
+        <tr>
+          <th>condition</td>
+          <td>The query condition. For further information about the condition object check <code><a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a></code></td>
+        </tr>
+        <tr>
+          <th>pageSize</td>
+          <td>The number of results to be retrieved per page</td>
+        </tr>
+        <tr>
+          <th>maxNumberOfPages</td>
+          <td>The maximum number of pages to be retrieved</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>ArrayOfEntity List of work item results
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getApplicationId()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getApplicationId</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getCalendarInformation(com.clarizen.api.EntityId)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/com/clarizen/api/GetCalendarInfoResult.html">GetCalendarInfoResult</a>
+      </span>
+      <span class="sympad">getCalendarInformation</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> userId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets calendar information for the specified user
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>userId</td>
+          <td>The userId entityId</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>calendar information
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getClarizenClient()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a>
+      </span>
+      <span class="sympad">getClarizenClient</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getConnectionPassword()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getConnectionPassword</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getConnectionUser()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getConnectionUser</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getMyWorkItems(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer, java.lang.Integer)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;
+      </span>
+      <span class="sympad">getMyWorkItems</span>
+      <span class="normal">(List&lt;String&gt; fieldsToRetrieve, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a> workItemState, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a> workItemType, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a> workItemFilter, Integer pageSize, Integer maxNumberOfPages)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the work items for the current user
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>fieldsToRetrieve</td>
+          <td>The fields to be retrieved. The fields names are the keys of the map</td>
+        </tr>
+        <tr>
+          <th>workItemState</td>
+          <td>The work items state. For further information about the specific values check <code><a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a></code></td>
+        </tr>
+        <tr>
+          <th>workItemType</td>
+          <td>The work item type. For further information about the specific values check <code><a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a></code></td>
+        </tr>
+        <tr>
+          <th>workItemFilter</td>
+          <td>The work items filter. For further information about the specific values check <code><a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a></code> </td>
+        </tr>
+        <tr>
+          <th>pageSize</td>
+          <td>The number of results to be retrieved per page</td>
+        </tr>
+        <tr>
+          <th>maxNumberOfPages</td>
+          <td>The maximum number of pages to be retrieved</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>ArrayOfEntity List of work items
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getPartnerId()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getPartnerId</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getSessionId()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getSessionId</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getSystemSettings(java.util.List<java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Object&gt;
+      </span>
+      <span class="sympad">getSystemSettings</span>
+      <span class="normal">(List&lt;String&gt; settings)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets system settings values
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>settings</td>
+          <td>List</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>system settings
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getWorkItemById(org.mule.modules.clarizen.api.model.WorkItemType, java.lang.String, java.util.List<java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>
+      </span>
+      <span class="sympad">getWorkItemById</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a> workItemType, String workItemId, List&lt;String&gt; fieldsToRetrieve)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves a workitem by id.
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>workItemType</td>
+          <td>The work item type. For further information about the specific values check <code><a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a></code></td>
+        </tr>
+        <tr>
+          <th>workItemId</td>
+          <td>The work item id</td>
+        </tr>
+        <tr>
+          <th>fieldsToRetrieve</td>
+          <td>The list of the work item fields to be retrieved. The fields names are the keys of the map</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Work item with fields indicated through fieldToRetrieve
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="issueQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.AllIssueType, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;
+      </span>
+      <span class="sympad">issueQuery</span>
+      <span class="normal">(List&lt;String&gt; fieldsToRetrieve, <a href="../../../../../java/org/mule/modules/clarizen/api/model/AllIssueType.html">AllIssueType</a> issueType, <a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a> condition, Integer pageSize, Integer maxNumberOfPages)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an issues query
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>fieldsToRetrieve</td>
+          <td>The fields to be retrieved. The fields names are the keys of the map</td>
+        </tr>
+        <tr>
+          <th>issueType</td>
+          <td>The issue type to be retrieved</td>
+        </tr>
+        <tr>
+          <th>condition</td>
+          <td>The query condition. For further information about the condition object check <code><a href="../../../../../java/com/clarizen/api/queries/Condition.html">Condition</a></code></td>
+        </tr>
+        <tr>
+          <th>pageSize</td>
+          <td>The number of results to be retrieved per page.</td>
+        </tr>
+        <tr>
+          <th>maxNumberOfPages</td>
+          <td>The maximum number of pages to be retrieved</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>ArrayOfEntity List of issues results
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="lifecycleChange(java.util.List<com.clarizen.api.EntityId>, java.lang.String, java.lang.Boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">lifecycleChange</span>
+      <span class="normal">(List&lt;<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a>&gt; entityIdList, String operation, Boolean recursive)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Performs lifecycle changes on an entity or a group of entities
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entityIdList</td>
+          <td>The list of entities to be updated</td>
+        </tr>
+        <tr>
+          <th>operation</td>
+          <td>The operation to be performed</td>
+        </tr>
+        <tr>
+          <th>recursive</td>
+          <td>If the operation will be recursived</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the change was successful
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="listEntities()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;String&gt;
+      </span>
+      <span class="sympad">listEntities</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the list of entities
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>List of entities
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="login(java.lang.String, java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/clarizen/api/model/Login.html">Login</a>
+      </span>
+      <span class="sympad">login</span>
+      <span class="normal">(String username, String password, String applicationId, String partnerId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Login to Clarizen</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>username</td>
+          <td>The login user</td>
+        </tr>
+        <tr>
+          <th>password</td>
+          <td>The login pass</td>
+        </tr>
+        <tr>
+          <th>applicationId</td>
+          <td>The id of a specific partner application that can be used for licensing purposed</td>
+        </tr>
+        <tr>
+          <th>partnerId</td>
+          <td>The id of a Clarizen partner</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/modules/clarizen/api/model/Login.html">Login</a></code> Login result with the created user session id
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="logout()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">logout</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Cleans up an authentication token that was previously created with a call to login
+
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="retrieveWorkItemHumanResources(com.clarizen.api.EntityId, java.util.List<java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;<a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a>&gt;
+      </span>
+      <span class="sympad">retrieveWorkItemHumanResources</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/EntityId.html">EntityId</a> entityId, List&lt;String&gt; fieldsToRetrieve)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Given a certain Entity Id representing a work item, retrieves all associated human resources.
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entityId</td>
+          <td>The entity Id associated with a work item</td>
+        </tr>
+        <tr>
+          <th>fieldsToRetrieve</td>
+          <td>List of strings representing the fields to retrieve</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The list containing all the human resources.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendEmail(com.clarizen.api.AccessType, org.mule.modules.clarizen.api.model.BaseClarizenEntity, java.lang.String, java.lang.String, java.util.List<com.clarizen.api.Recipient>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">sendEmail</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/AccessType.html">AccessType</a> accessType, <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> relatedEntity, String body, String subject, List&lt;<a href="../../../../../java/com/clarizen/api/Recipient.html">Recipient</a>&gt; recipients)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sends an email to the specified recipients
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>accessType</td>
+          <td>PUBLIC or PRIVATE</td>
+        </tr>
+        <tr>
+          <th>relatedEntity</td>
+          <td>Entity related to the email</td>
+        </tr>
+        <tr>
+          <th>body</td>
+          <td>Message body</td>
+        </tr>
+        <tr>
+          <th>subject</td>
+          <td>Message subject</td>
+        </tr>
+        <tr>
+          <th>recipients</td>
+          <td>List of recipients</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the action was successful
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setApplicationId(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setApplicationId</span>
+      <span class="normal">(String applicationId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>applicationId</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setClarizenClient(org.mule.modules.clarizen.api.ClarizenClient)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setClarizenClient</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/ClarizenClient.html">ClarizenClient</a> clarizenClient)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>clarizenClient</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setConnectionPassword(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setConnectionPassword</span>
+      <span class="normal">(String connectionPassword)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>connectionPassword</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setConnectionUser(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setConnectionUser</span>
+      <span class="normal">(String connectionUser)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>connectionUser</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setPartnerId(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setPartnerId</span>
+      <span class="normal">(String partnerId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>partnerId</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setSessionId(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setSessionId</span>
+      <span class="normal">(String sessionId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>sessionId</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="toString()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">toString</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a connection identifier.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="updateEntity(org.mule.modules.clarizen.api.model.BaseClarizenEntity)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>
+      </span>
+      <span class="sympad">updateEntity</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a> entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Updates a new Clarizen entity
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entity</td>
+          <td>Entity to be updated</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Created entity
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="updateGenericEntity(com.clarizen.api.GenericEntity)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a>
+      </span>
+      <span class="sympad">updateGenericEntity</span>
+      <span class="normal">(<a href="../../../../../java/com/clarizen/api/GenericEntity.html">GenericEntity</a> entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Updates a Clarizen generic entity
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>entity</td>
+          <td>Entity to be updated</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Created entity
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="validateConnection()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">validateConnection</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns whether the current user is authenticated.
+ It does not mean tell anything whether the current session has expired
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="workItemsQuery(java.util.List<java.lang.String>, org.mule.modules.clarizen.api.model.WorkItemState, org.mule.modules.clarizen.api.model.WorkItemType, org.mule.modules.clarizen.api.model.WorkItemFilter, java.lang.Integer, java.lang.Integer)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;<a href="../../../../../java/org/mule/modules/clarizen/api/model/BaseClarizenEntity.html">BaseClarizenEntity</a>&gt;
+      </span>
+      <span class="sympad">workItemsQuery</span>
+      <span class="normal">(List&lt;String&gt; fieldsToRetrieve, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a> workItemState, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a> workItemType, <a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a> workItemFilter, Integer pageSize, Integer maxNumberOfPages)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Search for work items
+ 
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>fieldsToRetrieve</td>
+          <td>The fields to be retrieved. The fields names are the keys of the map</td>
+        </tr>
+        <tr>
+          <th>workItemState</td>
+          <td>The work items state. For further information about the specific values check <code><a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemState.html">WorkItemState</a></code></td>
+        </tr>
+        <tr>
+          <th>workItemType</td>
+          <td>The work item type. For further information about the specific values check <code><a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemType.html">WorkItemType</a></code></td>
+        </tr>
+        <tr>
+          <th>workItemFilter</td>
+          <td>The work items filter. For further information about the specific values check <code><a href="../../../../../java/org/mule/modules/clarizen/api/model/WorkItemFilter.html">WorkItemFilter</a></code></td>
+        </tr>
+        <tr>
+          <th>pageSize</td>
+          <td>The number of results to be retrieved per page</td>
+        </tr>
+        <tr>
+          <th>maxNumberOfPages</td>
+          <td>The maximum number of pages to be retrieved</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>ArrayOfEntity List of work item results
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>
