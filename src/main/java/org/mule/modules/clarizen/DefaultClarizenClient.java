@@ -646,7 +646,11 @@ public class DefaultClarizenClient implements ClarizenClient {
         			continue;
         		}
         		
-        		fieldName = StringUtils.uncapitalize(field.getFieldName());
+        		fieldName = field.getFieldName();
+        		if (!fieldName.equals(fieldName.toUpperCase())) {
+        			fieldName = StringUtils.uncapitalize(fieldName);
+        		}
+        		
         		//Custom fields starts with c_
         		if (fieldName.startsWith("c_")) {
         			customFields.add(field);
