@@ -232,7 +232,7 @@ public class DefaultClarizenClient implements ClarizenClient {
         try {
             login = getService().login(username, password, opts);
         } catch (IClarizenLoginLoginFailureFaultFaultMessage e) {
-            throw new ClarizenRuntimeException(e);
+            throw new ClarizenRuntimeException(ErrorCode.UNAUTHORIZED, e.getLocalizedMessage());
         }
         
         SessionHeader sessionHeader = new SessionHeader();
