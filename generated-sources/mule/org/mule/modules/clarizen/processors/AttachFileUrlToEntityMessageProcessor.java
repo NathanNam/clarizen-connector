@@ -29,7 +29,7 @@ import org.mule.modules.clarizen.process.ProcessTemplate;
  * AttachFileUrlToEntityMessageProcessor invokes the {@link org.mule.modules.clarizen.ClarizenConnector#attachFileUrlToEntity(com.clarizen.api.EntityId, java.lang.String, java.lang.String)} method in {@link ClarizenConnector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-04-28T12:59:10-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-04T12:20:43-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class AttachFileUrlToEntityMessageProcessor
     extends AbstractMessageProcessor<Object>
     implements Disposable, Initialisable, Startable, Stoppable, MessageProcessor

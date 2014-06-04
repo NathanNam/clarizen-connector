@@ -25,7 +25,7 @@ import org.mule.modules.clarizen.process.ProcessTemplate;
  * A {@code ClarizenConnectorConnectionManager} is a wrapper around {@link ClarizenConnector } that adds connection management capabilities to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-04-28T12:59:10-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-04T12:20:43-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class ClarizenConnectorConnectionManager implements MuleContextAware, Disposable, Initialisable, Capabilities, MetadataAware, ConnectionManager<ClarizenConnectorConnectionKey, ClarizenConnectorLicenseChecker> , ProcessAdapter<ClarizenConnectorLicenseChecker>
 {
 
@@ -63,7 +63,7 @@ public class ClarizenConnectorConnectionManager implements MuleContextAware, Dis
     protected PoolingProfile connectionPoolingProfile;
     protected RetryPolicyTemplate retryPolicyTemplate;
     private final static String MODULE_NAME = "Clarizen";
-    private final static String MODULE_VERSION = "2.0.9-SNAPSHOT";
+    private final static String MODULE_VERSION = "2.0.10-SNAPSHOT";
     private final static String DEVKIT_VERSION = "3.4.3";
     private final static String DEVKIT_BUILD = "3.4.3.1620.30ea288";
 
