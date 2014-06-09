@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.mule.tooling.ui.extension.clarizen" label="Clarizen Cloud Connector Mule Studio Extension" provider-name="Mulesoft, Inc." version="2.0.10.201406041220"><license>(c) 2003-2012 MuleSoft, Inc. This software is protected under international
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.mule.tooling.ui.extension.clarizen" label="Clarizen Cloud Connector Mule Studio Extension" provider-name="Mulesoft, Inc." version="2.0.10.201406091526"><license>(c) 2003-2012 MuleSoft, Inc. This software is protected under international
 copyright law. All use of this software is subject to MuleSoft's Master
 Subscription Agreement (or other Terms of Service) separately entered
 into between you and MuleSoft. If such an agreement is not in
-place, you may not use the software.</license><plugin download-size="0" id="org.mule.tooling.ui.contribution.clarizen" install-size="0" unpack="true" version="1.0.0.201406041220"/></feature>
+place, you may not use the software.</license><plugin download-size="0" id="org.mule.tooling.ui.contribution.clarizen" install-size="0" unpack="true" version="1.0.0.201406091526"/></feature>

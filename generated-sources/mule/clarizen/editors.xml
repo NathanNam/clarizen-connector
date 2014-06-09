@@ -39,6 +39,7 @@
         <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
         <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
         <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
+        <string defaultValue="https://api.clarizen.com/v1.0/Clarizen.svc" javaType="java.lang.String" required="false" description="Clarizen Webservice address." caption="Service Address" name="serviceAddress"></string>
       </group>
     </attribute-category>
     <attribute-category description="Pooling profile options." caption="Pooling Profile">
@@ -572,8 +573,9 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
     <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
     <string controlled="useReference" description="" caption="Entity Reference" name="ref"></string>
     <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
-    <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.Permissions" controlled="complex" required="false" caption="Permissions Reference" name="http://www.mulesoft.org/schema/mule/clarizen/permissions"></childElement>
-    <string javaType="com.clarizen.api.ArrayOfFieldValue" controlled="complex" required="false" description="" caption="Values Reference" name="values-ref"></string>
+    <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" controlled="complex" required="false" caption="Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/id"></childElement>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Name" name="name"></string>
+    <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" controlled="complex" required="false" caption="Entity Type Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-type"></childElement>
   </nested>
   <nested xmlname="entity-id" abstract="false" localId="entity-id" description="" caption="">
     <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>

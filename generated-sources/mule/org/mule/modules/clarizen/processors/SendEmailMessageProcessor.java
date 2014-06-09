@@ -31,7 +31,7 @@ import org.mule.modules.clarizen.process.ProcessTemplate;
  * SendEmailMessageProcessor invokes the {@link org.mule.modules.clarizen.ClarizenConnector#sendEmail(com.clarizen.api.AccessType, org.mule.modules.clarizen.api.model.BaseClarizenEntity, java.lang.String, java.lang.String, java.util.List)} method in {@link ClarizenConnector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-04T12:20:43-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-09T03:26:49-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class SendEmailMessageProcessor
     extends AbstractMessageProcessor<Object>
     implements Disposable, Initialisable, Startable, Stoppable, MessageProcessor

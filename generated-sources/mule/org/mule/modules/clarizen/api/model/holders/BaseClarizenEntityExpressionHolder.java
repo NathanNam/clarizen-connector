@@ -4,7 +4,7 @@ package org.mule.modules.clarizen.api.model.holders;
 import javax.annotation.Generated;
 import com.clarizen.api.EntityId;
 
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-04T12:20:43-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-09T03:26:49-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class BaseClarizenEntityExpressionHolder {
 
     protected Object id;

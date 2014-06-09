@@ -25,7 +25,7 @@ import org.mule.modules.clarizen.process.ProcessTemplate;
  * A {@code ClarizenConnectorConnectionManager} is a wrapper around {@link ClarizenConnector } that adds connection management capabilities to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-04T12:20:43-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-09T03:26:49-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class ClarizenConnectorConnectionManager implements MuleContextAware, Disposable, Initialisable, Capabilities, MetadataAware, ConnectionManager<ClarizenConnectorConnectionKey, ClarizenConnectorLicenseChecker> , ProcessAdapter<ClarizenConnectorLicenseChecker>
 {
 
@@ -45,6 +45,7 @@ public class ClarizenConnectorConnectionManager implements MuleContextAware, Dis
      * 
      */
     private String partnerId;
+    private String serviceAddress;
     /**
      * Mule Context
      * 
@@ -66,6 +67,23 @@ public class ClarizenConnectorConnectionManager implements MuleContextAware, Dis
     private final static String MODULE_VERSION = "2.0.10-SNAPSHOT";
     private final static String DEVKIT_VERSION = "3.4.3";
     private final static String DEVKIT_BUILD = "3.4.3.1620.30ea288";
+
+    /**
+     * Sets serviceAddress
+     * 
+     * @param value Value to set
+     */
+    public void setServiceAddress(String value) {
+        this.serviceAddress = value;
+    }
+
+    /**
+     * Retrieves serviceAddress
+     * 
+     */
+    public String getServiceAddress() {
+        return this.serviceAddress;
+    }
 
     /**
      * Sets muleContext
