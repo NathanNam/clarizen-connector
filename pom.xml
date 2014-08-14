@@ -14,7 +14,7 @@
     </parent>
 
     <properties>
-        <category>Standard</category>
+        <category>Community</category>
         <devkit.studio.package.skip>false</devkit.studio.package.skip>
         <cxf.version>2.5.1</cxf.version>
         <licensePath>LICENSE.md</licensePath>
