@@ -4,6 +4,7 @@ package org.mule.modules.clarizen.processors;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Generated;
+import com.clarizen.api.files.FileInformation;
 import org.mule.api.MessagingException;
 import org.mule.api.MuleContext;
 import org.mule.api.MuleEvent;
@@ -15,6 +16,16 @@ import org.mule.api.lifecycle.InitialisationException;
 import org.mule.api.lifecycle.Startable;
 import org.mule.api.lifecycle.Stoppable;
 import org.mule.api.processor.MessageProcessor;
+import org.mule.common.DefaultResult;
+import org.mule.common.Result;
+import org.mule.common.metadata.DefaultMetaData;
+import org.mule.common.metadata.DefaultPojoMetaDataModel;
+import org.mule.common.metadata.DefaultSimpleMetaDataModel;
+import org.mule.common.metadata.MetaData;
+import org.mule.common.metadata.MetaDataModel;
+import org.mule.common.metadata.OperationMetaDataEnabled;
+import org.mule.common.metadata.datatype.DataType;
+import org.mule.common.metadata.datatype.DataTypeFactory;
 import org.mule.config.i18n.CoreMessages;
 import org.mule.modules.clarizen.ClarizenConnector;
 import org.mule.modules.clarizen.ClarizenSessionTimeoutException;
@@ -29,10 +40,10 @@ import org.mule.modules.clarizen.process.ProcessTemplate;
  * DownloadFileInformationMessageProcessor invokes the {@link org.mule.modules.clarizen.ClarizenConnector#downloadFileInformation(org.mule.modules.clarizen.api.model.BaseClarizenEntity)} method in {@link ClarizenConnector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-09T03:26:49-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-14T11:23:00-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class DownloadFileInformationMessageProcessor
     extends AbstractMessageProcessor<Object>
-    implements Disposable, Initialisable, Startable, Stoppable, MessageProcessor
+    implements Disposable, Initialisable, Startable, Stoppable, MessageProcessor, OperationMetaDataEnabled
 {
 
     protected Object entity;
@@ -129,6 +140,25 @@ public class DownloadFileInformationMessageProcessor
             throw messagingException;
         } catch (Exception e) {
             throw new MessagingException(CoreMessages.failedToInvoke("downloadFileInformation"), event, e);
+        }
+    }
+
+    @Override
+    public Result<MetaData> getInputMetaData() {
+        return new DefaultResult<MetaData>(new DefaultMetaData(getPojoOrSimpleModel(BaseClarizenEntity.class)));
+    }
+
+    @Override
+    public Result<MetaData> getOutputMetaData(MetaData inputMetadata) {
+        return new DefaultResult<MetaData>(new DefaultMetaData(getPojoOrSimpleModel(FileInformation.class)));
+    }
+
+    private MetaDataModel getPojoOrSimpleModel(Class clazz) {
+        DataType dataType = DataTypeFactory.getInstance().getDataType(clazz);
+        if (DataType.POJO.equals(dataType)) {
+            return new DefaultPojoMetaDataModel(clazz);
+        } else {
+            return new DefaultSimpleMetaDataModel(dataType);
         }
     }
 

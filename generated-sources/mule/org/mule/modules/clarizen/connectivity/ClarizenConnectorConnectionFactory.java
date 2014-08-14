@@ -12,7 +12,7 @@ import org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-09T03:26:49-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-14T11:23:00-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class ClarizenConnectorConnectionFactory implements KeyedPoolableObjectFactory
 {
 
@@ -35,7 +35,6 @@ public class ClarizenConnectorConnectionFactory implements KeyedPoolableObjectFa
             throw new RuntimeException("Invalid key type ".concat(key.getClass().getName()));
         }
         ClarizenConnectorLicenseChecker connector = new ClarizenConnectorLicenseChecker();
-        connector.setServiceAddress(connectionManager.getServiceAddress());
         if (connector instanceof Initialisable) {
             ((Initialisable) connector).initialise();
         }

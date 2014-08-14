@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" prefix="clarizen" url="http://www.mulesoft.org/schema/mule/clarizen">
-  <global-cloud-connector connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Clarizen" versions="[3.2.0,8.0.0]"></global-cloud-connector>
+  <global-cloud-connector metaData="static" connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Clarizen" versions="[3.4.0,8.0.0]"></global-cloud-connector>
   <nested abstract="true" localId="connection-pooling-profile" description="" caption="">
     <label description="" caption="Define connection pool configuration" name="poolingProfileLabel"></label>
     <integer step="0" min="0" defaultValue="5" fillLine="true" description="Controls the maximum number of connections that can be borrowed from the pool at one time. When set to a negative value, there is no limit to the number of connections that may be active at one time. When maxActive is exceeded, the pool is said to be exhausted." caption="Max active" name="maxActive"></integer>
@@ -17,6 +17,8 @@
       <option value="WHEN_EXHAUSTED_GROW"></option>
     </enum>
     <integer step="0" min="0" defaultValue="5" fillLine="true" description="When exhausted action is Wait (or block) this is the amount of time in milliseconds that the pool will wait before failing. Setting a negative value will block indefinitely until an idle instance becomes available." caption="Max wait" name="maxWait"></integer>
+    <integer step="0" min="0" defaultValue="1800000" fillLine="true" description="Determines the minimum amount of time a connection may sit idle in the pool before it is eligible for eviction. When non-positive, no connections will be evicted from the pool due to idle time alone." caption="Min eviction (ms)" name="minEvictionMillis"></integer>
+    <integer step="0" min="0" defaultValue="-1" fillLine="true" description="Specifies the number of milliseconds between runs of the connection evictor. When non-positive, no connection evictor is executed." caption="Eviction check interval (ms)" name="evictionCheckIntervalMillis"></integer>
   </nested>
   <nested abstract="true" localId="reconnectionStrategyElement" description="" caption="">
     <label description="" caption="Define how mule should attempt to handle a connection failure" name="connectionLabel"></label>
@@ -29,7 +31,7 @@
     <classname indented="true" controlled="customReconnection" description="A class that implements the RetryPolicyTemplate interface." caption="Class" name="class"></classname>
     <childElement allowMultiple="true" controlled="customReconnection" description="Property elements." caption="Properties" name="http://www.springframework.org/schema/beans/property"></childElement>
   </nested>
-  <global-cloud-connector connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/clarizen/parentConfig" abstract="false" image="icons/large/clarizen-connector-48x32.png" localId="config" icon="icons/small/clarizen-connector-24x16.png" description="Global Clarizen configuration information." caption="Clarizen" versions="[3.2.0,8.0.0]">
+  <global-cloud-connector metaData="static" connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/clarizen/parentConfig" abstract="false" image="icons/large/clarizen-connector-48x32.png" localId="config" icon="icons/small/clarizen-connector-24x16.png" description="Global Clarizen configuration information." caption="Clarizen" versions="[3.4.0,8.0.0]">
     <attribute-category description="Clarizen configuration properties." caption="General">
       <group caption="Generic" id="clarizenGenericProperties">
         <name required="true" description="Give a name to this configuration so it can be later referenced by config-ref." caption="Name" name="name"></name>
@@ -39,7 +41,6 @@
         <password javaType="java.lang.String" required="false" description="The user login pass." caption="Connection Password" name="connectionPassword"></password>
         <string javaType="java.lang.String" required="false" description="The id of a specific partner application that can be used for licensing purposed." caption="Application Id" name="applicationId"></string>
         <string javaType="java.lang.String" required="false" description="The id of a Clarizen partner." caption="Partner Id" name="partnerId"></string>
-        <string defaultValue="https://api.clarizen.com/v1.0/Clarizen.svc" javaType="java.lang.String" required="false" description="Clarizen Webservice address." caption="Service Address" name="serviceAddress"></string>
       </group>
     </attribute-category>
     <attribute-category description="Pooling profile options." caption="Pooling Profile">
@@ -67,7 +68,7 @@ Clarizen project management software is a leading global provider of collaborati
 online project management that allows businesses to easily manage all of their projects
 and resources in a single environment.
 
-For futher information visit http://www.clarizen.com." caption="Clarizen" aliasId="org.mule.tooling.ui.modules.core.pattern.clarizen" versions="[3.2.0,8.0.0]">
+For futher information visit http://www.clarizen.com." caption="Clarizen" aliasId="org.mule.tooling.ui.modules.core.pattern.clarizen" versions="[3.4.0,8.0.0]">
     <attribute-category description="General." caption="General">
       <group caption="Generic" id="clarizenConnectorGeneric">
         <modeSwitch alwaysCombo="true" description="Operation." caption="Operation" name="Clarizen operations to execute">
@@ -97,7 +98,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="attach-file-url-to-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Attach File Url To Entity">
+  <cloud-connector returnType="java.lang.Boolean" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="attach-file-url-to-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Attach File Url To Entity">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="true" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
@@ -116,7 +117,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Create Entity">
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Create Entity">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
@@ -133,7 +134,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-from-template" icon="icons/small/clarizen-connector-24x16.png" caption="Create From Template">
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-from-template" icon="icons/small/clarizen-connector-24x16.png" caption="Create From Template">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <string javaType="java.lang.String" required="true" description="Template to be used." caption="Template Name" name="templateName"></string>
@@ -151,7 +152,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="com.clarizen.api.GenericEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-generic-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Create Generic Entity">
+  <cloud-connector returnType="com.clarizen.api.GenericEntity" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="create-generic-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Create Generic Entity">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.GenericEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
@@ -168,7 +169,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="delete-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Delete Entity">
+  <cloud-connector returnType="java.lang.Boolean" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="delete-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Delete Entity">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
@@ -185,7 +186,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="delete-entity-by-id" icon="icons/small/clarizen-connector-24x16.png" caption="Delete Entity By Id">
+  <cloud-connector returnType="java.lang.Boolean" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="delete-entity-by-id" icon="icons/small/clarizen-connector-24x16.png" caption="Delete Entity By Id">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="false" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
@@ -202,7 +203,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.metadata.EntityDescription&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="describe-entities" icon="icons/small/clarizen-connector-24x16.png" caption="Describe Entities">
+  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.metadata.EntityDescription&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="describe-entities" icon="icons/small/clarizen-connector-24x16.png" caption="Describe Entities">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <element-controller-list listName="type-names" defaultValue="#[payload]" itemName="type-name" localName="describe-entities-type-names" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="List of entity types to be described." caption="Type Names"></element-controller-list>
@@ -219,7 +220,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.files.FileInformation&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="download-entity-attachments" icon="icons/small/clarizen-connector-24x16.png" caption="Download Entity Attachments">
+  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.files.FileInformation&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="download-entity-attachments" icon="icons/small/clarizen-connector-24x16.png" caption="Download Entity Attachments">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="true" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
@@ -236,7 +237,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="com.clarizen.api.files.FileInformation" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="download-file-information" icon="icons/small/clarizen-connector-24x16.png" caption="Download File Information">
+  <cloud-connector returnType="com.clarizen.api.files.FileInformation" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="download-file-information" icon="icons/small/clarizen-connector-24x16.png" caption="Download File Information">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
@@ -253,7 +254,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="entity-query" icon="icons/small/clarizen-connector-24x16.png" caption="Entity Query">
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="entity-query" icon="icons/small/clarizen-connector-24x16.png" caption="Entity Query">
     <attribute-category description="General." caption="General">
       <group caption="Fields" id="fields">
         <element-controller-list listName="fields-to-retrieve" itemName="fields-to-retrieve" localName="entity-query-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="true" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
@@ -276,7 +277,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="com.clarizen.api.GetCalendarInfoResult" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-calendar-information" icon="icons/small/clarizen-connector-24x16.png" caption="Get Calendar Information">
+  <cloud-connector returnType="com.clarizen.api.GetCalendarInfoResult" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-calendar-information" icon="icons/small/clarizen-connector-24x16.png" caption="Get Calendar Information">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="false" caption="User Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/user-id"></childElement>
@@ -293,7 +294,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-my-work-items" icon="icons/small/clarizen-connector-24x16.png" caption="Get My Work Items">
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-my-work-items" icon="icons/small/clarizen-connector-24x16.png" caption="Get My Work Items">
     <attribute-category description="General." caption="General">
       <group caption="Fields" id="fields">
         <element-controller-list listName="fields-to-retrieve" defaultValue="#[payload]" itemName="fields-to-retrieve" localName="get-my-work-items-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
@@ -341,7 +342,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;java.lang.Object&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-system-settings" icon="icons/small/clarizen-connector-24x16.png" caption="Get System Settings">
+  <cloud-connector returnType="java.util.List&lt;java.lang.Object&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-system-settings" icon="icons/small/clarizen-connector-24x16.png" caption="Get System Settings">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <element-controller-list listName="settings" defaultValue="#[payload]" itemName="setting" localName="get-system-settings-settings" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="List." caption="Settings"></element-controller-list>
@@ -358,7 +359,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-work-item-by-id" icon="icons/small/clarizen-connector-24x16.png" caption="Get Work Item By Id">
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="get-work-item-by-id" icon="icons/small/clarizen-connector-24x16.png" caption="Get Work Item By Id">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <string javaType="java.lang.String" required="true" description="The work item id." caption="Work Item Id" name="workItemId"></string>
@@ -384,7 +385,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="issue-query" icon="icons/small/clarizen-connector-24x16.png" caption="Issue Query">
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="issue-query" icon="icons/small/clarizen-connector-24x16.png" caption="Issue Query">
     <attribute-category description="General." caption="General">
       <group caption="Fields" id="fields">
         <element-controller-list listName="fields-to-retrieve" itemName="fields-to-retrieve" localName="issue-query-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="true" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>
@@ -413,7 +414,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="lifecycle-change" icon="icons/small/clarizen-connector-24x16.png" caption="Lifecycle Change">
+  <cloud-connector returnType="java.lang.Boolean" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="lifecycle-change" icon="icons/small/clarizen-connector-24x16.png" caption="Lifecycle Change">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <string javaType="java.lang.String" required="true" description="The operation to be performed." caption="Operation" name="operation"></string>
@@ -432,7 +433,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;java.lang.String&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="list-entities" icon="icons/small/clarizen-connector-24x16.png" caption="List Entities">
+  <cloud-connector returnType="java.util.List&lt;java.lang.String&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="list-entities" icon="icons/small/clarizen-connector-24x16.png" caption="List Entities">
     <attribute-category description="General." caption="General"></attribute-category>
     <attribute-category description="Connection." caption="Connection">
       <group caption="Connection" id="connection">
@@ -445,7 +446,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.GenericEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="retrieve-work-item-human-resources" icon="icons/small/clarizen-connector-24x16.png" caption="Retrieve Work Item Human Resources">
+  <cloud-connector returnType="java.util.List&lt;com.clarizen.api.GenericEntity&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="retrieve-work-item-human-resources" icon="icons/small/clarizen-connector-24x16.png" caption="Retrieve Work Item Human Resources">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.EntityId" required="true" caption="Entity Id Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity-id"></childElement>
@@ -463,7 +464,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.lang.Boolean" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="send-email" icon="icons/small/clarizen-connector-24x16.png" caption="Send Email">
+  <cloud-connector returnType="java.lang.Boolean" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="send-email" icon="icons/small/clarizen-connector-24x16.png" caption="Send Email">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Related Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/related-entity"></childElement>
@@ -487,7 +488,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="update-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Update Entity">
+  <cloud-connector returnType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="update-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Update Entity">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="org.mule.modules.clarizen.api.model.BaseClarizenEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
@@ -504,7 +505,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="com.clarizen.api.GenericEntity" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="update-generic-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Update Generic Entity">
+  <cloud-connector returnType="com.clarizen.api.GenericEntity" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="update-generic-entity" icon="icons/small/clarizen-connector-24x16.png" caption="Update Generic Entity">
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <childElement allowMultiple="false" inplace="true" javaType="com.clarizen.api.GenericEntity" required="false" caption="Entity Reference" name="http://www.mulesoft.org/schema/mule/clarizen/entity"></childElement>
@@ -521,7 +522,7 @@ For futher information visit http://www.clarizen.com." caption="Clarizen" aliasI
       </group>
     </attribute-category>
   </cloud-connector>
-  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="work-items-query" icon="icons/small/clarizen-connector-24x16.png" caption="Work Items Query">
+  <cloud-connector returnType="java.util.List&lt;org.mule.modules.clarizen.api.model.BaseClarizenEntity&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/clarizen/abstractClarizenConnectorGeneric" abstract="true" image="icons/large/clarizen-connector-48x32.png" localId="work-items-query" icon="icons/small/clarizen-connector-24x16.png" caption="Work Items Query">
     <attribute-category description="General." caption="General">
       <group caption="Fields" id="fields">
         <element-controller-list listName="fields-to-retrieve" defaultValue="#[payload]" itemName="fields-to-retrieve" localName="work-items-query-fields-to-retrieve" javaType="java.util.List&lt;java.lang.String&gt;" required="false" description="The fields to be retrieved. The fields names are the keys of the map." caption="Fields To Retrieve"></element-controller-list>

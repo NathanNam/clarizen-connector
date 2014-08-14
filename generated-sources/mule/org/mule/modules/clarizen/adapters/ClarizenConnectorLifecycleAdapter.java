@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
  * A <code>ClarizenConnectorLifecycleAdapter</code> is a wrapper around {@link ClarizenConnector } that adds lifecycle methods to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-09T03:26:49-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-14T11:23:00-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class ClarizenConnectorLifecycleAdapter
     extends ClarizenConnectorMetadataAdapater
     implements Disposable, Initialisable, Startable, Stoppable
@@ -46,7 +46,7 @@ public class ClarizenConnectorLifecycleAdapter
         if (runtimeVersion.equals("Unknown")) {
             log.warn("Unknown Mule runtime version. This module may not work properly!");
         } else {
-            String[] expectedMinVersion = "3.2".split("\\.");
+            String[] expectedMinVersion = "3.4".split("\\.");
             if (runtimeVersion.contains("-")) {
                 runtimeVersion = runtimeVersion.split("-")[ 0 ];
             }
@@ -57,7 +57,7 @@ public class ClarizenConnectorLifecycleAdapter
                         break;
                     }
                     if (Integer.parseInt(currentRuntimeVersion[i])<Integer.parseInt(expectedMinVersion[i])) {
-                        throw new RuntimeException("This module requires at least Mule 3.2");
+                        throw new RuntimeException("This module requires at least Mule 3.4");
                     }
                 } catch (NumberFormatException nfe) {
                     log.warn("Error parsing Mule version, cannot validate current Mule version");

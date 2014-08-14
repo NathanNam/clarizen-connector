@@ -16,10 +16,22 @@ import org.mule.api.lifecycle.InitialisationException;
 import org.mule.api.lifecycle.Startable;
 import org.mule.api.lifecycle.Stoppable;
 import org.mule.api.processor.MessageProcessor;
+import org.mule.common.DefaultResult;
+import org.mule.common.Result;
+import org.mule.common.metadata.DefaultListMetaDataModel;
+import org.mule.common.metadata.DefaultMetaData;
+import org.mule.common.metadata.DefaultPojoMetaDataModel;
+import org.mule.common.metadata.DefaultSimpleMetaDataModel;
+import org.mule.common.metadata.MetaData;
+import org.mule.common.metadata.MetaDataModel;
+import org.mule.common.metadata.OperationMetaDataEnabled;
+import org.mule.common.metadata.datatype.DataType;
+import org.mule.common.metadata.datatype.DataTypeFactory;
 import org.mule.config.i18n.CoreMessages;
 import org.mule.modules.clarizen.ClarizenConnector;
 import org.mule.modules.clarizen.ClarizenSessionTimeoutException;
 import org.mule.modules.clarizen.api.model.AllIssueType;
+import org.mule.modules.clarizen.api.model.BaseClarizenEntity;
 import org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionManager;
 import org.mule.modules.clarizen.process.ProcessAdapter;
 import org.mule.modules.clarizen.process.ProcessCallback;
@@ -30,10 +42,10 @@ import org.mule.modules.clarizen.process.ProcessTemplate;
  * IssueQueryMessageProcessor invokes the {@link org.mule.modules.clarizen.ClarizenConnector#issueQuery(java.util.List, org.mule.modules.clarizen.api.model.AllIssueType, com.clarizen.api.queries.Condition, java.lang.Integer, java.lang.Integer)} method in {@link ClarizenConnector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-06-09T03:26:49-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-14T11:23:00-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class IssueQueryMessageProcessor
     extends AbstractMessageProcessor<Object>
-    implements Disposable, Initialisable, Startable, Stoppable, MessageProcessor
+    implements Disposable, Initialisable, Startable, Stoppable, MessageProcessor, OperationMetaDataEnabled
 {
 
     protected Object fieldsToRetrieve;
@@ -178,6 +190,25 @@ public class IssueQueryMessageProcessor
             throw messagingException;
         } catch (Exception e) {
             throw new MessagingException(CoreMessages.failedToInvoke("issueQuery"), event, e);
+        }
+    }
+
+    @Override
+    public Result<MetaData> getInputMetaData() {
+        return new DefaultResult<MetaData>(null, (Result.Status.SUCCESS));
+    }
+
+    @Override
+    public Result<MetaData> getOutputMetaData(MetaData inputMetadata) {
+        return new DefaultResult<MetaData>(new DefaultMetaData(new DefaultListMetaDataModel(getPojoOrSimpleModel(BaseClarizenEntity.class))));
+    }
+
+    private MetaDataModel getPojoOrSimpleModel(Class clazz) {
+        DataType dataType = DataTypeFactory.getInstance().getDataType(clazz);
+        if (DataType.POJO.equals(dataType)) {
+            return new DefaultPojoMetaDataModel(clazz);
+        } else {
+            return new DefaultSimpleMetaDataModel(dataType);
         }
     }
 
