@@ -8,7 +8,7 @@ import org.mule.modules.clarizen.api.model.WorkItemType;
 import org.mule.transformer.AbstractTransformer;
 import org.mule.transformer.types.DataTypeFactory;
 
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-14T11:23:00-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-21T04:41:47-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class WorkItemTypeEnumTransformer
     extends AbstractTransformer
     implements DiscoverableTransformer

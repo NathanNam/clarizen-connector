@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Clarizen
 Bundle-SymbolicName: org.mule.tooling.ui.contribution.clarizen;singleton:=true
-Bundle-Version: 1.0.0.201408141122
+Bundle-Version: 1.0.0.201408211641
 Bundle-Activator: org.mule.tooling.ui.contribution.ClarizenActivator
 Bundle-Vendor: MuleSoft, Inc.
 Require-Bundle: org.eclipse.ui,

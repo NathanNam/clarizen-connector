@@ -8,11 +8,11 @@ import org.mule.api.lifecycle.Disposable;
 import org.mule.api.lifecycle.Initialisable;
 import org.mule.api.lifecycle.Startable;
 import org.mule.api.lifecycle.Stoppable;
-import org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker;
+import org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-14T11:23:00-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-21T04:41:47-05:00", comments = "Build 3.4.3.1620.30ea288")
 public class ClarizenConnectorConnectionFactory implements KeyedPoolableObjectFactory
 {
 
@@ -34,7 +34,7 @@ public class ClarizenConnectorConnectionFactory implements KeyedPoolableObjectFa
             }
             throw new RuntimeException("Invalid key type ".concat(key.getClass().getName()));
         }
-        ClarizenConnectorLicenseChecker connector = new ClarizenConnectorLicenseChecker();
+        ClarizenConnectorConnectionIdentifierAdapter connector = new ClarizenConnectorConnectionIdentifierAdapter();
         if (connector instanceof Initialisable) {
             ((Initialisable) connector).initialise();
         }
@@ -61,39 +61,39 @@ public class ClarizenConnectorConnectionFactory implements KeyedPoolableObjectFa
             }
             throw new RuntimeException("Invalid key type ".concat(key.getClass().getName()));
         }
-        if (!(obj instanceof ClarizenConnectorLicenseChecker)) {
+        if (!(obj instanceof ClarizenConnectorConnectionIdentifierAdapter)) {
             if (obj == null) {
                 logger.warn("Connector is null");
             } else {
-                logger.warn("Cannot cast connector of type ".concat(obj.getClass().getName().concat(" to ").concat("org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker")));
+                logger.warn("Cannot cast connector of type ".concat(obj.getClass().getName().concat(" to ").concat("org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter")));
             }
             throw new RuntimeException("Invalid connector type ".concat(obj.getClass().getName()));
         }
         try {
-            ((ClarizenConnectorLicenseChecker) obj).disconnect();
+            ((ClarizenConnectorConnectionIdentifierAdapter) obj).disconnect();
         } catch (Exception e) {
             throw e;
         } finally {
-            if (((ClarizenConnectorLicenseChecker) obj) instanceof Stoppable) {
+            if (((ClarizenConnectorConnectionIdentifierAdapter) obj) instanceof Stoppable) {
                 ((Stoppable) obj).stop();
             }
-            if (((ClarizenConnectorLicenseChecker) obj) instanceof Disposable) {
+            if (((ClarizenConnectorConnectionIdentifierAdapter) obj) instanceof Disposable) {
                 ((Disposable) obj).dispose();
             }
         }
     }
 
     public boolean validateObject(Object key, Object obj) {
-        if (!(obj instanceof ClarizenConnectorLicenseChecker)) {
+        if (!(obj instanceof ClarizenConnectorConnectionIdentifierAdapter)) {
             if (obj == null) {
                 logger.warn("Connector is null");
             } else {
-                logger.warn("Cannot cast connector of type ".concat(obj.getClass().getName().concat(" to ").concat("org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker")));
+                logger.warn("Cannot cast connector of type ".concat(obj.getClass().getName().concat(" to ").concat("org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter")));
             }
             throw new RuntimeException("Invalid connector type ".concat(obj.getClass().getName()));
         }
         try {
-            return ((ClarizenConnectorLicenseChecker) obj).validateConnection();
+            return ((ClarizenConnectorConnectionIdentifierAdapter) obj).validateConnection();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return false;
@@ -106,12 +106,12 @@ public class ClarizenConnectorConnectionFactory implements KeyedPoolableObjectFa
         if (!(key instanceof ClarizenConnectorConnectionKey)) {
             throw new RuntimeException("Invalid key type");
         }
-        if (!(obj instanceof ClarizenConnectorLicenseChecker)) {
+        if (!(obj instanceof ClarizenConnectorConnectionIdentifierAdapter)) {
             throw new RuntimeException("Invalid connector type");
         }
         try {
-            if (!((ClarizenConnectorLicenseChecker) obj).validateConnection()) {
-                ((ClarizenConnectorLicenseChecker) obj).connect(((ClarizenConnectorConnectionKey) key).getConnectionUser(), ((ClarizenConnectorConnectionKey) key).getConnectionPassword(), ((ClarizenConnectorConnectionKey) key).getApplicationId(), ((ClarizenConnectorConnectionKey) key).getPartnerId());
+            if (!((ClarizenConnectorConnectionIdentifierAdapter) obj).validateConnection()) {
+                ((ClarizenConnectorConnectionIdentifierAdapter) obj).connect(((ClarizenConnectorConnectionKey) key).getConnectionUser(), ((ClarizenConnectorConnectionKey) key).getConnectionPassword(), ((ClarizenConnectorConnectionKey) key).getApplicationId(), ((ClarizenConnectorConnectionKey) key).getPartnerId());
             }
         } catch (Exception e) {
             throw e;

@@ -19,7 +19,7 @@ import org.mule.common.TestResult;
 import org.mule.common.Testable;
 import org.mule.config.PoolingProfile;
 import org.mule.modules.clarizen.ClarizenConnector;
-import org.mule.modules.clarizen.adapters.ClarizenConnectorLicenseChecker;
+import org.mule.modules.clarizen.adapters.ClarizenConnectorConnectionIdentifierAdapter;
 import org.mule.modules.clarizen.basic.Capabilities;
 import org.mule.modules.clarizen.basic.Capability;
 import org.mule.modules.clarizen.basic.MetadataAware;
@@ -32,8 +32,8 @@ import org.mule.modules.clarizen.process.ProcessTemplate;
  * A {@code ClarizenConnectorConnectionManager} is a wrapper around {@link ClarizenConnector } that adds connection management capabilities to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-14T11:23:00-05:00", comments = "Build 3.4.3.1620.30ea288")
-public class ClarizenConnectorConnectionManager implements MuleContextAware, Disposable, Initialisable, Testable, Capabilities, MetadataAware, ConnectionManager<ClarizenConnectorConnectionKey, ClarizenConnectorLicenseChecker> , ProcessAdapter<ClarizenConnectorLicenseChecker>
+@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-08-21T04:41:47-05:00", comments = "Build 3.4.3.1620.30ea288")
+public class ClarizenConnectorConnectionManager implements MuleContextAware, Disposable, Initialisable, Testable, Capabilities, MetadataAware, ConnectionManager<ClarizenConnectorConnectionKey, ClarizenConnectorConnectionIdentifierAdapter> , ProcessAdapter<ClarizenConnectorConnectionIdentifierAdapter>
 {
 
     /**
@@ -234,19 +234,19 @@ public class ClarizenConnectorConnectionManager implements MuleContextAware, Dis
         }
     }
 
-    public ClarizenConnectorLicenseChecker acquireConnection(ClarizenConnectorConnectionKey key)
+    public ClarizenConnectorConnectionIdentifierAdapter acquireConnection(ClarizenConnectorConnectionKey key)
         throws Exception
     {
-        return ((ClarizenConnectorLicenseChecker) connectionPool.borrowObject(key));
+        return ((ClarizenConnectorConnectionIdentifierAdapter) connectionPool.borrowObject(key));
     }
 
-    public void releaseConnection(ClarizenConnectorConnectionKey key, ClarizenConnectorLicenseChecker connection)
+    public void releaseConnection(ClarizenConnectorConnectionKey key, ClarizenConnectorConnectionIdentifierAdapter connection)
         throws Exception
     {
         connectionPool.returnObject(key, connection);
     }
 
-    public void destroyConnection(ClarizenConnectorConnectionKey key, ClarizenConnectorLicenseChecker connection)
+    public void destroyConnection(ClarizenConnectorConnectionKey key, ClarizenConnectorConnectionIdentifierAdapter connection)
         throws Exception
     {
         connectionPool.invalidateObject(key, connection);
@@ -267,7 +267,7 @@ public class ClarizenConnectorConnectionManager implements MuleContextAware, Dis
     }
 
     @Override
-    public<P >ProcessTemplate<P, ClarizenConnectorLicenseChecker> getProcessTemplate() {
+    public<P >ProcessTemplate<P, ClarizenConnectorConnectionIdentifierAdapter> getProcessTemplate() {
         return new ClarizenConnectorManagedConnectionProcessTemplate(this, muleContext);
     }
 
@@ -292,7 +292,7 @@ public class ClarizenConnectorConnectionManager implements MuleContextAware, Dis
     }
 
     public TestResult test() {
-        ClarizenConnectorLicenseChecker connection = null;
+        ClarizenConnectorConnectionIdentifierAdapter connection = null;
         DefaultTestResult result;
         ClarizenConnectorConnectionKey key = getDefaultConnectionKey();
         try {

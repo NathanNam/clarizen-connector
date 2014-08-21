@@ -1571,34 +1571,79 @@ For futher information visit http://www.clarizen.com</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="AllIssueTypeEnumType">
+  <xs:simpleType name="WorkItemFilterEnumType">
     <xs:annotation>
       <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="ISSUE">
+          <xs:enumeration value="I_HAVE_ANY_ROLE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="BUG">
+          <xs:enumeration value="I_MANAGE_THE_PROJECT">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="RISK">
+          <xs:enumeration value="I_AM_A_MANAGER">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="ENHANCEMENT_REQUEST">
+          <xs:enumeration value="I_AM_A_RESOURCE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="I_AM_A_REVIEWER">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="I_AM_A_MANAGER_OR_A_RESOURCE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="ALL">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="RecipientTypeEnumType">
+    <xs:annotation>
+      <xs:documentation>&lt;p&gt;Java class for RecipientType.
+
+&lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+&lt;p&gt;
+&lt;pre&gt;
+&amp;lt;simpleType name="RecipientType"&gt;
+&amp;lt;restriction base="{http://www.w3.org/2001/XMLSchemastring"&gt;
+&amp;lt;enumeration value="To"/&gt;
+&amp;lt;enumeration value="CC"/&gt;
+&amp;lt;/restriction&gt;
+&amp;lt;/simpleType&gt;
+&lt;/pre&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="TO">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="CC">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1674,30 +1719,34 @@ For futher information visit http://www.clarizen.com</xs:documentation>
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="RecipientTypeEnumType">
+  <xs:simpleType name="AllIssueTypeEnumType">
     <xs:annotation>
-      <xs:documentation>&lt;p&gt;Java class for RecipientType.
-
-&lt;p&gt;The following schema fragment specifies the expected content contained within this class.
-&lt;p&gt;
-&lt;pre&gt;
-&amp;lt;simpleType name="RecipientType"&gt;
-&amp;lt;restriction base="{http://www.w3.org/2001/XMLSchemastring"&gt;
-&amp;lt;enumeration value="To"/&gt;
-&amp;lt;enumeration value="CC"/&gt;
-&amp;lt;/restriction&gt;
-&amp;lt;/simpleType&gt;
-&lt;/pre&gt;</xs:documentation>
+      <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="TO">
+          <xs:enumeration value="ISSUE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="CC">
+          <xs:enumeration value="BUG">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="RISK">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ENHANCEMENT_REQUEST">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ALL">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1709,39 +1758,24 @@ For futher information visit http://www.clarizen.com</xs:documentation>
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="WorkItemFilterEnumType">
+  <xs:simpleType name="WorkItemTypeEnumType">
     <xs:annotation>
       <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="I_HAVE_ANY_ROLE">
+          <xs:enumeration value="PROJECT">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="I_MANAGE_THE_PROJECT">
+          <xs:enumeration value="MILESTONE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="I_AM_A_MANAGER">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="I_AM_A_RESOURCE">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="I_AM_A_REVIEWER">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="I_AM_A_MANAGER_OR_A_RESOURCE">
+          <xs:enumeration value="TASK">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1782,40 +1816,6 @@ For futher information visit http://www.clarizen.com</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="PRIVATE">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:simpleType>
-        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:simpleType name="WorkItemTypeEnumType">
-    <xs:annotation>
-      <xs:documentation></xs:documentation>
-    </xs:annotation>
-    <xs:union>
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="PROJECT">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="MILESTONE">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="TASK">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="ALL">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
