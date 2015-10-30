@@ -41,6 +41,7 @@ import java.util.List;
  * @author MuleSoft, Inc.
  */
 @Connector(name="clarizen", friendlyName = "Clarizen", minMuleVersion = "3.4")
+@ReconnectOn(exceptions = {ClarizenSessionTimeoutException.class})
 public class ClarizenConnector
 {
     private Object loginLock = new Object();
@@ -110,9 +111,8 @@ public class ClarizenConnector
      * @return Work item with fields indicated through fieldToRetrieve
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public BaseClarizenEntity getWorkItemById(WorkItemType workItemType, String workItemId,  
-            @Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve) {
+            @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve) {
         return clarizenClient.getWorkItemById(workItemType, workItemId, fieldsToRetrieve, true);
     }
     
@@ -127,8 +127,7 @@ public class ClarizenConnector
      * @return Created entity
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public BaseClarizenEntity createEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+    public BaseClarizenEntity createEntity(@Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.createEntity(entity);
     }
 
@@ -143,8 +142,7 @@ public class ClarizenConnector
      * @return Created entity
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public GenericEntity createGenericEntity(@Optional @Default("#[payload]") GenericEntity entity) {
+    public GenericEntity createGenericEntity(@Default("#[payload]") GenericEntity entity) {
         return clarizenClient.createEntity(entity);
     }
     
@@ -159,8 +157,7 @@ public class ClarizenConnector
      * @return Created entity
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public BaseClarizenEntity updateEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+    public BaseClarizenEntity updateEntity(@Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.updateEntity(entity);
     }
 
@@ -175,8 +172,7 @@ public class ClarizenConnector
      * @return Created entity
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public GenericEntity updateGenericEntity(@Optional @Default("#[payload]") GenericEntity entity) {
+    public GenericEntity updateGenericEntity(@Default("#[payload]") GenericEntity entity) {
         return clarizenClient.updateEntity(entity);
     }
     
@@ -196,10 +192,9 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<BaseClarizenEntity> workItemsQuery(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve, 
+    public List<BaseClarizenEntity> workItemsQuery(@Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve, 
             WorkItemState workItemState, WorkItemType workItemType, WorkItemFilter workItemFilter, 
-            @Optional @Default("100") Integer pageSize, @Optional @Default("100") Integer maxNumberOfPages) {
+            @Default("100") Integer pageSize, @Default("100") Integer maxNumberOfPages) {
         return clarizenClient.workItemsQuery(fieldsToRetrieve, workItemState, workItemType, 
                 workItemFilter, pageSize, maxNumberOfPages, true);
     }
@@ -219,10 +214,9 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of work item results
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> entityQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, 
             String queryTypeName, @Optional Condition condition, 
-            @Optional @Default("100") Integer pageSize, @Optional @Default("100") Integer maxNumberOfPages) {
+            @Default("100") Integer pageSize, @Default("100") Integer maxNumberOfPages) {
         return clarizenClient.createEntityQuery(fieldsToRetrieve, queryTypeName, condition, pageSize, 
                 maxNumberOfPages, true);
     }
@@ -241,10 +235,9 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of issues results
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<BaseClarizenEntity> issueQuery(@Placement(group = "Fields") List<String> fieldsToRetrieve, AllIssueType issueType,
             @Optional Condition condition, 
-            @Optional @Default("100") Integer pageSize, @Optional @Default("100") Integer maxNumberOfPages) {
+            @Default("100") Integer pageSize, @Default("100") Integer maxNumberOfPages) {
         return clarizenClient.createIssuesQuery(fieldsToRetrieve, issueType, condition, pageSize, 
                 maxNumberOfPages, true);
     }
@@ -264,11 +257,10 @@ public class ClarizenConnector
      * @return {@link ArrayOfEntity} List of work items
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<BaseClarizenEntity> getMyWorkItems(@Optional @Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve,
+    public List<BaseClarizenEntity> getMyWorkItems(@Default("#[payload]") @Placement(group = "Fields") List<String> fieldsToRetrieve,
             WorkItemState workItemState, WorkItemType workItemType,
-            WorkItemFilter workItemFilter, @Optional @Default("100") Integer pageSize, 
-            @Optional @Default("100") Integer maxNumberOfPages) {
+            WorkItemFilter workItemFilter, @Default("100") Integer pageSize, 
+            @Default("100") Integer maxNumberOfPages) {
 
         return clarizenClient.getMyWorkItems(fieldsToRetrieve, workItemState, workItemType, 
                 workItemFilter, pageSize, maxNumberOfPages, true);
@@ -284,8 +276,7 @@ public class ClarizenConnector
      * @return {@link EntityDescription} Entity description
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<EntityDescription> describeEntities(@Optional @Default("#[payload]") List<String> typeNames) {
+    public List<EntityDescription> describeEntities(@Default("#[payload]") List<String> typeNames) {
         return clarizenClient.describeEntities(typeNames);
     }
     
@@ -298,7 +289,6 @@ public class ClarizenConnector
      * @return List of entities
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<String> listEntities() {
         return clarizenClient.listEntities();
     }
@@ -314,8 +304,7 @@ public class ClarizenConnector
      * @return true if the change was successful
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Boolean lifecycleChange(@Optional @Default("#[payload]") List<EntityId> entityIdList, 
+    public Boolean lifecycleChange(@Default("#[payload]") List<EntityId> entityIdList, 
             String operation, Boolean recursive) {
         return clarizenClient.lifecycleChange(entityIdList, operation, recursive);
     }
@@ -330,8 +319,7 @@ public class ClarizenConnector
      * @return true if the entity was successfully deleted
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Boolean deleteEntity(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+    public Boolean deleteEntity(@Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.deleteEntity(entity);
     }
 
@@ -345,8 +333,7 @@ public class ClarizenConnector
      * @return true if the entity was successfully deleted
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public Boolean deleteEntityById(@Optional @Default("#[payload]") EntityId entityId) {
+    public Boolean deleteEntityById(@Default("#[payload]") EntityId entityId) {
         return clarizenClient.deleteEntity(entityId);
     }
     
@@ -360,8 +347,7 @@ public class ClarizenConnector
      * @return calendar information
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public GetCalendarInfoResult getCalendarInformation(@Optional @Default("#[payload]") EntityId userId) {
+    public GetCalendarInfoResult getCalendarInformation(@Default("#[payload]") EntityId userId) {
         return clarizenClient.getCalendarInfo(userId);
     }
     
@@ -375,8 +361,7 @@ public class ClarizenConnector
      * @return system settings
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public List<Object> getSystemSettings(@Optional @Default("#[payload]") List<String> settings) {
+    public List<Object> getSystemSettings(@Default("#[payload]") List<String> settings) {
         return clarizenClient.getSystemSettings(settings);
     }
     
@@ -391,8 +376,7 @@ public class ClarizenConnector
      * @return created entity
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public BaseClarizenEntity createFromTemplate(String templateName, @Optional @Default("#[payload]") BaseClarizenEntity entity) {
+    public BaseClarizenEntity createFromTemplate(String templateName, @Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.createFromTemplate(templateName, entity);
     }
 
@@ -406,8 +390,7 @@ public class ClarizenConnector
      * @return entity file information
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
-    public FileInformation downloadFileInformation(@Optional @Default("#[payload]") BaseClarizenEntity entity) {
+    public FileInformation downloadFileInformation(@Default("#[payload]") BaseClarizenEntity entity) {
         return clarizenClient.downloadFileInformation(entity);
     }
     
@@ -425,7 +408,6 @@ public class ClarizenConnector
      * @return true if the action was successful
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Boolean sendEmail(AccessType accessType, @Optional BaseClarizenEntity relatedEntity, 
             @Optional String body, @Optional String subject, @Optional List<Recipient> recipients) {
         return clarizenClient.sendEmail(accessType, body, subject, recipients, relatedEntity);
@@ -443,7 +425,6 @@ public class ClarizenConnector
      * @return true if the action was successful
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public Boolean attachFileUrlToEntity(EntityId entityId, String attachmentUrl, String attachmentFilename) {
         return clarizenClient.attachFileUrlToEntity(entityId, attachmentUrl, attachmentFilename);
     }
@@ -458,7 +439,6 @@ public class ClarizenConnector
      * @return The list containing all the attachments.
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<FileInformation> downloadEntityAttachments(EntityId entityId) {
         return clarizenClient.downloadEntityAttachments(entityId);
     }
@@ -474,7 +454,6 @@ public class ClarizenConnector
      * @return The list containing all the human resources.
      */
     @Processor
-    @InvalidateConnectionOn(exception = ClarizenSessionTimeoutException.class)
     public List<GenericEntity> retrieveWorkItemHumanResources(EntityId entityId, List<String> fieldsToRetrieve) {
         return clarizenClient.retrieveWorkItemHumanResources(entityId, fieldsToRetrieve);
     }
