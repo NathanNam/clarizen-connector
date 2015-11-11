@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<repository name='file:/Users/marianoquintela/Documents/ClonedRepos/clarizen-connector/target/update-site/ - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1'>
+  <properties size='2'>
+    <property name='p2.timestamp' value='1447269411563'/>
+    <property name='p2.compressed' value='false'/>
+  </properties>
+  <mappings size='3'>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='2'>
+    <artifact classifier='osgi.bundle' id='org.mule.tooling.ui.contribution.clarizen.3.4.0' version='3.0.0.201511111616'>
+      <properties size='3'>
+        <property name='artifact.size' value='1576022'/>
+        <property name='download.size' value='1576022'/>
+        <property name='download.md5' value='f9adefc73e3d5f9d185c6449ede22f40'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.mule.tooling.ui.extension.clarizen.3.4.0' version='3.0.0.201511111616'>
+      <properties size='4'>
+        <property name='artifact.size' value='15751'/>
+        <property name='download.size' value='15751'/>
+        <property name='download.md5' value='81049b5b24271ba51db726d1946d3a5f'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+  </artifacts>
+</repository>

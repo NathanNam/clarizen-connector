@@ -1,0 +1,1946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:ns2="http://www.mulesoft.org/schema/mule/devkit" xmlns:mule="http://www.mulesoft.org/schema/mule/core" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mulesoft.org/schema/mule/clarizen" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace"></xs:import>
+  <xs:import namespace="http://www.springframework.org/schema/beans" schemaLocation="http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"></xs:import>
+  <xs:import namespace="http://www.mulesoft.org/schema/mule/core" schemaLocation="http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></xs:import>
+  <xs:element xmlns:mule="http://www.mulesoft.org/schema/mule/core" substitutionGroup="mule:abstract-extension" name="config" ns2:javaClass="org.mule.modules.clarizen.connectivity.ClarizenConnectorConnectionManager">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="mule:abstractExtensionType">
+          <xs:annotation>
+            <xs:documentation>Clarizen Cloud Connector
+
+Clarizen project management software is a leading global provider of collaborative
+online project management that allows businesses to easily manage all of their projects
+and resources in a single environment.
+
+For futher information visit http://www.clarizen.com</xs:documentation>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element type="mule:poolingProfileType" minOccurs="0" name="connection-pooling-profile">
+              <xs:annotation>
+                <xs:documentation>Characteristics of the connection pool.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" ref="mule:abstract-reconnection-strategy">
+              <xs:annotation>
+                <xs:documentation>Reconnection strategy that defines how Mule should handle a connection failure.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute type="xs:string" use="optional" name="name">
+            <xs:annotation>
+              <xs:documentation>Give a name to this configuration so it can be later referenced by config-ref.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute type="xs:string" use="optional" name="connectionUser">
+            <xs:annotation>
+              <xs:documentation>the user login user</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+            <xs:annotation>
+              <xs:documentation>the user login pass</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute type="xs:string" use="optional" name="applicationId">
+            <xs:annotation>
+              <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute type="xs:string" use="optional" name="partnerId">
+            <xs:annotation>
+              <xs:documentation>the id of a Clarizen partner</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="GetWorkItemByIdType" substitutionGroup="mule:abstract-message-processor" name="get-work-item-by-id">
+    <xs:annotation>
+      <xs:documentation>Retrieves a workitem by id.
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GetWorkItemByIdType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="fields-to-retrieve">
+            <xs:annotation>
+              <xs:documentation>the list of the work item fields to be retrieved. The fields names are the keys of the map</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="fields-to-retrieve">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="WorkItemTypeEnumType" use="required" name="workItemType">
+          <xs:annotation>
+            <xs:documentation>the work item type. For further information about the specific values check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="workItemId">
+          <xs:annotation>
+            <xs:documentation>the work item id</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="CreateEntityType" substitutionGroup="mule:abstract-message-processor" name="create-entity">
+    <xs:annotation>
+      <xs:documentation>Creates a new Clarizen entity
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="EntityIdObjectType">
+    <xs:sequence></xs:sequence>
+    <xs:attribute type="xs:string" use="optional" name="typeName">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" use="optional" name="value">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" use="optional" name="ref">
+      <xs:annotation>
+        <xs:documentation>The reference object for this parameter</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BaseClarizenEntityObjectType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="id">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="entity-type">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" use="optional" name="name">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" use="optional" name="ref">
+      <xs:annotation>
+        <xs:documentation>The reference object for this parameter</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CreateEntityType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity">
+            <xs:annotation>
+              <xs:documentation>Entity to be created</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="BaseClarizenEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="CreateGenericEntityType" substitutionGroup="mule:abstract-message-processor" name="create-generic-entity">
+    <xs:annotation>
+      <xs:documentation>Creates a new Clarizen generic entity
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="BaseEntityObjectType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="id">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" use="optional" name="ref">
+      <xs:annotation>
+        <xs:documentation>The reference object for this parameter</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PermissionsObjectType">
+    <xs:sequence></xs:sequence>
+    <xs:attribute type="xs:string" use="optional" name="fieldPermissions-ref">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" use="optional" name="objectPermissions-ref">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" use="optional" name="ref">
+      <xs:annotation>
+        <xs:documentation>The reference object for this parameter</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="GenericEntityObjectType">
+    <xs:complexContent>
+      <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="BaseEntityObjectType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="permissions">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="PermissionsObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="values-ref">
+          <xs:annotation>
+            <xs:documentation></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CreateGenericEntityType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity">
+            <xs:annotation>
+              <xs:documentation>Entity to be created</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="GenericEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="UpdateEntityType" substitutionGroup="mule:abstract-message-processor" name="update-entity">
+    <xs:annotation>
+      <xs:documentation>Updates a new Clarizen entity
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="UpdateEntityType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity">
+            <xs:annotation>
+              <xs:documentation>Entity to be updated</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="BaseClarizenEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="UpdateGenericEntityType" substitutionGroup="mule:abstract-message-processor" name="update-generic-entity">
+    <xs:annotation>
+      <xs:documentation>Updates a Clarizen generic entity
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="UpdateGenericEntityType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity">
+            <xs:annotation>
+              <xs:documentation>Entity to be updated</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="GenericEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="WorkItemsQueryType" substitutionGroup="mule:abstract-message-processor" name="work-items-query">
+    <xs:annotation>
+      <xs:documentation>Search for work items
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="WorkItemsQueryType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="fields-to-retrieve">
+            <xs:annotation>
+              <xs:documentation>the fields to be retrieved. The fields names are the keys of the map</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="fields-to-retrieve">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="WorkItemStateEnumType" use="required" name="workItemState">
+          <xs:annotation>
+            <xs:documentation>the work items state. For further information about the specific values check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="WorkItemTypeEnumType" use="required" name="workItemType">
+          <xs:annotation>
+            <xs:documentation>the work item type. For further information about the specific values check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="WorkItemFilterEnumType" use="required" name="workItemFilter">
+          <xs:annotation>
+            <xs:documentation>the work items filter. For further information about the specific values check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="pageSize">
+          <xs:annotation>
+            <xs:documentation>the number of results to be retrieved per page</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="maxNumberOfPages">
+          <xs:annotation>
+            <xs:documentation>the maximum number of pages to be retrieved</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="EntityQueryType" substitutionGroup="mule:abstract-message-processor" name="entity-query">
+    <xs:annotation>
+      <xs:documentation>Create an entity query
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="EntityQueryType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="fields-to-retrieve">
+            <xs:annotation>
+              <xs:documentation>the fields to be retrieved. The fields names are the keys of the map</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="fields-to-retrieve">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="queryTypeName">
+          <xs:annotation>
+            <xs:documentation>the entity type</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="condition-ref">
+          <xs:annotation>
+            <xs:documentation>the query condition. For further information about the condition object check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="pageSize">
+          <xs:annotation>
+            <xs:documentation>the number of results to be retrieved per page</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="maxNumberOfPages">
+          <xs:annotation>
+            <xs:documentation>the maximum number of pages to be retrieved</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="IssueQueryType" substitutionGroup="mule:abstract-message-processor" name="issue-query">
+    <xs:annotation>
+      <xs:documentation>Create an issues query
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="IssueQueryType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="fields-to-retrieve">
+            <xs:annotation>
+              <xs:documentation>the fields to be retrieved. The fields names are the keys of the map</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="fields-to-retrieve">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="AllIssueTypeEnumType" use="required" name="issueType">
+          <xs:annotation>
+            <xs:documentation>the issue type to be retrieved</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="condition-ref">
+          <xs:annotation>
+            <xs:documentation>the query condition. For further information about the condition object check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="pageSize">
+          <xs:annotation>
+            <xs:documentation>the number of results to be retrieved per page.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="maxNumberOfPages">
+          <xs:annotation>
+            <xs:documentation>the maximum number of pages to be retrieved</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="GetMyWorkItemsType" substitutionGroup="mule:abstract-message-processor" name="get-my-work-items">
+    <xs:annotation>
+      <xs:documentation>Returns the work items for the current user
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GetMyWorkItemsType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="fields-to-retrieve">
+            <xs:annotation>
+              <xs:documentation>the fields to be retrieved. The fields names are the keys of the map</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="fields-to-retrieve">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="WorkItemStateEnumType" use="required" name="workItemState">
+          <xs:annotation>
+            <xs:documentation>the work items state. For further information about the specific values check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="WorkItemTypeEnumType" use="required" name="workItemType">
+          <xs:annotation>
+            <xs:documentation>the work item type. For further information about the specific values check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="WorkItemFilterEnumType" use="required" name="workItemFilter">
+          <xs:annotation>
+            <xs:documentation>the work items filter. For further information about the specific values check</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="pageSize">
+          <xs:annotation>
+            <xs:documentation>the number of results to be retrieved per page</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="integerType" use="optional" default="100" name="maxNumberOfPages">
+          <xs:annotation>
+            <xs:documentation>the maximum number of pages to be retrieved</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="DescribeEntitiesType" substitutionGroup="mule:abstract-message-processor" name="describe-entities">
+    <xs:annotation>
+      <xs:documentation>Returns the description of an entity
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="DescribeEntitiesType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="type-names">
+            <xs:annotation>
+              <xs:documentation>list of entity types to be described</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="type-name">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="ListEntitiesType" substitutionGroup="mule:abstract-message-processor" name="list-entities">
+    <xs:annotation>
+      <xs:documentation>Returns the list of entities
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ListEntitiesType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="LifecycleChangeType" substitutionGroup="mule:abstract-message-processor" name="lifecycle-change">
+    <xs:annotation>
+      <xs:documentation>Performs lifecycle changes on an entity or a group of entities
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="LifecycleChangeType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity-id-list">
+            <xs:annotation>
+              <xs:documentation>the list of entities to be updated</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="entity-id-list">
+                  <xs:complexType>
+                    <xs:complexContent>
+                      <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:complexContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="operation">
+          <xs:annotation>
+            <xs:documentation>the operation to be performed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="booleanType" use="required" name="recursive">
+          <xs:annotation>
+            <xs:documentation>if the operation will be recursived</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="DeleteEntityType" substitutionGroup="mule:abstract-message-processor" name="delete-entity">
+    <xs:annotation>
+      <xs:documentation>Deletes an entity
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="DeleteEntityType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity">
+            <xs:annotation>
+              <xs:documentation>the entity to be deleted</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="BaseClarizenEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="DeleteEntityByIdType" substitutionGroup="mule:abstract-message-processor" name="delete-entity-by-id">
+    <xs:annotation>
+      <xs:documentation>Deletes an entity by its entity Id
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="DeleteEntityByIdType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity-id">
+            <xs:annotation>
+              <xs:documentation>the entity Id of the entity to be deleted</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="GetCalendarInformationType" substitutionGroup="mule:abstract-message-processor" name="get-calendar-information">
+    <xs:annotation>
+      <xs:documentation>Gets calendar information for the specified user
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GetCalendarInformationType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="user-id">
+            <xs:annotation>
+              <xs:documentation>the userId entityId</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="GetSystemSettingsType" substitutionGroup="mule:abstract-message-processor" name="get-system-settings">
+    <xs:annotation>
+      <xs:documentation>Gets system settings values
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GetSystemSettingsType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="settings">
+            <xs:annotation>
+              <xs:documentation>list</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="setting">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="CreateFromTemplateType" substitutionGroup="mule:abstract-message-processor" name="create-from-template">
+    <xs:annotation>
+      <xs:documentation>Creates milestones and projects from templates
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CreateFromTemplateType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity">
+            <xs:annotation>
+              <xs:documentation>entity to be created from template</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="BaseClarizenEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="templateName">
+          <xs:annotation>
+            <xs:documentation>template to be used</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="DownloadFileInformationType" substitutionGroup="mule:abstract-message-processor" name="download-file-information">
+    <xs:annotation>
+      <xs:documentation>Download file information
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="DownloadFileInformationType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="entity">
+            <xs:annotation>
+              <xs:documentation>Document entity</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="BaseClarizenEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="SendEmailType" substitutionGroup="mule:abstract-message-processor" name="send-email">
+    <xs:annotation>
+      <xs:documentation>Sends an email to the specified recipients
+
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="RecipientObjectType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="user">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" use="optional" name="eMail">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="RecipientTypeEnumType" use="optional" name="recipientType">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" use="optional" name="ref">
+      <xs:annotation>
+        <xs:documentation>The reference object for this parameter</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SendEmailType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="related-entity">
+            <xs:annotation>
+              <xs:documentation>entity related to the email</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="BaseClarizenEntityObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="recipients">
+            <xs:annotation>
+              <xs:documentation>list of recipients</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="recipient">
+                  <xs:complexType>
+                    <xs:complexContent>
+                      <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="RecipientObjectType">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:complexContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/clarizen" type="AccessTypeEnumType" use="required" name="accessType">
+          <xs:annotation>
+            <xs:documentation>PUBLIC or PRIVATE</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="body">
+          <xs:annotation>
+            <xs:documentation>message body</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="subject">
+          <xs:annotation>
+            <xs:documentation>message subject</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="AttachFileUrlToEntityType" substitutionGroup="mule:abstract-message-processor" name="attach-file-url-to-entity">
+    <xs:annotation>
+      <xs:documentation>Attaches a file to an entity, given that the file resides in an external storage and can be accessed via a URL.
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="AttachFileUrlToEntityType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="entity-id">
+            <xs:annotation>
+              <xs:documentation>ID of the entity to which the file URL will be attached</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="attachmentUrl">
+          <xs:annotation>
+            <xs:documentation>URL pointing to the attachment</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="attachmentFilename">
+          <xs:annotation>
+            <xs:documentation>Filename of the attachment</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="DownloadEntityAttachmentsType" substitutionGroup="mule:abstract-message-processor" name="download-entity-attachments">
+    <xs:annotation>
+      <xs:documentation>Given a certain Entity Id, retrieves all associated attachments.
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="DownloadEntityAttachmentsType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="entity-id">
+            <xs:annotation>
+              <xs:documentation>The entity Id associated with the attachments</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/clarizen" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="RetrieveWorkItemHumanResourcesType" substitutionGroup="mule:abstract-message-processor" name="retrieve-work-item-human-resources">
+    <xs:annotation>
+      <xs:documentation>Given a certain Entity Id representing a work item, retrieves all associated human resources.
+&lt;p/&gt;</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="RetrieveWorkItemHumanResourcesType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageProcessorType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="entity-id">
+            <xs:annotation>
+              <xs:documentation>The entity Id associated with a work item</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension xmlns="http://www.mulesoft.org/schema/mule/clarizen" base="EntityIdObjectType"></xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="fields-to-retrieve">
+            <xs:annotation>
+              <xs:documentation>List of strings representing the fields to retrieve</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="fields-to-retrieve">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" use="optional" name="value-ref"></xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" use="optional" name="ref">
+                <xs:annotation>
+                  <xs:documentation>The reference object for this parameter</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" use="optional" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>Specify which configuration to use for this invocation.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionUser">
+          <xs:annotation>
+            <xs:documentation>the user login user</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="connectionPassword">
+          <xs:annotation>
+            <xs:documentation>the user login pass</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="applicationId">
+          <xs:annotation>
+            <xs:documentation>the id of a specific partner application that can be used for licensing purposed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="partnerId">
+          <xs:annotation>
+            <xs:documentation>the id of a Clarizen partner</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="WorkItemFilterEnumType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="I_HAVE_ANY_ROLE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="I_MANAGE_THE_PROJECT">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="I_AM_A_MANAGER">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="I_AM_A_RESOURCE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="I_AM_A_REVIEWER">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="I_AM_A_MANAGER_OR_A_RESOURCE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ALL">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="AllIssueTypeEnumType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ISSUE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="BUG">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="RISK">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ENHANCEMENT_REQUEST">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ALL">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="WorkItemTypeEnumType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PROJECT">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="MILESTONE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="TASK">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ALL">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="AccessTypeEnumType">
+    <xs:annotation>
+      <xs:documentation>&lt;p&gt;Java class for AccessType.
+
+&lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+&lt;p&gt;
+&lt;pre&gt;
+&amp;lt;simpleType name="AccessType"&gt;
+&amp;lt;restriction base="{http://www.w3.org/2001/XMLSchemastring"&gt;
+&amp;lt;enumeration value="Public"/&gt;
+&amp;lt;enumeration value="Private"/&gt;
+&amp;lt;/restriction&gt;
+&amp;lt;/simpleType&gt;
+&lt;/pre&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PUBLIC">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PRIVATE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="WorkItemStateEnumType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ALL">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ACTIVE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="CANCELLED">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DRAFT">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="COMPLETED">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ON_HOLD">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="CURRENT">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="UPCOMING">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="IN_THE_WORKS">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="EXECUTABLE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="RecipientTypeEnumType">
+    <xs:annotation>
+      <xs:documentation>&lt;p&gt;Java class for RecipientType.
+
+&lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+&lt;p&gt;
+&lt;pre&gt;
+&amp;lt;simpleType name="RecipientType"&gt;
+&amp;lt;restriction base="{http://www.w3.org/2001/XMLSchemastring"&gt;
+&amp;lt;enumeration value="To"/&gt;
+&amp;lt;enumeration value="CC"/&gt;
+&amp;lt;/restriction&gt;
+&amp;lt;/simpleType&gt;
+&lt;/pre&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="TO">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="CC">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="OnNoTokenPolicyEnumType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="EXCEPTION"></xs:enumeration>
+          <xs:enumeration value="STOP_FLOW"></xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="integerType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="decimalType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="floatType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:float"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="doubleType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:double"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="dateTimeType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:dateTime"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="longType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:long"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="byteType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:byte"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="booleanType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:boolean"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="anyUriType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:anyURI"></xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="charType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"></xs:minLength>
+          <xs:maxLength value="1"></xs:maxLength>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+</xs:schema>
